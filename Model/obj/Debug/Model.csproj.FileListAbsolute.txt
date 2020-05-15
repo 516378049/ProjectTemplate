@@ -1,0 +1,28 @@
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Model\bin\Debug\Model.dll.config
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Model\bin\Debug\Model.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Model\bin\Debug\Model.pdb
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Model\bin\Debug\EntityFramework.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Model\bin\Debug\Newtonsoft.Json.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Model\bin\Debug\EntityFramework.xml
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Model\bin\Debug\Newtonsoft.Json.xml
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Model\obj\Debug\Model.csproj.CopyComplete
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Model\obj\Debug\Model.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Model\obj\Debug\Model.pdb
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Model\obj\Debug\Model.csprojAssemblyReference.cache
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Model\bin\Debug\Model.dll.config
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Model\bin\Debug\Model.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Model\bin\Debug\Model.pdb
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Model\bin\Debug\EntityFramework.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Model\bin\Debug\Newtonsoft.Json.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Model\bin\Debug\EntityFramework.xml
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Model\bin\Debug\Newtonsoft.Json.xml
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Model\obj\Debug\Model.csprojAssemblyReference.cache
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Model\obj\Debug\Model.csproj.CopyComplete
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Model\obj\Debug\Model.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Model\obj\Debug\Model.pdb

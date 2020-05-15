@@ -1,0 +1,30 @@
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Framework\obj\Debug\Framework.csprojAssemblyReference.cache
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Framework\obj\Debug\Framework.csproj.CoreCompileInputs.cache
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Framework\bin\Debug\Runda.B2B.Framework.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Framework\bin\Debug\Runda.B2B.Framework.pdb
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Framework\bin\Debug\DocumentFormat.OpenXml.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Framework\bin\Debug\Model.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Framework\bin\Debug\Newtonsoft.Json.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Framework\bin\Debug\System.IO.Packaging.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Framework\bin\Debug\Model.pdb
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Framework\bin\Debug\Model.dll.config
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Framework\bin\Debug\DocumentFormat.OpenXml.xml
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Framework\obj\Debug\Framework.csproj.CopyComplete
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Framework\obj\Debug\Runda.B2B.Framework.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Framework\obj\Debug\Runda.B2B.Framework.pdb
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Framework\bin\Debug\Newtonsoft.Json.xml
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Framework\bin\Debug\Runda.B2B.Framework.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Framework\bin\Debug\Runda.B2B.Framework.pdb
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Framework\bin\Debug\DocumentFormat.OpenXml.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Framework\bin\Debug\Model.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Framework\bin\Debug\Newtonsoft.Json.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Framework\bin\Debug\System.IO.Packaging.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Framework\bin\Debug\Model.pdb
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Framework\bin\Debug\Model.dll.config
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Framework\bin\Debug\DocumentFormat.OpenXml.xml
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Framework\bin\Debug\Newtonsoft.Json.xml
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Framework\obj\Debug\Framework.csprojAssemblyReference.cache
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Framework\obj\Debug\Framework.csproj.CoreCompileInputs.cache
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Framework\obj\Debug\Framework.csproj.CopyComplete
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Framework\obj\Debug\Runda.B2B.Framework.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Framework\obj\Debug\Runda.B2B.Framework.pdb

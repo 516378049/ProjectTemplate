@@ -1,0 +1,135 @@
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\obj\Debug\DataAccess.csprojAssemblyReference.cache
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\obj\Debug\DataAccess.csproj.CoreCompileInputs.cache
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\bin\Debug\JR.NewTenancy.DataAccess.dll.config
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\bin\Debug\JR.NewTenancy.DataAccess.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\bin\Debug\JR.NewTenancy.DataAccess.pdb
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\bin\Debug\EntityFramework.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\bin\Debug\Model.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\bin\Debug\Runda.B2B.Framework.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\bin\Debug\System.Data.SqlClient.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\bin\Debug\ThinkDev.FrameWork.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\bin\Debug\DocumentFormat.OpenXml.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\bin\Debug\ThinkDev.Caching.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\bin\Debug\NPOI.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\bin\Debug\Gma.QrCodeNet.Encoding.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\bin\Debug\Tamir.SharpSSH.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\bin\Debug\System.Web.Mvc.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\bin\Debug\ChnCharInfo.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\bin\Debug\Newtonsoft.Json.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\bin\Debug\itextsharp.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\bin\Debug\ServiceStack.Interfaces.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\bin\Debug\ServiceStack.Redis.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\bin\Debug\ServiceStack.Common.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\bin\Debug\NPOI.OOXML.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\bin\Debug\ServiceStack.Text.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\bin\Debug\DiffieHellman.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\bin\Debug\Org.Mentalis.Security.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\bin\Debug\NPOI.OpenXmlFormats.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\bin\Debug\NPOI.OpenXml4Net.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\bin\Debug\Runda.B2B.Framework.pdb
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\bin\Debug\Model.pdb
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\bin\Debug\Model.dll.config
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\bin\Debug\EntityFramework.xml
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\bin\Debug\System.Data.SqlClient.xml
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\bin\Debug\DocumentFormat.OpenXml.xml
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\bin\Debug\NPOI.xml
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\bin\Debug\System.Web.Mvc.xml
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\bin\Debug\Newtonsoft.Json.xml
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\bin\Debug\ServiceStack.Interfaces.xml
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\bin\Debug\ServiceStack.Redis.xml
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\bin\Debug\ServiceStack.Common.xml
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\bin\Debug\ServiceStack.Text.xml
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\bin\Debug\zh-Hans\System.Web.Mvc.resources.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\obj\Debug\DataAccess.csproj.CopyComplete
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\obj\Debug\JR.NewTenancy.DataAccess.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\JR.NewTenancy.DataAccess\obj\Debug\JR.NewTenancy.DataAccess.pdb
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\bin\Debug\DataAccess.dll.config
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\bin\Debug\DataAccess.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\bin\Debug\DataAccess.pdb
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\bin\Debug\EntityFramework.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\bin\Debug\Model.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\bin\Debug\Runda.B2B.Framework.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\bin\Debug\System.Data.SqlClient.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\bin\Debug\ThinkDev.FrameWork.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\bin\Debug\DocumentFormat.OpenXml.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\bin\Debug\ThinkDev.Caching.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\bin\Debug\NPOI.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\bin\Debug\Gma.QrCodeNet.Encoding.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\bin\Debug\Tamir.SharpSSH.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\bin\Debug\System.Web.Mvc.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\bin\Debug\ChnCharInfo.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\bin\Debug\Newtonsoft.Json.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\bin\Debug\itextsharp.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\bin\Debug\ServiceStack.Interfaces.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\bin\Debug\ServiceStack.Redis.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\bin\Debug\ServiceStack.Common.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\bin\Debug\NPOI.OOXML.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\bin\Debug\ServiceStack.Text.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\bin\Debug\DiffieHellman.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\bin\Debug\Org.Mentalis.Security.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\bin\Debug\NPOI.OpenXmlFormats.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\bin\Debug\NPOI.OpenXml4Net.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\bin\Debug\Runda.B2B.Framework.pdb
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\bin\Debug\Model.pdb
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\bin\Debug\Model.dll.config
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\bin\Debug\EntityFramework.xml
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\bin\Debug\System.Data.SqlClient.xml
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\bin\Debug\DocumentFormat.OpenXml.xml
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\bin\Debug\Newtonsoft.Json.xml
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\obj\Debug\DataAccess.csprojAssemblyReference.cache
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\obj\Debug\DataAccess.csproj.CoreCompileInputs.cache
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\obj\Debug\DataAccess.csproj.CopyComplete
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\obj\Debug\DataAccess.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\obj\Debug\DataAccess.pdb
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\DataAccess\bin\Debug\Microsoft.Practices.ObjectBuilder.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\DataAccess\bin\Debug\DataAccess.dll.config
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\DataAccess\bin\Debug\DataAccess.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\DataAccess\bin\Debug\DataAccess.pdb
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\DataAccess\bin\Debug\EntityFramework.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\DataAccess\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\DataAccess\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\DataAccess\bin\Debug\Microsoft.Practices.ObjectBuilder.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\DataAccess\bin\Debug\Model.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\DataAccess\bin\Debug\Runda.B2B.Framework.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\DataAccess\bin\Debug\System.Data.SqlClient.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\DataAccess\bin\Debug\DocumentFormat.OpenXml.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\DataAccess\bin\Debug\ThinkDev.Caching.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\DataAccess\bin\Debug\NPOI.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\DataAccess\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\DataAccess\bin\Debug\Gma.QrCodeNet.Encoding.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\DataAccess\bin\Debug\Tamir.SharpSSH.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\DataAccess\bin\Debug\System.Web.Mvc.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\DataAccess\bin\Debug\ChnCharInfo.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\DataAccess\bin\Debug\Newtonsoft.Json.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\DataAccess\bin\Debug\itextsharp.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\DataAccess\bin\Debug\ServiceStack.Interfaces.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\DataAccess\bin\Debug\ServiceStack.Redis.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\DataAccess\bin\Debug\ServiceStack.Common.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\DataAccess\bin\Debug\NPOI.OOXML.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\DataAccess\bin\Debug\ServiceStack.Text.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\DataAccess\bin\Debug\DiffieHellman.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\DataAccess\bin\Debug\Org.Mentalis.Security.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\DataAccess\bin\Debug\NPOI.OpenXmlFormats.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\DataAccess\bin\Debug\NPOI.OpenXml4Net.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\DataAccess\bin\Debug\Runda.B2B.Framework.pdb
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\DataAccess\bin\Debug\Model.pdb
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\DataAccess\bin\Debug\Model.dll.config
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\DataAccess\bin\Debug\EntityFramework.xml
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\DataAccess\bin\Debug\System.Data.SqlClient.xml
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\DataAccess\bin\Debug\DocumentFormat.OpenXml.xml
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\DataAccess\bin\Debug\Newtonsoft.Json.xml
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\DataAccess\obj\Debug\DataAccess.csprojAssemblyReference.cache
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\DataAccess\obj\Debug\DataAccess.csproj.CoreCompileInputs.cache
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\DataAccess\obj\Debug\DataAccess.csproj.CopyComplete
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\DataAccess\obj\Debug\DataAccess.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\DataAccess\obj\Debug\DataAccess.pdb

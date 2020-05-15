@@ -1,0 +1,228 @@
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\obj\Debug\Template.csproj.CoreCompileInputs.cache
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\obj\Debug\Template.csprojAssemblyReference.cache
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\Template.dll.config
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\Template.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\Template.pdb
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\csc.exe
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\csc.exe.config
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\csc.rsp
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\csi.exe
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\csi.exe.config
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\csi.rsp
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\Microsoft.Managed.Core.targets
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\System.AppContext.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\System.Collections.Immutable.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\System.Console.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\System.IO.Compression.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\System.IO.FileSystem.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\System.IO.Pipes.AccessControl.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\System.IO.Pipes.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\System.Reflection.Metadata.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\System.Security.AccessControl.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\System.Security.Claims.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\System.Security.Principal.Windows.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\System.ValueTuple.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\System.Xml.ReaderWriter.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\System.Xml.XmlDocument.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\System.Xml.XPath.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\System.Xml.XPath.XDocument.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\vbc.exe
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\vbc.exe.config
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\vbc.rsp
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\VBCSCompiler.exe
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\roslyn\VBCSCompiler.exe.config
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\Antlr3.Runtime.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\Microsoft.Web.Infrastructure.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\Model.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\Newtonsoft.Json.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\Runda.B2B.Framework.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\System.Web.Helpers.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\System.Web.Mvc.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\System.Web.Optimization.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\System.Web.Razor.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\System.Web.WebPages.Deployment.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\System.Web.WebPages.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\System.Web.WebPages.Razor.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\WebGrease.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\DocumentFormat.OpenXml.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\NPOI.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\ICSharpCode.SharpZipLib.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\Gma.QrCodeNet.Encoding.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\Tamir.SharpSSH.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\ChnCharInfo.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\itextsharp.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\ServiceStack.Interfaces.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\ServiceStack.Redis.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\ServiceStack.Common.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\NPOI.OOXML.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\ServiceStack.Text.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\Microsoft.Practices.EnterpriseLibrary.Data.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\FluentData.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\DiffieHellman.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\Org.Mentalis.Security.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\NPOI.OpenXmlFormats.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\NPOI.OpenXml4Net.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\Runda.B2B.Framework.pdb
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\Model.pdb
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\Model.dll.config
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\System.Web.Helpers.xml
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\System.Web.Mvc.xml
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\System.Web.Optimization.xml
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\System.Web.Razor.xml
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\System.Web.WebPages.xml
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\System.Web.WebPages.Deployment.xml
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\System.Web.WebPages.Razor.xml
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\Newtonsoft.Json.xml
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\Antlr3.Runtime.pdb
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\DocumentFormat.OpenXml.xml
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\zh-Hans\System.Web.Helpers.resources.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\zh-Hans\System.Web.Mvc.resources.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\zh-Hans\System.Web.Optimization.resources.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\zh-Hans\System.Web.Razor.resources.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\zh-Hans\System.Web.WebPages.resources.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\zh-Hans\System.Web.WebPages.Deployment.resources.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\obj\Debug\Template.csproj.CopyComplete
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\obj\Debug\Template.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\obj\Debug\Template.pdb
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\DataAccess.dll
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\DataAccess.pdb
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\DataAccess.dll.config
+D:\记录文档\github --save\C# MVC framWork\netTemplateMVC\Template\bin\Microsoft.Practices.ObjectBuilder.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\Template.dll.config
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\Template.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\Template.pdb
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\csc.exe
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\csc.exe.config
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\csc.rsp
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\csi.exe
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\csi.exe.config
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\csi.rsp
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\Microsoft.Managed.Core.targets
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\System.AppContext.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\System.Collections.Immutable.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\System.Console.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\System.IO.Compression.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\System.IO.FileSystem.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\System.IO.Pipes.AccessControl.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\System.IO.Pipes.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\System.Reflection.Metadata.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\System.Security.AccessControl.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\System.Security.Claims.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\System.Security.Principal.Windows.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\System.ValueTuple.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\System.Xml.ReaderWriter.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\System.Xml.XmlDocument.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\System.Xml.XPath.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\System.Xml.XPath.XDocument.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\vbc.exe
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\vbc.exe.config
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\vbc.rsp
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\VBCSCompiler.exe
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\roslyn\VBCSCompiler.exe.config
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\Antlr3.Runtime.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\DataAccess.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\Microsoft.Web.Infrastructure.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\Model.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\Newtonsoft.Json.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\Runda.B2B.Framework.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\System.Web.Helpers.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\System.Web.Mvc.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\System.Web.Optimization.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\System.Web.Razor.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\System.Web.WebPages.Deployment.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\System.Web.WebPages.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\System.Web.WebPages.Razor.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\WebGrease.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\Microsoft.Practices.EnterpriseLibrary.Data.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\FluentData.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\DocumentFormat.OpenXml.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\NPOI.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\ICSharpCode.SharpZipLib.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\Gma.QrCodeNet.Encoding.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\Tamir.SharpSSH.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\ChnCharInfo.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\itextsharp.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\ServiceStack.Interfaces.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\ServiceStack.Redis.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\ServiceStack.Common.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\NPOI.OOXML.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\ServiceStack.Text.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\Microsoft.Practices.ObjectBuilder.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\DiffieHellman.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\Org.Mentalis.Security.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\NPOI.OpenXmlFormats.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\NPOI.OpenXml4Net.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\DataAccess.pdb
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\DataAccess.dll.config
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\Runda.B2B.Framework.pdb
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\Model.pdb
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\Model.dll.config
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\Newtonsoft.Json.xml
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\System.Web.Helpers.xml
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\System.Web.Mvc.xml
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\System.Web.Optimization.xml
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\System.Web.Razor.xml
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\System.Web.WebPages.xml
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\System.Web.WebPages.Deployment.xml
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\System.Web.WebPages.Razor.xml
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\Antlr3.Runtime.pdb
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\DocumentFormat.OpenXml.xml
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\zh-Hans\System.Web.Helpers.resources.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\zh-Hans\System.Web.Mvc.resources.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\zh-Hans\System.Web.Optimization.resources.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\zh-Hans\System.Web.Razor.resources.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\zh-Hans\System.Web.WebPages.resources.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\zh-Hans\System.Web.WebPages.Deployment.resources.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\obj\Debug\Template.csprojAssemblyReference.cache
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\obj\Debug\Template.csproj.CoreCompileInputs.cache
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\obj\Debug\Template.csproj.CopyComplete
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\obj\Debug\Template.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\obj\Debug\Template.pdb
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\ThinkDev.Caching.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\ThinkDev.Data.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\ThinkDev.FrameWork.dll
+D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Template\bin\ThinkDev.Logging.dll

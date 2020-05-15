@@ -1,0 +1,143 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<h2>Index</h2>
+
+
+
+<link type="text/css" href="~/Content/zTree/zTree_v3/css/demo.css" rel="stylesheet" />@*common style*@
+
+@*awesome style*@
+@*<link type="text/css" href="~/Content/zTree/zTree_v3/css/awesomeStyle/awesome.css" rel="stylesheet" />*@
+<link rel="stylesheet/less" type="text/css" href="~/Content/zTree/zTree_v3/css/awesomeStyle/awesome.less" rel="stylesheet" />
+<link type="text/css" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+
+@*nomal Style*@
+@*<link type="text/css" href="~/Content/zTree/zTree_v3/css/zTreeStyle/zTreeStyle.css" rel="stylesheet" />*@
+
+
+<script src="http://cdn.bootcss.com/less.js/1.7.0/less.min.js"></script>
+<script type="text/javascript" src="~/Content/zTree/zTree_v3/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="~/Content/zTree/zTree_v3/js/jquery.ztree.core.js"></script>
+<script type="text/javascript" src="~/Content/zTree/zTree_v3/js/jquery.ztree.exhide.js"></script>
+<script type="text/javascript" src="~/Content/zTree/zTree_v3/demo/js/fuzzysearch.js"></script>
+<style type="text/css">
+    /*.ztree li span {
+        margin-left: 5px
+    }
+
+        .ztree * {
+            font-size: 17px;
+            background-color: white
+        }
+
+        .ztree {
+            background-color: #eeeeee42;
+            color: black
+        }
+
+            .ztree li a {
+                height: 28px;
+                color: black
+            }
+
+                .ztree li a:hover {
+                    text-decoration: none;
+                }
+
+                .ztree li a.curSelectedNode {
+                    height: 28px;
+                    background-color: transparent
+                }
+
+                    .ztree li a.curSelectedNode span {
+                        background-color: #FFE6B0;
+                        border: 1px #FFB951 solid;
+                        font-weight: bold;
+                        color: black
+                    }
+
+            .ztree li span.button::before {
+                color: black
+                
+            }
+
+            .ztree li span.button.switch {
+                padding-right: 8px
+            }*/
+</style>
+
+<div id="menuContent" class="menuContent">
+    <div class="input-group" style="width:100%;padding:10px">
+        <input type="text" id="SearchKey" value="" class="form-control" aria-describedby="basic-addon1" placeholder="input keyword to search" />
+        <span class="input-group-addon" id="basic-addon1">检索</span>
+    </div>
+    <ul id="treeDemo" class="ztree"></ul>
+</div>
+
+<script type="text/javascript">
+    var ztreeObj;
+    var setting = {
+        view: {
+            selectedMulti: false,
+            showIcon: true
+        },
+        check: {
+            enable: true
+            , chkStyle: 'radio'
+            , radioType: "level"
+        },
+        data: {
+            simpleData: {
+                enable: true
+            }
+        },
+        edit: {
+            enable: true
+        },
+        callback: {
+            //onClick: zTreeOnClick
+        }
+    };
+
+    var zNodes = [
+        { id: 1, pId: 0, name: "pNode 1", text: "pNode 1", open: true },
+        { id: 11, pId: 1, name: "pNode 11", text: "pNode 11" },
+        { id: 111, pId: 11, name: "sNode 111", text: " sNode 111" },
+        { id: 1111, pId: 111, name: "sNode 112", text: "sNode 112" },
+        { id: 1112, pId: 111, name: "sNode 112", text: "sNode 112111" },
+        { id: 112, pId: 11, name: "sNode 112", text: "sNode 112" },
+        { id: 113, pId: 11, name: "sNode 113", text: "sNode 113" },
+        { id: 114, pId: 11, name: "sNode 114", text: "testtt" },
+        { id: 12, pId: 1, name: "pNode 12", text: "testtt" },
+        { id: 121, pId: 12, name: "sNode 121", text: "testtt" },
+        { id: 122, pId: 12, name: "sNode 122", text: "testtt" },
+        { id: 123, pId: 12, name: "sNode 123", text: "testtt" },
+        { id: 124, pId: 12, name: "sNode 124", text: "testtt" },
+        { id: 13, pId: 1, name: "pNode 13", isParent: true, text: "testtt" },
+        { id: 2, pId: 0, name: "pNode 2", text: "testtt" },
+        { id: 21, pId: 2, name: "pNode 21", open: true, text: "testtt" },
+        { id: 211, pId: 21, name: "sNode 211", text: "testtt" },
+        { id: 212, pId: 21, name: "sNode 212", text: "testtt" },
+        { id: 213, pId: 21, name: "sNode 213", text: "testtt" },
+        { id: 214, pId: 21, name: "sNode 214", text: "testtt" },
+        { id: 22, pId: 2, name: "pNode 22", text: "testtt" },
+        { id: 221, pId: 22, name: "sNode 221", text: "testtt" },
+        { id: 222, pId: 22, name: "sNode 222", text: "testtt" },
+        { id: 223, pId: 22, name: "sNode 223", text: "testtt" },
+        { id: 224, pId: 22, name: "sNode 224", text: "testtt" },
+        { id: 23, pId: 2, name: "pNode 23", text: "testtt" },
+        { id: 231, pId: 23, name: "sNode 231", text: "testtt" },
+        { id: 232, pId: 23, name: "sNode 232", text: "testtt" },
+        { id: 233, pId: 23, name: "sNode 233", text: "testtt" },
+        { id: 234, pId: 23, name: "sNode 234", text: "testtt" },
+        { id: 3, pId: 0, name: "pNode 3", isParent: true }
+    ]
+    $(document).ready(function () {
+        ztreeObj = $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+        fuzzySearch('treeDemo', '#SearchKey', true, false); //initialize fuzzysearch function
+    });
+</script>
