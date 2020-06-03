@@ -1,0 +1,78 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = null;
+}
+
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>wxJsPayApi</title>
+    @Scripts.Render("~/bundles/jquery")
+    <script type="text/javascript">
+
+        function GetWxAuthorizeCode() {
+            //$.get("/Home/GetUnifiedOrderResult", { openid: "oDLo50s4l5A8E0F3OYVqSub13Wdw",total_fee:1 }, function (res) {
+            //$.get("/Home/GetWxAuthorizeCode", function (res) {
+            //    alert(res.code)
+            //})
+            $.get("/Home/wxJsPayApi", function (res) {
+                alert(res.retMsg)
+            })
+        }
+    </script>
+</head>
+    <body>
+        <div>
+            <div align="center">
+                <label style="color:#00CD00;"><b>商品一：价格为<span style="color:#f00;font-size:50px">1分</span>钱</b></label><br /><br />
+            </div>
+            <div align="center">
+                <input onclick="GetWxAuthorizeCode()" type="button" style="width:210px; height:50px; border-radius: 15px;background-color:#00CD00; border:0px #FE6714 solid; cursor: pointer;  color:white;  font-size:16px;" value="测试Ajax request " />
+            </div>
+            <div align="center">
+                <input onclick="window.location = '/Home/wxJsPayApi?totalFee=10&orderId='+new Date().getTime()" type="button" style="width:210px; height:50px; border-radius: 15px;background-color:#00CD00; border:0px #FE6714 solid; cursor: pointer;  color:white;  font-size:16px;" value="立即购买" />
+            </div>
+            <br />
+            <br />
+            <br />
+            <div align="center">
+                <label style="color:#00CD00;"><b>商品二：价格为<span style="color:#f00;font-size:50px">2分</span>钱</b></label><br /><br />
+            </div>
+            <div align="center">
+                <input onclick="window.location = '/Home/wxJsPayApi?totalFee=20&orderId='+new Date().getTime(); " type="button" style="width:210px; height:50px; border-radius: 15px;background-color:#00CD00; border:0px #FE6714 solid; cursor: pointer;  color:white;  font-size:16px;" value="立即购买" />
+            </div>
+        </div>
+    </body>
+    </html>
+
+
+
+@*<div class="jumbotron">
+        <h1>ASP.NET</h1>
+        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+        <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Getting started</h2>
+            <p>
+                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+                enables a clean separation of concerns and gives you full control over markup
+                for enjoyable, agile development.
+            </p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Get more libraries</h2>
+            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Web Hosting</h2>
+            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        </div>
+    </div>*@

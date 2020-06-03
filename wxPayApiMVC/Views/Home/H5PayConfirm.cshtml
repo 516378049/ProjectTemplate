@@ -1,0 +1,105 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>wxJsPayApi</title>
+    @Scripts.Render("~/bundles/jquery")
+    <script type="text/javascript">
+        //调用微信JS api 支付参数
+        var wxPayUrlTransfel = "@Html.Raw(ViewBag.wxPayUrlTransfel)";
+        var totalFee = "@Html.Raw(ViewBag.TotalFee)";
+        var orderId = "@ViewBag.OrderId"
+
+        //页面跳转
+        function pageTransfer(url) {
+            window.location = url;
+        }
+
+        //设置显示金额
+        function setTotalFee(totalFee) {
+            totalFee = totalFee / 100
+            totalFee = "¥ " + totalFee
+            if (totalFee.length - totalFee.indexOf('.') == 2) {
+                totalFee = totalFee + '0' //补一个0
+            }
+            else if (totalFee.length - totalFee.indexOf('.') == totalFee.length + 1) {
+                totalFee = totalFee + '.00' //补一个小数点和补两个0
+            }
+            $("#totalFee").html(totalFee)
+        }
+
+        $(document).ready(function () {
+            $("#PaySuccess").click(function () { pageTransfer('https://www.sky888.cn/vue/#/order/payment/success') })
+            $("#PayFailAndRePay").click(function () { pageTransfer(wxPayUrlTransfel) })
+        })
+
+        window.onload = function () {
+            setTotalFee(totalFee);
+            this.timer_obj = setInterval(function () {
+                $.get(@Url.Content("~")+"/Home/wxOrderQuery", { orderId: orderId }, function (res) {
+                    if (res.data == "SUCCESS") {
+                        $("#PayConform").html("支付已完成,跳转中...")
+                        $("#PaySuccess").attr('disabled', true)
+                        $("#PayFailAndRePay").attr('disabled', true)
+                        setTimeout(function () {
+                            pageTransfer('https://www.sky888.cn/vue/#/order/payment/success');
+                        },700)
+                        
+                    }
+                })
+
+            }, 3000);
+        }
+
+    </script>
+    <style type="text/css">
+        .PayConfirm {
+            width: 210px;
+            height: 50px;
+            border-radius: 15px;
+            background-color: #00CD00;
+            border: 0px #FE6714 solid;
+            cursor: pointer;
+            color: white;
+            font-size: 16px;
+            margin-top:5px
+        }
+        .OrderInfo {
+            width: 100%;
+            display: inline-block;
+            text-align: left;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div id="H5Pay">
+        
+        <div id="PayResult" align="center" style="font-size:20px;">
+
+
+            <img ID="ImageComment" style="width:200px;" src="~/Content/image/WePayLogo.png" />
+            <br />
+            <span id="PayConform" style="color:orangered;display:inline-block;padding-top:15px ;padding-bottom: 15px">订单支付确认</span>
+            <div style="background-color:#e3e3e3;">
+                <span class="OrderInfo"><label>商城名称：</label> <label>易钛商城</label></span>
+                <br />
+                <span class="OrderInfo"><label>订单编号：</label> <label>@ViewBag.OrderId</label></span>
+                <br />
+                <span class="OrderInfo"><label>应付金额：</label> <span id="totalFee" style="color:orangered;font-weight: bolder;"></span></span>
+            </div>
+
+            
+            <input type="button" id="PaySuccess" class="PayConfirm" value="已完成支付">
+            <br />
+            <input type="button" id="PayFailAndRePay" class="PayConfirm" style="background-color:red ;" value="支付遇到问题，重新支付" />
+        </div>
+    </div>
+</body>
+</html>

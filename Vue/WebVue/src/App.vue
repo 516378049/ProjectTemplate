@@ -1,9 +1,10 @@
 <template>
   <div id="app" @touchmove.prevent>
     <v-header :seller="seller"></v-header>
-      <div class="tab-wrapper">
-        <tab :tabs="tabs"></tab>
-      </div>
+    <div class="tab-wrapper">
+      <tab :tabs="tabs"></tab>
+    </div>
+    <navFloatIcons></navFloatIcons>
   </div>
 </template>
 
@@ -15,6 +16,7 @@
   import Ratings from 'components/ratings/ratings'
   import Seller from 'components/seller/seller'
   import Tab from 'components/tab/tab'
+  import navFloatIcons from '@/components/utility/nav-float-icons/nav-float-icons.vue'
   import 'weui'
   export default {
     data() {
@@ -65,7 +67,8 @@
     },
     components: {
       Tab,
-      VHeader
+      VHeader,
+      navFloatIcons
     }
   }
 </script>
@@ -78,5 +81,5 @@
       left: 0
       right: 0
       bottom: 0
-
+      
 </style>

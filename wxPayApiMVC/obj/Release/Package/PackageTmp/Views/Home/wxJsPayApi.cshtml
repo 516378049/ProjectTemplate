@@ -1,0 +1,128 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>wxJsPayApi</title>
+    @Scripts.Render("~/bundles/jquery")
+    <script type="text/javascript">
+        //调用微信JS api 支付
+        var BrandWCPayParams = @Html.Raw(ViewBag.getBrandWCPayRequest);
+        var totalFee = "@Html.Raw(ViewBag.TotalFee)";
+
+        function jsApiCall() {
+
+                $("#PayResult").html("支付中.......")
+                $("#btnBrandWCPayRequest").hide();
+
+                WeixinJSBridge.invoke(
+                    'getBrandWCPayRequest',
+                    BrandWCPayParams.BrandWCPayRequestParams,//josn串
+                    function (res) {
+                        if (res.err_msg == "get_brand_wcpay_request:ok") {
+                            // 使用以上方式判断前端返回,微信团队郑重提示：
+                            //res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。
+                            WeixinJSBridge.log(res.err_msg);
+                            $("#PayResult").html("支付成功");
+                            $("#btnBrandWCPayRequest").hide();
+                            setTimeout(pageTransfer(), 2000)
+                            //alert(res.err_code + res.err_desc + res.err_msg);
+                        }
+                        else {
+                            $("#PayResult").html("支付未完成！")
+                            $("#btnBrandWCPayRequest").show();
+                        }
+                    }) 
+
+        }
+        function callpay()
+        {
+            if (typeof WeixinJSBridge == "undefined")
+            {
+                if (document.addEventListener)
+                {
+                    document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+                }
+                else if (document.attachEvent)
+                {
+                    document.attachEvent('WeixinJSBridgeReady', jsApiCall);
+                    document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+                }
+            }
+            else
+            {
+                jsApiCall();
+            }
+
+        }
+        //刷新支付结果
+        window.onload = function ()
+        {
+            setTotalFee(totalFee)
+            
+            callpay()
+        }
+        //支付成功后跳转到其他页面
+        function pageTransfer() {
+            window.location = 'https://www.sky888.cn/vue/#/order/payment/success';
+        }
+
+        //设置显示金额
+        function setTotalFee(totalFee) {
+            totalFee = totalFee / 100
+            totalFee = "¥ " + totalFee
+            if (totalFee.length - totalFee.indexOf('.') == 2) {
+                totalFee = totalFee + '0' //补一个0
+            }
+            else if (totalFee.length - totalFee.indexOf('.') == totalFee.length + 1) {
+                totalFee = totalFee + '.00' //补一个小数点和补两个0
+            }
+            $("#totalFee").html(totalFee)
+           
+        }
+
+        function jsApiCallByCode() {
+            //$.get("/Home/GetUnifiedOrderResult", { openid: "oDLo50s4l5A8E0F3OYVqSub13Wdw",total_fee:1 }, function (res) {
+            $.get("/Home/GetOpenidAndAccessTokenFromCode", { code: "001iTlUl1wzyyq0qSiVl1RmiUl1iTlUE" }, function (res) {
+                alert(res.openid)
+                $.get("/Home/GetUnifiedOrderResult", { openid: res.openid, total_fee: 1 }, function (res1) {
+                     getBrandWCPayRequest = res1.BrandWCPayRequestParams
+                       jsApiCall()
+                })
+            })
+        }
+        
+
+    </script>
+    <style type="text/css">
+        .OrderInfo {
+            width: 100%;
+            display: inline-block;
+            text-align: left;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div id="JsPay">
+        <div align="center">
+            <img ID="ImageComment" style="width:200px;" src="~/Content/image/WePayLogo.png" />
+            <br />
+            <span id="PayResult" style="color:orangered;display:inline-block;padding-top:15px ;padding-bottom: 15px">支付中......</span>
+            <div style="background-color:#e3e3e3;">
+                <span class="OrderInfo"><label>商城名称：</label> <label>易钛商城</label></span>
+                <br />
+                <span class="OrderInfo"><label>订单编号：</label> <label>@ViewBag.OrderId</label></span>
+                <br />
+                <span class="OrderInfo"><label>应付金额：</label> <span id="totalFee" style="color:orangered;font-weight: bolder;"></span></span>
+            </div>
+            <input id="btnBrandWCPayRequest" onclick="callpay()" type="button" style="margin-top:10px; width :190px; height:50px; border-radius: 15px;background-color:#00CD00; border:0px #FE6714 solid; cursor: pointer;  color:white;  font-size:16px;" value="点击支付" />
+        </div>
+    </div>
+</body>
+</html>

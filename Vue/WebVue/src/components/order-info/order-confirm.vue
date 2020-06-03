@@ -1,149 +1,100 @@
 <template>
-  
-  <transition name="fade" appear>
-    <cube-popup :mask-closable=true
-                v-show="visible"
-                @mask-click="maskClick"
-                position="bottom"
-                type="shop-cart-list"
-                :z-index=90>
-      <transition name="move"
-                  appear
-                  @after-leave="afterLeave">
-        <div v-if="visible">
-          <div class="list-header">
-            <h1 class="title">订单明细</h1>
-            <span class="empty" @click="empty"></span>
-          </div>
-          <cube-scroll class="list-content" ref="listContent">
-            <ul>
-              <li class="food"
-                  v-for="(food,index) in selectFoods"
-                  :key="index">
-                <span class="name">{{food.name}}</span>
-                <div class="price">
-                  <span>￥{{food.price*food.count}}</span>
-                </div>
-                <div class="cart-control-wrapper">
-                  <!--<cart-control @add="onAdd" :food="food"></cart-control>-->
-                </div>
-              </li>
-            </ul>
-          </cube-scroll>
+  <div style="align-items:center;height:100%;">
+    <div style="position:fixed;top:0;left:0;width:100%; height:61.8%; text-align:center;color:azure;background-image:linear-gradient(#26a2ff,aliceblue);z-index:-1">
+    </div>
+    <mt-header title="订单确认" style="font-size:large;background-color:inherit">
+      <router-link to="/" slot="left">
+        <mt-button icon="back"></mt-button>
+      </router-link>
+    </mt-header>
+
+    <div class="start" style="margin-top:50px"></div>
+    <div class="listDiv">
+      <mt-cell class="OrderInfoList" title="用餐时间" to="" is-link value="立即用餐"></mt-cell>
+      <mt-cell class="OrderInfoList" title="用餐人数" is-link value="1人"></mt-cell>
+      <mt-cell class="OrderInfoList" title="订单备注" is-link value="口味、偏好等要求"></mt-cell>
+      <mt-cell class="OrderInfoList" title="支付方式" is-link value="在线支付"></mt-cell>
+      <mt-cell class="OrderInfoList" title="发票信息" is-link value="未选择"></mt-cell>
+      <!--<mt-field class="OrderInfoList field" label="备注" placeholder="备注" type="textarea" rows="1"></mt-field>-->
+      <!--<mt-cell class="OrderInfoList" title="备注" to="" is-link value="1人"></mt-cell>-->
+    </div>
+    <div class="listDiv">
+      <mt-cell class="bolder" title=一品香粥></mt-cell>
+      <mt-cell class="orderList" title="皮蛋瘦肉粥">
+        <span class="orderNum">x1</span> <span class="orderSingleAmount">￥25</span>
+        <img slot="icon" src="http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/114/h/114" width="50" height="50">
+      </mt-cell>
+      <mt-cell class="orderList" title="扁豆焖面">
+        <span class="orderNum">x1</span> <span class="orderSingleAmount">￥7</span>
+        <img slot="icon" src="http://fuss10.elemecdn.com/c/6b/29e3d29b0db63d36f7c500bca31d8jpeg.jpeg?imageView2/1/w/750/h/750" width="50" height="50">
+      </mt-cell>
+      <mt-cell class="orderList" title="VC无限橙果汁">
+        <span class="orderNum">x1</span> <span class="orderSingleAmount">￥16</span>
+        <img slot="icon" src="http://fuss10.elemecdn.com/e/c6/f348e811772016ae24e968238bcbfjpeg.jpeg?imageView2/1/w/750/h/750" width="50" height="50">
+      </mt-cell>
+      <div class="bottomCommitOrder">
+        <div class="PriceTotel">
+          <span>￥80.5</span><span style="font-size:smaller;color:#e0caca;margin-left:15px">| 已优惠￥16</span>
         </div>
-      </transition>
-    </cube-popup>
-  </transition>
+        <mt-button style="float:right" type="primary" @click="prePay">立即支付</mt-button>
+      </div>
+    </div>
+  </div>
 </template>
 
-<script>
-  import CartControl from 'components/cart-control/cart-control'
-  import popupMixin from 'common/mixins/popup'
-
-  const EVENT_SHOW = 'show'
-  const EVENT_ADD = 'add'
-  const EVENT_LEAVE = 'leave'
-
+<script type = "text/javascript">
   export default {
-    name: 'shop-cart-list',
-    mixins: [popupMixin],
-    props: {
-      selectFoods: {
-        type: Array,
-        default() {
-          return []
-        }
-      }
-    },
-    created() {
-      this.$on(EVENT_SHOW, () => {
-        this.$nextTick(() => {
-          this.$refs.listContent.refresh()
-        })
-      })
-    },
+    name: 'order-confirm',
+    //created: {
+    //},
     methods: {
-      onAdd(target) {
-        this.$emit(EVENT_ADD, target)
-      },
-      afterLeave() {
-        this.$emit(EVENT_LEAVE)
-      },
-      maskClick() {
-        this.hide()
-      },
-      empty() {
-        this.dialogComp = this.$createDialog({
-          type: 'confirm',
-          content: '清空购物车？',
-          $events: {
-            confirm: () => {
-              this.selectFoods.forEach((food) => {
-                food.count = 0
-              })
-              this.hide()
-            }
-          }
-        })
-        this.dialogComp.show()
+      prePay: function () {
+        this.$router.push('OrderPay');
       }
-    },
-    components: {
-      CartControl
     }
   }
 </script>
 
 <style lang="stylus" scoped>
-  @import "~common/stylus/variable"
-  .cube-shop-cart-list
-    bottom: 48px
-    &.fade-enter, &.fade-leave-active
-      opacity: 0
-    &.fade-enter-active, &.fade-leave-active
-      transition: all .3s ease-in-out
-    .move-enter, .move-leave-active
-      transform: translate3d(0, 100%, 0)
-    .move-enter-active, .move-leave-active
-      transition: all .3s ease-in-out
-    .list-header
-      height: 40px
-      line-height: 40px
-      padding: 0 18px
-      background: $color-background-ssss
-      .title
-        float: left
-        font-size: $fontsize-medium
-        color: $color-dark-grey
-      .empty
-        float: right
-        font-size: $fontsize-small
-        color: $color-blue
+  .listDiv {
+    margin-bottom: 15px
+  }
+    .listDiv .orderList {
+      margin-top: 5px
+    }
+      .listDiv .orderList .orderNum {
+        margin-right: 15px;
+        font-size: small;
+        color: #000000
+      }
+      .listDiv .orderList .orderSingleAmount {
+        font-weight: bolder;
+        color: #000000;
+        box-sizing: border-box;
+        width: 30px;
+      }
+    .listDiv .OrderInfoList {
+      margin-top: 5px;
+    }
+  .bottomCommitOrder {
+    position: fixed;
+    bottom: 0;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-right: 10px;
+    padding-bottom: 15px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 50px;
+    background-color: #211f1f;
+    color: #fff
+  }
 
-    .list-content
-      padding: 0 18px
-      max-height: 217px
-      overflow: hidden
-      background: $color-white
-      .food
-        position: relative
-        padding: 12px 0
-        box-sizing: border-box
-        .name
-          line-height: 24px
-          font-size: $fontsize-medium
-          color: $color-dark-grey
-        .price
-          position: absolute
-          right: 90px
-          bottom: 12px
-          line-height: 24px
-          font-weight: 700
-          font-size: $fontsize-medium
-          color: $color-red
-        .cart-control-wrapper
-          position: absolute
-          right: 0
-          bottom: 6px
+  .PriceTotel {
+    display: inline-block;
+    height: 41px;
+    vertical-align: middle;
+    padding-top: 10px
+  }
 
 </style>

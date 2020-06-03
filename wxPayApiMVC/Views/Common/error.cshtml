@@ -1,0 +1,30 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>error</title>
+    <script type="text/javascript">
+        function pageTransfer() {
+            window.location = 'https://www.sky888.cn/vue';
+            //history.back();
+        }
+
+
+    </script>
+</head>
+<body>
+    <div align="center">
+        @*<div style="margin-left: 10px;color:#00CD00;font-size:30px;font-weight: bolder;">扫码支付模式一</div><br />
+            <img ID="Image1"  style="width:200px;height:200px;" src="/Home/getNativePayCode?url=@Html.Raw(ViewBag.Image1)" />*@
+        <br /><br /><br />
+        @ViewBag.errMessage
+    </div>
+    <div align="center" style="color:red" ><a href="https://www.sky888.cn/vue" >点击返回</a></div>
+</body>
+</html>

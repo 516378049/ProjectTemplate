@@ -26,6 +26,15 @@ module.exports = {
       theme: true
     }
   },
+  configureWebpack: {
+    plugins: [
+      new webpack.ProvidePlugin({
+        $: "jquery",
+        jQuery: "jquery",
+        "windows.jQuery": "jquery"
+      })
+    ]
+  },
   devServer: {
     before(app) {
       app.get('/api/seller', function (req, res) {

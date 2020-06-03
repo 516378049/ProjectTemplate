@@ -132,6 +132,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\img\Pay\绿色logo.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -274,16 +275,20 @@
     <Content Include="WebVue\src\components\tab\tab.vue" />
     <Content Include="WebVue\src\components\v-header\v-header.vue" />
     <Content Include="WebVue\src\theme.styl" />
-    <Content Include="WebVue\src\components\order-info\order-list.vue" />
+    <Content Include="WebVue\src\components\order-info\pay-result.vue" />
     <Content Include="WebVue\src\components\order-info\order-confirm.vue" />
     <Content Include="WebVue\src\components\order-info\order-pay.vue" />
     <Content Include="WebVue\src\components\Index\Index.vue" />
     <Content Include="WebVue\src\Index.vue" />
+    <Content Include="WebVue\src\components\home\home.vue" />
+    <Content Include="WebVue\src\components\utility\nav-float-icons\nav-float-icons.vue" />
+    <Content Include="WebVue\src\components\utility\nav-float-icons\s-icons.vue" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\api\" />
+    <Folder Include="WebVue\src\components\testTemplate\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

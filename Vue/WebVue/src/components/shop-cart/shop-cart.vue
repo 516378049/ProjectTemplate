@@ -136,15 +136,38 @@
         if (this.totalPrice < this.minPrice) {
           return
         }
+
         this.$createDialog({
+          type: 'confirm',
+          //icon: 'cubeic-alert',
           title: '支付',
-          content: `您需要支付${this.totalPrice}元`
+          content: `您需要支付${this.totalPrice}元`,
+          confirmBtn: {
+            text: '确定',
+            active: true,
+            disabled: false,
+            href: 'javascript:;'
+          },
+          cancelBtn: {
+            text: '取消',
+            active: false,
+            disabled: false,
+            href: 'javascript:;'
+          },
+          onConfirm: () => {
+            this.$router.push('OrderConfirm')
+          },
+          onCancel: () => {
+           
+          }
         }).show()
+        //this.$createDialog({
+        //  title: '支付',
+        //  content: `您需要支付${this.totalPrice}元`,
+        //}).show()
         e.stopPropagation()
-
         //go to order confirm page
-
-
+        
       },
       drop(el) {
         for (let i = 0; i < this.balls.length; i++) {
