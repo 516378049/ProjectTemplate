@@ -46,7 +46,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="LitJson">
-      <HintPath>..\WxPayAPI\bin\LitJson.dll</HintPath>
+      <HintPath>dll\LitJson.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="QuickMark">
@@ -112,7 +112,7 @@
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="ThoughtWorks.QRCode">
-      <HintPath>..\WxPayAPI\third\ThoughtWorks.QRCode.dll</HintPath>
+      <HintPath>dll\ThoughtWorks.QRCode.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>

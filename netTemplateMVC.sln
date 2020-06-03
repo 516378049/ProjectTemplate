@@ -19,8 +19,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "templateMVC", "templateMVC"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vue", "Vue\Vue.csproj", "{FDEDFCAD-01E7-42A1-ADA5-79160C8FD67C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "projects", "projects", "{35EF6527-332A-463C-8573-1B70D49B2295}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wxPayApiMVC", "wxPayApiMVC\wxPayApiMVC.csproj", "{6847D9C1-05FE-42BC-8F94-AB4BEF505BD5}"
 EndProject
 Global
@@ -141,7 +139,7 @@ Global
 		{6E17BEE0-85F3-4325-B447-9294E9705C58} = {0FB05F53-3C31-40EE-AA0B-71E8AC5B038E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45
 		SolutionGuid = {7872F228-171D-4044-9769-B3527FE761C7}
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45
 	EndGlobalSection
 EndGlobal
