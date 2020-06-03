@@ -31,7 +31,6 @@ export function get(url) {
       else if (url == 'api/ratings') {
         data = ratings
       }
-      console.log('testTata')
       console.log(url)
       console.log(data)
       return data

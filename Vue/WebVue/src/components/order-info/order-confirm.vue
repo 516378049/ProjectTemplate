@@ -1,5 +1,7 @@
 <template>
-  <div style="align-items:center;height:100%;">
+  
+
+  <div style="align-items:center;height:100%">
     <div style="position:fixed;top:0;left:0;width:100%; height:61.8%; text-align:center;color:azure;background-image:linear-gradient(#26a2ff,aliceblue);z-index:-1">
     </div>
     <mt-header title="订单确认" style="font-size:large;background-color:inherit">
@@ -18,35 +20,86 @@
       <!--<mt-field class="OrderInfoList field" label="备注" placeholder="备注" type="textarea" rows="1"></mt-field>-->
       <!--<mt-cell class="OrderInfoList" title="备注" to="" is-link value="1人"></mt-cell>-->
     </div>
-    <div class="listDiv">
+    <div class="listDiv scroll-list-wrap">
       <mt-cell class="bolder" title=一品香粥></mt-cell>
-      <mt-cell class="orderList" title="皮蛋瘦肉粥">
-        <span class="orderNum">x1</span> <span class="orderSingleAmount">￥25</span>
-        <img slot="icon" src="http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/114/h/114" width="50" height="50">
-      </mt-cell>
-      <mt-cell class="orderList" title="扁豆焖面">
-        <span class="orderNum">x1</span> <span class="orderSingleAmount">￥7</span>
-        <img slot="icon" src="http://fuss10.elemecdn.com/c/6b/29e3d29b0db63d36f7c500bca31d8jpeg.jpeg?imageView2/1/w/750/h/750" width="50" height="50">
-      </mt-cell>
-      <mt-cell class="orderList" title="VC无限橙果汁">
-        <span class="orderNum">x1</span> <span class="orderSingleAmount">￥16</span>
-        <img slot="icon" src="http://fuss10.elemecdn.com/e/c6/f348e811772016ae24e968238bcbfjpeg.jpeg?imageView2/1/w/750/h/750" width="50" height="50">
-      </mt-cell>
-      <div class="bottomCommitOrder">
-        <div class="PriceTotel">
-          <span>￥80.5</span><span style="font-size:smaller;color:#e0caca;margin-left:15px">| 已优惠￥16</span>
-        </div>
-        <mt-button style="float:right" type="primary" @click="prePay">立即支付</mt-button>
-      </div>
+      <cube-scroll ref="scroll" :options="options">
+        <mt-cell class="orderList" title="皮蛋瘦肉粥">
+          <span class="orderNum">x1</span> <span class="orderSingleAmount">￥25</span>
+          <img slot="icon" src="http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/114/h/114" width="50" height="50">
+        </mt-cell>
+        <mt-cell class="orderList" title="扁豆焖面">
+          <span class="orderNum">x1</span> <span class="orderSingleAmount">￥7</span>
+          <img slot="icon" src="http://fuss10.elemecdn.com/c/6b/29e3d29b0db63d36f7c500bca31d8jpeg.jpeg?imageView2/1/w/750/h/750" width="50" height="50">
+        </mt-cell>
+        <mt-cell class="orderList" title="VC无限橙果汁">
+          <span class="orderNum">x1</span> <span class="orderSingleAmount">￥16</span>
+          <img slot="icon" src="http://fuss10.elemecdn.com/e/c6/f348e811772016ae24e968238bcbfjpeg.jpeg?imageView2/1/w/750/h/750" width="50" height="50">
+        </mt-cell>
+        <mt-cell class="orderList" title="VC无限橙果汁">
+          <span class="orderNum">x1</span> <span class="orderSingleAmount">￥16</span>
+          <img slot="icon" src="http://fuss10.elemecdn.com/e/c6/f348e811772016ae24e968238bcbfjpeg.jpeg?imageView2/1/w/750/h/750" width="50" height="50">
+        </mt-cell> <mt-cell class="orderList" title="VC无限橙果汁">
+          <span class="orderNum">x1</span> <span class="orderSingleAmount">￥16</span>
+          <img slot="icon" src="http://fuss10.elemecdn.com/e/c6/f348e811772016ae24e968238bcbfjpeg.jpeg?imageView2/1/w/750/h/750" width="50" height="50">
+        </mt-cell> <mt-cell class="orderList" title="VC无限橙果汁">
+          <span class="orderNum">x1</span> <span class="orderSingleAmount">￥16</span>
+          <img slot="icon" src="http://fuss10.elemecdn.com/e/c6/f348e811772016ae24e968238bcbfjpeg.jpeg?imageView2/1/w/750/h/750" width="50" height="50">
+        </mt-cell> <mt-cell class="orderList" title="VC无限橙果汁">
+          <span class="orderNum">x1</span> <span class="orderSingleAmount">￥16</span>
+          <img slot="icon" src="http://fuss10.elemecdn.com/e/c6/f348e811772016ae24e968238bcbfjpeg.jpeg?imageView2/1/w/750/h/750" width="50" height="50">
+        </mt-cell> <mt-cell class="orderList" title="VC无限橙果汁">
+          <span class="orderNum">x1</span> <span class="orderSingleAmount">￥16</span>
+          <img slot="icon" src="http://fuss10.elemecdn.com/e/c6/f348e811772016ae24e968238bcbfjpeg.jpeg?imageView2/1/w/750/h/750" width="50" height="50">
+        </mt-cell> <mt-cell class="orderList" title="VC无限橙果汁">
+          <span class="orderNum">x1</span> <span class="orderSingleAmount">￥16</span>
+          <img slot="icon" src="http://fuss10.elemecdn.com/e/c6/f348e811772016ae24e968238bcbfjpeg.jpeg?imageView2/1/w/750/h/750" width="50" height="50">
+        </mt-cell> <mt-cell class="orderList" title="VC无限橙果汁">
+          <span class="orderNum">x1</span> <span class="orderSingleAmount">￥16</span>
+          <img slot="icon" src="http://fuss10.elemecdn.com/e/c6/f348e811772016ae24e968238bcbfjpeg.jpeg?imageView2/1/w/750/h/750" width="50" height="50">
+        </mt-cell>
+      </cube-scroll>
     </div>
+    <div class="bottomCommitOrder">
+      <div class="PriceTotel">
+        <span>￥80.5</span><span style="font-size:smaller;color:#e0caca;margin-left:15px">| 已优惠￥16</span>
+      </div>
+      <mt-button style="float:right" type="primary" @click="prePay">立即支付</mt-button>
+    </div>
+
   </div>
 </template>
 
 <script type = "text/javascript">
   export default {
     name: 'order-confirm',
-    //created: {
-    //},
+    data(){
+      return {
+        startY: -5,
+        scrollbarFade: true,
+        scrollHeight:0
+      }
+    },
+    
+    created() {
+      this.scrollHeight = 350
+    },
+    mounted() {
+      
+    },
+
+    computed: {
+      options() {
+        return {
+          scrollbar: this.scrollbarFade,
+          startY: this.startY
+        }
+      }
+    },
+    watch: {
+      scrollHeight: function(){
+        $(".scroll-list-wrap").css("height", this.scrollHeight)
+      }
+    },
     methods: {
       prePay: function () {
         this.$router.push('OrderPay');
@@ -57,7 +110,8 @@
 
 <style lang="stylus" scoped>
   .listDiv {
-    margin-bottom: 15px
+    margin-bottom: 15px;
+    
   }
     .listDiv .orderList {
       margin-top: 5px

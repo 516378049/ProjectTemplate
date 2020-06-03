@@ -1,3 +1,4 @@
+<!--源码网址 https://github.com/sunniejs/vant-shop-demo-->
 <template>
   <div ref="icons" class="icons-container" :style="{left: left + 'px', top: top + 'px'}">
     <slot></slot>
@@ -137,7 +138,7 @@
     position: fixed;
     background: rgb(255, 255, 255);
     box-shadow: 0px 2px 10px 0px rgba(198, 198, 198, 0.5);
-     border-radius: 50%;
+    border-radius: 50%;
     z-index: 1000;
     transition: all 0.3s;
   }

@@ -349,3 +349,5 @@ D:\GitHub\netTemplateMVC\wxPayApiMVC\obj\Debug\wxPayApiMVC.csproj.CoreCompileInp
 D:\GitHub\netTemplateMVC\wxPayApiMVC\obj\Debug\wxPayApiMVC.csproj.CopyComplete
 D:\GitHub\netTemplateMVC\wxPayApiMVC\obj\Debug\wxPayApiMVC.dll
 D:\GitHub\netTemplateMVC\wxPayApiMVC\obj\Debug\wxPayApiMVC.pdb
+D:\GitHub\netTemplateMVC\wxPayApiMVC\bin\LitJson.dll
+D:\GitHub\netTemplateMVC\wxPayApiMVC\bin\ThoughtWorks.QRCode.dll

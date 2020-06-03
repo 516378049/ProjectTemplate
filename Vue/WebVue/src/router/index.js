@@ -8,14 +8,21 @@ import Home from '../components/home/home.vue'
 
 import Index from '../Index.vue'
 import App from '../App'
-
+import Test from '@/components/testTemplate/test.vue'
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
+      path: '/Test',
+      name: 'Test',
+      component: Test
+    },
+
+    {
       path: '/',
       redirect: '/App'
+      //redirect: '/Test'
     },
 
     {
