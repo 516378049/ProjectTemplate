@@ -14,7 +14,6 @@
     <div class="OrderInfoPay">
       <div class="OrderInfoPaySingle">支付剩余时间：20:00</div>
       <div class="OrderInfoPaySingle"><span style="font-weight:bolder;color:#000000">￥</span><span style="font-size:xx-large;font-weight:bolder;color:#000000">88.88</span></div>
-      <br />
       <div class="OrderInfoPaySingle">商家：一品香粥</div>
       <div class="OrderInfoPaySingle">单号：201705270202011001</div>
       <!--<div class="OrderInfoPaySingle"><span style="display:inline-block;width:50%;text-align:right">支付剩余时间：</span>20:00</div>
@@ -81,7 +80,7 @@
   }
 
     .container .OrderInfoPay .OrderInfoPaySingle {
-      margin-top: 3px;
+      margin-top: 10px;
       color: #4d4b4b
     }
 

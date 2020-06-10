@@ -10,55 +10,60 @@
       </router-link>
     </mt-header>
 
-    <div class="start" style="margin-top:50px"></div>
-    <div class="listDiv">
-      <mt-cell class="OrderInfoList" title="用餐时间" to="" is-link value="立即用餐"></mt-cell>
-      <mt-cell class="OrderInfoList" title="用餐人数" is-link value="1人"></mt-cell>
-      <mt-cell class="OrderInfoList" title="订单备注" is-link value="口味、偏好等要求"></mt-cell>
-      <mt-cell class="OrderInfoList" title="支付方式" is-link value="在线支付"></mt-cell>
-      <mt-cell class="OrderInfoList" title="发票信息" is-link value="未选择"></mt-cell>
-      <!--<mt-field class="OrderInfoList field" label="备注" placeholder="备注" type="textarea" rows="1"></mt-field>-->
-      <!--<mt-cell class="OrderInfoList" title="备注" to="" is-link value="1人"></mt-cell>-->
-    </div>
-    <div class="listDiv scroll-list-wrap">
-      <mt-cell class="bolder" title=一品香粥></mt-cell>
+    <div class="start" style="margin-top:10px"></div>
+    <div class="scroll-list-wrap">
       <cube-scroll ref="scroll" :options="options">
-        <mt-cell class="orderList" title="皮蛋瘦肉粥">
-          <span class="orderNum">x1</span> <span class="orderSingleAmount">￥25</span>
-          <img slot="icon" src="http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/114/h/114" width="50" height="50">
-        </mt-cell>
-        <mt-cell class="orderList" title="扁豆焖面">
-          <span class="orderNum">x1</span> <span class="orderSingleAmount">￥7</span>
-          <img slot="icon" src="http://fuss10.elemecdn.com/c/6b/29e3d29b0db63d36f7c500bca31d8jpeg.jpeg?imageView2/1/w/750/h/750" width="50" height="50">
-        </mt-cell>
-        <mt-cell class="orderList" title="VC无限橙果汁">
-          <span class="orderNum">x1</span> <span class="orderSingleAmount">￥16</span>
-          <img slot="icon" src="http://fuss10.elemecdn.com/e/c6/f348e811772016ae24e968238bcbfjpeg.jpeg?imageView2/1/w/750/h/750" width="50" height="50">
-        </mt-cell>
-        <mt-cell class="orderList" title="VC无限橙果汁">
-          <span class="orderNum">x1</span> <span class="orderSingleAmount">￥16</span>
-          <img slot="icon" src="http://fuss10.elemecdn.com/e/c6/f348e811772016ae24e968238bcbfjpeg.jpeg?imageView2/1/w/750/h/750" width="50" height="50">
-        </mt-cell> <mt-cell class="orderList" title="VC无限橙果汁">
-          <span class="orderNum">x1</span> <span class="orderSingleAmount">￥16</span>
-          <img slot="icon" src="http://fuss10.elemecdn.com/e/c6/f348e811772016ae24e968238bcbfjpeg.jpeg?imageView2/1/w/750/h/750" width="50" height="50">
-        </mt-cell> <mt-cell class="orderList" title="VC无限橙果汁">
-          <span class="orderNum">x1</span> <span class="orderSingleAmount">￥16</span>
-          <img slot="icon" src="http://fuss10.elemecdn.com/e/c6/f348e811772016ae24e968238bcbfjpeg.jpeg?imageView2/1/w/750/h/750" width="50" height="50">
-        </mt-cell> <mt-cell class="orderList" title="VC无限橙果汁">
-          <span class="orderNum">x1</span> <span class="orderSingleAmount">￥16</span>
-          <img slot="icon" src="http://fuss10.elemecdn.com/e/c6/f348e811772016ae24e968238bcbfjpeg.jpeg?imageView2/1/w/750/h/750" width="50" height="50">
-        </mt-cell> <mt-cell class="orderList" title="VC无限橙果汁">
-          <span class="orderNum">x1</span> <span class="orderSingleAmount">￥16</span>
-          <img slot="icon" src="http://fuss10.elemecdn.com/e/c6/f348e811772016ae24e968238bcbfjpeg.jpeg?imageView2/1/w/750/h/750" width="50" height="50">
-        </mt-cell> <mt-cell class="orderList" title="VC无限橙果汁">
-          <span class="orderNum">x1</span> <span class="orderSingleAmount">￥16</span>
-          <img slot="icon" src="http://fuss10.elemecdn.com/e/c6/f348e811772016ae24e968238bcbfjpeg.jpeg?imageView2/1/w/750/h/750" width="50" height="50">
-        </mt-cell> <mt-cell class="orderList" title="VC无限橙果汁">
-          <span class="orderNum">x1</span> <span class="orderSingleAmount">￥16</span>
-          <img slot="icon" src="http://fuss10.elemecdn.com/e/c6/f348e811772016ae24e968238bcbfjpeg.jpeg?imageView2/1/w/750/h/750" width="50" height="50">
-        </mt-cell>
+        <div class="listDiv">
+          <mt-cell class="OrderInfoList" title="用餐时间" to="" is-link value="立即用餐"></mt-cell>
+          <mt-cell class="OrderInfoList" title="用餐人数" is-link value="1人"></mt-cell>
+          <mt-cell class="OrderInfoList" title="订单备注" is-link value="口味、偏好等要求"></mt-cell>
+          <mt-cell class="OrderInfoList" title="支付方式" is-link value="在线支付"></mt-cell>
+          <mt-cell class="OrderInfoList" title="发票信息" is-link value="未选择"></mt-cell>
+          <!--<mt-field class="OrderInfoList field" label="备注" placeholder="备注" type="textarea" rows="1"></mt-field>-->
+          <!--<mt-cell class="OrderInfoList" title="备注" to="" is-link value="1人"></mt-cell>-->
+        </div>
+        <div class="listDiv">
+          <mt-cell class="bolder" title="一品香粥" style="border-bottom:2px outset rgba(0, 43, 247, 0.0618)"></mt-cell>
+
+          <mt-cell class="orderList" title="皮蛋瘦肉粥">
+            <span class="orderNum">x1</span> <span class="orderSingleAmount">￥25</span>
+            <img slot="icon" src="http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/114/h/114" width="50" height="50">
+          </mt-cell>
+          <mt-cell class="orderList" title="扁豆焖面">
+            <span class="orderNum">x1</span> <span class="orderSingleAmount">￥7</span>
+            <img slot="icon" src="http://fuss10.elemecdn.com/c/6b/29e3d29b0db63d36f7c500bca31d8jpeg.jpeg?imageView2/1/w/750/h/750" width="50" height="50">
+          </mt-cell>
+          <mt-cell class="orderList" title="VC无限橙果汁">
+            <span class="orderNum">x1</span> <span class="orderSingleAmount">￥16</span>
+            <img slot="icon" src="http://fuss10.elemecdn.com/e/c6/f348e811772016ae24e968238bcbfjpeg.jpeg?imageView2/1/w/750/h/750" width="50" height="50">
+          </mt-cell>
+          <mt-cell class="orderList" title="VC无限橙果汁">
+            <span class="orderNum">x1</span> <span class="orderSingleAmount">￥16</span>
+            <img slot="icon" src="http://fuss10.elemecdn.com/e/c6/f348e811772016ae24e968238bcbfjpeg.jpeg?imageView2/1/w/750/h/750" width="50" height="50">
+          </mt-cell> <mt-cell class="orderList" title="VC无限橙果汁">
+            <span class="orderNum">x1</span> <span class="orderSingleAmount">￥16</span>
+            <img slot="icon" src="http://fuss10.elemecdn.com/e/c6/f348e811772016ae24e968238bcbfjpeg.jpeg?imageView2/1/w/750/h/750" width="50" height="50">
+          </mt-cell> <mt-cell class="orderList" title="VC无限橙果汁">
+            <span class="orderNum">x1</span> <span class="orderSingleAmount">￥16</span>
+            <img slot="icon" src="http://fuss10.elemecdn.com/e/c6/f348e811772016ae24e968238bcbfjpeg.jpeg?imageView2/1/w/750/h/750" width="50" height="50">
+          </mt-cell> <mt-cell class="orderList" title="VC无限橙果汁">
+            <span class="orderNum">x1</span> <span class="orderSingleAmount">￥16</span>
+            <img slot="icon" src="http://fuss10.elemecdn.com/e/c6/f348e811772016ae24e968238bcbfjpeg.jpeg?imageView2/1/w/750/h/750" width="50" height="50">
+          </mt-cell> <mt-cell class="orderList" title="VC无限橙果汁">
+            <span class="orderNum">x1</span> <span class="orderSingleAmount">￥16</span>
+            <img slot="icon" src="http://fuss10.elemecdn.com/e/c6/f348e811772016ae24e968238bcbfjpeg.jpeg?imageView2/1/w/750/h/750" width="50" height="50">
+          </mt-cell> <mt-cell class="orderList" title="VC无限橙果汁">
+            <span class="orderNum">x1</span> <span class="orderSingleAmount">￥16</span>
+            <img slot="icon" src="http://fuss10.elemecdn.com/e/c6/f348e811772016ae24e968238bcbfjpeg.jpeg?imageView2/1/w/750/h/750" width="50" height="50">
+          </mt-cell> <mt-cell class="orderList" title="VC无限橙果汁">
+            <span class="orderNum">x1</span> <span class="orderSingleAmount">￥16</span>
+            <img slot="icon" src="http://fuss10.elemecdn.com/e/c6/f348e811772016ae24e968238bcbfjpeg.jpeg?imageView2/1/w/750/h/750" width="50" height="50">
+          </mt-cell>
+          <div style="margin-top:15px;text-align:center;font-size:small;color:rgba(0,0,0,.5)">无有更多的啦！</div>
+        </div>
       </cube-scroll>
     </div>
+
     <div class="bottomCommitOrder">
       <div class="PriceTotel">
         <span>￥80.5</span><span style="font-size:smaller;color:#e0caca;margin-left:15px">| 已优惠￥16</span>
@@ -81,7 +86,7 @@
     },
     
     created() {
-      this.scrollHeight = 350
+      this.scrollHeight = "calc(100% - 100px)"
     },
     mounted() {
       
@@ -110,7 +115,7 @@
 
 <style lang="stylus" scoped>
   .listDiv {
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     
   }
     .listDiv .orderList {
