@@ -35,6 +35,7 @@ module.exports = {
       })
     ]
   },
+  //开发环境设置代理，防止跨域问题
   devServer: {
     before(app) {
       app.get('/api/seller', function (req, res) {
@@ -57,11 +58,11 @@ module.exports = {
       })
     },
     proxy: {
-      '/api': {
+      '/api': {//以/api开始请求地址进行转发
         target: 'http://localhost:8900/', //API服务器的地址
         changeOrigin: true,
         pathRewrite: {
-          '^/api': ''
+          '^/api': '' //将地址中的/api去掉 eg:http://localhost:8900/api/items 变为 http://localhost:8900/items
         }
       }
     },

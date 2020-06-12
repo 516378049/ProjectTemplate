@@ -15,6 +15,14 @@ namespace Template.Controllers
         public ActionResult Index()
         {
 
+            CacheManager.RedisCache.Set("testValue", "哈哈成功啦");
+            //string testValue=CacheManager.RedisCache.Get("testValue");
+
+            //RedisHelper redis = new RedisHelper();
+            //RedisHelper.GetConnectionRedisMultiplexer
+            RedisHelper.getRedisServer.StringSet("testValue", "哈哈成功啦");
+            string testValue= RedisHelper.getRedisServer.StringGet("testValue");
+
             LogManager.DefaultLogger.Info("DefaultLogger");
             LogManager.StorageLogger.Info("StorageLogger");
 

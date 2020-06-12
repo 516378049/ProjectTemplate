@@ -76,6 +76,7 @@
         this.$refs.tabBar.setSliderTransform(transform)
       },
       onChange(current) {
+        console.log("fetch change " + current)
         this.index = current
         const instance = this.$refs.component[current]
         if (instance && instance.fetch) {

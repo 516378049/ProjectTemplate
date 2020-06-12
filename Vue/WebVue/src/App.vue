@@ -56,12 +56,35 @@
     created() {
       this._getSeller()
     },
+    mounted() {
+      //sycn server's cache cart to vuex
+      var that = this;
+      setInterval(function () {
+        that.$store.commit(
+          'syncGoods',
+          {
+            Cart: [
+              {
+                name: '扁豆焖面',
+                count: 2
+              },
+              {
+                name: 'VC无限橙果汁',
+                count: 2
+              }
+            ]
+          }
+        )
+      }, 2000)
+    },
     methods: {
       _getSeller() {
         getSeller({
           id: this.seller.id
         }).then((seller) => {
           this.seller = Object.assign({}, this.seller, seller)
+          console.log("seller:")
+          console.log(this.seller)
         })
       }
     },

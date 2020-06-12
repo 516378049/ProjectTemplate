@@ -82,6 +82,9 @@
   import SupportIco from 'components/support-ico/support-ico'
   import Bubble from 'components/bubble/bubble'
 
+  //import { mapMutations } from 'vuex'
+  import { mapState } from 'vuex'
+
   export default {
     name: 'goods',
     props: {
@@ -94,7 +97,7 @@
     },
     data() {
       return {
-        goods: [],
+        //goods: [],
         selectedFood: {},
         scrollOptions: {
           click: false,
@@ -103,6 +106,12 @@
       }
     },
     computed: {
+      ...mapState({
+        goods: state => state.goods
+      }),
+      //goods() {
+
+      //},
       seller() {
         return this.data.seller
       },
@@ -141,7 +150,9 @@
           getGoods({
             id: this.seller.id
           }).then((goods) => {
-            this.goods = goods
+            this.$store.commit('initGoods', { goods: goods })
+            //this.goods = goods
+            //绑定vuex status
           })
         }
       },

@@ -2,6 +2,7 @@ import Vue from 'vue'
 
 import Index from './Index.vue'
 import router from './router'
+import store from './common/js/store'
 
 import './cube-ui'
 import './register'
@@ -22,5 +23,6 @@ Vue.config.productionTip = false
 
 new Vue({
   router,
+  store,
   render: h => h(Index)
 }).$mount('#app')

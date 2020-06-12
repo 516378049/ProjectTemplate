@@ -42,7 +42,8 @@
         this.$router.push(router)
       },
       showNavIcons: function () {
-  console.log(this.opacity)
+        this.$store.commit('addCart', { item: 0 })
+        console.log(this.opacity)
         if (this.opacity == 1) {
           this.opacity=0.618
         }
