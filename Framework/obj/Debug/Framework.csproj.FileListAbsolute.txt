@@ -66,3 +66,6 @@ D:\GitHub\netTemplateMVC\Framework\obj\Debug\Framework.csproj.CoreCompileInputs.
 D:\GitHub\netTemplateMVC\Framework\obj\Debug\Framework.csproj.CopyComplete
 D:\GitHub\netTemplateMVC\Framework\obj\Debug\Runda.B2B.Framework.dll
 D:\GitHub\netTemplateMVC\Framework\obj\Debug\Runda.B2B.Framework.pdb
+D:\GitHub\netTemplateMVC\Framework\bin\Debug\log4net.dll
+D:\GitHub\netTemplateMVC\Framework\bin\Debug\log4net.xml
+D:\GitHub\netTemplateMVC\Framework\bin\Debug\LitJson.dll

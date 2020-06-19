@@ -3,15 +3,17 @@ import Router from 'vue-router'
 import OrderConfirm from '../components/order-info/order-confirm.vue'
 import OrderPay from '../components/order-info/order-pay.vue'
 import PayResult from '../components/order-info/pay-result.vue'
-
 import Home from '../components/home/home.vue'
-
+import wxLogin from '@/components/utility/wxLogin/wxLogin'
+import wxRedirect from '@/components/utility/wxRedirect/wxRedirect'
 import Index from '../Index.vue'
 import App from '../App'
 import Test from '@/components/testTemplate/test.vue'
+import { loadLocal } from '@/common/js/storage'
 Vue.use(Router)
 
-export default new Router({
+
+let roter = new Router({
   routes: [
     {
       path: '/Test',
@@ -19,6 +21,16 @@ export default new Router({
       component: Test
     },
 
+    {
+      path: '/wxLogin',
+      name: 'wxLogin',
+      component: wxLogin
+    },
+    {
+      path: '/wxRedirect',
+      name: 'wxRedirect',
+      component: wxRedirect
+    },
     {
       path: '/',
       redirect: '/App'
@@ -33,9 +45,13 @@ export default new Router({
     {
       path: '/App',
       name: 'App',
+      //必须要放到component前面，才能在beforeEach获取到
+      meta: {
+        //requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
+      },
       component: App
     }
-    ,{
+    , {
       path: '/OrderConfirm',
       name: 'OrderConfirm',
       component: OrderConfirm
@@ -58,3 +74,25 @@ export default new Router({
     }
   ]
 })
+
+//登录验证
+roter.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requireAuth)) { // 判断该路由是否需要登录权限
+    if (loadLocal("userInfo")) { // 判断当前的userInfo是否存在
+      next();
+    }
+    else {
+      next({
+        path: '/wxLogin',
+        query: {
+          id: '00001',
+          deskNumber: '098'
+        } // 将要跳转路由的path作为参数，传递到登录页面
+      })
+    }
+  }
+  else {
+    next();
+  }
+})
+export default roter

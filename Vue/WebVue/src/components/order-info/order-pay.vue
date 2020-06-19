@@ -87,7 +87,7 @@
   .container .PayWay {
     box-sizing: border-box;
     margin-top: 15px;
-    padding: 10px
+    padding: 10px;
   }
   
 </style>

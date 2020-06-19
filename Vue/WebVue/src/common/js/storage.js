@@ -2,6 +2,16 @@ import storage from 'good-storage'
 
 const SELLER_KEY = '__seller__'
 
+let saveLocal = function (key, value) {
+  storage.set(key, value);
+}
+let loadLocal = function (key) {
+  return storage.get(key, null);
+}
+
+export { saveLocal }
+export { loadLocal }
+
 export function saveToLocal(id, key, val) {
   const seller = storage.get(SELLER_KEY, {})
   if (!seller[id]) {

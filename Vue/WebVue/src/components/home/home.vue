@@ -4,11 +4,11 @@
 
     <div style="position:fixed;top:0;left:0;width:100%; height:61.8%; text-align:center;background-image:linear-gradient(#c9e2f6,#f6fbff);z-index:-1">
     </div>
-    <mt-header title="我的订单" style="background-color:inherit;font-size:large;color:#000000">
+    <mt-header title="我的订单" style="background-color:inherit;font-size:large;color:#000000;">
     </mt-header>
     <div class="start" style="margin-top:0.618px"></div>
 
-    <mt-cell class="bolder" style="background-color:inherit" title=所有订单></mt-cell>
+    <mt-cell class="bolder" style="background-color:inherit;border-bottom: 1px outset #f00;" title=所有订单></mt-cell>
     <div class="OrderlistDiv_Home scroll-list-wrap">
       <cube-scroll ref="scroll" :options="options">
         <template v-for="count in 5">

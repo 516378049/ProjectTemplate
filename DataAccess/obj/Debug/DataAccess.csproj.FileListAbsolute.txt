@@ -198,3 +198,6 @@ D:\GitHub\netTemplateMVC\DataAccess\bin\Debug\System.IO.Pipelines.xml
 D:\GitHub\netTemplateMVC\DataAccess\bin\Debug\System.Buffers.xml
 D:\GitHub\netTemplateMVC\DataAccess\bin\Debug\System.Numerics.Vectors.xml
 D:\GitHub\netTemplateMVC\DataAccess\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\GitHub\netTemplateMVC\DataAccess\bin\Debug\LitJson.dll
+D:\GitHub\netTemplateMVC\DataAccess\bin\Debug\log4net.dll
+D:\GitHub\netTemplateMVC\DataAccess\bin\Debug\log4net.xml

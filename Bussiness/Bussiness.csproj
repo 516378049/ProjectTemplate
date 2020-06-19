@@ -31,8 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LitJson">
+      <HintPath>..\wxPayApiMVC\dll\LitJson.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,6 +54,21 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Common\BaseBussiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="wx\DownloadBill.cs" />
+    <Compile Include="wx\JsApiPay.cs" />
+    <Compile Include="wx\MicroPay.cs" />
+    <Compile Include="wx\NativeNotify.cs" />
+    <Compile Include="wx\NativePay.cs" />
+    <Compile Include="wx\OrderQuery.cs" />
+    <Compile Include="wx\Refund.cs" />
+    <Compile Include="wx\RefundQuery.cs" />
+    <Compile Include="wx\ResultNotify.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Framework\Framework.csproj">
+      <Project>{99C8CC3E-3B3F-4D4A-AE08-696068CF4332}</Project>
+      <Name>Framework</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

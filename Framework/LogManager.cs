@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using ThinkDev.Logging;
 
 namespace Framework
 {
     public class LogManager
     {
+        #region ThinkDev.logging
         /// <summary>
         /// 默认日志器
         /// </summary>
@@ -69,8 +71,8 @@ namespace Framework
         /// B2B-CMS对接相关日志
         /// </summary>
         public static Logger B2BCMSLogger = LoggerFactory.GetLogger("B2BCMSLogger");
-        
-         /// <summary>
+
+        /// <summary>
         /// B2B-润医T+对接相关日志
         /// </summary>
         public static Logger B2BRYTLogger = LoggerFactory.GetLogger("B2BRYTLogger");
@@ -99,5 +101,26 @@ namespace Framework
         /// 手动入库
         /// </summary>
         public static Logger CustomMIGO { get { return LoggerFactory.GetLogger("CustomMIGO"); } }
+        
+        #endregion
+    }
+    public class Log {
+        public static log4net.ILog ILog4
+        {
+            get
+            {
+                log4net.ILog ILog_ = log4net.LogManager.Exists("OrderMeal");
+                if (ILog_ == null)
+                {
+                    ILog_ = log4net.LogManager.GetLogger("OrderMeal");
+                }
+                return ILog_;
+            }
+        }
+        public static string logExpConvert(Exception e)
+        {
+            string err = e.InnerException.Message + "," + e.Message + "," + e.StackTrace;
+            return err;
+        }
     }
 }

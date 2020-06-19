@@ -84,7 +84,7 @@
 
   //import { mapMutations } from 'vuex'
   import { mapState } from 'vuex'
-
+  import axios from 'axios'
   export default {
     name: 'goods',
     props: {
@@ -105,13 +105,15 @@
         }
       }
     },
+    created() {
+      axios({
+        url: '/api/seller'
+      })
+    },
     computed: {
       ...mapState({
         goods: state => state.goods
       }),
-      //goods() {
-
-      //},
       seller() {
         return this.data.seller
       },
@@ -151,8 +153,6 @@
             id: this.seller.id
           }).then((goods) => {
             this.$store.commit('initGoods', { goods: goods })
-            //this.goods = goods
-            //绑定vuex status
           })
         }
       },

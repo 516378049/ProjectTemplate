@@ -21,31 +21,12 @@ namespace Vue.Controllers
             string json= JsonHelper.ReadJsonFile(Server.MapPath("/WebVue/data.json"));
             string seller =  JsonHelper.ConvertJsonResult(json, "seller");
             return Json(new { errno = 0, data=seller },JsonRequestBehavior.AllowGet);
-
-            
         }
         // GET: api
         public JsonResult goods()
         {
-            //Vue.Controllers.goods goods = new goods();
-            //goods.name = "热销榜";
-            //goods.type = -1;
-            //foods food = new foods();
-            //food.name = "皮蛋瘦肉粥";
-           
-            //ratings ra = new ratings();
-            //ra.username = "111";
-            //food.ratings = ra;
-            //goods.foods = food;
             string json = JsonHelper.ReadJsonFile(Server.MapPath("/WebVue/data.json"));
-
             string _goods = JsonHelper.ConvertJsonResult(json, "goods");
-
-            //_goods = "{\"goods\":" + _goods+"}";
-            //goods = JsonHelper.ToObject<Vue.Controllers.goods>(json);
-            //JObject JO= JsonHelper.ReadJsonFile(Server.MapPath("/WebVue/data.json"),"");
-            //object obj = JO["goods"];//.ToString();//id
-            //string goods = obj.ToString();
             return Json(new { errno = 0, data= _goods }, JsonRequestBehavior.AllowGet);
         }
         // GET: api

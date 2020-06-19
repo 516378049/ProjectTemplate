@@ -63,6 +63,7 @@
     <Compile Include="Common\WebApiRet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="sys\SysUserInfo.cs" />
+    <Compile Include="wx\wxResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

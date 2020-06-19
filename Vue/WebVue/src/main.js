@@ -3,6 +3,7 @@ import Vue from 'vue'
 import Index from './Index.vue'
 import router from './router'
 import store from './common/js/store'
+import { loadLocal } from './common/js/storage'
 
 import './cube-ui'
 import './register'
@@ -18,8 +19,8 @@ import 'mint-ui/lib/style.css'
 //window.jquery = window.$ = $
 
 Vue.use(Mint);
-
 Vue.config.productionTip = false
+
 
 new Vue({
   router,

@@ -5,25 +5,14 @@ vue.use(vuex)
 
 let store = new vuex.Store({
   state: {
-    //共享购物车数量，和后台缓存交互
-    Cart:{
-      id: '',
-      count:0
-    },
     //当前商家菜单，goods.vue初始化时同步，refereshed when sync Cart from server cache 
     goods: []
   },
   mutations: {
     //add cart should sync server's cache
     addCart(state, item) {
-      //if (!state.goods[0].foods[0].count) {
-      //  vue.set(state.goods[0].foods[0], 'count', 1)
-      //}
-      //else {
-      //  state.goods[0].foods[0].count++
-      //}
     },
-
+    //reduce cart should sync server's cache
     reduceCart(state, item) {
 
     },
@@ -31,7 +20,7 @@ let store = new vuex.Store({
     initGoods(state, goods) {
       state.goods = goods.goods
     },
-    //sycn goods from serve, 
+    //sycn goods from serve, （lunched at app.vue's mouted）
     syncGoods(state, item) {
       state.goods.forEach((good) => {
         var food = good.foods[0]

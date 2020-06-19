@@ -65,12 +65,14 @@
           {
             Cart: [
               {
+                id:0,
                 name: '扁豆焖面',
                 count: 2
               },
               {
+                id: 1,
                 name: 'VC无限橙果汁',
-                count: 2
+                count: 3
               }
             ]
           }

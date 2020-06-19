@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OrderMealModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="OrderMealModelStoreContainer">
+    <EntitySet Name="foods" EntityType="OrderMealModel.Store.foods" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="goods" EntityType="OrderMealModel.Store.goods" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ratings" EntityType="OrderMealModel.Store.ratings" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sellers" EntityType="OrderMealModel.Store.sellers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="supports" EntityType="OrderMealModel.Store.supports" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="foods">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="price" Type="decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="oldPrice" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="description" Type="nvarchar" Nullable="true" MaxLength="500" />
+    <Property Name="sellCount" Type="int" Nullable="true" />
+    <Property Name="rating" Type="int" Nullable="true" />
+    <Property Name="info" Type="nvarchar" Nullable="true" MaxLength="2000" />
+    <Property Name="icon" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="image" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="DelFlag" Type="int" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="goods">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="type" Type="int" Nullable="false" />
+    <Property Name="DelFlag" Type="int" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ratings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="rateTime" Type="int" Nullable="false" />
+    <Property Name="deliveryTime" Type="int" Nullable="false" />
+    <Property Name="score" Type="int" Nullable="false" />
+    <Property Name="rateType" Type="int" Nullable="false" />
+    <Property Name="text" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="avatar" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="DelFlag" Type="int" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sellers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="description" Type="nvarchar" Nullable="true" MaxLength="2000" />
+    <Property Name="deliveryTime" Type="int" Nullable="false" />
+    <Property Name="score" Type="int" Nullable="false" />
+    <Property Name="serviceScore" Type="int" Nullable="false" />
+    <Property Name="foodScore" Type="int" Nullable="false" />
+    <Property Name="rankRate" Type="int" Nullable="false" />
+    <Property Name="minPrice" Type="decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="deliveryPrice" Type="decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="ratingCount" Type="int" Nullable="false" />
+    <Property Name="sellCount" Type="int" Nullable="false" />
+    <Property Name="bulletin" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="avatar" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="DelFlag" Type="int" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="supports">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="type" Type="int" Nullable="false" />
+    <Property Name="description" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="DelFlag" Type="int" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+</Schema>
