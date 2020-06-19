@@ -1,4 +1,4 @@
-
+git transfer to gitee sucessfully,congradulation!
 All of the Contrller should be inherit BaseController， so  that you can use  BaseController's function
 All of the DataAccess should be inherit DBContextBase， so  that you can use  DBContextBase's function 
 All of the Bussiness should be inherit BussinessBase， so  that you can use  BussinessBase's function 
