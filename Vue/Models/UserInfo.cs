@@ -12,11 +12,18 @@ namespace Vue.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class support
+    public partial class UserInfo
     {
         public int Id { get; set; }
-        public int type { get; set; }
-        public string description { get; set; }
+        public string openid { get; set; }
+        public string nickname { get; set; }
+        public Nullable<int> sex { get; set; }
+        public string province { get; set; }
+        public string city { get; set; }
+        public string country { get; set; }
+        public string headimgurl { get; set; }
+        public string privilege { get; set; }
+        public string unionid { get; set; }
         public int DelFlag { get; set; }
         public System.DateTime CreateTime { get; set; }
         public System.DateTime UpdateTime { get; set; }

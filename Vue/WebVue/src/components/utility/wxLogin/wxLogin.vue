@@ -35,9 +35,6 @@
         seller:{
           id: "",
           deskNumber:""
-        },
-        userInfo: {
-          name:'长春'
         }
       }
     },
@@ -54,8 +51,8 @@
         }).show()
         return
       }
-      saveLocal("seller", that.seller)
-
+      //that.$store.commit('seller', { seller: that.seller })
+      saveLocal('seller', that.seller);
       //如果是微信访问直接通过微信授权登录
       var ua = navigator.userAgent.toLowerCase();
       if (ua.match(/MicroMessenger/i) == "micromessenger") {

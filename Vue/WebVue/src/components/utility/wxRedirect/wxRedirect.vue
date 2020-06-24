@@ -22,11 +22,12 @@
       var code = that.$route.query.code
       if (code) {
         wxAuthorize({
-
-        }).then((data) => { })
-        saveLocal("userInfo", that.userInfo)
-        //enter seller menulist
-        that.$router.push("App");
+          code:'1233'
+        }).then((ret) => {
+          this.$store.commit('wxAuthorize', { userInfo: ret.Message })
+          //enter seller menulist
+          that.$router.push("App");
+          })
       }
     },
 

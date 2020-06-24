@@ -12,16 +12,11 @@ namespace Vue.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class rating
+    public partial class Token
     {
         public int Id { get; set; }
-        public string username { get; set; }
-        public int rateTime { get; set; }
-        public int deliveryTime { get; set; }
-        public int score { get; set; }
-        public int rateType { get; set; }
-        public string text { get; set; }
-        public string avatar { get; set; }
+        public string access_token { get; set; }
+        public string expires_in { get; set; }
         public int DelFlag { get; set; }
         public System.DateTime CreateTime { get; set; }
         public System.DateTime UpdateTime { get; set; }

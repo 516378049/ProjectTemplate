@@ -1,10 +1,13 @@
-﻿using Newtonsoft.Json;
+﻿using DocumentFormat.OpenXml.Bibliography;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Json;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -14,6 +17,8 @@ namespace Framework
     {
         public static T ToObject<T>(string str)
         {
+            JsonSerializerSettings setting = new JsonSerializerSettings();
+            setting.DateFormatString = "yyyy-MM-dd HH:mm:ss";
             return Newtonsoft.Json.JsonConvert.DeserializeObject<T>(str);
         }
 

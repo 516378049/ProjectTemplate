@@ -137,3 +137,4 @@ D:\GitHub\netTemplateMVC\WebApplication1\bin\System.IO.Pipelines.xml
 D:\GitHub\netTemplateMVC\WebApplication1\bin\System.Buffers.xml
 D:\GitHub\netTemplateMVC\WebApplication1\bin\System.Numerics.Vectors.xml
 D:\GitHub\netTemplateMVC\WebApplication1\bin\System.Runtime.CompilerServices.Unsafe.xml
+D:\GitHub\netTemplateMVC\WebApplication1\bin\LitJson.dll

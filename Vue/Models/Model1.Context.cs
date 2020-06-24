@@ -25,10 +25,12 @@ namespace Vue.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<food> foods { get; set; }
-        public virtual DbSet<good> goods { get; set; }
-        public virtual DbSet<rating> ratings { get; set; }
-        public virtual DbSet<seller> sellers { get; set; }
-        public virtual DbSet<support> supports { get; set; }
+        public virtual DbSet<foods> foods { get; set; }
+        public virtual DbSet<goods> goods { get; set; }
+        public virtual DbSet<ratings> ratings { get; set; }
+        public virtual DbSet<sellers> sellers { get; set; }
+        public virtual DbSet<supports> supports { get; set; }
+        public virtual DbSet<Token> Token { get; set; }
+        public virtual DbSet<UserInfo> UserInfo { get; set; }
     }
 }

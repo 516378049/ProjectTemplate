@@ -239,6 +239,7 @@
     <Compile Include="RedisHelper.cs" />
     <Compile Include="SecurityHelper.cs" />
     <Compile Include="SFTPHelper.cs" />
+    <Compile Include="SingleObj.cs" />
     <Compile Include="StringHelper.cs" />
     <Compile Include="TypeConvertHelper.cs" />
     <Compile Include="Uploader.cs" />

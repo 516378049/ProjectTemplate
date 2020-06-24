@@ -10,9 +10,6 @@ namespace Framework
 {
     public static class EntityHelper
     {
-
-        
-
         /// <summary>
         /// Convert Data Table to model list
         /// </summary>
@@ -88,6 +85,11 @@ namespace Framework
                 propertyInfo = targetType.GetProperty(colName);
             }
             return propertyInfo;
+        }
+
+        public static T EntityCopy<T,T1> (T1 source)
+        {
+            return JsonHelper.ToObject<T>(JsonHelper.ToJson(source));
         }
     }
 

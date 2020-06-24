@@ -66,3 +66,4 @@ D:\GitHub\netTemplateMVC\Bussiness\bin\Debug\System.Buffers.xml
 D:\GitHub\netTemplateMVC\Bussiness\bin\Debug\System.Numerics.Vectors.xml
 D:\GitHub\netTemplateMVC\Bussiness\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 D:\GitHub\netTemplateMVC\Bussiness\obj\Debug\Bussiness.csproj.CopyComplete
+D:\GitHub\netTemplateMVC\Bussiness\bin\Debug\Bussiness.dll.config

@@ -58,6 +58,7 @@ namespace WxPayAPI.wxRsult
         /// 只有在用户将公众号绑定到微信开放平台帐号后，才会出现该字段。
         /// </summary>
         public string unionid { set; get; }
+        public string accesstoken { set; get; }
         #endregion user authorize info
     }
     public class AuthorizeInfo : ModelBase
@@ -101,7 +102,7 @@ namespace WxPayAPI.wxRsult
     }
 
     /// <summary>
-    /// 用户商城下单的金额和单号
+    /// 授权凭证
     /// </summary>
     public class Token : ModelBase
     {

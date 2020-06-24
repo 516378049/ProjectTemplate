@@ -106,9 +106,6 @@
       }
     },
     created() {
-      axios({
-        url: '/api/seller'
-      })
     },
     computed: {
       ...mapState({

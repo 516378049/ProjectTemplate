@@ -9,6 +9,10 @@ namespace WebAPI.Core.DataAccess
     public class ConnectionManager
     {
         /// <summary>
+        /// B2B数据库连接
+        /// </summary>
+        public static string OrderMeal { get { return ConfigurationManager.ConnectionStrings["OrderMeal"].ConnectionString; } }
+        /// <summary>
         /// Default主库数据库连接
         /// </summary>
         public static string Default { get { return ConfigurationManager.ConnectionStrings["Default"].ConnectionString; } }

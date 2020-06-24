@@ -10,24 +10,26 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="goodId" Type="int" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="2" />
           <Property Name="oldPrice" Type="decimal" Precision="18" Scale="2" />
           <Property Name="description" Type="nvarchar" MaxLength="500" />
           <Property Name="sellCount" Type="int" />
           <Property Name="rating" Type="int" />
           <Property Name="info" Type="nvarchar" MaxLength="2000" />
-          <Property Name="icon" Type="nvarchar(max)" />
-          <Property Name="image" Type="nvarchar(max)" />
-          <Property Name="DelFlag" Type="int" Nullable="false" />
-          <Property Name="CreateTime" Type="datetime" Nullable="false" />
-          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+          <Property Name="icon" Type="nvarchar" MaxLength="2000" />
+          <Property Name="image" Type="nvarchar" MaxLength="2000" />
+          <Property Name="DelFlag" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="UpdateTime" Type="datetime" />
         </EntityType>
         <EntityType Name="goods">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sellerId" Type="int" />
           <Property Name="name" Type="nvarchar(max)" />
           <Property Name="type" Type="int" Nullable="false" />
           <Property Name="DelFlag" Type="int" Nullable="false" />
@@ -39,16 +41,15 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="username" Type="nvarchar(max)" />
-          <Property Name="rateTime" Type="int" Nullable="false" />
-          <Property Name="deliveryTime" Type="int" Nullable="false" />
-          <Property Name="score" Type="int" Nullable="false" />
-          <Property Name="rateType" Type="int" Nullable="false" />
-          <Property Name="text" Type="nvarchar(max)" />
-          <Property Name="avatar" Type="nvarchar(max)" />
-          <Property Name="DelFlag" Type="int" Nullable="false" />
-          <Property Name="CreateTime" Type="datetime" Nullable="false" />
-          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+          <Property Name="foodId" Type="int" />
+          <Property Name="username" Type="nvarchar" MaxLength="200" />
+          <Property Name="rateTime" Type="nvarchar" MaxLength="100" />
+          <Property Name="rateType" Type="int" />
+          <Property Name="text" Type="nvarchar" MaxLength="1000" />
+          <Property Name="avatar" Type="nvarchar" MaxLength="1000" />
+          <Property Name="DelFlag" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="UpdateTime" Type="datetime" />
         </EntityType>
         <EntityType Name="sellers">
           <Key>
@@ -57,28 +58,58 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="nvarchar(max)" />
           <Property Name="description" Type="nvarchar" MaxLength="2000" />
-          <Property Name="deliveryTime" Type="int" Nullable="false" />
-          <Property Name="score" Type="int" Nullable="false" />
-          <Property Name="serviceScore" Type="int" Nullable="false" />
-          <Property Name="foodScore" Type="int" Nullable="false" />
-          <Property Name="rankRate" Type="int" Nullable="false" />
-          <Property Name="minPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="deliveryPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="ratingCount" Type="int" Nullable="false" />
-          <Property Name="sellCount" Type="int" Nullable="false" />
+          <Property Name="deliveryTime" Type="int" />
+          <Property Name="score" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="serviceScore" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="foodScore" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="rankRate" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="minPrice" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="deliveryPrice" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="ratingCount" Type="int" />
+          <Property Name="sellCount" Type="int" />
           <Property Name="bulletin" Type="nvarchar(max)" />
           <Property Name="avatar" Type="nvarchar(max)" />
-          <Property Name="DelFlag" Type="int" Nullable="false" />
-          <Property Name="CreateTime" Type="datetime" Nullable="false" />
-          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+          <Property Name="DelFlag" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="UpdateTime" Type="datetime" />
         </EntityType>
         <EntityType Name="supports">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="type" Type="int" Nullable="false" />
+          <Property Name="sellerId" Type="int" />
+          <Property Name="type" Type="int" />
           <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="DelFlag" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="UpdateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Token">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="access_token" Type="nvarchar" MaxLength="100" />
+          <Property Name="expires_in" Type="nvarchar" MaxLength="50" />
+          <Property Name="DelFlag" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="openid" Type="nvarchar" MaxLength="50" />
+          <Property Name="nickname" Type="nvarchar" MaxLength="50" />
+          <Property Name="sex" Type="int" />
+          <Property Name="province" Type="nvarchar" MaxLength="100" />
+          <Property Name="city" Type="nvarchar" MaxLength="100" />
+          <Property Name="country" Type="nvarchar" MaxLength="100" />
+          <Property Name="headimgurl" Type="nvarchar" MaxLength="100" />
+          <Property Name="privilege" Type="nvarchar" MaxLength="100" />
+          <Property Name="unionid" Type="nvarchar" MaxLength="200" />
           <Property Name="DelFlag" Type="int" Nullable="false" />
           <Property Name="CreateTime" Type="datetime" Nullable="false" />
           <Property Name="UpdateTime" Type="datetime" Nullable="false" />
@@ -89,96 +120,131 @@
           <EntitySet Name="ratings" EntityType="Self.ratings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sellers" EntityType="Self.sellers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="supports" EntityType="Self.supports" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Token" EntityType="Self.Token" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="OrderMealModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="food">
+        <EntityType Name="foods">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="goodId" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="price" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="oldPrice" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="sellCount" Type="Int32" />
           <Property Name="rating" Type="Int32" />
           <Property Name="info" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
-          <Property Name="icon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="DelFlag" Type="Int32" Nullable="false" />
-          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="icon" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="image" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="DelFlag" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
         </EntityType>
-        <EntityType Name="good">
+        <EntityType Name="goods">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sellerId" Type="Int32" />
           <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="type" Type="Int32" Nullable="false" />
           <Property Name="DelFlag" Type="Int32" Nullable="false" />
           <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
-        <EntityType Name="rating">
+        <EntityType Name="ratings">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="username" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="rateTime" Type="Int32" Nullable="false" />
-          <Property Name="deliveryTime" Type="Int32" Nullable="false" />
-          <Property Name="score" Type="Int32" Nullable="false" />
-          <Property Name="rateType" Type="Int32" Nullable="false" />
-          <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="avatar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="DelFlag" Type="Int32" Nullable="false" />
-          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="foodId" Type="Int32" />
+          <Property Name="username" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="rateTime" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="rateType" Type="Int32" />
+          <Property Name="text" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="avatar" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="DelFlag" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
         </EntityType>
-        <EntityType Name="seller">
+        <EntityType Name="sellers">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="description" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
-          <Property Name="deliveryTime" Type="Int32" Nullable="false" />
-          <Property Name="score" Type="Int32" Nullable="false" />
-          <Property Name="serviceScore" Type="Int32" Nullable="false" />
-          <Property Name="foodScore" Type="Int32" Nullable="false" />
-          <Property Name="rankRate" Type="Int32" Nullable="false" />
-          <Property Name="minPrice" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="deliveryPrice" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="ratingCount" Type="Int32" Nullable="false" />
-          <Property Name="sellCount" Type="Int32" Nullable="false" />
+          <Property Name="deliveryTime" Type="Int32" />
+          <Property Name="score" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="serviceScore" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="foodScore" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="rankRate" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="minPrice" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="deliveryPrice" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="ratingCount" Type="Int32" />
+          <Property Name="sellCount" Type="Int32" />
           <Property Name="bulletin" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="avatar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="DelFlag" Type="Int32" Nullable="false" />
-          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DelFlag" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
         </EntityType>
-        <EntityType Name="support">
+        <EntityType Name="supports">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="type" Type="Int32" Nullable="false" />
+          <Property Name="sellerId" Type="Int32" />
+          <Property Name="type" Type="Int32" />
           <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DelFlag" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Token">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="access_token" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="expires_in" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DelFlag" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="openid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="nickname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sex" Type="Int32" />
+          <Property Name="province" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="country" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="headimgurl" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="privilege" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="unionid" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="DelFlag" Type="Int32" Nullable="false" />
           <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityContainer Name="OrderMealEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="foods" EntityType="Self.food" />
-          <EntitySet Name="goods" EntityType="Self.good" />
-          <EntitySet Name="ratings" EntityType="Self.rating" />
-          <EntitySet Name="sellers" EntityType="Self.seller" />
-          <EntitySet Name="supports" EntityType="Self.support" />
+          <EntitySet Name="foods" EntityType="Self.foods" />
+          <EntitySet Name="goods" EntityType="Self.goods" />
+          <EntitySet Name="ratings" EntityType="Self.ratings" />
+          <EntitySet Name="sellers" EntityType="Self.sellers" />
+          <EntitySet Name="supports" EntityType="Self.supports" />
+          <EntitySet Name="Token" EntityType="Self.Token" />
+          <EntitySet Name="UserInfo" EntityType="Self.UserInfo" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -187,9 +253,10 @@
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="OrderMealModelStoreContainer" CdmEntityContainer="OrderMealEntities">
           <EntitySetMapping Name="foods">
-            <EntityTypeMapping TypeName="OrderMealModel.food">
+            <EntityTypeMapping TypeName="OrderMealModel.foods">
               <MappingFragment StoreEntitySet="foods">
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="goodId" ColumnName="goodId" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="price" ColumnName="price" />
                 <ScalarProperty Name="oldPrice" ColumnName="oldPrice" />
@@ -206,9 +273,10 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="goods">
-            <EntityTypeMapping TypeName="OrderMealModel.good">
+            <EntityTypeMapping TypeName="OrderMealModel.goods">
               <MappingFragment StoreEntitySet="goods">
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="sellerId" ColumnName="sellerId" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="type" ColumnName="type" />
                 <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
@@ -218,13 +286,12 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ratings">
-            <EntityTypeMapping TypeName="OrderMealModel.rating">
+            <EntityTypeMapping TypeName="OrderMealModel.ratings">
               <MappingFragment StoreEntitySet="ratings">
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="foodId" ColumnName="foodId" />
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="rateTime" ColumnName="rateTime" />
-                <ScalarProperty Name="deliveryTime" ColumnName="deliveryTime" />
-                <ScalarProperty Name="score" ColumnName="score" />
                 <ScalarProperty Name="rateType" ColumnName="rateType" />
                 <ScalarProperty Name="text" ColumnName="text" />
                 <ScalarProperty Name="avatar" ColumnName="avatar" />
@@ -235,7 +302,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sellers">
-            <EntityTypeMapping TypeName="OrderMealModel.seller">
+            <EntityTypeMapping TypeName="OrderMealModel.sellers">
               <MappingFragment StoreEntitySet="sellers">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -258,11 +325,43 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="supports">
-            <EntityTypeMapping TypeName="OrderMealModel.support">
+            <EntityTypeMapping TypeName="OrderMealModel.supports">
               <MappingFragment StoreEntitySet="supports">
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="sellerId" ColumnName="sellerId" />
                 <ScalarProperty Name="type" ColumnName="type" />
                 <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Token">
+            <EntityTypeMapping TypeName="OrderMealModel.Token">
+              <MappingFragment StoreEntitySet="Token">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="access_token" ColumnName="access_token" />
+                <ScalarProperty Name="expires_in" ColumnName="expires_in" />
+                <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserInfo">
+            <EntityTypeMapping TypeName="OrderMealModel.UserInfo">
+              <MappingFragment StoreEntitySet="UserInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="openid" ColumnName="openid" />
+                <ScalarProperty Name="nickname" ColumnName="nickname" />
+                <ScalarProperty Name="sex" ColumnName="sex" />
+                <ScalarProperty Name="province" ColumnName="province" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="headimgurl" ColumnName="headimgurl" />
+                <ScalarProperty Name="privilege" ColumnName="privilege" />
+                <ScalarProperty Name="unionid" ColumnName="unionid" />
                 <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
                 <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
                 <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
@@ -283,7 +382,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="无" />

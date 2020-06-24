@@ -62,10 +62,10 @@ module.exports = {
       '/api': {//以/api开始请求地址进行转发
         target: 'http://vuecli.test/', //API服务器的地址 modified by changchun 20200619
         changeOrigin: true,
-        //pathRewrite: {
-        //  '^/api': '' //将地址中的/api去掉 eg:http://localhost:8900/api/items 变为 http://localhost:8900/items
-        //}
-      }
+        pathRewrite: {
+          '^/api': '' //将地址中的/api去掉 eg:http://localhost:8900/api/items 变为 http://localhost:8900/items
+        }
+      },
     }
   }
   ,

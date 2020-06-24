@@ -34,6 +34,9 @@
     <Reference Include="LitJson">
       <HintPath>..\wxPayApiMVC\dll\LitJson.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
@@ -63,12 +66,21 @@
     <Compile Include="wx\Refund.cs" />
     <Compile Include="wx\RefundQuery.cs" />
     <Compile Include="wx\ResultNotify.cs" />
+    <Compile Include="wx\WxUtility.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Framework\Framework.csproj">
       <Project>{99C8CC3E-3B3F-4D4A-AE08-696068CF4332}</Project>
       <Name>Framework</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{0b4a6448-ca31-4f14-aafd-167e59ca4335}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

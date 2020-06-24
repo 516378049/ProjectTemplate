@@ -1,10 +1,10 @@
 import { get } from './helpers'
 
-const getSeller = get('api/seller')
-const getGoods = get('api/goods')
-const getRatings = get('api/ratings')
+const getSeller = get('api/api/seller')
+const getGoods = get('api/api/goods')
+const getRatings = get('api/api/ratings')
 
-const wxAuthorize = get('OrderMeal/wxAuthorize')
+const wxAuthorize = get('api/Home/wxAuthorize')
 
 export {
   getSeller,

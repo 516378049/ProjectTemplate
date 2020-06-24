@@ -12,13 +12,14 @@ namespace Vue.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class good
+    public partial class supports
     {
         public int Id { get; set; }
-        public string name { get; set; }
-        public int type { get; set; }
-        public int DelFlag { get; set; }
-        public System.DateTime CreateTime { get; set; }
-        public System.DateTime UpdateTime { get; set; }
+        public Nullable<int> sellerId { get; set; }
+        public Nullable<int> type { get; set; }
+        public string description { get; set; }
+        public Nullable<int> DelFlag { get; set; }
+        public Nullable<System.DateTime> CreateTime { get; set; }
+        public Nullable<System.DateTime> UpdateTime { get; set; }
     }
 }

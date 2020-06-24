@@ -12,18 +12,12 @@ namespace Vue.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class food
+    public partial class goods
     {
         public int Id { get; set; }
+        public Nullable<int> sellerId { get; set; }
         public string name { get; set; }
-        public decimal price { get; set; }
-        public Nullable<decimal> oldPrice { get; set; }
-        public string description { get; set; }
-        public Nullable<int> sellCount { get; set; }
-        public Nullable<int> rating { get; set; }
-        public string info { get; set; }
-        public string icon { get; set; }
-        public string image { get; set; }
+        public int type { get; set; }
         public int DelFlag { get; set; }
         public System.DateTime CreateTime { get; set; }
         public System.DateTime UpdateTime { get; set; }

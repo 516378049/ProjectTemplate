@@ -260,3 +260,7 @@ D:\GitHub\netTemplateMVC\Vue\bin\zh-Hans\EntityFramework.SqlServer.resources.dll
 D:\GitHub\netTemplateMVC\Vue\bin\zh-Hans\System.Net.Http.Formatting.resources.dll
 D:\GitHub\netTemplateMVC\Vue\bin\zh-Hans\System.Web.Http.resources.dll
 D:\GitHub\netTemplateMVC\Vue\bin\zh-Hans\System.Web.Http.WebHost.resources.dll
+D:\GitHub\netTemplateMVC\Vue\bin\Bussiness.dll
+D:\GitHub\netTemplateMVC\Vue\bin\LitJson.dll
+D:\GitHub\netTemplateMVC\Vue\bin\Bussiness.pdb
+D:\GitHub\netTemplateMVC\Vue\bin\Bussiness.dll.config

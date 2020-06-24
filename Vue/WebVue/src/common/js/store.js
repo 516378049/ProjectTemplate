@@ -1,12 +1,20 @@
 import vue from 'vue'
 import vuex from 'vuex'
+//import { config } from 'rx-core';
 vue.use(vuex)
 
 
 let store = new vuex.Store({
   state: {
     //当前商家菜单，goods.vue初始化时同步，refereshed when sync Cart from server cache 
-    goods: []
+    goods: [],
+    userInfo: null,
+    seller: null
+  },
+  getters: {
+    getUserInfo: state => {
+      return state.userInfo
+    }
   },
   mutations: {
     //add cart should sync server's cache
@@ -15,6 +23,14 @@ let store = new vuex.Store({
     //reduce cart should sync server's cache
     reduceCart(state, item) {
 
+    },
+    //get user info by WChat authorized 
+    wxAuthorize(state, obj) {
+      state.userInfo = obj.userInfo
+    },
+    //get user info by WChat authorized 
+    seller(state, obj) {
+      state.seller = obj.seller
     },
     //init goods from serve (lunch at goods.vue's method of fetch)
     initGoods(state, goods) {

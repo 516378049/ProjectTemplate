@@ -11,11 +11,11 @@ namespace Vue
     {
         public static void Register(HttpConfiguration config)
         {
-            config.Routes.MapHttpRoute(
-                name: "MainApi_Dot",
-                routeTemplate: "api/{controller}.{action}",
-                defaults: new { id = RouteParameter.Optional }
-            );
+            //config.Routes.MapHttpRoute(
+            //    name: "MainApi_Dot",
+            //    routeTemplate: "api/{controller}.{action}",
+            //    defaults: new { id = RouteParameter.Optional }
+            //);
             //config.Routes.MapHttpRoute(
             //    name: "MainApi",
             //    routeTemplate: "api/{controller}/{action}/{id}",
@@ -23,7 +23,7 @@ namespace Vue
             //);
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
+                routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
 

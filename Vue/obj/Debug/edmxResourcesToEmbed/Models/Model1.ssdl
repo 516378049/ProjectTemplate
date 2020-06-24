@@ -5,24 +5,26 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="goodId" Type="int" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+    <Property Name="price" Type="decimal" Precision="18" Scale="2" />
     <Property Name="oldPrice" Type="decimal" Precision="18" Scale="2" />
     <Property Name="description" Type="nvarchar" MaxLength="500" />
     <Property Name="sellCount" Type="int" />
     <Property Name="rating" Type="int" />
     <Property Name="info" Type="nvarchar" MaxLength="2000" />
-    <Property Name="icon" Type="nvarchar(max)" />
-    <Property Name="image" Type="nvarchar(max)" />
-    <Property Name="DelFlag" Type="int" Nullable="false" />
-    <Property Name="CreateTime" Type="datetime" Nullable="false" />
-    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+    <Property Name="icon" Type="nvarchar" MaxLength="2000" />
+    <Property Name="image" Type="nvarchar" MaxLength="2000" />
+    <Property Name="DelFlag" Type="int" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="UpdateTime" Type="datetime" />
   </EntityType>
   <EntityType Name="goods">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sellerId" Type="int" />
     <Property Name="name" Type="nvarchar(max)" />
     <Property Name="type" Type="int" Nullable="false" />
     <Property Name="DelFlag" Type="int" Nullable="false" />
@@ -34,16 +36,15 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="username" Type="nvarchar(max)" />
-    <Property Name="rateTime" Type="int" Nullable="false" />
-    <Property Name="deliveryTime" Type="int" Nullable="false" />
-    <Property Name="score" Type="int" Nullable="false" />
-    <Property Name="rateType" Type="int" Nullable="false" />
-    <Property Name="text" Type="nvarchar(max)" />
-    <Property Name="avatar" Type="nvarchar(max)" />
-    <Property Name="DelFlag" Type="int" Nullable="false" />
-    <Property Name="CreateTime" Type="datetime" Nullable="false" />
-    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+    <Property Name="foodId" Type="int" />
+    <Property Name="username" Type="nvarchar" MaxLength="200" />
+    <Property Name="rateTime" Type="nvarchar" MaxLength="100" />
+    <Property Name="rateType" Type="int" />
+    <Property Name="text" Type="nvarchar" MaxLength="1000" />
+    <Property Name="avatar" Type="nvarchar" MaxLength="1000" />
+    <Property Name="DelFlag" Type="int" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="UpdateTime" Type="datetime" />
   </EntityType>
   <EntityType Name="sellers">
     <Key>
@@ -52,28 +53,58 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="name" Type="nvarchar(max)" />
     <Property Name="description" Type="nvarchar" MaxLength="2000" />
-    <Property Name="deliveryTime" Type="int" Nullable="false" />
-    <Property Name="score" Type="int" Nullable="false" />
-    <Property Name="serviceScore" Type="int" Nullable="false" />
-    <Property Name="foodScore" Type="int" Nullable="false" />
-    <Property Name="rankRate" Type="int" Nullable="false" />
-    <Property Name="minPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-    <Property Name="deliveryPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-    <Property Name="ratingCount" Type="int" Nullable="false" />
-    <Property Name="sellCount" Type="int" Nullable="false" />
+    <Property Name="deliveryTime" Type="int" />
+    <Property Name="score" Type="decimal" Precision="18" Scale="6" />
+    <Property Name="serviceScore" Type="decimal" Precision="18" Scale="6" />
+    <Property Name="foodScore" Type="decimal" Precision="18" Scale="6" />
+    <Property Name="rankRate" Type="decimal" Precision="18" Scale="6" />
+    <Property Name="minPrice" Type="decimal" Precision="18" Scale="6" />
+    <Property Name="deliveryPrice" Type="decimal" Precision="18" Scale="6" />
+    <Property Name="ratingCount" Type="int" />
+    <Property Name="sellCount" Type="int" />
     <Property Name="bulletin" Type="nvarchar(max)" />
     <Property Name="avatar" Type="nvarchar(max)" />
-    <Property Name="DelFlag" Type="int" Nullable="false" />
-    <Property Name="CreateTime" Type="datetime" Nullable="false" />
-    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+    <Property Name="DelFlag" Type="int" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="UpdateTime" Type="datetime" />
   </EntityType>
   <EntityType Name="supports">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="type" Type="int" Nullable="false" />
+    <Property Name="sellerId" Type="int" />
+    <Property Name="type" Type="int" />
     <Property Name="description" Type="nvarchar(max)" />
+    <Property Name="DelFlag" Type="int" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="UpdateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Token">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="access_token" Type="nvarchar" MaxLength="100" />
+    <Property Name="expires_in" Type="nvarchar" MaxLength="50" />
+    <Property Name="DelFlag" Type="int" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="openid" Type="nvarchar" MaxLength="50" />
+    <Property Name="nickname" Type="nvarchar" MaxLength="50" />
+    <Property Name="sex" Type="int" />
+    <Property Name="province" Type="nvarchar" MaxLength="100" />
+    <Property Name="city" Type="nvarchar" MaxLength="100" />
+    <Property Name="country" Type="nvarchar" MaxLength="100" />
+    <Property Name="headimgurl" Type="nvarchar" MaxLength="100" />
+    <Property Name="privilege" Type="nvarchar" MaxLength="100" />
+    <Property Name="unionid" Type="nvarchar" MaxLength="200" />
     <Property Name="DelFlag" Type="int" Nullable="false" />
     <Property Name="CreateTime" Type="datetime" Nullable="false" />
     <Property Name="UpdateTime" Type="datetime" Nullable="false" />
@@ -84,5 +115,7 @@
     <EntitySet Name="ratings" EntityType="Self.ratings" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sellers" EntityType="Self.sellers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="supports" EntityType="Self.supports" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Token" EntityType="Self.Token" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>

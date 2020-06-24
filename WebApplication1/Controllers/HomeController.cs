@@ -10,7 +10,9 @@ namespace WebApplication1.Controllers
     {
         public ActionResult Index()
         {
-            
+
+            //DateTime dt = new DateTime(1469271264000);
+        
             Framework.Log.ILog4.Debug("我是Debug");
             Framework.Log.ILog4.Info("我是Info");
             try { string a = null;
