@@ -31,5 +31,6 @@ namespace Vue.Models
         public Nullable<int> DelFlag { get; set; }
         public Nullable<System.DateTime> CreateTime { get; set; }
         public Nullable<System.DateTime> UpdateTime { get; set; }
+        public List<supports> supports { get; set; }
     }
 }

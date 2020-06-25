@@ -13,6 +13,7 @@ import errorPage from '@/components/utility/errorPage/errorPage'
 
 import { loadLocal } from '@/common/js/storage'
 import store from '@/common/js/store'
+import qs from 'query-string'
 Vue.use(Router)
 
 
@@ -87,6 +88,8 @@ let router = new Router({
 //登录验证
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requireAuth)) { // 判断该路由是否需要登录权限
+    console.log( 'sellerid')
+    console.log(qs.parse(location.search).id)
     // 必须要有商家id和userInfo才能进入进入点餐，商家id保存在storage,userInfo 保存在vuex
     if (store.state.userInfo && loadLocal('seller')) {
       next();
@@ -95,7 +98,7 @@ router.beforeEach((to, from, next) => {
       next({
         path: '/wxLogin',
         query: {//默认测试商家
-          id: '00001',
+          id: '6',
           deskNumber: '888'
         } // 将要跳转路由的path作为参数，传递到登录页面
       })

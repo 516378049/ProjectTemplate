@@ -32,5 +32,6 @@ namespace Vue.Models
         public virtual DbSet<supports> supports { get; set; }
         public virtual DbSet<Token> Token { get; set; }
         public virtual DbSet<UserInfo> UserInfo { get; set; }
+        public virtual DbSet<RatingsSeller> RatingsSellers { get; set; }
     }
 }

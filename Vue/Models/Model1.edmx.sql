@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/24/2020 15:24:29
--- Generated from EDMX file: D:\GitHub\netTemplateMVC\Vue\Models\Model1.edmx
+-- Date Created: 06/25/2020 19:07:28
+-- Generated from EDMX file: D:\Document\Git Source Code\ProjectTemplate\Vue\Models\Model1.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -51,6 +51,7 @@ GO
 -- Creating table 'foods'
 CREATE TABLE [dbo].[foods] (
     [Id] int IDENTITY(1,1) NOT NULL,
+    [goodId] int  NULL,
     [name] nvarchar(50)  NULL,
     [price] decimal(18,2)  NULL,
     [oldPrice] decimal(18,2)  NULL,
@@ -69,6 +70,7 @@ GO
 -- Creating table 'goods'
 CREATE TABLE [dbo].[goods] (
     [Id] int IDENTITY(1,1) NOT NULL,
+    [sellerId] int  NULL,
     [name] nvarchar(max)  NULL,
     [type] int  NOT NULL,
     [DelFlag] int  NOT NULL,
@@ -80,10 +82,9 @@ GO
 -- Creating table 'ratings'
 CREATE TABLE [dbo].[ratings] (
     [Id] int IDENTITY(1,1) NOT NULL,
+    [foodId] int  NULL,
     [username] nvarchar(200)  NULL,
     [rateTime] nvarchar(100)  NULL,
-    [deliveryTime] int  NULL,
-    [score] int  NULL,
     [rateType] int  NULL,
     [text] nvarchar(1000)  NULL,
     [avatar] nvarchar(1000)  NULL,
@@ -144,11 +145,11 @@ CREATE TABLE [dbo].[UserInfo] (
     [openid] nvarchar(50)  NULL,
     [nickname] nvarchar(50)  NULL,
     [sex] int  NULL,
-    [province] nvarchar(1)  NULL,
-    [city] nvarchar(1)  NULL,
-    [country] nvarchar(1)  NULL,
-    [headimgurl] nvarchar(1)  NULL,
-    [privilege] nvarchar(1)  NULL,
+    [province] nvarchar(100)  NULL,
+    [city] nvarchar(100)  NULL,
+    [country] nvarchar(100)  NULL,
+    [headimgurl] nvarchar(100)  NULL,
+    [privilege] nvarchar(100)  NULL,
     [unionid] nvarchar(200)  NULL,
     [DelFlag] int  NOT NULL,
     [CreateTime] datetime  NOT NULL,

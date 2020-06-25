@@ -72,7 +72,9 @@ namespace Vue.Models
 
         private GenericRepository<goods> _goods;
         private GenericRepository<foods> _foods;
-        private GenericRepository<ratings> _ratings; 
+        private GenericRepository<ratings> _ratings;
+
+        private GenericRepository<RatingsSeller> _ratingsseller; 
         #endregion
         #endregion
 
@@ -130,6 +132,15 @@ namespace Vue.Models
                 if (_ratings == null)
                     _ratings = new GenericRepository<ratings>(context);
                 return _ratings;
+            }
+        }
+        public GenericRepository<RatingsSeller> RatingsSeller
+        {
+            get
+            {
+                if (_ratingsseller == null)
+                    _ratingsseller = new GenericRepository<RatingsSeller>(context);
+                return _ratingsseller;
             }
         }
         #endregion

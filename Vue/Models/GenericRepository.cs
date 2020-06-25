@@ -249,6 +249,8 @@ namespace Vue.Models
             {
                 foreach (var item in entity)
                 {
+                    if (typeof(TEntity).GetProperties().Where(w => w.Name == "DelFlag").Count() > 0)
+                        item.GetType().GetProperty("DelFlag").SetValue(item,0);
                     if (typeof(TEntity).GetProperties().Where(w => w.Name == "CreateTime").Count() > 0)
                         item.GetType().GetProperty("CreateTime").SetValue(item, DateTime.Now);
                     if (typeof(TEntity).GetProperties().Where(w => w.Name == "UpdateTime").Count() > 0)

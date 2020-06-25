@@ -10,6 +10,7 @@
 
 <script>
   import qs from 'query-string'
+  import { loadLocal } from '@/common/js/storage'
   import { getSeller } from 'api'
   import VHeader from 'components/v-header/v-header'
   import Goods from 'components/goods/goods'
@@ -22,7 +23,8 @@
     data() {
       return {
         seller: {
-          id: qs.parse(location.search).id
+          //id: qs.parse(location.search).id
+          id: loadLocal('seller').id
         }
       }
     },

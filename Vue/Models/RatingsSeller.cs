@@ -12,15 +12,19 @@ namespace Vue.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class goods
+    public partial class RatingsSeller
     {
         public int Id { get; set; }
         public Nullable<int> sellerId { get; set; }
-        public string name { get; set; }
-        public int type { get; set; }
-        public int DelFlag { get; set; }
-        public System.DateTime CreateTime { get; set; }
-        public System.DateTime UpdateTime { get; set; }
-        public List<foods> foods { get; set; }
+        public string username { get; set; }
+        public string rateTime { get; set; }
+        public string deliveryTime { get; set; }
+        public Nullable<decimal> score { get; set; }
+        public Nullable<int> rateType { get; set; }
+        public string text { get; set; }
+        public string avatar { get; set; }
+        public Nullable<int> DelFlag { get; set; }
+        public Nullable<System.DateTime> CreateTime { get; set; }
+        public Nullable<System.DateTime> UpdateTime { get; set; }
     }
 }
