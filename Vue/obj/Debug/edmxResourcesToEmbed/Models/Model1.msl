@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="OrderMealModelStoreContainer" CdmEntityContainer="OrderMealEntities">
+  <EntityContainerMapping StorageEntityContainer="OrderMealModelStoreContainer" CdmEntityContainer="OrderMealEntities1">
     <EntitySetMapping Name="foods">
       <EntityTypeMapping TypeName="OrderMealModel.foods">
         <MappingFragment StoreEntitySet="foods">
@@ -50,6 +50,24 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="RatingsSellers">
+      <EntityTypeMapping TypeName="OrderMealModel.RatingsSellers">
+        <MappingFragment StoreEntitySet="RatingsSellers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="sellerId" ColumnName="sellerId" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="rateTime" ColumnName="rateTime" />
+          <ScalarProperty Name="deliveryTime" ColumnName="deliveryTime" />
+          <ScalarProperty Name="score" ColumnName="score" />
+          <ScalarProperty Name="rateType" ColumnName="rateType" />
+          <ScalarProperty Name="text" ColumnName="text" />
+          <ScalarProperty Name="avatar" ColumnName="avatar" />
+          <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="sellers">
       <EntityTypeMapping TypeName="OrderMealModel.sellers">
         <MappingFragment StoreEntitySet="sellers">
@@ -90,6 +108,7 @@
       <EntityTypeMapping TypeName="OrderMealModel.Token">
         <MappingFragment StoreEntitySet="Token">
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
           <ScalarProperty Name="access_token" ColumnName="access_token" />
           <ScalarProperty Name="expires_in" ColumnName="expires_in" />
           <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
@@ -111,6 +130,7 @@
           <ScalarProperty Name="headimgurl" ColumnName="headimgurl" />
           <ScalarProperty Name="privilege" ColumnName="privilege" />
           <ScalarProperty Name="unionid" ColumnName="unionid" />
+          <ScalarProperty Name="access_token" ColumnName="access_token" />
           <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
           <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
           <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />

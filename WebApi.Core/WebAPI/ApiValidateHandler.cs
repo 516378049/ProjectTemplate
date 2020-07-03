@@ -15,43 +15,35 @@ using WebAPI.Core.Models;
 using WebAPI.Core.Business.App;
 using ServiceStack.Common.Web;
 using System.Collections.Specialized;
+using DataAccess.EF;
+using Model.EF;
+
 namespace WebAPI.Core.WebAPI
 {
     public class ApiValidateHandler : DelegatingHandler
     {
-
         protected override Task<HttpResponseMessage> SendAsync(
             HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            string aa = System.Web.HttpContext.Current.Request.QueryString["appid"];
-            System.IO.Stream aa1 = System.Web.HttpContext.Current.Request.InputStream;
-            //设置开始时间，用于时长统计
-            request.Headers.Add(WebConst.Header_BeginTime, DateTime.Now.Ticks.ToString());
-
-            #region 基础验证
-            ApiResult checkResult = Validate(request);
-            if (checkResult.RetCode != "0")
+            #region 验证token
+            UnitOfWork Studio = new UnitOfWork();
+            var accesstoken = WebFuncHelper.GetHeadValue(request, "accesstoken");
+            Token seller = Studio.Token.Get(X => X.access_token ==accesstoken  && X.DelFlag == 0).FirstOrDefault();
+            if (seller==null)
             {
                 var response = new HttpResponseMessage(HttpStatusCode.OK);
-                response.Content = new StringContent(checkResult.ToJson());
+                response.Content = new StringContent(CreateApiResult("","-1",0, "token不存在").ToJson());
                 var tsc = new TaskCompletionSource<HttpResponseMessage>();
                 tsc.SetResult(response);
                 return tsc.Task;
             }
             #endregion
-
-
             return base.SendAsync(request, cancellationToken)
             .ContinueWith(
                 (task) =>
                 {
-                    var apiName = WebFuncHelper.GetHeadValue(request, WebConst.Header_ApiName);
-                    var appId = WebFuncHelper.GetHeadValue(request, WebConst.Header_AppID);
-                    var apiId = WebFuncHelper.GetHeadValue(request, WebConst.Header_ApiID);
-                    var apiModule = WebFuncHelper.GetHeadValue(request, WebConst.Header_ApiModule);
                     var content = task.Result.Content as System.Net.Http.ObjectContent;
-
-                    var apiResult = GetApiResult(content, apiName, appId, apiId, apiModule);
+                    var apiResult = content.Value as ApiResult;
 
                     if (apiResult != null)
                     {
@@ -65,11 +57,6 @@ namespace WebAPI.Core.WebAPI
                     {
                         throw new ApplicationException("返回值不符合规则");
                     }
-                    //增加调用统计
-                    AppRule.ApiAddCount(appId, apiId, apiModule, apiName, apiResult.RetCode, 1);
-
-                    //记录调用日志
-                    WriteApiLog(request, apiResult);
                     return task.Result;
                 }
             );
@@ -275,7 +262,6 @@ namespace WebAPI.Core.WebAPI
             return result;
         }
 
-
         protected static string GetClientIP(HttpRequestMessage request)
         {
             if (request.Properties.ContainsKey("MS_HttpContext"))
@@ -352,6 +338,17 @@ namespace WebAPI.Core.WebAPI
                 }
             }
             return apiResult;
+        }
+        /// <summary>
+        /// 创建ApiResult对象，所有WebApi接口均使用该方法包装返回值
+        /// </summary>
+        /// <param name="retCode"></param>
+        /// <param name="retMsg"></param>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        protected ApiResult CreateApiResult(object message = null, string retCode = "0", int Total = 0, string retMsg = "")
+        {
+            return new ApiResult() { RetCode = retCode, Total = Total, RetMsg = retMsg, Message = message };
         }
     }
 }

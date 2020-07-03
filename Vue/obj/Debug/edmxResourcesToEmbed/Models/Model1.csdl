@@ -46,6 +46,23 @@
     <Property Name="CreateTime" Type="DateTime" Precision="3" />
     <Property Name="UpdateTime" Type="DateTime" Precision="3" />
   </EntityType>
+  <EntityType Name="RatingsSellers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sellerId" Type="Int32" />
+    <Property Name="username" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="rateTime" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="deliveryTime" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="score" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="rateType" Type="Int32" />
+    <Property Name="text" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="avatar" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="DelFlag" Type="Int32" />
+    <Property Name="CreateTime" Type="DateTime" Precision="3" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+  </EntityType>
   <EntityType Name="sellers">
     <Key>
       <PropertyRef Name="Id" />
@@ -85,6 +102,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userId" Type="Int32" />
     <Property Name="access_token" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="expires_in" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="DelFlag" Type="Int32" Nullable="false" />
@@ -105,14 +123,16 @@
     <Property Name="headimgurl" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="privilege" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="unionid" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="access_token" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
     <Property Name="DelFlag" Type="Int32" Nullable="false" />
     <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
   </EntityType>
-  <EntityContainer Name="OrderMealEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="OrderMealEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="foods" EntityType="Self.foods" />
     <EntitySet Name="goods" EntityType="Self.goods" />
     <EntitySet Name="ratings" EntityType="Self.ratings" />
+    <EntitySet Name="RatingsSellers" EntityType="Self.RatingsSellers" />
     <EntitySet Name="sellers" EntityType="Self.sellers" />
     <EntitySet Name="supports" EntityType="Self.supports" />
     <EntitySet Name="Token" EntityType="Self.Token" />

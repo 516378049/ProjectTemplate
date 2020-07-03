@@ -11,6 +11,12 @@ namespace Vue
     {
         public static void Register(HttpConfiguration config)
         {
+            config.MapHttpAttributeRoutes();
+            config.Routes.MapHttpRoute(
+            name: "DefaultApi",
+            routeTemplate: "api/{controller}/{id}",
+            defaults: new { id = RouteParameter.Optional }
+            );
             //config.Routes.MapHttpRoute(
             //    name: "MainApi_Dot",
             //    routeTemplate: "api/{controller}.{action}",
@@ -21,17 +27,18 @@ namespace Vue
             //    routeTemplate: "api/{controller}/{action}/{id}",
             //    defaults: new { id = RouteParameter.Optional }
             //);
-            config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{action}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
+
+            //config.Routes.MapHttpRoute(
+            //name: "DefaultApi",
+            //routeTemplate: "api/{controller}/{action}/{id}",
+            //defaults: new { id = RouteParameter.Optional }
+            //);
 
             //这段代码如果启用，则会屏蔽返回类型XML
-            config.Formatters.Remove(config.Formatters.XmlFormatter);
+            //config.Formatters.Remove(config.Formatters.XmlFormatter);
 
             //注册自定义消息处理器
-            config.MessageHandlers.Add(new ApiValidateHandler());
+            //config.MessageHandlers.Add(new ApiValidateHandler());
         }
     }
 }

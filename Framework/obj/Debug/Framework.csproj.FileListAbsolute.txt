@@ -32,6 +32,8 @@ D:\GitHub\netTemplateMVC\Framework\bin\Debug\Runda.B2B.Framework.dll.config
 D:\GitHub\netTemplateMVC\Framework\bin\Debug\Runda.B2B.Framework.dll
 D:\GitHub\netTemplateMVC\Framework\bin\Debug\Runda.B2B.Framework.pdb
 D:\GitHub\netTemplateMVC\Framework\bin\Debug\DocumentFormat.OpenXml.dll
+D:\GitHub\netTemplateMVC\Framework\bin\Debug\LitJson.dll
+D:\GitHub\netTemplateMVC\Framework\bin\Debug\log4net.dll
 D:\GitHub\netTemplateMVC\Framework\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
 D:\GitHub\netTemplateMVC\Framework\bin\Debug\Model.dll
 D:\GitHub\netTemplateMVC\Framework\bin\Debug\Newtonsoft.Json.dll
@@ -46,9 +48,11 @@ D:\GitHub\netTemplateMVC\Framework\bin\Debug\System.Numerics.Vectors.dll
 D:\GitHub\netTemplateMVC\Framework\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
 D:\GitHub\netTemplateMVC\Framework\bin\Debug\System.Threading.Channels.dll
 D:\GitHub\netTemplateMVC\Framework\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\GitHub\netTemplateMVC\Framework\bin\Debug\EntityFramework.dll
 D:\GitHub\netTemplateMVC\Framework\bin\Debug\Model.pdb
 D:\GitHub\netTemplateMVC\Framework\bin\Debug\Model.dll.config
 D:\GitHub\netTemplateMVC\Framework\bin\Debug\DocumentFormat.OpenXml.xml
+D:\GitHub\netTemplateMVC\Framework\bin\Debug\log4net.xml
 D:\GitHub\netTemplateMVC\Framework\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
 D:\GitHub\netTemplateMVC\Framework\bin\Debug\Newtonsoft.Json.xml
 D:\GitHub\netTemplateMVC\Framework\bin\Debug\Pipelines.Sockets.Unofficial.xml
@@ -61,11 +65,9 @@ D:\GitHub\netTemplateMVC\Framework\bin\Debug\System.Numerics.Vectors.xml
 D:\GitHub\netTemplateMVC\Framework\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 D:\GitHub\netTemplateMVC\Framework\bin\Debug\System.Threading.Channels.xml
 D:\GitHub\netTemplateMVC\Framework\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\GitHub\netTemplateMVC\Framework\bin\Debug\EntityFramework.xml
 D:\GitHub\netTemplateMVC\Framework\obj\Debug\Framework.csprojAssemblyReference.cache
 D:\GitHub\netTemplateMVC\Framework\obj\Debug\Framework.csproj.CoreCompileInputs.cache
 D:\GitHub\netTemplateMVC\Framework\obj\Debug\Framework.csproj.CopyComplete
 D:\GitHub\netTemplateMVC\Framework\obj\Debug\Runda.B2B.Framework.dll
 D:\GitHub\netTemplateMVC\Framework\obj\Debug\Runda.B2B.Framework.pdb
-D:\GitHub\netTemplateMVC\Framework\bin\Debug\log4net.dll
-D:\GitHub\netTemplateMVC\Framework\bin\Debug\log4net.xml
-D:\GitHub\netTemplateMVC\Framework\bin\Debug\LitJson.dll

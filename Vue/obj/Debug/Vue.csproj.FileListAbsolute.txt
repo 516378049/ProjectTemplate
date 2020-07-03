@@ -264,3 +264,8 @@ D:\GitHub\netTemplateMVC\Vue\bin\Bussiness.dll
 D:\GitHub\netTemplateMVC\Vue\bin\LitJson.dll
 D:\GitHub\netTemplateMVC\Vue\bin\Bussiness.pdb
 D:\GitHub\netTemplateMVC\Vue\bin\Bussiness.dll.config
+D:\GitHub\netTemplateMVC\Vue\bin\Runda.WebAPI.Core.dll.config
+D:\GitHub\netTemplateMVC\Vue\bin\DataAccess.dll
+D:\GitHub\netTemplateMVC\Vue\bin\DataAccess.pdb
+D:\GitHub\netTemplateMVC\Vue\bin\DataAccess.dll.config
+D:\GitHub\netTemplateMVC\Vue\bin\Microsoft.Practices.ObjectBuilder.dll

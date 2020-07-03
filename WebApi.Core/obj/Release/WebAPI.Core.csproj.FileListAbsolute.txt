@@ -1,0 +1,2 @@
+D:\GitHub\netTemplateMVC\WebApi.Core\obj\Release\WebAPI.Core.csprojAssemblyReference.cache
+D:\GitHub\netTemplateMVC\WebApi.Core\obj\Release\WebAPI.Core.csproj.CoreCompileInputs.cache

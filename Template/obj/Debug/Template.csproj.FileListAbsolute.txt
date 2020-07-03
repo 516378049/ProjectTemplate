@@ -365,3 +365,8 @@ D:\GitHub\netTemplateMVC\Template\bin\System.Runtime.CompilerServices.Unsafe.xml
 D:\GitHub\netTemplateMVC\Template\bin\System.Threading.Channels.xml
 D:\GitHub\netTemplateMVC\Template\bin\System.Threading.Tasks.Extensions.xml
 D:\GitHub\netTemplateMVC\Template\bin\Runda.B2B.Framework.dll.config
+D:\GitHub\netTemplateMVC\Template\bin\EntityFramework.dll
+D:\GitHub\netTemplateMVC\Template\bin\LitJson.dll
+D:\GitHub\netTemplateMVC\Template\bin\log4net.dll
+D:\GitHub\netTemplateMVC\Template\bin\EntityFramework.xml
+D:\GitHub\netTemplateMVC\Template\bin\log4net.xml

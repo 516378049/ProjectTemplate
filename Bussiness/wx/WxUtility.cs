@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using WxPayAPI;
 using WxPayAPI.wxRsult;
 using wxPayApiMVC.lib;
+using EF = Model.EF;
 
 namespace Bussiness.wx
 {

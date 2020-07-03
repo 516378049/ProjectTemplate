@@ -1,0 +1,2 @@
+D:\GitHub\netTemplateMVC\Vue\obj\Release\Vue.csprojAssemblyReference.cache
+D:\GitHub\netTemplateMVC\Vue\obj\Release\Vue.csproj.CoreCompileInputs.cache

@@ -5,17 +5,16 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebAPI.Core.WebAPI;
-using Vue.Models;
+using DataAccess.EF;
 using Runda.B2B.Framework;
 
 namespace Vue
 {
     public class BaseController : Controller
     {
-        public UnitOfWork Studio = new UnitOfWork();
+        public UnitOfWork Studio = new UnitOfWork(true);
         public T GetObj<T>() {
             return SingleObj<T>.getObj;
-            
         }
         /// <summary>
         /// 创建ApiResult对象，所有WebApi接口均使用该方法包装返回值

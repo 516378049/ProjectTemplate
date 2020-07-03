@@ -3,18 +3,18 @@
     <div style="position:fixed;top:0;left:0;width:100%; height:61.8%; text-align:center;color:azure;background-image:linear-gradient(#26a2ff,aliceblue);z-index:-1">
     </div>
     <mt-header title="登录" style="font-size:large;background-color:inherit">
-      <router-link to="/" slot="left">
-        <mt-button icon="back"></mt-button>
+      <router-link to="" slot="left">
+        <mt-button icon="back" @click.native="$router.back(-1)"></mt-button>
       </router-link>
     </mt-header>
 
     <div class="start" style="margin-top:70px"></div>
-    <mt-field style="border: 1px solid #b6b6b6;" label="手机号码：" placeholder="请输入手机号码" type="tel" v-model="login.phone"></mt-field>
+    <mt-field style="border: 1px solid #b6b6b6;" label="手机号码：" placeholder="请输入手机号码" value="15566866897" type="tel" v-model="login.phone"></mt-field>
     <span>
-      <mt-field style="border: 1px solid #b6b6b6;width:calc(100% - 102px);float:left" label="手机验证：" placeholder="请输手机验证码" v-model="login.password"></mt-field>
+      <mt-field style="border: 1px solid #b6b6b6;width:calc(100% - 102px);float:left" label="手机验证：" placeholder="请输手机验证码" value="1111" v-model="login.password"></mt-field>
       <mt-button style="height:50px;width:100px" type="default" plain>发送验证</mt-button>
     </span>
-    <mt-button style="margin-top:20px" type="danger" size="large">登 录</mt-button>
+    <mt-button style="margin-top:20px" type="danger" size="large" @click="m_login">登 录</mt-button>
     <div class="PayWay">
 
     </div>
@@ -57,14 +57,18 @@
       var ua = navigator.userAgent.toLowerCase();
       if (ua.match(/MicroMessenger/i) == "micromessenger") {
         var goto_Auth2 = that.$stringFormat(cnst.url.authorizeUrl, cnst.appid, encodeURIComponent(cnst.url.redirect_uri))
-        location.href = "http://localhost:8080/#/wxRedirect?code=00001";
-        //location.href = goto_Auth2;
+        //var goto_Auth2 = "http://localhost:8080/#/wxRedirect?code=00001";
+        //var goto_Auth2 ='http://localhost:8080/?code=00001#wxRedirect/'
+        location.href = goto_Auth2;
       }
 
     },
 
     methods: {
-
+      m_login() {
+        location.href = "http://www.changchunamy.com/OrderMeal/#/wxRedirect?code=00001";
+        //location.href = "http://localhost:8080/#/wxRedirect?code=00001";
+      }
     }
   }
 </script>

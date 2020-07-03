@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebAPI.Core.WebAPI;
-using EF=Vue.Models;
+using EF= Model.EF;
 namespace Vue.Controllers
 {
     public class apiController : BaseController
@@ -19,14 +19,13 @@ namespace Vue.Controllers
         // GET: api
         public JsonResult seller(int id)
         {
-            //syscSeller();
+            syscSeller(id);
             //string json= JsonHelper.ReadJsonFile(Server.MapPath("/WebVue/data.json"));
             //string seller =  JsonHelper.ConvertJsonResult(json, "seller");
             //seller seller_=  JsonHelper.ToObject<seller>(seller);
             EF.sellers ef_seller = Studio.Sellers.Get(X => X.Id == id && X.DelFlag == 0).FirstOrDefault();
             List<EF.supports> ef_supports = Studio.Supports.Get(X => X.sellerId == id && X.DelFlag == 0).ToList();
             ef_seller.supports = ef_supports;
-
             return Json(new { errno = 0, data= ef_seller },JsonRequestBehavior.AllowGet);
         }
         // GET: api
@@ -51,13 +50,21 @@ namespace Vue.Controllers
         // GET: api
         public JsonResult ratings(int id)
         {
-            List<EF.RatingsSeller> ratings_ = Studio.RatingsSeller.Get(X => X.sellerId == id && X.DelFlag == 0).ToList();
+            List<EF.RatingsSellers> ratings_ = Studio.RatingsSeller.Get(X => X.sellerId == id && X.DelFlag == 0).ToList();
             return Json(new { errno = 0, data= ratings_ }, JsonRequestBehavior.AllowGet);
         }
 
-
-        public void syscSeller()
+        public void syscSeller(int id)
         {
+            if (Studio.Sellers.Get(X => X.Id == id && X.DelFlag == 0).FirstOrDefault() != null)
+            {
+                return;
+            }
+            #region
+            //public List<supports> supports { get; set; }
+            //public List<foods> foods { get; set; }
+            //public List<ratings> ratings { get; set; }
+            #endregion
             #region empty database
             //delete foods;
             //delete goods;
@@ -126,7 +133,7 @@ namespace Vue.Controllers
             ef_seller.supports.ForEach(X => X.sellerId = serllerId);
             Studio.Supports.Insert(ef_seller.supports);
 
- 
+
             string _goods = JsonHelper.ConvertJsonResult(json, "goods");
             List<EF.goods> ef_goods = JsonHelper.ToObject<List<EF.goods>>(_goods);
             ////同步data.json数据到数据库
@@ -149,12 +156,13 @@ namespace Vue.Controllers
 
             //sysnc ratingsSeller
             string ratings = JsonHelper.ConvertJsonResult(json, "ratings");
-            List<EF.RatingsSeller> ratings_ = JsonHelper.ToObject<List<EF.RatingsSeller>>(ratings);
+            List<EF.RatingsSellers> ratings_ = JsonHelper.ToObject<List<EF.RatingsSellers>>(ratings);
             ratings_.ForEach(X => X.sellerId = serllerId);
             Studio.RatingsSeller.Insert(ratings_);
 
             #endregion
         }
+
     }
     public class Root
     {

@@ -14,7 +14,7 @@ const cnst =
 {
   appid: 'wxba3211abca2a188c',
   url: {
-    redirect_uri:'http://www.changchunamy.com/OrderMeal/#/App',
+    redirect_uri:'http://www.changchunamy.com/OrderMeal#wxRedirect/',
     authorizeUrl: "https://open.weixin.qq.com/connect/oauth2/authorize?appid={0}&redirect_uri={1}&response_type=code&scope=snsapi_userinfo#wechat_redirect"
   }
 }

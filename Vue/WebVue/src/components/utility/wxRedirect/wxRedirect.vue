@@ -6,6 +6,7 @@
 <script type="text/javascript">
   import { saveLocal, loadLocal } from 'common/js/storage'
   import { wxAuthorize } from '@/api/index'
+  import qs from 'query-string'
   export default {
     
     data() {
@@ -19,15 +20,22 @@
     },
     mounted() {
       var that = this
-      var code = that.$route.query.code
+      //var code = that.$route.query.code
+      //var code = qs.parse(location.search).id
+      //var code = that.$route.params.code
+      //微信传过来的code暂时通过window.location.href来获取
+      var _url = window.location.href
+      var code=_url.substring(_url.indexOf('=') + 1, _url.indexOf('#'))
       if (code) {
         wxAuthorize({
-          code:'1233'
-        }).then((ret) => {
-          this.$store.commit('wxAuthorize', { userInfo: ret.Message })
+          code: code
+        }).then((userInfo) => {
+          console.log(userInfo)
+          this.$store.commit('wxAuthorize', { userInfo: userInfo })
           //enter seller menulist
-          that.$router.push("App");
-          })
+          that.$router.push({ path: "/"});
+          //location.href ="http://localhost:8080/#/app"
+          }).catch(e => { })
       }
     },
 

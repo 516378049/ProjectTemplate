@@ -1,0 +1,2 @@
+D:\GitHub\netTemplateMVC\WebApplication2\obj\Release\WebApplication2.csprojAssemblyReference.cache
+D:\GitHub\netTemplateMVC\WebApplication2\obj\Release\WebApplication2.csproj.CoreCompileInputs.cache
