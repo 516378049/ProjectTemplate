@@ -10,6 +10,7 @@ namespace OrderMeal
     {
         public static void Register(HttpConfiguration config)
         {
+            config.EnableCors();
             //默认路由
             //自定义路由
             //路由特性 1、简单的路由特性 2、带参数{id}占位符的路由，参数约束和默认值 3、路由前缀
@@ -31,7 +32,7 @@ namespace OrderMeal
                 routeTemplate: "api.{controller}.{action}/{id}",//1、{id}设置或不设置都可以，访问地址必须要以‘/’结尾 2、{id}前必须为'/',不能为'.'，最后如果有参数则以‘/{id}’结尾，没有参数的话以'/'结尾
                 defaults: new { id = RouteParameter.Optional }
             );
-
+            
             config.MessageHandlers.Add(new ApiValidateHandler());
         }
     }

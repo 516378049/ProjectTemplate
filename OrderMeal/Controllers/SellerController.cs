@@ -5,10 +5,12 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using WebAPI.Core.WebAPI;
 
 namespace OrderMeal.Controllers
 {
+    [EnableCors(origins: "http://www.changchunamy.com/OrderMeal/", headers: "*", methods: "*")]
     public class SellerController : BaseApiController
     {
         #region default fundation

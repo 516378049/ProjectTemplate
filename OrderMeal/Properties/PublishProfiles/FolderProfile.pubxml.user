@@ -19,13 +19,13 @@
       <publishTime>09/25/2019 16:02:02</publishTime>
     </File>
     <File Include="bin/DataAccess.dll">
-      <publishTime>07/03/2020 19:33:34</publishTime>
+      <publishTime>07/03/2020 22:38:20</publishTime>
     </File>
     <File Include="bin/DataAccess.dll.config">
       <publishTime>06/29/2020 14:19:39</publishTime>
     </File>
     <File Include="bin/DataAccess.pdb">
-      <publishTime>07/03/2020 19:33:34</publishTime>
+      <publishTime>07/03/2020 22:38:20</publishTime>
     </File>
     <File Include="bin/DiffieHellman.dll">
       <publishTime>09/25/2019 16:02:08</publishTime>
@@ -79,13 +79,13 @@
       <publishTime>07/25/2012 11:48:56</publishTime>
     </File>
     <File Include="bin/Model.dll">
-      <publishTime>07/03/2020 19:33:33</publishTime>
+      <publishTime>07/03/2020 22:38:19</publishTime>
     </File>
     <File Include="bin/Model.dll.config">
       <publishTime>07/03/2020 19:51:06</publishTime>
     </File>
     <File Include="bin/Model.pdb">
-      <publishTime>07/03/2020 19:33:33</publishTime>
+      <publishTime>07/03/2020 22:38:19</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>02/18/2018 09:44:54</publishTime>
@@ -103,10 +103,10 @@
       <publishTime>09/25/2019 16:02:06</publishTime>
     </File>
     <File Include="bin/OrderMeal.dll">
-      <publishTime>07/03/2020 19:51:26</publishTime>
+      <publishTime>07/03/2020 22:38:21</publishTime>
     </File>
     <File Include="bin/OrderMeal.pdb">
-      <publishTime>07/03/2020 19:51:26</publishTime>
+      <publishTime>07/03/2020 22:38:21</publishTime>
     </File>
     <File Include="bin/Org.Mentalis.Security.dll">
       <publishTime>09/25/2019 16:02:08</publishTime>
@@ -253,22 +253,22 @@
       <publishTime>05/24/2018 13:38:24</publishTime>
     </File>
     <File Include="bin/Runda.B2B.Framework.dll">
-      <publishTime>07/03/2020 19:33:33</publishTime>
+      <publishTime>07/03/2020 22:38:19</publishTime>
     </File>
     <File Include="bin/Runda.B2B.Framework.dll.config">
       <publishTime>06/29/2020 14:19:39</publishTime>
     </File>
     <File Include="bin/Runda.B2B.Framework.pdb">
-      <publishTime>07/03/2020 19:33:33</publishTime>
+      <publishTime>07/03/2020 22:38:19</publishTime>
     </File>
     <File Include="bin/Runda.WebAPI.Core.dll">
-      <publishTime>07/03/2020 19:33:34</publishTime>
+      <publishTime>07/03/2020 22:38:20</publishTime>
     </File>
     <File Include="bin/Runda.WebAPI.Core.dll.config">
       <publishTime>06/29/2020 19:44:50</publishTime>
     </File>
     <File Include="bin/Runda.WebAPI.Core.pdb">
-      <publishTime>07/03/2020 19:33:34</publishTime>
+      <publishTime>07/03/2020 22:38:20</publishTime>
     </File>
     <File Include="bin/ServiceStack.Common.dll">
       <publishTime>09/25/2019 16:02:07</publishTime>
@@ -295,7 +295,7 @@
       <publishTime>04/17/2019 16:24:34</publishTime>
     </File>
     <File Include="bin/System.Net.Http.Formatting.dll">
-      <publishTime>04/02/2020 17:01:52</publishTime>
+      <publishTime>11/28/2018 13:00:36</publishTime>
     </File>
     <File Include="bin/System.Numerics.Vectors.dll">
       <publishTime>07/19/2017 10:01:36</publishTime>
@@ -309,14 +309,20 @@
     <File Include="bin/System.Threading.Tasks.Extensions.dll">
       <publishTime>02/19/2020 10:05:18</publishTime>
     </File>
+    <File Include="bin/System.Web.Cors.dll">
+      <publishTime>11/28/2018 12:58:44</publishTime>
+    </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>02/01/2018 12:20:56</publishTime>
     </File>
+    <File Include="bin/System.Web.Http.Cors.dll">
+      <publishTime>11/28/2018 13:01:26</publishTime>
+    </File>
     <File Include="bin/System.Web.Http.dll">
-      <publishTime>04/02/2020 17:01:57</publishTime>
+      <publishTime>11/28/2018 13:01:00</publishTime>
     </File>
     <File Include="bin/System.Web.Http.WebHost.dll">
-      <publishTime>04/02/2020 17:01:43</publishTime>
+      <publishTime>11/28/2018 13:02:56</publishTime>
     </File>
     <File Include="bin/System.Web.Mvc.dll">
       <publishTime>02/01/2018 12:16:32</publishTime>
@@ -361,16 +367,16 @@
       <publishTime>10/23/2017 13:15:34</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Net.Http.Formatting.resources.dll">
-      <publishTime>08/08/2012 17:54:36</publishTime>
+      <publishTime>11/29/2018 13:26:02</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Web.Helpers.resources.dll">
       <publishTime>02/01/2018 12:21:00</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Web.Http.resources.dll">
-      <publishTime>08/08/2012 17:54:40</publishTime>
+      <publishTime>11/29/2018 13:26:30</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Web.Http.WebHost.resources.dll">
-      <publishTime>08/08/2012 17:54:30</publishTime>
+      <publishTime>11/29/2018 13:28:20</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Web.Mvc.resources.dll">
       <publishTime>02/01/2018 12:16:38</publishTime>
@@ -484,7 +490,7 @@
       <publishTime>06/28/2020 19:32:55</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>07/03/2020 19:52:12</publishTime>
+      <publishTime>07/03/2020 22:39:31</publishTime>
     </File>
   </ItemGroup>
 </Project>

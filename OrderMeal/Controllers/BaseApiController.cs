@@ -14,6 +14,7 @@ namespace OrderMeal.Controllers
 {
     public class BaseApiController : ApiController
     {
+
         public UnitOfWork Studio = new UnitOfWork();
         /// <summary>
         /// 创建ApiResult对象，所有WebApi接口均使用该方法包装返回值

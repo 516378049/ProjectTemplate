@@ -157,3 +157,6 @@ D:\GitHub\netTemplateMVC\OrderMeal\bin\EntityFramework.SqlServer.xml
 D:\GitHub\netTemplateMVC\OrderMeal\bin\zh-Hans\EntityFramework.resources.dll
 D:\GitHub\netTemplateMVC\OrderMeal\bin\zh-Hans\EntityFramework.SqlServer.resources.dll
 D:\GitHub\netTemplateMVC\OrderMeal\bin\Runda.WebAPI.Core.dll.config
+D:\GitHub\netTemplateMVC\OrderMeal\bin\System.Web.Cors.dll
+D:\GitHub\netTemplateMVC\OrderMeal\bin\System.Web.Http.Cors.dll
+D:\GitHub\netTemplateMVC\OrderMeal\bin\System.Web.Http.Cors.xml
