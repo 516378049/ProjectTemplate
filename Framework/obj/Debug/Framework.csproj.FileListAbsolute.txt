@@ -28,9 +28,6 @@ D:\记录文档\github --save\git sourceCode management\version 20200121\netTemp
 D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Framework\obj\Debug\Framework.csproj.CopyComplete
 D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Framework\obj\Debug\Runda.B2B.Framework.dll
 D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Framework\obj\Debug\Runda.B2B.Framework.pdb
-D:\GitHub\netTemplateMVC\Framework\bin\Debug\Runda.B2B.Framework.dll.config
-D:\GitHub\netTemplateMVC\Framework\bin\Debug\Runda.B2B.Framework.dll
-D:\GitHub\netTemplateMVC\Framework\bin\Debug\Runda.B2B.Framework.pdb
 D:\GitHub\netTemplateMVC\Framework\bin\Debug\DocumentFormat.OpenXml.dll
 D:\GitHub\netTemplateMVC\Framework\bin\Debug\LitJson.dll
 D:\GitHub\netTemplateMVC\Framework\bin\Debug\log4net.dll
@@ -69,5 +66,8 @@ D:\GitHub\netTemplateMVC\Framework\bin\Debug\EntityFramework.xml
 D:\GitHub\netTemplateMVC\Framework\obj\Debug\Framework.csprojAssemblyReference.cache
 D:\GitHub\netTemplateMVC\Framework\obj\Debug\Framework.csproj.CoreCompileInputs.cache
 D:\GitHub\netTemplateMVC\Framework\obj\Debug\Framework.csproj.CopyComplete
-D:\GitHub\netTemplateMVC\Framework\obj\Debug\Runda.B2B.Framework.dll
-D:\GitHub\netTemplateMVC\Framework\obj\Debug\Runda.B2B.Framework.pdb
+D:\GitHub\netTemplateMVC\Framework\bin\Debug\Framework.dll.config
+D:\GitHub\netTemplateMVC\Framework\bin\Debug\Framework.dll
+D:\GitHub\netTemplateMVC\Framework\bin\Debug\Framework.pdb
+D:\GitHub\netTemplateMVC\Framework\obj\Debug\Framework.dll
+D:\GitHub\netTemplateMVC\Framework\obj\Debug\Framework.pdb

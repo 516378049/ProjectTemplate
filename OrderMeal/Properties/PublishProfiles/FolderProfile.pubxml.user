@@ -19,13 +19,13 @@
       <publishTime>09/25/2019 16:02:02</publishTime>
     </File>
     <File Include="bin/DataAccess.dll">
-      <publishTime>07/03/2020 22:38:20</publishTime>
+      <publishTime>07/09/2020 18:53:11</publishTime>
     </File>
     <File Include="bin/DataAccess.dll.config">
       <publishTime>06/29/2020 14:19:39</publishTime>
     </File>
     <File Include="bin/DataAccess.pdb">
-      <publishTime>07/03/2020 22:38:20</publishTime>
+      <publishTime>07/09/2020 18:53:11</publishTime>
     </File>
     <File Include="bin/DiffieHellman.dll">
       <publishTime>09/25/2019 16:02:08</publishTime>
@@ -42,6 +42,15 @@
     <File Include="bin/FluentData.dll">
       <publishTime>10/09/2019 18:40:16</publishTime>
     </File>
+    <File Include="bin/Framework.dll">
+      <publishTime>07/09/2020 18:53:11</publishTime>
+    </File>
+    <File Include="bin/Framework.dll.config">
+      <publishTime>06/29/2020 14:19:39</publishTime>
+    </File>
+    <File Include="bin/Framework.pdb">
+      <publishTime>07/09/2020 18:53:11</publishTime>
+    </File>
     <File Include="bin/Gma.QrCodeNet.Encoding.dll">
       <publishTime>09/25/2019 16:02:02</publishTime>
     </File>
@@ -54,8 +63,17 @@
     <File Include="bin/LitJson.dll">
       <publishTime>04/02/2020 00:11:19</publishTime>
     </File>
+    <File Include="bin/log4net.config">
+      <publishTime>07/08/2020 17:29:10</publishTime>
+    </File>
+    <File Include="bin/log4net.Debug.config">
+      <publishTime>07/08/2020 17:28:31</publishTime>
+    </File>
     <File Include="bin/log4net.dll">
       <publishTime>03/08/2017 19:26:22</publishTime>
+    </File>
+    <File Include="bin/log4net.Release.config">
+      <publishTime>07/08/2020 17:28:31</publishTime>
     </File>
     <File Include="bin/Microsoft.Bcl.AsyncInterfaces.dll">
       <publishTime>04/14/2020 22:39:20</publishTime>
@@ -79,16 +97,16 @@
       <publishTime>07/25/2012 11:48:56</publishTime>
     </File>
     <File Include="bin/Model.dll">
-      <publishTime>07/03/2020 22:38:19</publishTime>
+      <publishTime>07/09/2020 15:28:16</publishTime>
     </File>
     <File Include="bin/Model.dll.config">
       <publishTime>07/03/2020 19:51:06</publishTime>
     </File>
     <File Include="bin/Model.pdb">
-      <publishTime>07/03/2020 22:38:19</publishTime>
+      <publishTime>07/09/2020 15:28:16</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
-      <publishTime>02/18/2018 09:44:54</publishTime>
+      <publishTime>11/09/2019 00:56:44</publishTime>
     </File>
     <File Include="bin/NPOI.dll">
       <publishTime>09/25/2019 16:02:07</publishTime>
@@ -103,10 +121,10 @@
       <publishTime>09/25/2019 16:02:06</publishTime>
     </File>
     <File Include="bin/OrderMeal.dll">
-      <publishTime>07/03/2020 22:38:21</publishTime>
+      <publishTime>07/09/2020 18:53:15</publishTime>
     </File>
     <File Include="bin/OrderMeal.pdb">
-      <publishTime>07/03/2020 22:38:21</publishTime>
+      <publishTime>07/09/2020 18:53:15</publishTime>
     </File>
     <File Include="bin/Org.Mentalis.Security.dll">
       <publishTime>09/25/2019 16:02:08</publishTime>
@@ -357,6 +375,24 @@
     <File Include="bin/ThinkDev.Logging.dll">
       <publishTime>10/09/2019 18:40:15</publishTime>
     </File>
+    <File Include="bin/Web.config">
+      <publishTime>07/09/2020 19:18:29</publishTime>
+    </File>
+    <File Include="bin/Web.Debug.config">
+      <publishTime>06/28/2020 19:32:55</publishTime>
+    </File>
+    <File Include="bin/Web.Release.config">
+      <publishTime>06/28/2020 19:32:55</publishTime>
+    </File>
+    <File Include="bin/WebAPI.Core.dll">
+      <publishTime>07/09/2020 18:53:15</publishTime>
+    </File>
+    <File Include="bin/WebAPI.Core.dll.config">
+      <publishTime>06/29/2020 19:44:50</publishTime>
+    </File>
+    <File Include="bin/WebAPI.Core.pdb">
+      <publishTime>07/09/2020 18:53:15</publishTime>
+    </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>01/23/2014 13:57:34</publishTime>
     </File>
@@ -444,6 +480,15 @@
     <File Include="Global.asax">
       <publishTime>06/28/2020 19:32:55</publishTime>
     </File>
+    <File Include="log4net.config">
+      <publishTime>07/08/2020 17:29:10</publishTime>
+    </File>
+    <File Include="log4net.Debug.config">
+      <publishTime>07/08/2020 17:28:31</publishTime>
+    </File>
+    <File Include="log4net.Release.config">
+      <publishTime>07/08/2020 17:28:31</publishTime>
+    </File>
     <File Include="Models/Model1.edmx.diagram">
       <publishTime>06/29/2020 16:36:51</publishTime>
     </File>
@@ -490,7 +535,7 @@
       <publishTime>06/28/2020 19:32:55</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>07/03/2020 22:39:31</publishTime>
+      <publishTime>07/09/2020 19:18:29</publishTime>
     </File>
   </ItemGroup>
 </Project>

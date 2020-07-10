@@ -16,7 +16,7 @@ namespace Framework
     public class RedisHelper
     {
 
-
+        TimeSpan ExpiredDefaultRedis = TimeSpan.FromSeconds(20);//默认20分钟
         //单例模式获取redis实例
         private static RedisHelper rdis = null;
         public static RedisHelper getRedisServer
@@ -205,6 +205,28 @@ namespace Framework
             }
         }
         /// <summary>
+        /// 获取字符串
+        /// </summary>
+        /// <param name="redisKey"></param>
+        /// <param name="expired"></param>
+        /// <returns></returns>
+        public T StringGet<T>(string redisKey, TimeSpan? expired = null)
+        {
+            try
+            {
+                //redisKey = AddKeyPrefix(redisKey);
+                string _value = _db.StringGet(redisKey);
+                if (_value == null) {
+                    _value = "";
+                }
+                return JsonHelper.ToObject<T>(_value);
+            }
+            catch (TypeAccessException ex)
+            {
+                throw ex;
+            }
+        }
+        /// <summary>
         /// 存储一个对象，该对象会被序列化存储
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -212,10 +234,14 @@ namespace Framework
         /// <param name="redisValue"></param>
         /// <param name="expired"></param>
         /// <returns></returns>
-        public bool StringSet<T>(string redisKey, T redisValue, TimeSpan? expired = null)
+        public bool StringSet<T>(string redisKey, T redisValue, TimeSpan? expired =null)
         {
-            redisKey = AddKeyPrefix(redisKey);
-            var json = Serialize(redisKey);
+            if (expired == null) {
+                expired = ExpiredDefaultRedis;
+            }
+            //redisKey = AddKeyPrefix(redisKey);
+            //var json = Serialize(redisKey);
+            var json = JsonHelper.ToJson(redisValue);
             return _db.StringSet(redisKey, json, expired);
         }
         /// <summary>
@@ -225,7 +251,7 @@ namespace Framework
         /// <param name="redisKey"></param>
         /// <param name="expired"></param>
         /// <returns></returns>
-        public T StringSet<T>(string redisKey, TimeSpan? expired = null)
+        public T StringSet<T>(string redisKey, TimeSpan? expired)
         {
             redisKey = AddKeyPrefix(redisKey);
             return Deserialize<T>(_db.StringGet(redisKey));
@@ -288,7 +314,7 @@ namespace Framework
         /// <param name="redisValue"></param>
         /// <param name="expired"></param>
         /// <returns></returns>
-        public async Task<T> StringGetAsync<T>(string redisKey, string redisValue, TimeSpan? expired = null)
+        public async Task<T> StringGetAsync<T>(string redisKey, TimeSpan? expired = null)
         {
             redisKey = AddKeyPrefix(redisKey);
             return Deserialize<T>(await _db.StringGetAsync(redisKey));

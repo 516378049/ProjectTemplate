@@ -301,12 +301,15 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
@@ -360,6 +363,18 @@
     <Content Include="WebVue\src\components\utility\errorPage\errorPage.vue" />
     <Content Include="WebVue\src\components\home\OrderList.vue" />
     <Content Include="WebVue\src\components\home\Me.vue" />
+    <Content Include="log4net.config">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="log4net.Debug.config">
+      <DependentUpon>log4net.config</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="log4net.Release.config">
+      <DependentUpon>log4net.config</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -397,10 +412,6 @@
       <Project>{0B4A6448-CA31-4F14-AAFD-167E59CA4335}</Project>
       <Name>Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WebApi.Core\WebAPI.Core.csproj">
-      <Project>{bb2c885a-a5d2-4e69-9cb8-68821fd6e612}</Project>
-      <Name>WebAPI.Core</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -426,7 +437,7 @@
           <IISUrl>http://localhost:58555/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>True</UseCustomServer>
-          <CustomServerUrl>http://vuecli.test/</CustomServerUrl>
+          <CustomServerUrl>http://local.vuecli.test/</CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>

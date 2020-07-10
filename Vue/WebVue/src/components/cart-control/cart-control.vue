@@ -27,11 +27,13 @@
         } else {
           this.food.count++
         }
+        this.$store.dispatch('a_setCartCount', { count: 1, menuId: this.food.Id })
         this.$emit(EVENT_ADD, event.target)
       },
       decrease() {
         if (this.food.count) {
           this.food.count--
+          this.$store.dispatch('a_setCartCount', { count: -1, menuId: this.food.Id })
         }
       }
     }

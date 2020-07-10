@@ -15,11 +15,14 @@ import errorPage from '@/components/utility/errorPage/errorPage'
 
 import { loadLocal } from '@/common/js/storage'
 import store from '@/common/js/store'
+import cnst from '@/common/js/Global'
 import qs from 'query-string'
 Vue.use(Router)
 
 
 let router = new Router({
+  mode: 'history',
+  base: '/OrderMeal/', //如果项目根目录不为域名，则添加设置域名后级目录 eg. OrderMeal
   routes: [
     {
       path: '/Test',
@@ -111,10 +114,7 @@ router.beforeEach((to, from, next) => {
     else {
       next({
         path: '/wxLogin',
-        query: {//默认测试商家
-          id: '4',
-          deskNumber: '888'
-        } // 将要跳转路由的path作为参数，传递到登录页面
+        query: cnst.query
       })
     }
   }

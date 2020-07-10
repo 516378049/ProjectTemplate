@@ -66,7 +66,7 @@
         this.itemHeight = this.$refs.icons.offsetHeight
         // 设置位置
         this.left = this.clientWidth - this.itemWidth - this.safeArea[1]
-        this.top = this.clientHeight - this.itemWidth - this.bottom
+        this.top = this.clientHeight - this.itemWidth - this.bottom-10
         div.addEventListener('touchstart', e => {
           div.style.transition = 'none'
         })

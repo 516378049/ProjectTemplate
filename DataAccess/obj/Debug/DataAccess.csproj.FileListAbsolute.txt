@@ -142,7 +142,6 @@ D:\GitHub\netTemplateMVC\DataAccess\bin\Debug\Microsoft.Practices.EnterpriseLibr
 D:\GitHub\netTemplateMVC\DataAccess\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
 D:\GitHub\netTemplateMVC\DataAccess\bin\Debug\Microsoft.Practices.ObjectBuilder.dll
 D:\GitHub\netTemplateMVC\DataAccess\bin\Debug\Model.dll
-D:\GitHub\netTemplateMVC\DataAccess\bin\Debug\Runda.B2B.Framework.dll
 D:\GitHub\netTemplateMVC\DataAccess\bin\Debug\ThinkDev.FrameWork.dll
 D:\GitHub\netTemplateMVC\DataAccess\bin\Debug\LitJson.dll
 D:\GitHub\netTemplateMVC\DataAccess\bin\Debug\DocumentFormat.OpenXml.dll
@@ -175,8 +174,6 @@ D:\GitHub\netTemplateMVC\DataAccess\bin\Debug\NPOI.OpenXmlFormats.dll
 D:\GitHub\netTemplateMVC\DataAccess\bin\Debug\NPOI.OpenXml4Net.dll
 D:\GitHub\netTemplateMVC\DataAccess\bin\Debug\System.Numerics.Vectors.dll
 D:\GitHub\netTemplateMVC\DataAccess\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
-D:\GitHub\netTemplateMVC\DataAccess\bin\Debug\Runda.B2B.Framework.pdb
-D:\GitHub\netTemplateMVC\DataAccess\bin\Debug\Runda.B2B.Framework.dll.config
 D:\GitHub\netTemplateMVC\DataAccess\bin\Debug\Model.pdb
 D:\GitHub\netTemplateMVC\DataAccess\bin\Debug\Model.dll.config
 D:\GitHub\netTemplateMVC\DataAccess\bin\Debug\EntityFramework.xml
@@ -199,3 +196,6 @@ D:\GitHub\netTemplateMVC\DataAccess\obj\Debug\DataAccess.csproj.CoreCompileInput
 D:\GitHub\netTemplateMVC\DataAccess\obj\Debug\DataAccess.csproj.CopyComplete
 D:\GitHub\netTemplateMVC\DataAccess\obj\Debug\DataAccess.dll
 D:\GitHub\netTemplateMVC\DataAccess\obj\Debug\DataAccess.pdb
+D:\GitHub\netTemplateMVC\DataAccess\bin\Debug\Framework.dll
+D:\GitHub\netTemplateMVC\DataAccess\bin\Debug\Framework.pdb
+D:\GitHub\netTemplateMVC\DataAccess\bin\Debug\Framework.dll.config

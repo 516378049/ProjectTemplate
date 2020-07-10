@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using WebAPI.Core.WebAPI;
 using EF= Model.EF;
 namespace Vue.Controllers
 {
@@ -20,9 +19,9 @@ namespace Vue.Controllers
         public JsonResult seller(int id)
         {
             syscSeller(id);
-            //string json= JsonHelper.ReadJsonFile(Server.MapPath("/WebVue/data.json"));
-            //string seller =  JsonHelper.ConvertJsonResult(json, "seller");
-            //seller seller_=  JsonHelper.ToObject<seller>(seller);
+            //string json = JsonHelper.ReadJsonFile(Server.MapPath("/WebVue/data.json"));
+            //string seller = JsonHelper.ConvertJsonResult(json, "seller");
+            //seller seller_ = JsonHelper.ToObject<seller>(seller);
             EF.sellers ef_seller = Studio.Sellers.Get(X => X.Id == id && X.DelFlag == 0).FirstOrDefault();
             List<EF.supports> ef_supports = Studio.Supports.Get(X => X.sellerId == id && X.DelFlag == 0).ToList();
             ef_seller.supports = ef_supports;
@@ -61,70 +60,70 @@ namespace Vue.Controllers
                 return;
             }
             #region
-            //public List<supports> supports { get; set; }
-            //public List<foods> foods { get; set; }
-            //public List<ratings> ratings { get; set; }
-            #endregion
-            #region empty database
-            //delete foods;
-            //delete goods;
-            //delete ratings;
-            //delete RatingsSeller;
-            //delete sellers;
-            //delete supports;
-            //delete Token;
-            //delete UserInfo;
-            #endregion
-            #region abandon, will use new fundation to instead it 
+        //public List<supports> supports { get; set; }
+        //public List<foods> foods { get; set; }
+        //public List<ratings> ratings { get; set; }
+        #endregion
+        #region empty database
+        //delete foods;
+        //delete goods;
+        //delete ratings;
+        //delete RatingsSeller;
+        //delete sellers;
+        //delete supports;
+        //delete Token;
+        //delete UserInfo;
+        #endregion
+        #region abandon, will use new fundation to instead it 
 
-            //string json = JsonHelper.ReadJsonFile(Server.MapPath("/WebVue/data.json"));
-            //string seller = JsonHelper.ConvertJsonResult(json, "seller");
-            //seller seller_ = JsonHelper.ToObject<seller>(seller);
+        //string json = JsonHelper.ReadJsonFile(Server.MapPath("/WebVue/data.json"));
+        //string seller = JsonHelper.ConvertJsonResult(json, "seller");
+        //seller seller_ = JsonHelper.ToObject<seller>(seller);
 
-            ////同步data.json数据到数据库
-            //EF.sellers ef_seller = EntityHelper.EntityCopy<EF.sellers, seller>(seller_);
-            //int serllerId = Studio.Sellers.Insert(ef_seller).Id;
-            //foreach (supports sps in seller_.supports)
-            //{
-            //    EF.supports ef_supports = EntityHelper.EntityCopy<EF.supports, supports>(sps);
-            //    ef_supports.sellerId = serllerId;
-            //    Studio.Supports.Insert(ef_supports);
-            //}
+        ////同步data.json数据到数据库
+        //EF.sellers ef_seller = EntityHelper.EntityCopy<EF.sellers, seller>(seller_);
+        //int serllerId = Studio.Sellers.Insert(ef_seller).Id;
+        //foreach (supports sps in seller_.supports)
+        //{
+        //    EF.supports ef_supports = EntityHelper.EntityCopy<EF.supports, supports>(sps);
+        //    ef_supports.sellerId = serllerId;
+        //    Studio.Supports.Insert(ef_supports);
+        //}
 
 
-            //string _goods = JsonHelper.ConvertJsonResult(json, "goods");
-            //List<goods> goods = JsonHelper.ToObject<List<goods>>(_goods);
-            //////同步data.json数据到数据库
-            //foreach (goods gds in goods)
-            //{
-            //    EF.goods ef_goods = EntityHelper.EntityCopy<EF.goods, goods>(gds);
-            //    ef_goods.sellerId = serllerId;
-            //    int goodId = Studio.Goods.Insert(ef_goods).Id;
+        //string _goods = JsonHelper.ConvertJsonResult(json, "goods");
+        //List<goods> goods = JsonHelper.ToObject<List<goods>>(_goods);
+        //////同步data.json数据到数据库
+        //foreach (goods gds in goods)
+        //{
+        //    EF.goods ef_goods = EntityHelper.EntityCopy<EF.goods, goods>(gds);
+        //    ef_goods.sellerId = serllerId;
+        //    int goodId = Studio.Goods.Insert(ef_goods).Id;
 
-            //    foreach (foods fds in gds.foods)
-            //    {
-            //        EF.foods ef_foods = EntityHelper.EntityCopy<EF.foods, foods>(fds);
-            //        ef_foods.goodId = goodId;
-            //        int foodId = Studio.Foods.Insert(ef_foods).Id;
+        //    foreach (foods fds in gds.foods)
+        //    {
+        //        EF.foods ef_foods = EntityHelper.EntityCopy<EF.foods, foods>(fds);
+        //        ef_foods.goodId = goodId;
+        //        int foodId = Studio.Foods.Insert(ef_foods).Id;
 
-            //        foreach (ratings rat in fds.ratings)
-            //        {
-            //            EF.ratings ef_ratings = EntityHelper.EntityCopy<EF.ratings, ratings>(rat);
-            //            ef_ratings.foodId = foodId;
-            //            Studio.Ratings.Insert(ef_ratings);
-            //        }
-            //    }
-            //}
+        //        foreach (ratings rat in fds.ratings)
+        //        {
+        //            EF.ratings ef_ratings = EntityHelper.EntityCopy<EF.ratings, ratings>(rat);
+        //            ef_ratings.foodId = foodId;
+        //            Studio.Ratings.Insert(ef_ratings);
+        //        }
+        //    }
+        //}
 
-            ////sysnc ratingsSeller
-            //string ratings = JsonHelper.ConvertJsonResult(json, "ratings");
-            //List<EF.RatingsSeller> ratings_ = JsonHelper.ToObject<List<EF.RatingsSeller>>(ratings);
-            //Studio.RatingsSeller.Insert(ratings_);
+        ////sysnc ratingsSeller
+        //string ratings = JsonHelper.ConvertJsonResult(json, "ratings");
+        //List<EF.RatingsSeller> ratings_ = JsonHelper.ToObject<List<EF.RatingsSeller>>(ratings);
+        //Studio.RatingsSeller.Insert(ratings_);
 
-            #endregion
+        #endregion
 
-            #region sync database from data.json
-            string json = JsonHelper.ReadJsonFile(Server.MapPath("/WebVue/data.json"));
+        #region sync database from data.json
+        string json = JsonHelper.ReadJsonFile(Server.MapPath("/WebVue/data.json"));
             string seller = JsonHelper.ConvertJsonResult(json, "seller");
             EF.sellers ef_seller = JsonHelper.ToObject<EF.sellers>(seller);
 

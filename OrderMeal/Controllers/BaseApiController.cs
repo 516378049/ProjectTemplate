@@ -204,10 +204,10 @@ namespace OrderMeal.Controllers
         protected ApiResult ErrorHandle(Exception ex, string actionInfo = "")
         {
             //TODO:加入异常统计
-            Log.ILog4.Debug(Log.logExpConvert(ex));
+            Log.ILog4_Error.Error("接口出现错误",ex);
             return new ApiResult()
             {
-                RetCode = GetErrCode(WebConst.RetCode_Error),
+                RetCode = "-1",//GetErrCode(WebConst.RetCode_Error),
                 //RetMsg = actionInfo + "接口出现错误",
                 RetMsg = string.Format("{0}接口出现错误 ({1})", actionInfo, ex.Message.ToString()),
                 Message = null

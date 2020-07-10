@@ -74,16 +74,13 @@ module.exports = {
           '^/OrderMealCustomer': ''
         }
       },
-      '/OrderMeal': {   //如果有前缀相同的，那么短点的前缀写后面，不然会有限匹配
-        target: 'http://vuecli.test/',
+      '/Authorize': {   //如果有前缀相同的，那么短点的前缀写后面，不然会有限匹配
+        target: 'http://local.vuecli.test/',
         changeOrigin: true,
         pathRewrite: {
-          '^/OrderMeal': ''
+          '^/Authorize': ''
         }
       }
-
-
-      
     }
   }
   ,
@@ -96,5 +93,6 @@ module.exports = {
     config.plugin('context')
       .use(webpack.ContextReplacementPlugin, [/moment[/\\]locale$/, /zh-cn/])
   },
-  baseUrl: ''
+  publicPath:'/OrderMeal/' //set publicPath then webpack will find out the static file of auto generic, like js 、css... 
+  //baseUrl: ''
 }

@@ -101,12 +101,15 @@
     .container .OrderlistDiv_Home .OrderlistDivSingle {
       box-sizing: border-box;
       color: black;
+      margin-top: 5px;
       padding-top: 10px;
       padding-right: 20px;
       padding-bottom: 10px;
       border-bottom: 1px solid rgba(0,0,0,.1);
       width: 100%;
-      background-image: linear-gradient(rgb(167, 216, 255), rgb(255, 255, 255))
+      background-image: linear-gradient(rgb(167, 216, 255), rgb(255, 255, 255));
+      box-shadow: rgba(220, 218, 139, 0.54) 0px 0px 15px;
+      -webkit-box-shadow: rgba(220, 218, 139, 0.54) 0px 0px 15px;
     }
 
   </style>

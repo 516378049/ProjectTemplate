@@ -1,8 +1,5 @@
 D:\GitHub\netTemplateMVC\WebApi.Core\obj\Debug\WebAPI.Core.csprojAssemblyReference.cache
 D:\GitHub\netTemplateMVC\WebApi.Core\obj\Debug\WebAPI.Core.csproj.CoreCompileInputs.cache
-D:\GitHub\netTemplateMVC\WebApi.Core\bin\Debug\Runda.WebAPI.Core.dll.config
-D:\GitHub\netTemplateMVC\WebApi.Core\bin\Debug\Runda.WebAPI.Core.dll
-D:\GitHub\netTemplateMVC\WebApi.Core\bin\Debug\Runda.WebAPI.Core.pdb
 D:\GitHub\netTemplateMVC\WebApi.Core\bin\Debug\DataAccess.dll
 D:\GitHub\netTemplateMVC\WebApi.Core\bin\Debug\Model.dll
 D:\GitHub\netTemplateMVC\WebApi.Core\bin\Debug\Newtonsoft.Json.dll
@@ -17,5 +14,8 @@ D:\GitHub\netTemplateMVC\WebApi.Core\bin\Debug\System.Net.Http.Formatting.xml
 D:\GitHub\netTemplateMVC\WebApi.Core\bin\Debug\EntityFramework.xml
 D:\GitHub\netTemplateMVC\WebApi.Core\bin\Debug\zh-Hans\System.Net.Http.Formatting.resources.dll
 D:\GitHub\netTemplateMVC\WebApi.Core\obj\Debug\WebAPI.Core.csproj.CopyComplete
-D:\GitHub\netTemplateMVC\WebApi.Core\obj\Debug\Runda.WebAPI.Core.dll
-D:\GitHub\netTemplateMVC\WebApi.Core\obj\Debug\Runda.WebAPI.Core.pdb
+D:\GitHub\netTemplateMVC\WebApi.Core\bin\Debug\WebAPI.Core.dll.config
+D:\GitHub\netTemplateMVC\WebApi.Core\bin\Debug\WebAPI.Core.dll
+D:\GitHub\netTemplateMVC\WebApi.Core\bin\Debug\WebAPI.Core.pdb
+D:\GitHub\netTemplateMVC\WebApi.Core\obj\Debug\WebAPI.Core.dll
+D:\GitHub\netTemplateMVC\WebApi.Core\obj\Debug\WebAPI.Core.pdb

@@ -105,18 +105,44 @@ namespace Framework
         #endregion
     }
     public class Log {
-        public static log4net.ILog ILog4
+        public static log4net.ILog ILog4_Info
         {
             get
             {
-                log4net.ILog ILog_ = log4net.LogManager.Exists("OrderMeal");
+                log4net.ILog ILog_ = log4net.LogManager.Exists("LogFileInfo");
                 if (ILog_ == null)
                 {
-                    ILog_ = log4net.LogManager.GetLogger("OrderMeal");
+                    ILog_ = log4net.LogManager.GetLogger("LogFileInfo");
                 }
                 return ILog_;
             }
         }
+        public static log4net.ILog ILog4_Debug
+        {
+            get
+            {
+                log4net.ILog ILog_ = log4net.LogManager.Exists("LogFileDebug");
+                if (ILog_ == null)
+                {
+                    ILog_ = log4net.LogManager.GetLogger("LogFileDebug");
+                }
+                return ILog_;
+            }
+        }
+
+        public static log4net.ILog ILog4_Error
+        {
+            get
+            {
+                log4net.ILog ILog_ = log4net.LogManager.Exists("LogFileError");
+                if (ILog_ == null)
+                {
+                    ILog_ = log4net.LogManager.GetLogger("LogFileError");
+                }
+                return ILog_;
+            }
+        }
+
         public static string logExpConvert(Exception e)
         {
             string err = e.InnerException.Message + "," + e.Message + "," + e.StackTrace;

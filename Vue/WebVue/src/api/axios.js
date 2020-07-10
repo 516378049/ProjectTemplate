@@ -10,8 +10,8 @@ axios.interceptors.request.use(
     try {
       let userinfo = store.state.userInfo
 
-      if (userinfo && userinfo.accesstoken) {
-        configs.headers.common.accesstoken = userinfo.accesstoken;
+      if (userinfo && userinfo.access_token) {
+        configs.headers.common.accesstoken = userinfo.access_token;
       }
       else if (configs.url.indexOf('wxAuthorize') == -1) {
         //add  this phrase will catched by axios.interceptors.reponse.use.err and will bring err massage , if there is not return both of "return Promise.reject("")" and "return config" it will also catched by axios.interceptors.reponse.use.err

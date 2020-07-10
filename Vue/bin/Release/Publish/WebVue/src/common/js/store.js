@@ -1,7 +1,7 @@
 import vue from 'vue'
 import vuex from 'vuex'
-import { getSeller, getGoods, getRatings } from 'api'
-import { loadLocal } from '@/common/js/storage'
+import { getSeller, getGoods, getRatings, setCartCount, getCartCount } from 'api'
+import { loadLocal, saveLocal } from '@/common/js/storage'
 import { Promise } from 'core-js';
 vue.use(vuex)
 
@@ -30,50 +30,74 @@ let store = new vuex.Store({
     wxAuthorize(state, obj) {
       state.userInfo = obj.userInfo
     },
+    //add or reduce cart to redis server 
+    setCartCount(state,item) {
+      var _seller = loadLocal('seller')
+      setCartCount({
+        id: _seller.id,
+        deskNumber: _seller.deskNumber,
+        menuId: item.menuId,
+        count: item.count
+      })
+    },
     //init goods from serve (lunch at goods.vue's method of fetch)
     initGoods(state) {
-      if (state.goods != []) {
-        getGoods({
-          id: loadLocal('seller').id
-        }).then((goods) => {
-          state.goods = goods
-        })
+      var _goods = loadLocal("goods_" + loadLocal('seller').id)
+      if (_goods) {
+        state.goods = _goods
+        return
       }
+      getGoods({
+        id: loadLocal('seller').id
+      }).then((goods) => {
+        state.goods = goods
+        //save the goods to local
+        saveLocal("goods_" + loadLocal('seller').id, goods)
+      })
     },
     //sycn goods from serve, （lunched at app.vue's mouted）
     syncGoods(state) {
-      var item = {
-        Cart: [
-          {
-            id: 0,
-            name: '扁豆焖面',
-            count: 2
-          },
-          {
-            id: 1,
-            name: 'VC无限橙果汁',
-            count: 3
-          }
-        ]
-      }
-      state.goods.forEach((good) => {
-        var food = good.foods[0]
-        item.Cart.forEach((cart_) => {
-          if (cart_.name == food.name) {
+      var _seller = loadLocal('seller')
+      getCartCount({
+        id: _seller.id,
+        deskNumber: _seller.deskNumber
+      }).then((item) => {
+        if (item != "") {
+          state.goods.forEach((good) => {
+            var food = good.foods[0]
+            item.forEach((cart_) => {
+              if (cart_.menuId == food.Id) {
+                if (!food.count) {
+                  vue.set(food, 'count', 0)
+                }
+                food.count = cart_.count
+              }
+            })
+          })
+        }
+        else {
+          state.goods.forEach((good) => {
+            var food = good.foods[0]
             if (!food.count) {
               vue.set(food, 'count', 0)
             }
-            food.count = cart_.count
-          }
-        })
+            food.count = 0
+          })
+        }
       })
     }
   },
   actions: {
     a_syncGoods({ commit }) {
+      commit('syncGoods')
       setInterval(() => {
         commit('syncGoods')
-      }, 3000)
+      }, 5000)
+    },
+    a_setCartCount({ commit }, item) {
+      setTimeout(() => {
+        commit('setCartCount', item)
+      }, 1)
     }
   }
 })

@@ -1,4 +1,6 @@
-﻿using Model.EF;
+﻿using Framework;
+using Model.EF;
+using Model.orderMeal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +12,7 @@ using WebAPI.Core.WebAPI;
 
 namespace OrderMeal.Controllers
 {
-    [EnableCors(origins: "http://www.changchunamy.com/OrderMeal/", headers: "*", methods: "*")]
+    [EnableCors(origins: "https://www.changchunamy.com/OrderMeal/", headers: "*", methods: "*")]
     public class SellerController : BaseApiController
     {
         #region default fundation
@@ -88,6 +90,51 @@ namespace OrderMeal.Controllers
             List<RatingsSellers> ratings = Studio.RatingsSeller.Get(X => X.sellerId == id && X.DelFlag == 0).ToList();
             return CreateApiResult(ratings);
         }
-
+        /// <summary>
+        /// get cart from redis cache by sellerid and desknumber
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="deskNumber"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public ApiResult getCartCount(int id, string deskNumber) {
+            List<CartOrder> cart = RedisHelper.getRedisServer.StringGet<List<CartOrder>>("seller." + id + "." + deskNumber);
+            if(cart==null)
+            {
+                return CreateApiResult("");
+            }
+            return CreateApiResult(cart);
+        }
+        /// <summary>
+        /// set cart from redis cache
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="deskNumber"></param>
+        /// <param name="menuId"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public ApiResult setCartCount(int id, string deskNumber,int menuId,int count)
+        {
+            CartOrder cart = new CartOrder( id, deskNumber, menuId, count);
+            List<CartOrder> cartList = RedisHelper.getRedisServer.StringGet<List<CartOrder>>("seller." + id + "." + deskNumber);
+            
+            if (cartList==null)
+            {
+                cartList = new List<CartOrder>();
+                
+            }
+            CartOrder _cart=cartList.FirstOrDefault(X=>X.menuId==menuId);
+            if(_cart!=null)
+            {
+                _cart.count += count;
+            }
+            else
+            {
+                cartList.Add(cart);
+            }
+            RedisHelper.getRedisServer.StringSet("seller."+ id+"."+ deskNumber, cartList);
+            return CreateApiResult("success");
+        }
     }
 }

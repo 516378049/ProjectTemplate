@@ -16,25 +16,25 @@
       <publishTime>09/10/2013 16:29:20</publishTime>
     </File>
     <File Include="bin/Bussiness.dll">
-      <publishTime>07/03/2020 19:51:30</publishTime>
+      <publishTime>07/09/2020 20:54:27</publishTime>
     </File>
     <File Include="bin/Bussiness.dll.config">
       <publishTime>06/29/2020 14:19:38</publishTime>
     </File>
     <File Include="bin/Bussiness.pdb">
-      <publishTime>07/03/2020 19:51:30</publishTime>
+      <publishTime>07/09/2020 20:54:27</publishTime>
     </File>
     <File Include="bin/ChnCharInfo.dll">
       <publishTime>09/25/2019 16:02:02</publishTime>
     </File>
     <File Include="bin/DataAccess.dll">
-      <publishTime>07/03/2020 19:33:34</publishTime>
+      <publishTime>07/09/2020 20:54:27</publishTime>
     </File>
     <File Include="bin/DataAccess.dll.config">
       <publishTime>06/29/2020 14:19:39</publishTime>
     </File>
     <File Include="bin/DataAccess.pdb">
-      <publishTime>07/03/2020 19:33:34</publishTime>
+      <publishTime>07/09/2020 20:54:27</publishTime>
     </File>
     <File Include="bin/DiffieHellman.dll">
       <publishTime>09/25/2019 16:02:08</publishTime>
@@ -51,6 +51,15 @@
     <File Include="bin/FluentData.dll">
       <publishTime>10/09/2019 18:40:16</publishTime>
     </File>
+    <File Include="bin/Framework.dll">
+      <publishTime>07/09/2020 20:54:27</publishTime>
+    </File>
+    <File Include="bin/Framework.dll.config">
+      <publishTime>06/29/2020 14:19:39</publishTime>
+    </File>
+    <File Include="bin/Framework.pdb">
+      <publishTime>07/09/2020 20:54:27</publishTime>
+    </File>
     <File Include="bin/Gma.QrCodeNet.Encoding.dll">
       <publishTime>09/25/2019 16:02:02</publishTime>
     </File>
@@ -63,8 +72,17 @@
     <File Include="bin/LitJson.dll">
       <publishTime>04/02/2020 00:11:19</publishTime>
     </File>
+    <File Include="bin/log4net.config">
+      <publishTime>07/06/2020 17:15:23</publishTime>
+    </File>
+    <File Include="bin/log4net.Debug.config">
+      <publishTime>07/06/2020 15:58:05</publishTime>
+    </File>
     <File Include="bin/log4net.dll">
       <publishTime>03/08/2017 19:26:22</publishTime>
+    </File>
+    <File Include="bin/log4net.Release.config">
+      <publishTime>07/06/2020 15:58:05</publishTime>
     </File>
     <File Include="bin/Microsoft.Bcl.AsyncInterfaces.dll">
       <publishTime>04/14/2020 22:39:20</publishTime>
@@ -73,10 +91,10 @@
       <publishTime>05/24/2018 13:38:22</publishTime>
     </File>
     <File Include="bin/Microsoft.Practices.EnterpriseLibrary.Common.dll">
-      <publishTime>04/02/2020 16:56:39</publishTime>
+      <publishTime>02/03/2017 12:15:44</publishTime>
     </File>
     <File Include="bin/Microsoft.Practices.EnterpriseLibrary.Data.dll">
-      <publishTime>04/02/2020 16:56:39</publishTime>
+      <publishTime>02/03/2017 12:15:44</publishTime>
     </File>
     <File Include="bin/Microsoft.Practices.ObjectBuilder.dll">
       <publishTime>02/03/2017 12:15:46</publishTime>
@@ -88,13 +106,13 @@
       <publishTime>07/25/2012 11:48:56</publishTime>
     </File>
     <File Include="bin/Model.dll">
-      <publishTime>07/03/2020 19:33:33</publishTime>
+      <publishTime>07/09/2020 20:54:27</publishTime>
     </File>
     <File Include="bin/Model.dll.config">
       <publishTime>07/03/2020 19:51:06</publishTime>
     </File>
     <File Include="bin/Model.pdb">
-      <publishTime>07/03/2020 19:33:33</publishTime>
+      <publishTime>07/09/2020 20:54:27</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>11/09/2019 00:56:44</publishTime>
@@ -256,22 +274,22 @@
       <publishTime>05/24/2018 13:38:24</publishTime>
     </File>
     <File Include="bin/Runda.B2B.Framework.dll">
-      <publishTime>07/03/2020 19:33:33</publishTime>
+      <publishTime>07/06/2020 16:50:17</publishTime>
     </File>
     <File Include="bin/Runda.B2B.Framework.dll.config">
       <publishTime>06/29/2020 14:19:39</publishTime>
     </File>
     <File Include="bin/Runda.B2B.Framework.pdb">
-      <publishTime>07/03/2020 19:33:33</publishTime>
+      <publishTime>07/06/2020 16:50:17</publishTime>
     </File>
     <File Include="bin/Runda.WebAPI.Core.dll">
-      <publishTime>07/03/2020 19:33:34</publishTime>
+      <publishTime>07/06/2020 16:50:18</publishTime>
     </File>
     <File Include="bin/Runda.WebAPI.Core.dll.config">
       <publishTime>06/29/2020 19:44:50</publishTime>
     </File>
     <File Include="bin/Runda.WebAPI.Core.pdb">
-      <publishTime>07/03/2020 19:33:34</publishTime>
+      <publishTime>07/06/2020 16:50:18</publishTime>
     </File>
     <File Include="bin/ServiceStack.Common.dll">
       <publishTime>09/25/2019 16:02:07</publishTime>
@@ -358,10 +376,19 @@
       <publishTime>10/09/2019 18:40:15</publishTime>
     </File>
     <File Include="bin/Vue.dll">
-      <publishTime>07/03/2020 19:51:31</publishTime>
+      <publishTime>07/09/2020 20:54:28</publishTime>
     </File>
     <File Include="bin/Vue.pdb">
-      <publishTime>07/03/2020 19:51:31</publishTime>
+      <publishTime>07/09/2020 20:54:28</publishTime>
+    </File>
+    <File Include="bin/Web.config">
+      <publishTime>07/06/2020 18:04:05</publishTime>
+    </File>
+    <File Include="bin/Web.Debug.config">
+      <publishTime>04/22/2020 10:12:42</publishTime>
+    </File>
+    <File Include="bin/Web.Release.config">
+      <publishTime>04/22/2020 10:12:42</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>01/23/2014 13:57:34</publishTime>
@@ -453,6 +480,15 @@
     <File Include="Global.asax">
       <publishTime>04/22/2020 10:12:42</publishTime>
     </File>
+    <File Include="log4net.config">
+      <publishTime>07/06/2020 17:15:23</publishTime>
+    </File>
+    <File Include="log4net.Debug.config">
+      <publishTime>07/06/2020 15:58:05</publishTime>
+    </File>
+    <File Include="log4net.Release.config">
+      <publishTime>07/06/2020 15:58:05</publishTime>
+    </File>
     <File Include="Models/Model1.edmx.diagram">
       <publishTime>06/28/2020 13:14:18</publishTime>
     </File>
@@ -520,7 +556,7 @@
       <publishTime>04/22/2020 10:12:42</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>07/03/2020 19:52:27</publishTime>
+      <publishTime>07/06/2020 18:04:05</publishTime>
     </File>
     <File Include="WebVue/.browserslistrc">
       <publishTime>12/23/2019 16:45:03</publishTime>
@@ -556,19 +592,19 @@
       <publishTime>12/23/2019 16:45:03</publishTime>
     </File>
     <File Include="WebVue/public/index.html">
-      <publishTime>07/02/2020 17:41:20</publishTime>
+      <publishTime>07/08/2020 17:41:06</publishTime>
     </File>
     <File Include="WebVue/src/api/axios.js">
-      <publishTime>07/03/2020 16:38:15</publishTime>
+      <publishTime>07/06/2020 21:19:18</publishTime>
     </File>
     <File Include="WebVue/src/api/helpers.js">
-      <publishTime>07/03/2020 16:00:38</publishTime>
+      <publishTime>07/08/2020 17:23:20</publishTime>
     </File>
     <File Include="WebVue/src/api/index.js">
-      <publishTime>07/03/2020 16:07:24</publishTime>
+      <publishTime>07/09/2020 15:37:39</publishTime>
     </File>
     <File Include="WebVue/src/App.vue">
-      <publishTime>06/29/2020 16:50:47</publishTime>
+      <publishTime>07/09/2020 11:51:09</publishTime>
     </File>
     <File Include="WebVue/src/common/fonts/sell-icon.eot">
       <publishTime>12/23/2019 16:45:03</publishTime>
@@ -583,13 +619,13 @@
       <publishTime>12/23/2019 16:45:03</publishTime>
     </File>
     <File Include="WebVue/src/common/js/Global.js">
-      <publishTime>07/02/2020 17:44:13</publishTime>
+      <publishTime>07/08/2020 19:20:17</publishTime>
     </File>
     <File Include="WebVue/src/common/js/storage.js">
-      <publishTime>06/18/2020 18:58:12</publishTime>
+      <publishTime>07/09/2020 13:29:41</publishTime>
     </File>
     <File Include="WebVue/src/common/js/store.js">
-      <publishTime>06/28/2020 17:28:37</publishTime>
+      <publishTime>07/09/2020 18:53:07</publishTime>
     </File>
     <File Include="WebVue/src/common/mixins/popup.js">
       <publishTime>12/23/2019 16:45:03</publishTime>
@@ -616,13 +652,13 @@
       <publishTime>12/23/2019 16:45:03</publishTime>
     </File>
     <File Include="WebVue/src/components/cart-control/cart-control.vue">
-      <publishTime>05/06/2020 18:54:27</publishTime>
+      <publishTime>07/09/2020 18:46:04</publishTime>
     </File>
     <File Include="WebVue/src/components/food/food.vue">
-      <publishTime>12/23/2019 16:45:03</publishTime>
+      <publishTime>07/06/2020 17:53:23</publishTime>
     </File>
     <File Include="WebVue/src/components/goods/goods.vue">
-      <publishTime>06/28/2020 16:15:54</publishTime>
+      <publishTime>07/09/2020 10:54:18</publishTime>
     </File>
     <File Include="WebVue/src/components/header-detail/header-detail.vue">
       <publishTime>12/23/2019 16:45:03</publishTime>
@@ -631,10 +667,10 @@
       <publishTime>07/03/2020 17:01:16</publishTime>
     </File>
     <File Include="WebVue/src/components/home/Me.vue">
-      <publishTime>07/03/2020 17:10:52</publishTime>
+      <publishTime>07/06/2020 21:26:48</publishTime>
     </File>
     <File Include="WebVue/src/components/home/OrderList.vue">
-      <publishTime>07/03/2020 17:08:34</publishTime>
+      <publishTime>07/06/2020 14:55:27</publishTime>
     </File>
     <File Include="WebVue/src/components/Index/Index.vue">
       <publishTime>05/25/2020 15:46:42</publishTime>
@@ -655,7 +691,7 @@
       <publishTime>06/28/2020 17:09:31</publishTime>
     </File>
     <File Include="WebVue/src/components/seller/seller.vue">
-      <publishTime>04/22/2020 13:25:06</publishTime>
+      <publishTime>07/09/2020 11:26:16</publishTime>
     </File>
     <File Include="WebVue/src/components/shop-cart-list/shop-cart-list.vue">
       <publishTime>12/23/2019 16:45:03</publishTime>
@@ -850,7 +886,7 @@
       <publishTime>12/23/2019 16:45:03</publishTime>
     </File>
     <File Include="WebVue/src/components/tab/tab.vue">
-      <publishTime>06/11/2020 17:48:42</publishTime>
+      <publishTime>07/06/2020 14:37:43</publishTime>
     </File>
     <File Include="WebVue/src/components/testTemplate/test.vue">
       <publishTime>06/09/2020 15:43:35</publishTime>
@@ -862,13 +898,13 @@
       <publishTime>07/02/2020 17:40:17</publishTime>
     </File>
     <File Include="WebVue/src/components/utility/nav-float-icons/s-icons.vue">
-      <publishTime>06/03/2020 13:53:46</publishTime>
+      <publishTime>07/08/2020 14:51:47</publishTime>
     </File>
     <File Include="WebVue/src/components/utility/wxLogin/wxLogin.vue">
-      <publishTime>07/03/2020 11:08:31</publishTime>
+      <publishTime>07/08/2020 18:32:08</publishTime>
     </File>
     <File Include="WebVue/src/components/utility/wxRedirect/wxRedirect.vue">
-      <publishTime>07/03/2020 16:37:38</publishTime>
+      <publishTime>07/08/2020 14:59:06</publishTime>
     </File>
     <File Include="WebVue/src/components/v-header/brand%402x.png">
       <publishTime>12/23/2019 16:45:03</publishTime>
@@ -898,13 +934,13 @@
       <publishTime>12/23/2019 16:45:03</publishTime>
     </File>
     <File Include="WebVue/src/router/index.js">
-      <publishTime>07/03/2020 19:45:05</publishTime>
+      <publishTime>07/08/2020 18:35:18</publishTime>
     </File>
     <File Include="WebVue/src/theme.styl">
       <publishTime>12/23/2019 16:45:03</publishTime>
     </File>
     <File Include="WebVue/vue.config.js">
-      <publishTime>07/03/2020 16:54:38</publishTime>
+      <publishTime>07/03/2020 20:02:12</publishTime>
     </File>
   </ItemGroup>
 </Project>

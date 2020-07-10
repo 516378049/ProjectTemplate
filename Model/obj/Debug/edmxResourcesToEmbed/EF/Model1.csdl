@@ -103,7 +103,7 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="userId" Type="Int32" />
-    <Property Name="access_token" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="access_token" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="expires_in" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="DelFlag" Type="Int32" Nullable="false" />
     <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
@@ -120,10 +120,10 @@
     <Property Name="province" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="city" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="country" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="headimgurl" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="headimgurl" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
     <Property Name="privilege" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="unionid" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="access_token" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="access_token" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="DelFlag" Type="Int32" Nullable="false" />
     <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />

@@ -11,6 +11,12 @@ namespace Framework
 {
     public class ConfigHelper
     {
+
+        /// <summary>
+        /// 前端跨域地址
+        /// </summary>
+        public static string CrossDomainUrl = ConfigurationManager.AppSettings["CrossDomainUrl"];
+
         /// <summary>
         /// 是否启用公告
         /// </summary>

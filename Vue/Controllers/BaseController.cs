@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using WebAPI.Core.WebAPI;
 using DataAccess.EF;
 using Runda.B2B.Framework;
 
@@ -26,6 +25,18 @@ namespace Vue
         protected ActionResult CreateApiResult(object message = null, string retCode = "0", string retMsg = "", int Total = 0)
         {
             return Json(new ApiResult() { RetCode = retCode, Total = Total, RetMsg = retMsg, Message = message }, JsonRequestBehavior.AllowGet);
+        }
+
+        public class ApiResult
+        {
+            public string RetCode { get; set; }
+            public string RetMsg { get; set; }
+            public object Message { get; set; }
+            public int Total { get; set; }
+            public string ToJson()
+            {
+                return JsonConvert.SerializeObject(this);
+            }
         }
     }
 }

@@ -97,7 +97,6 @@
     },
     data() {
       return {
-        //goods: [],
         selectedFood: {},
         scrollOptions: {
           click: false,

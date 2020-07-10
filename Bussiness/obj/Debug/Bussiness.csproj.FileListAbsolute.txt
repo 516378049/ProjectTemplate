@@ -13,7 +13,6 @@ D:\GitHub\netTemplateMVC\Bussiness\obj\Debug\Bussiness.pdb
 D:\GitHub\netTemplateMVC\Bussiness\bin\Debug\Bussiness.dll
 D:\GitHub\netTemplateMVC\Bussiness\bin\Debug\Bussiness.pdb
 D:\GitHub\netTemplateMVC\Bussiness\bin\Debug\LitJson.dll
-D:\GitHub\netTemplateMVC\Bussiness\bin\Debug\Runda.B2B.Framework.dll
 D:\GitHub\netTemplateMVC\Bussiness\bin\Debug\ThinkDev.Data.dll
 D:\GitHub\netTemplateMVC\Bussiness\bin\Debug\ThinkDev.FrameWork.dll
 D:\GitHub\netTemplateMVC\Bussiness\bin\Debug\Model.dll
@@ -48,8 +47,6 @@ D:\GitHub\netTemplateMVC\Bussiness\bin\Debug\NPOI.OpenXmlFormats.dll
 D:\GitHub\netTemplateMVC\Bussiness\bin\Debug\NPOI.OpenXml4Net.dll
 D:\GitHub\netTemplateMVC\Bussiness\bin\Debug\System.Numerics.Vectors.dll
 D:\GitHub\netTemplateMVC\Bussiness\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
-D:\GitHub\netTemplateMVC\Bussiness\bin\Debug\Runda.B2B.Framework.pdb
-D:\GitHub\netTemplateMVC\Bussiness\bin\Debug\Runda.B2B.Framework.dll.config
 D:\GitHub\netTemplateMVC\Bussiness\bin\Debug\Model.pdb
 D:\GitHub\netTemplateMVC\Bussiness\bin\Debug\Model.dll.config
 D:\GitHub\netTemplateMVC\Bussiness\bin\Debug\DocumentFormat.OpenXml.xml
@@ -69,3 +66,6 @@ D:\GitHub\netTemplateMVC\Bussiness\obj\Debug\Bussiness.csproj.CopyComplete
 D:\GitHub\netTemplateMVC\Bussiness\bin\Debug\Bussiness.dll.config
 D:\GitHub\netTemplateMVC\Bussiness\bin\Debug\EntityFramework.dll
 D:\GitHub\netTemplateMVC\Bussiness\bin\Debug\EntityFramework.xml
+D:\GitHub\netTemplateMVC\Bussiness\bin\Debug\Framework.dll
+D:\GitHub\netTemplateMVC\Bussiness\bin\Debug\Framework.pdb
+D:\GitHub\netTemplateMVC\Bussiness\bin\Debug\Framework.dll.config

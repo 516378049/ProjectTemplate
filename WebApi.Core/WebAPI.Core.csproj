@@ -7,8 +7,8 @@
     <ProjectGuid>{BB2C885A-A5D2-4E69-9CB8-68821FD6E612}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Runda.WebAPI.Core</RootNamespace>
-    <AssemblyName>Runda.WebAPI.Core</AssemblyName>
+    <RootNamespace>WebAPI.Core</RootNamespace>
+    <AssemblyName>WebAPI.Core</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

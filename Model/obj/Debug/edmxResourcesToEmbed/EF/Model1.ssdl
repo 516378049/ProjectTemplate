@@ -103,7 +103,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="userId" Type="int" />
-    <Property Name="access_token" Type="nvarchar" MaxLength="100" />
+    <Property Name="access_token" Type="nvarchar" MaxLength="200" />
     <Property Name="expires_in" Type="nvarchar" MaxLength="50" />
     <Property Name="DelFlag" Type="int" Nullable="false" />
     <Property Name="CreateTime" Type="datetime" Nullable="false" />
@@ -120,10 +120,10 @@
     <Property Name="province" Type="nvarchar" MaxLength="100" />
     <Property Name="city" Type="nvarchar" MaxLength="100" />
     <Property Name="country" Type="nvarchar" MaxLength="100" />
-    <Property Name="headimgurl" Type="nvarchar" MaxLength="100" />
+    <Property Name="headimgurl" Type="nvarchar" MaxLength="150" />
     <Property Name="privilege" Type="nvarchar" MaxLength="100" />
     <Property Name="unionid" Type="nvarchar" MaxLength="200" />
-    <Property Name="access_token" Type="nchar" MaxLength="10" />
+    <Property Name="access_token" Type="nvarchar" MaxLength="200" />
     <Property Name="DelFlag" Type="int" Nullable="false" />
     <Property Name="CreateTime" Type="datetime" Nullable="false" />
     <Property Name="UpdateTime" Type="datetime" Nullable="false" />

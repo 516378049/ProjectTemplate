@@ -44,28 +44,26 @@
       var that = this
       that.seller.id = that.$route.query.id
       that.seller.deskNumber = that.$route.query.deskNumber
-      if (!that.seller.id || !that.seller.deskNumber) {
+      if (!that.seller.id && !that.seller.deskNumber) {
         this.$createDialog({
           title: '错误信息',
-          content: `请扫描餐厅二维码打开`,
+          content: `位置商家和桌号，您可扫描餐厅二维码打开`,
         }).show()
         return
       }
-      //that.$store.commit('seller', { seller: that.seller })
       saveLocal('seller', that.seller);
+
       //如果是微信访问直接通过微信授权登录
       var ua = navigator.userAgent.toLowerCase();
       if (ua.match(/MicroMessenger/i) == "micromessenger") {
-        //var goto_Auth2 = that.$stringFormat(cnst.url.authorizeUrl, cnst.appid, encodeURIComponent(cnst.url.redirect_uri))
-        var goto_Auth2 = "http://localhost:8080/#/wxRedirect?code=00001";
+        var goto_Auth2 = cnst.url.authorizeUrl;
         location.href = goto_Auth2;
       }
-
     },
 
     methods: {
       m_login() {
-        location.href = "http://localhost:8080/#/wxRedirect?code=00001";
+        location.href = cnst.url.wxLoginUrl;
       }
     }
   }

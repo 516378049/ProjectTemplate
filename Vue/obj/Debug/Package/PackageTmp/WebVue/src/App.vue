@@ -10,7 +10,7 @@
 
 <script>
   import qs from 'query-string'
-  import { loadLocal } from '@/common/js/storage'
+  import { loadLocal,saveLocal } from '@/common/js/storage'
   import { getSeller } from 'api'
   import VHeader from 'components/v-header/v-header'
   import Goods from 'components/goods/goods'
@@ -20,6 +20,7 @@
   import navFloatIcons from '@/components/utility/nav-float-icons/nav-float-icons.vue'
   import 'weui'
 import { map } from 'when';
+import { locale } from 'core-js';
   export default {
     data() {
       return {
@@ -62,17 +63,22 @@ import { map } from 'when';
     mounted() {
       //sycn server's cache cart to vuex
       var that = this;
-      this.$store.dispatch('a_syncGoods')
-      //that.$store.commit('syncGoods')
+      that.$store.dispatch('a_syncGoods')
     },
     methods: {
       _getSeller() {
+        var _seller = loadLocal('seller_' + this.seller.id)
+        if (_seller) {
+          this.seller = Object.assign({}, this.seller, _seller)
+          return
+        }
+
         getSeller({
           id: loadLocal('seller').id
         }).then((seller) => {
           this.seller = Object.assign({}, this.seller, seller)
-          console.log('this.seller')
-          console.log(this.seller)
+          //save to localeStorage
+          saveLocal('seller_' + this.seller.id, seller)
         })
       }
     },

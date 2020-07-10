@@ -160,7 +160,6 @@ D:\GitHub\netTemplateMVC\Vue\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatf
 D:\GitHub\netTemplateMVC\Vue\bin\Microsoft.Web.Infrastructure.dll
 D:\GitHub\netTemplateMVC\Vue\bin\Newtonsoft.Json.dll
 D:\GitHub\netTemplateMVC\Vue\bin\Pipelines.Sockets.Unofficial.dll
-D:\GitHub\netTemplateMVC\Vue\bin\Runda.B2B.Framework.dll
 D:\GitHub\netTemplateMVC\Vue\bin\StackExchange.Redis.dll
 D:\GitHub\netTemplateMVC\Vue\bin\System.Buffers.dll
 D:\GitHub\netTemplateMVC\Vue\bin\System.Diagnostics.PerformanceCounter.dll
@@ -197,8 +196,6 @@ D:\GitHub\netTemplateMVC\Vue\bin\DiffieHellman.dll
 D:\GitHub\netTemplateMVC\Vue\bin\Org.Mentalis.Security.dll
 D:\GitHub\netTemplateMVC\Vue\bin\NPOI.OpenXmlFormats.dll
 D:\GitHub\netTemplateMVC\Vue\bin\NPOI.OpenXml4Net.dll
-D:\GitHub\netTemplateMVC\Vue\bin\Runda.B2B.Framework.pdb
-D:\GitHub\netTemplateMVC\Vue\bin\Runda.B2B.Framework.dll.config
 D:\GitHub\netTemplateMVC\Vue\bin\Microsoft.Bcl.AsyncInterfaces.xml
 D:\GitHub\netTemplateMVC\Vue\bin\Newtonsoft.Json.xml
 D:\GitHub\netTemplateMVC\Vue\bin\Pipelines.Sockets.Unofficial.xml
@@ -238,7 +235,6 @@ D:\GitHub\netTemplateMVC\Vue\obj\Debug\Vue.pdb
 D:\GitHub\netTemplateMVC\Vue\bin\EntityFramework.dll
 D:\GitHub\netTemplateMVC\Vue\bin\EntityFramework.SqlServer.dll
 D:\GitHub\netTemplateMVC\Vue\bin\log4net.dll
-D:\GitHub\netTemplateMVC\Vue\bin\Runda.WebAPI.Core.dll
 D:\GitHub\netTemplateMVC\Vue\bin\System.Net.Http.Formatting.dll
 D:\GitHub\netTemplateMVC\Vue\bin\System.Web.Http.dll
 D:\GitHub\netTemplateMVC\Vue\bin\System.Web.Http.WebHost.dll
@@ -247,8 +243,6 @@ D:\GitHub\netTemplateMVC\Vue\bin\ThinkDev.FrameWork.dll
 D:\GitHub\netTemplateMVC\Vue\bin\ThinkDev.Data.dll
 D:\GitHub\netTemplateMVC\Vue\bin\Microsoft.Practices.EnterpriseLibrary.Data.dll
 D:\GitHub\netTemplateMVC\Vue\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll
-D:\GitHub\netTemplateMVC\Vue\bin\Microsoft.Practices.ObjectBuilder2.dll
-D:\GitHub\netTemplateMVC\Vue\bin\Runda.WebAPI.Core.pdb
 D:\GitHub\netTemplateMVC\Vue\bin\EntityFramework.xml
 D:\GitHub\netTemplateMVC\Vue\bin\EntityFramework.SqlServer.xml
 D:\GitHub\netTemplateMVC\Vue\bin\log4net.xml
@@ -264,8 +258,16 @@ D:\GitHub\netTemplateMVC\Vue\bin\Bussiness.dll
 D:\GitHub\netTemplateMVC\Vue\bin\LitJson.dll
 D:\GitHub\netTemplateMVC\Vue\bin\Bussiness.pdb
 D:\GitHub\netTemplateMVC\Vue\bin\Bussiness.dll.config
-D:\GitHub\netTemplateMVC\Vue\bin\Runda.WebAPI.Core.dll.config
 D:\GitHub\netTemplateMVC\Vue\bin\DataAccess.dll
 D:\GitHub\netTemplateMVC\Vue\bin\DataAccess.pdb
 D:\GitHub\netTemplateMVC\Vue\bin\DataAccess.dll.config
 D:\GitHub\netTemplateMVC\Vue\bin\Microsoft.Practices.ObjectBuilder.dll
+D:\GitHub\netTemplateMVC\Vue\bin\Web.config
+D:\GitHub\netTemplateMVC\Vue\bin\Web.Debug.config
+D:\GitHub\netTemplateMVC\Vue\bin\Web.Release.config
+D:\GitHub\netTemplateMVC\Vue\bin\log4net.config
+D:\GitHub\netTemplateMVC\Vue\bin\log4net.Debug.config
+D:\GitHub\netTemplateMVC\Vue\bin\log4net.Release.config
+D:\GitHub\netTemplateMVC\Vue\bin\Framework.dll
+D:\GitHub\netTemplateMVC\Vue\bin\Framework.pdb
+D:\GitHub\netTemplateMVC\Vue\bin\Framework.dll.config

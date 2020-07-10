@@ -350,5 +350,11 @@ namespace WebAPI.Core.WebAPI
         {
             return new ApiResult() { RetCode = retCode, Total = Total, RetMsg = retMsg, Message = message };
         }
+        
+    }
+    public class KValue
+    {
+        public string key { set; get; }
+        public string value { set; get; }
     }
 }
