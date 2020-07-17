@@ -78,13 +78,13 @@ namespace WxPayAPI
         {
             //统一下单
             WxPayData req = new WxPayData();
-            req.SetValue("body", "test");
-            req.SetValue("attach", "test");
+            req.SetValue("body", "SHXX");
+            req.SetValue("attach", "SHXX");
             req.SetValue("out_trade_no", WxPayApi.GenerateOutTradeNo());
             req.SetValue("total_fee", 1);
             req.SetValue("time_start", DateTime.Now.ToString("yyyyMMddHHmmss"));
             req.SetValue("time_expire", DateTime.Now.AddMinutes(10).ToString("yyyyMMddHHmmss"));
-            req.SetValue("goods_tag", "test");
+            req.SetValue("goods_tag", "SHXX");
             req.SetValue("trade_type", "NATIVE");
             req.SetValue("openid", openId);
             req.SetValue("product_id", productId);

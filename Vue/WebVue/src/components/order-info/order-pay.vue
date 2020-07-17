@@ -44,6 +44,7 @@
  
 </template>
 <script>
+  import { GetUnifiedOrderResult } from 'api'
   export default {
     name:'OrderPay', 
     data() {
@@ -60,7 +61,12 @@
             label: '微信支付',
             value: 'wxPay1'
           }
-        ]
+        ],
+        OrderInfo: {
+          OrderCreateTime: "",
+          OrderAmount: 0,
+          OrderNum:''
+        }
       }
     },
     props: {
@@ -68,8 +74,30 @@
     computed: {
     },
     methods: {
+      CreateOrder() {
+
+      },
       pay: function () {
-        this.$router.push('PayResult');
+        var that = this
+        var _date = new Date()
+        var _OrderId = _date.getFullYear() + _date.getMonth().toString() + _date.getDay().toString() + _date.getHours().toString() + _date.getMinutes().toString() + _date.getSeconds().toString()
+        GetUnifiedOrderResult({
+          OrderId: _OrderId,          TotalFee: '100',
+          OpenId: that.$store.state.userInfo.openid,
+          TradeType:'JSAPI'
+        }).then((parms) => {
+          wx.chooseWXPay({
+            timestamp: parms.timeStamp, // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
+            nonceStr: parms. nonceStr, // 支付签名随机串，不长于 32 位
+            package: parms.package, // 统一支付接口返回的prepay_id参数值，提交格式如：prepay_id=\*\*\*）
+            signType: parms.signType, // 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'
+            paySign: parms.paySign, // 支付签名
+            success: function (res) {
+              // 支付成功后的回调函数
+              this.$router.push('PayResult');
+            }
+          });
+        })
       }
     }
   }

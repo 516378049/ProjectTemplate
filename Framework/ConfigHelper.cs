@@ -16,7 +16,23 @@ namespace Framework
         /// 前端跨域地址
         /// </summary>
         public static string CrossDomainUrl = ConfigurationManager.AppSettings["CrossDomainUrl"];
+        /// <summary>
+        /// AppID
+        /// </summary>
+        public static string AppID = ConfigurationManager.AppSettings["AppID"];
+        /// <summary>
+        /// AppSecret
+        /// </summary>
+        public static string AppSecret = ConfigurationManager.AppSettings["AppSecret"];
 
+        /// <summary>
+        /// 微信普通accessToken
+        /// </summary>
+        public static string GeneralAccessToken = ConfigurationManager.AppSettings["GeneralAccessToken"];
+        /// <summary>
+        /// jsapiTicket
+        /// </summary>
+        public static string JsapiTicket = ConfigurationManager.AppSettings["JsapiTicket"];
         /// <summary>
         /// 是否启用公告
         /// </summary>

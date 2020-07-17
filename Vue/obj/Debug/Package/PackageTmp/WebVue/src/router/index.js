@@ -55,6 +55,9 @@ let router = new Router({
     {
       path: '/Index',
       name: 'Index',
+      meta: {
+        requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
+      },
       component: Index
     },
     {
@@ -69,16 +72,25 @@ let router = new Router({
     , {
       path: '/OrderConfirm',
       name: 'OrderConfirm',
+      meta: {
+        requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
+      },
       component: OrderConfirm
     }
     , {
       path: '/OrderPay',
       name: 'OrderPay',
+      meta: {
+        requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
+      },
       component: OrderPay
     }
     , {
       path: '/PayResult',
       name: 'PayResult',
+      meta: {
+        requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
+      },
       component: PayResult
     }
     , {
@@ -89,11 +101,17 @@ let router = new Router({
         {
           path: '/Home/Me',
           name: 'Me',
+          meta: {
+            requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
+          },
           component: Me
         },
         {
           path: '/Home/OrderList',
           name: 'OrderList',
+          meta: {
+            requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
+          },
           component: OrderList
         }
       ],

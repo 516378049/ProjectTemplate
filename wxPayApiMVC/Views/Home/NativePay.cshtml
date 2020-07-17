@@ -1,7 +1,9 @@
-﻿
+﻿@using WxPayAPI.lib;
 @{
     Layout = null;
 }
+<!DOCTYPE html>
+@{DemoConfig dConfig = new DemoConfig(); }
 
 <!DOCTYPE html>
 
@@ -40,7 +42,7 @@
 
         //支付成功后跳转到其他页面
         function pageTransfer() {
-            window.location = 'https://www.sky888.cn/vue/#/order/payment/success';
+            window.location = '@dConfig.GetMallNotifyUrl()';
         }
     </script>
 
@@ -50,8 +52,8 @@
             display: inline-block;
             text-align: left;
             font-size: 15px;
-            
         }
+
         .InfoName {
             display: inline-block;
             width: 50%;
@@ -59,10 +61,10 @@
         }
     </style>
 </head>
-<body >
+<body>
     <div id="NativePay" style="margin-left: auto;margin-right: auto;width: 1000px;">
         @*<div style="margin-left: 10px;color:#00CD00;font-size:30px;font-weight: bolder;">扫码支付模式一</div><br />
-        <img ID="Image1"  style="width:200px;height:200px;" src="/Home/getNativePayCode?url=@Html.Raw(ViewBag.Image1)" />*@
+            <img ID="Image1"  style="width:200px;height:200px;" src="/Home/getNativePayCode?url=@Html.Raw(ViewBag.Image1)" />*@
         @*<div style="margin-left: 10px;color:#00CD00;font-size:30px;font-weight: bolder;">微信扫码支付</div><br />*@
 
         <span id="PayConform" style="color:green;display:inline-block;width:100%;font-size:20px; padding-top: 10px ;padding-bottom: 10px;text-align:center">订单信息：</span>
@@ -75,12 +77,12 @@
         </div>
 
         @*<div style="background-color:#e3e3e3;margin-left:auto;margin-right:auto">
-            <div align="center" style="margin-left: 10px;color:#00CD00;font-weight: bolder;">易钛商城</div>
-            <div align="center">
-                订单编号：@ViewBag.orderId
-            </div>
-            <div align="center">应付金额：<span id="totalFee" style="font-weight:bolder;color:orangered"></span></div>
-        </div>*@
+                <div align="center" style="margin-left: 10px;color:#00CD00;font-weight: bolder;">易钛商城</div>
+                <div align="center">
+                    订单编号：@ViewBag.orderId
+                </div>
+                <div align="center">应付金额：<span id="totalFee" style="font-weight:bolder;color:orangered"></span></div>
+            </div>*@
         <img ID="ImageComment" style="width:200px;a" src="~/Content/image/WePayLogo.png" />
         <div align="center"><img ID="Image2" style="width:200px;height:200px;" src="~/Home/getNativePayCode?url=@Html.Raw(ViewBag.Image2)" /></div>
 

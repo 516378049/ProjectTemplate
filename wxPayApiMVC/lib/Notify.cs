@@ -44,9 +44,18 @@ namespace WxPayAPI
 
             DemoConfig dConfig = new DemoConfig();
             //将支付信息同步发送给商城
-            Log.Info(this.GetType().ToString(), "开始转发微信支付结果通知给商城..."+"url："+ dConfig.GetMallNotifyUrl()+"reXML"+ builder.ToString());
-            string resFromMall=HttpService.Post(builder.ToString(), dConfig.GetMallNotifyUrl(), false, 6);
-            Log.Info(this.GetType().ToString(), "微信支付结果通知转发给商城完毕...");
+            string resFromMall = "";
+            if (!string.IsNullOrEmpty(dConfig.GetMallNotifyUrl()))
+            {
+                Log.Info(this.GetType().ToString(), "开始转发微信支付结果通知给商城..." + "url：" + dConfig.GetMallNotifyUrl() + "reXML" + builder.ToString());
+                resFromMall = HttpService.Post(builder.ToString(), dConfig.GetMallNotifyUrl(), false, 6);
+                Log.Info(this.GetType().ToString(), "微信支付结果通知转发给商城完毕...");
+            }
+            else
+            {
+                Log.Info(this.GetType().ToString(), "未设置商城支付回调地址,无有发送商城通知");
+            }
+            
 
             //记录支付结果
             Log.UserPayInfo("Notify.GetNotifyData",builder.ToString());  

@@ -39,8 +39,8 @@ namespace WxPayAPI
             Log.Info(this.GetType().ToString(), "Native pay mode 2 url is producing...");
 
             WxPayData data = new WxPayData();
-            data.SetValue("body", "test");//商品描述
-            data.SetValue("attach", "test");//附加数据
+            data.SetValue("body", "SHXX");//商品描述
+            data.SetValue("attach", "SHXX");//附加数据
             data.SetValue("out_trade_no", orderId );//随机字符串 WxPayApi.GenerateOutTradeNo()
             data.SetValue("total_fee", total_fee);//总金额
             data.SetValue("time_start", DateTime.Now.ToString("yyyyMMddHHmmss"));//交易起始时间

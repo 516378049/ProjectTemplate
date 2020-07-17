@@ -11,62 +11,60 @@
     </mt-header>
 
     <div class="start" style="margin-top:10px"></div>
+
     <div class="scroll-list-wrap">
       <cube-scroll ref="scroll" :options="options">
         <div class="listDiv">
-          <mt-cell class="OrderInfoList" title="用餐时间" to="" is-link value="立即用餐"></mt-cell>
-          <mt-cell class="OrderInfoList" title="用餐人数" is-link value="1人"></mt-cell>
-          <mt-cell class="OrderInfoList" title="订单备注" is-link value="口味、偏好等要求"></mt-cell>
-          <mt-cell class="OrderInfoList" title="支付方式" is-link value="在线支付"></mt-cell>
-          <mt-cell class="OrderInfoList" title="发票信息" is-link value="未选择"></mt-cell>
-          <!--<mt-field class="OrderInfoList field" label="备注" placeholder="备注" type="textarea" rows="1"></mt-field>-->
-          <!--<mt-cell class="OrderInfoList" title="备注" to="" is-link value="1人"></mt-cell>-->
-        </div>
-        <div class="listDiv">
-          <mt-cell class="bolder" title="一品香粥" style="border-bottom:2px outset rgba(0, 43, 247, 0.0618)"></mt-cell>
+          <mt-cell class="OrderInfoList" title="用餐时间" is-link :value=OrderTime.OrderTimeTxt @click.native="openPicker()"></mt-cell>
+          <mt-cell class="OrderInfoList" title="用餐人数" is-link :value=OrderCusCount.OrderCusCountTxt @click.native="showPicker(customCount)"></mt-cell>
 
-          <mt-cell class="orderList" title="皮蛋瘦肉粥">
-            <span class="orderNum">x1</span> <span class="orderSingleAmount">￥25</span>
-            <img slot="icon" src="http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/114/h/114" width="50" height="50">
+          <mt-cell class="OrderInfoList" title="订单备注" is-link :value="OrderRemark==''?'口味、偏好等要求':OrderRemark"  @click.native='showPopup()'>
           </mt-cell>
-          <mt-cell class="orderList" title="扁豆焖面">
-            <span class="orderNum">x1</span> <span class="orderSingleAmount">￥7</span>
-            <img slot="icon" src="http://fuss10.elemecdn.com/c/6b/29e3d29b0db63d36f7c500bca31d8jpeg.jpeg?imageView2/1/w/750/h/750" width="50" height="50">
-          </mt-cell>
-          <mt-cell class="orderList" title="VC无限橙果汁">
-            <span class="orderNum">x1</span> <span class="orderSingleAmount">￥16</span>
-            <img slot="icon" src="http://fuss10.elemecdn.com/e/c6/f348e811772016ae24e968238bcbfjpeg.jpeg?imageView2/1/w/750/h/750" width="50" height="50">
-          </mt-cell>
-          <mt-cell class="orderList" title="VC无限橙果汁">
-            <span class="orderNum">x1</span> <span class="orderSingleAmount">￥16</span>
-            <img slot="icon" src="http://fuss10.elemecdn.com/e/c6/f348e811772016ae24e968238bcbfjpeg.jpeg?imageView2/1/w/750/h/750" width="50" height="50">
-          </mt-cell> <mt-cell class="orderList" title="VC无限橙果汁">
-            <span class="orderNum">x1</span> <span class="orderSingleAmount">￥16</span>
-            <img slot="icon" src="http://fuss10.elemecdn.com/e/c6/f348e811772016ae24e968238bcbfjpeg.jpeg?imageView2/1/w/750/h/750" width="50" height="50">
-          </mt-cell> <mt-cell class="orderList" title="VC无限橙果汁">
-            <span class="orderNum">x1</span> <span class="orderSingleAmount">￥16</span>
-            <img slot="icon" src="http://fuss10.elemecdn.com/e/c6/f348e811772016ae24e968238bcbfjpeg.jpeg?imageView2/1/w/750/h/750" width="50" height="50">
-          </mt-cell> <mt-cell class="orderList" title="VC无限橙果汁">
-            <span class="orderNum">x1</span> <span class="orderSingleAmount">￥16</span>
-            <img slot="icon" src="http://fuss10.elemecdn.com/e/c6/f348e811772016ae24e968238bcbfjpeg.jpeg?imageView2/1/w/750/h/750" width="50" height="50">
-          </mt-cell> <mt-cell class="orderList" title="VC无限橙果汁">
-            <span class="orderNum">x1</span> <span class="orderSingleAmount">￥16</span>
-            <img slot="icon" src="http://fuss10.elemecdn.com/e/c6/f348e811772016ae24e968238bcbfjpeg.jpeg?imageView2/1/w/750/h/750" width="50" height="50">
-          </mt-cell> <mt-cell class="orderList" title="VC无限橙果汁">
-            <span class="orderNum">x1</span> <span class="orderSingleAmount">￥16</span>
-            <img slot="icon" src="http://fuss10.elemecdn.com/e/c6/f348e811772016ae24e968238bcbfjpeg.jpeg?imageView2/1/w/750/h/750" width="50" height="50">
-          </mt-cell> <mt-cell class="orderList" title="VC无限橙果汁">
-            <span class="orderNum">x1</span> <span class="orderSingleAmount">￥16</span>
-            <img slot="icon" src="http://fuss10.elemecdn.com/e/c6/f348e811772016ae24e968238bcbfjpeg.jpeg?imageView2/1/w/750/h/750" width="50" height="50">
-          </mt-cell>
+
+          <mt-cell class="OrderInfoList" title="支付方式" is-link :value="OrderPayWay.text"  @click.native="showPicker(PayWay)"></mt-cell>
+          <!--<mt-cell class="OrderInfoList" title="发票信息" is-link value="未选择"></mt-cell>-->
+        </div>
+
+        <div class="listDiv">
+          <mt-cell class="bolder" title="一品香粥（订单明细）" style="border-bottom:2px outset rgba(0, 43, 247, 0.0618)"></mt-cell>
+          <template v-for="item in selMenuList">
+            <mt-cell class="orderList" :title=item.name>
+              <span class="orderNum">x {{item.count}}</span> <span class="orderSingleAmount">￥{{item.price}}</span>
+              <img slot="icon" :src="item.image" width="50" height="50">
+            </mt-cell>
+          </template>
           <div style="margin-top:15px;text-align:center;font-size:small;color:rgba(0,0,0,.5)">无有更多的啦！</div>
         </div>
       </cube-scroll>
     </div>
+    <div>
+      <cube-popup type="my-popup" position="bottom" :mask-closable="true" ref="OrderRemark">
+        <cube-textarea v-model="OrderRemark"
+                       placeholder="口味、偏好等要求"
+                       :maxlength="30"
+                       :readonly="false"
+                       :disabled="false"
+                       :autofocus="true"
+                       style="height:100px">
+        </cube-textarea>
+        <cube-button :primary="true" @click="hidePopup">填好了</cube-button>
+      </cube-popup>
+      <cube-popup type="my-popup" position="bottom" :mask-closable="true" ref="OrderRemark">
+        <cube-textarea v-model="OrderRemark"
+                       placeholder="口味、偏好等要求"
+                       :maxlength="30"
+                       :readonly="false"
+                       :disabled="false"
+                       :autofocus="true"
+                       style="height:100px">
+        </cube-textarea>
+        <cube-button :primary="true" @click="hidePopup">填好了</cube-button>
+      </cube-popup>
 
+    </div>
     <div class="bottomCommitOrder">
       <div class="PriceTotel">
-        <span>￥80.5</span><span style="font-size:smaller;color:#e0caca;margin-left:15px">| 已优惠￥16</span>
+        <span>￥{{TotleMount}}</span><span style="font-size:smaller;color:#e0caca;margin-left:15px">| 已优惠￥0</span>
       </div>
       <mt-button style="float:right" type="primary" @click="prePay">立即支付</mt-button>
     </div>
@@ -79,6 +77,16 @@
     name: 'order-confirm',
     data(){
       return {
+        OrderTime: {
+          OrderTimeTxt: '现在',
+          OrderTimeVal:''
+        },
+        OrderCusCount: {
+          OrderCusCountTxt: '1人',
+          OrderCusCountVal: ''
+        },
+        OrderRemark: "",
+        OrderPayWay: { text:'线上支付',value:1},
         startY: -5,
         scrollbarFade: true,
         scrollHeight:0
@@ -98,6 +106,39 @@
           scrollbar: this.scrollbarFade,
           startY: this.startY
         }
+      },
+      selMenuList() {
+        return this.$store.getters.getSelMenuList
+      },
+      TotleMount() {
+        return this.$store.getters.getSelMenuList.map((item) => { return item.price * item.count }).reduce((sum, number) => {
+          return sum + number;
+        }, 0)
+      },
+      customCount() {
+        var _data = []
+        for (var i = 1; i <= 50; i++) {
+          _data.push({ text: i + '人', value: i })
+        }
+        var params = {
+          title: '用餐人数',
+          data: [_data],
+          onSelect: this.selectHandle,
+          onCancel: this.cancelHandle
+        }
+        return params
+      },
+      PayWay() {
+        var params = {
+          title: '支付方式',
+          data: [[
+            { text: '在线支付', value: 1 }
+            //,{ text: '线下支付', value: 2 }
+          ]],
+          onSelect: this.selectHandlePayWay,
+          onCancel: this.cancelHandlePayWay
+        }
+        return params
       }
     },
     watch: {
@@ -108,7 +149,55 @@
     methods: {
       prePay: function () {
         this.$router.push('OrderPay');
+      },
+      openPicker() {
+        this.$createTimePicker({
+          showNow: true,
+          minuteStep: 5,
+          delay: 15,
+          onSelect: (selectedTime, selectedText, formatedTime) => {
+            this.OrderTime.OrderTimeTxt = selectedText
+            this.OrderTime.OrderTimeVal = formatedTime
+          },
+          onCancel: () => {
+          }
+        }).show()
+      },
+
+      showPicker(obj) {
+        //if (!this.picker) {
+          this.picker = this.$createPicker(obj)
+          this.picker.show()
+        //}
+      },
+      selectHandlePayWay(selectedVal, selectedIndex, selectedText) {
+        this.OrderPayWay.text = selectedText.join(', ')
+        this.OrderPayWay.value = selectedVal
+      },
+      cancelHandlePayWay() {
+        //this.$createToast({
+        //  type: 'correct',
+        //  txt: 'Picker canceled',
+        //  time: 1000
+        //}).show()
+      },
+
+      selectHandle(selectedVal, selectedIndex, selectedText) {
+        this.OrderCusCount.OrderCusCountTxt = selectedText.join(', ')
+      },
+      cancelHandle() {
+      },
+      showPopup() {
+        const component = this.$refs.OrderRemark
+        component.show()
+        setTimeout(() => {
+          component.hide()
+        }, 600000)
+      },
+      hidePopup() {
+        this.$refs.OrderRemark.hide()
       }
+
     }
   }
 </script>

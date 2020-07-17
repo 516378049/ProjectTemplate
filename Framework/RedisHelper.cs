@@ -16,7 +16,7 @@ namespace Framework
     public class RedisHelper
     {
 
-        TimeSpan ExpiredDefaultRedis = TimeSpan.FromSeconds(20);//默认20分钟
+        TimeSpan ExpiredDefaultRedis = TimeSpan.FromSeconds(1200);//默认20分钟
         //单例模式获取redis实例
         private static RedisHelper rdis = null;
         public static RedisHelper getRedisServer
@@ -117,7 +117,8 @@ namespace Framework
         /// <returns></returns>
         private static string AddKeyPrefix(string key)
         {
-            return $"{DefaultKey}:{key}";
+            return key;
+            //return $"{DefaultKey}:{key}";
         }
         /// <summary>
         /// 序列化,用于存储对象

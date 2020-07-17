@@ -12,7 +12,11 @@ import {
   Scroll,
   Slide,
   ScrollNav,
-  ScrollNavBar
+  ScrollNavBar,
+  TimePicker,
+  Toast,
+  Textarea,
+  Button
 } from 'cube-ui'
 
 Vue.use(TabBar)
@@ -22,3 +26,7 @@ Vue.use(Scroll)
 Vue.use(Slide)
 Vue.use(ScrollNav)
 Vue.use(ScrollNavBar)
+Vue.use(TimePicker)
+Vue.use(Toast)
+Vue.use(Textarea)
+Vue.use(Button)

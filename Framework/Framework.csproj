@@ -264,6 +264,10 @@
     <Compile Include="wx\Log.cs" />
     <Compile Include="wx\Notify.cs" />
     <Compile Include="wx\PayParams.cs" />
+    <Compile Include="wx\Public\WeiXinAccount.cs" />
+    <Compile Include="wx\Public\WeiXinPublicAccount.cs" />
+    <Compile Include="wx\Public\WeiXinPublicRequestEntity.cs" />
+    <Compile Include="wx\Public\WeiXinPublicResponseEnitty.cs" />
     <Compile Include="wx\RandomGenerator.cs" />
     <Compile Include="wx\SafeXmlDocument.cs" />
     <Compile Include="wx\SessionHelper.cs" />
@@ -280,7 +284,12 @@
       <Project>{0b4a6448-ca31-4f14-aafd-167e59ca4335}</Project>
       <Name>Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WeChat.Common\WeChat.Common.csproj">
+      <Project>{9800f2e0-7866-4cc2-a357-96faf913d8af}</Project>
+      <Name>WeChat.Common</Name>
+    </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

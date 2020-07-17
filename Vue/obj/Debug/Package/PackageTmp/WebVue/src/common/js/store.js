@@ -16,6 +16,17 @@ let store = new vuex.Store({
   getters: {
     getUserInfo: state => {
       return state.userInfo
+    },
+    getSelMenuList: state => {
+      var foods = []
+      state.goods.forEach((good) => {
+        good.foods.forEach((food) => {
+          if (food.count && food.count > 0) {
+            foods.push(food)
+          }
+        })
+      })
+      return foods
     }
   },
   mutations: {
@@ -64,24 +75,26 @@ let store = new vuex.Store({
       }).then((item) => {
         if (item != "") {
           state.goods.forEach((good) => {
-            var food = good.foods[0]
-            item.forEach((cart_) => {
-              if (cart_.menuId == food.Id) {
-                if (!food.count) {
-                  vue.set(food, 'count', 0)
+            good.foods.forEach((food) => {
+              item.forEach((cart_) => {
+                if (cart_.menuId == food.Id) {
+                  if (!food.count) {
+                    vue.set(food, 'count', 0)
+                  }
+                  food.count = cart_.count
                 }
-                food.count = cart_.count
-              }
+              })
             })
           })
         }
         else {
           state.goods.forEach((good) => {
-            var food = good.foods[0]
-            if (!food.count) {
-              vue.set(food, 'count', 0)
-            }
-            food.count = 0
+            good.foods.forEach((food) => {
+              if (!food.count) {
+                vue.set(food, 'count', 0)
+              }
+              food.count = 0
+            })
           })
         }
       })
@@ -92,7 +105,7 @@ let store = new vuex.Store({
       commit('syncGoods')
       setInterval(() => {
         commit('syncGoods')
-      }, 5000)
+      }, 10000)
     },
     a_setCartCount({ commit }, item) {
       setTimeout(() => {

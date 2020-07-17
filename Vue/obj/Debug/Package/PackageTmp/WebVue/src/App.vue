@@ -1,5 +1,7 @@
 <template>
-  <div id="app" @touchmove.prevent>
+  <div id="app">
+       <!--@touchmove.prevent-->
+       
     <v-header :seller="seller"></v-header>
     <div class="tab-wrapper">
       <tab :tabs="tabs"></tab>

@@ -1,0 +1,130 @@
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\WeChat.Common.dll.config
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\WeChat.Common.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\WeChat.Common.pdb
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\Microsoft.Azure.KeyVault.Core.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\Microsoft.Data.Edm.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\Microsoft.Data.OData.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\Microsoft.Data.Services.Client.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\Microsoft.ServiceBus.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\Microsoft.WindowsAzure.Configuration.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\Microsoft.WindowsAzure.Storage.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\Newtonsoft.Json.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\StackExchange.Redis.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\System.Spatial.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\Microsoft.Azure.KeyVault.Core.xml
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\Microsoft.Data.Edm.xml
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\Microsoft.Data.OData.xml
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\Microsoft.Data.Services.Client.xml
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\Microsoft.ServiceBus.xml
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\Microsoft.WindowsAzure.Configuration.xml
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\Microsoft.WindowsAzure.Storage.pdb
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\Microsoft.WindowsAzure.Storage.xml
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\Newtonsoft.Json.xml
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\StackExchange.Redis.pdb
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\StackExchange.Redis.xml
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\System.Spatial.xml
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\de\Microsoft.Data.Edm.resources.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\es\Microsoft.Data.Edm.resources.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\fr\Microsoft.Data.Edm.resources.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\it\Microsoft.Data.Edm.resources.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\ja\Microsoft.Data.Edm.resources.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\ko\Microsoft.Data.Edm.resources.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\ru\Microsoft.Data.Edm.resources.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\zh-Hans\Microsoft.Data.Edm.resources.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\zh-Hant\Microsoft.Data.Edm.resources.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\de\Microsoft.Data.OData.resources.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\es\Microsoft.Data.OData.resources.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\fr\Microsoft.Data.OData.resources.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\it\Microsoft.Data.OData.resources.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\ja\Microsoft.Data.OData.resources.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\ko\Microsoft.Data.OData.resources.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\ru\Microsoft.Data.OData.resources.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\zh-Hans\Microsoft.Data.OData.resources.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\zh-Hant\Microsoft.Data.OData.resources.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\de\Microsoft.Data.Services.Client.resources.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\es\Microsoft.Data.Services.Client.resources.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\fr\Microsoft.Data.Services.Client.resources.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\it\Microsoft.Data.Services.Client.resources.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\ja\Microsoft.Data.Services.Client.resources.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\ko\Microsoft.Data.Services.Client.resources.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\ru\Microsoft.Data.Services.Client.resources.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\zh-Hans\Microsoft.Data.Services.Client.resources.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\zh-Hant\Microsoft.Data.Services.Client.resources.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\de\System.Spatial.resources.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\es\System.Spatial.resources.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\fr\System.Spatial.resources.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\it\System.Spatial.resources.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\ja\System.Spatial.resources.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\ko\System.Spatial.resources.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\ru\System.Spatial.resources.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\zh-Hans\System.Spatial.resources.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\bin\Dev\zh-Hant\System.Spatial.resources.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\obj\Dev\WeChat.Common.csprojResolveAssemblyReference.cache
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\obj\Dev\WeChat.Common.dll
+C:\NikeProjectSource\Meeting App\张青提供Meeting App文档\zhangqing\Source Code_From Wang Kai\WeChat.Common\obj\Dev\WeChat.Common.pdb
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\WeChat.Common.dll.config
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\WeChat.Common.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\WeChat.Common.pdb
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\Microsoft.Azure.KeyVault.Core.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\Microsoft.Data.Edm.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\Microsoft.Data.OData.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\Microsoft.Data.Services.Client.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\Microsoft.ServiceBus.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\Microsoft.WindowsAzure.Configuration.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\Microsoft.WindowsAzure.Storage.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\Newtonsoft.Json.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\StackExchange.Redis.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\System.Spatial.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\Microsoft.Azure.KeyVault.Core.xml
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\Microsoft.Data.Edm.xml
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\Microsoft.Data.OData.xml
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\Microsoft.Data.Services.Client.xml
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\Microsoft.ServiceBus.xml
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\Microsoft.WindowsAzure.Configuration.xml
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\Microsoft.WindowsAzure.Storage.pdb
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\Microsoft.WindowsAzure.Storage.xml
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\Newtonsoft.Json.xml
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\StackExchange.Redis.pdb
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\StackExchange.Redis.xml
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\System.Spatial.xml
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\de\Microsoft.Data.Edm.resources.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\es\Microsoft.Data.Edm.resources.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\fr\Microsoft.Data.Edm.resources.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\it\Microsoft.Data.Edm.resources.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\ja\Microsoft.Data.Edm.resources.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\ko\Microsoft.Data.Edm.resources.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\ru\Microsoft.Data.Edm.resources.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\zh-Hans\Microsoft.Data.Edm.resources.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\zh-Hant\Microsoft.Data.Edm.resources.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\de\Microsoft.Data.OData.resources.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\es\Microsoft.Data.OData.resources.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\fr\Microsoft.Data.OData.resources.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\it\Microsoft.Data.OData.resources.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\ja\Microsoft.Data.OData.resources.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\ko\Microsoft.Data.OData.resources.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\ru\Microsoft.Data.OData.resources.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\zh-Hans\Microsoft.Data.OData.resources.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\zh-Hant\Microsoft.Data.OData.resources.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\de\Microsoft.Data.Services.Client.resources.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\es\Microsoft.Data.Services.Client.resources.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\fr\Microsoft.Data.Services.Client.resources.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\it\Microsoft.Data.Services.Client.resources.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\ja\Microsoft.Data.Services.Client.resources.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\ko\Microsoft.Data.Services.Client.resources.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\ru\Microsoft.Data.Services.Client.resources.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\zh-Hans\Microsoft.Data.Services.Client.resources.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\zh-Hant\Microsoft.Data.Services.Client.resources.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\de\System.Spatial.resources.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\es\System.Spatial.resources.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\fr\System.Spatial.resources.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\it\System.Spatial.resources.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\ja\System.Spatial.resources.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\ko\System.Spatial.resources.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\ru\System.Spatial.resources.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\zh-Hans\System.Spatial.resources.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\zh-Hant\System.Spatial.resources.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\obj\Dev\WeChat.Common.csprojAssemblyReference.cache
+D:\GitHub\netTemplateMVC\WeChat.Common\obj\Dev\WeChat.Common.csproj.CoreCompileInputs.cache
+D:\GitHub\netTemplateMVC\WeChat.Common\obj\Dev\WeChat.Common.csproj.CopyComplete
+D:\GitHub\netTemplateMVC\WeChat.Common\obj\Dev\WeChat.Common.dll
+D:\GitHub\netTemplateMVC\WeChat.Common\obj\Dev\WeChat.Common.pdb

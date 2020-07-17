@@ -121,5 +121,34 @@ namespace Framework
         { 
             return File.Exists(path);
         }
+
+        public static SortedDictionary<string, object> FromXml(string xml)
+        {
+            if (string.IsNullOrEmpty(xml))
+            {
+                Log.ILog4_Error.Error("将空的xml串转换为WxPayData不合法!");
+                throw new ArgumentNullException("将空的xml串转换为WxPayData不合法!");
+            }
+            //采用排序的Dictionary的好处是方便对数据包进行签名，不用在签名之前再做一次排序
+            SortedDictionary<string, object> m_values = new SortedDictionary<string, object>();
+
+            SafeXmlDocument xmlDoc = new SafeXmlDocument();
+            xmlDoc.LoadXml(xml);
+            XmlNode xmlNode = xmlDoc.FirstChild;//获取到根节点<xml>
+            XmlNodeList nodes = xmlNode.ChildNodes;
+            foreach (XmlNode xn in nodes)
+            {
+                XmlElement xe = (XmlElement)xn;
+                m_values[xe.Name] = xe.InnerText;//获取xml的键值对到WxPayData内部的数据中
+            }
+            return m_values;
+        }
+    }
+    public class SafeXmlDocument : XmlDocument
+    {
+        public SafeXmlDocument()
+        {
+            this.XmlResolver = null;
+        }
     }
 }

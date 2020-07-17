@@ -16,6 +16,17 @@ let store = new vuex.Store({
   getters: {
     getUserInfo: state => {
       return state.userInfo
+    },
+    getSelMenuList: state => {
+      var foods = []
+      state.goods.forEach((good) => {
+        good.foods.forEach((food) => {
+          if (food.count && food.count > 0) {
+            foods.push(food)
+          }
+        })
+      })
+      return foods
     }
   },
   mutations: {
@@ -94,7 +105,7 @@ let store = new vuex.Store({
       commit('syncGoods')
       setInterval(() => {
         commit('syncGoods')
-      }, 5000)
+      }, 10000)
     },
     a_setCartCount({ commit }, item) {
       setTimeout(() => {

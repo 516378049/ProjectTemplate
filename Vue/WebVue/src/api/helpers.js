@@ -9,6 +9,13 @@ const ERR_OK = 0
 
 export function get(url) {
   return function (params = {}) {
+    //var httpUrl = 'https://www.changchunamy.com/'
+    //if (url.indexOf('GetUnifiedOrderResult') > -1) {//支付接口
+    //  httpUrl=
+    //}
+    //else {
+    //  httpUrl = baseUrl + url
+    //}
     var httpUrl = baseUrl + url
     return axios.get(httpUrl, {
       params

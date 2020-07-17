@@ -22,11 +22,21 @@ namespace Vue
         /// <param name="retMsg"></param>
         /// <param name="message"></param>
         /// <returns></returns>
-        protected ActionResult CreateApiResult(object message = null, string retCode = "0", string retMsg = "", int Total = 0)
+        //protected ActionResult CreateApiResult(object message = null, string retCode = "0", string retMsg = "", int Total = 0)
+        //{
+        //    return Json(new ApiResult() { RetCode = retCode, Total = Total, RetMsg = retMsg, Message = message }, JsonRequestBehavior.AllowGet);
+        //}
+        /// <summary>
+        /// 创建ApiResult对象，所有WebApi接口均使用该方法包装返回值
+        /// </summary>
+        /// <param name="retCode"></param>
+        /// <param name="retMsg"></param>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        protected JsonResult CreateApiResult(object message = null, string retCode = "0", string retMsg = "", int Total = 0)
         {
             return Json(new ApiResult() { RetCode = retCode, Total = Total, RetMsg = retMsg, Message = message }, JsonRequestBehavior.AllowGet);
         }
-
         public class ApiResult
         {
             public string RetCode { get; set; }

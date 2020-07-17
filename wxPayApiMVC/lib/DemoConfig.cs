@@ -105,7 +105,11 @@ namespace WxPayAPI.lib
         {
             return ConfigurationManager.AppSettings["MallNotifyUrl"];
         }
-
+        //=======【支付完成后返回url】===================================== 
+        public string GetReturnUrl()
+        {
+            return ConfigurationManager.AppSettings["ReturnUrl"];
+        }
         
 
         //=======【商户系统后台机器IP】===================================== 

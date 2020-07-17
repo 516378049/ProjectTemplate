@@ -1,7 +1,9 @@
-﻿
+﻿@using WxPayAPI.lib;
 @{
     Layout = null;
 }
+<!DOCTYPE html>
+@{DemoConfig dConfig = new DemoConfig(); }
 
 <!DOCTYPE html>
 
@@ -37,7 +39,7 @@
                             $("#PayResult").html("支付未完成！")
                             $("#btnBrandWCPayRequest").show();
                         }
-                    }) 
+                    })
 
         }
         function callpay()
@@ -64,7 +66,7 @@
         window.onload = function ()
         {
             setTotalFee(totalFee)
-            
+
             callpay()
         }
         //支付成功后跳转到其他页面
@@ -83,7 +85,7 @@
                 totalFee = totalFee + '.00' //补一个小数点和补两个0
             }
             $("#totalFee").html(totalFee)
-           
+
         }
 
         function jsApiCallByCode() {
@@ -96,7 +98,7 @@
                 })
             })
         }
-        
+
 
     </script>
     <style type="text/css">

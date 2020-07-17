@@ -150,13 +150,13 @@ namespace WxPayAPI
         {
             //统一下单
             WxPayData data = new WxPayData();
-            data.SetValue("body", "test");
-            data.SetValue("attach", "test");
+            data.SetValue("body", "SHXX");
+            data.SetValue("attach", "SHXX");
             data.SetValue("out_trade_no", WxPayApi.GenerateOutTradeNo());
             data.SetValue("total_fee", total_fee);
             data.SetValue("time_start", DateTime.Now.ToString("yyyyMMddHHmmss"));
             data.SetValue("time_expire", DateTime.Now.AddMinutes(10).ToString("yyyyMMddHHmmss"));
-            data.SetValue("goods_tag", "test");
+            data.SetValue("goods_tag", "SHXX");
             data.SetValue("trade_type", "JSAPI");
             data.SetValue("openid", openid);
 

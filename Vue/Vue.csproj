@@ -412,6 +412,10 @@
       <Project>{0B4A6448-CA31-4F14-AAFD-167E59CA4335}</Project>
       <Name>Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WeChat.Common\WeChat.Common.csproj">
+      <Project>{9800F2E0-7866-4CC2-A357-96FAF913D8AF}</Project>
+      <Name>WeChat.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

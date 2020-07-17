@@ -60,7 +60,12 @@
             label: '微信支付',
             value: 'wxPay1'
           }
-        ]
+        ],
+        OrderInfo: {
+          OrderCreateTime: "",
+          OrderAmount: 0,
+          OrderNum:''
+        }
       }
     },
     props: {
@@ -68,6 +73,9 @@
     computed: {
     },
     methods: {
+      CreateOrder() {
+
+      },
       pay: function () {
         this.$router.push('PayResult');
       }

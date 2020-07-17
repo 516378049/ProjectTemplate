@@ -200,10 +200,9 @@ namespace wxPayApiMVC.Controllers
                 {
                     //H5支付
                     PayParams payParams = new PayParams();
+                    payParams.TradeType = ConstDefin.TRADE_TYPE_H5;
                     payParams.OrderId = orderId;
                     payParams.TotalFee = int.Parse(totalFee);
-                    payParams.TradeType = ConstDefin.TRADE_TYPE_H5;
-                    payParams.SpbillCreateIp = Request.UserHostAddress;
                     return H5Pay(payParams);
                 }
                 
@@ -389,8 +388,10 @@ namespace wxPayApiMVC.Controllers
         * @return 统一下单结果
         * @失败时抛异常WxPayException
         */
+        [HttpGet]
         public JsonResult GetUnifiedOrderResult(PayParams payParams)
         {
+            payParams.SpbillCreateIp = Request.UserHostAddress;
             //统一下单
             WxPayData data = new WxPayData();
             data.SetValue("body", "ShangHai just do and belive - wxMall");//上海行信信息技术-微商城支付
@@ -399,7 +400,7 @@ namespace wxPayApiMVC.Controllers
             data.SetValue("total_fee", payParams.TotalFee);
             data.SetValue("time_start", DateTime.Now.ToString("yyyyMMddHHmmss"));
             data.SetValue("time_expire", DateTime.Now.AddMinutes(10).ToString("yyyyMMddHHmmss"));
-            data.SetValue("goods_tag", "test");
+            data.SetValue("goods_tag", "SHXX");
             data.SetValue("trade_type", payParams.TradeType);
             data.SetValue("spbill_create_ip", payParams.SpbillCreateIp);
 
@@ -434,7 +435,55 @@ namespace wxPayApiMVC.Controllers
                 SortedDictionary<string, object> m_values = jsapi.GetJsApiParameters(result);
                 return Json(new { BrandWCPayRequestParams = m_values }, JsonRequestBehavior.AllowGet);
             }
-            
+        }
+        [HttpGet]
+        public JsonResult GetUnifiedOrderResultNew(PayParams payParams)
+        {
+            //payParams.TradeType = ConstDefin.TRADE_TYPE_H5;
+            payParams.SpbillCreateIp = Request.UserHostAddress;
+            //统一下单
+            WxPayData data = new WxPayData();
+            data.SetValue("body", "ShangHai just do and belive - wxMall");//上海行信信息技术-微商城支付
+            data.SetValue("attach", "null");
+            data.SetValue("out_trade_no", payParams.OrderId); //WxPayApi.GenerateOutTradeNo());//;//orderId
+            data.SetValue("total_fee", payParams.TotalFee);
+            data.SetValue("time_start", DateTime.Now.ToString("yyyyMMddHHmmss"));
+            data.SetValue("time_expire", DateTime.Now.AddMinutes(10).ToString("yyyyMMddHHmmss"));
+            data.SetValue("goods_tag", "SHXX");
+            data.SetValue("trade_type", payParams.TradeType);
+            data.SetValue("spbill_create_ip", payParams.SpbillCreateIp);
+
+            if (payParams.TradeType != ConstDefin.TRADE_TYPE_H5)
+            {
+                data.SetValue("openid", payParams.OpenId);
+            }
+
+            WxPayData result = WxPayApi.UnifiedOrder(data);
+            if (!result.IsSet("appid") || !result.IsSet("prepay_id") || result.GetValue("prepay_id").ToString() == "")
+            {
+                Log.Error(this.GetType().ToString(), "UnifiedOrder response error!");
+                throw new WxPayException("UnifiedOrder response error!");
+            }
+            if (payParams.TradeType == ConstDefin.TRADE_TYPE_H5)
+            {
+                Log.Debug("GetUnifiedOrderResult TRADE_TYPE: ", ConstDefin.TRADE_TYPE_H5);
+                string mweb_url = result.GetValue("mweb_url").ToString();
+                string ReturnUrl =
+                    ConfigurationManager.AppSettings["H5PayConfirm"] + "?OrderId=" + payParams.OrderId + "&TotalFee=" + payParams.TotalFee.ToString();
+
+                mweb_url = mweb_url + "&redirect_url=" + Url.Encode(ReturnUrl);
+
+                //保存支付参数到缓存
+                CacheHelper.SetCache(payParams.OrderId + ".mweb_url", mweb_url, TimeSpan.FromMinutes(5));
+                return Json(new { mweb_url }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                Log.Debug("GetUnifiedOrderResult TRADE_TYPE: ", ConstDefin.TRADE_TYPE_JSAPI);
+                JsApiPay jsapi = new JsApiPay();
+                SortedDictionary<string, object> m_values = jsapi.GetJsApiParameters(result);
+                return CreateApiResult(m_values);
+            }
         }
         #endregion
 
@@ -502,7 +551,7 @@ namespace wxPayApiMVC.Controllers
         public JsonResult wxOrderQuery(string orderId)
         {
             string data= OrderQuery.QueryOrder("", orderId);//调用订单查询业务逻辑
-            return Json(new { data}, JsonRequestBehavior.AllowGet); 
+            return Json(new {data}, JsonRequestBehavior.AllowGet); 
         }
 
         #region test
@@ -612,7 +661,7 @@ namespace wxPayApiMVC.Controllers
             data.SetValue("total_fee", totalFee);
             data.SetValue("time_start", DateTime.Now.ToString("yyyyMMddHHmmss"));
             data.SetValue("time_expire", DateTime.Now.AddMinutes(10).ToString("yyyyMMddHHmmss"));
-            data.SetValue("goods_tag", "test");
+            data.SetValue("goods_tag", "SHXX");
             data.SetValue("trade_type", "JSAPI");
             data.SetValue("openid", openid);
 

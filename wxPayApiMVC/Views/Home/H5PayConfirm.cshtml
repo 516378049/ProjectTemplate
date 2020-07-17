@@ -1,10 +1,9 @@
-﻿
+﻿@using WxPayAPI.lib;
 @{
     Layout = null;
 }
-
 <!DOCTYPE html>
-
+@{DemoConfig dConfig = new DemoConfig(); }
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -35,7 +34,7 @@
         }
 
         $(document).ready(function () {
-            $("#PaySuccess").click(function () { pageTransfer('https://www.sky888.cn/vue/#/order/payment/success') })
+            $("#PaySuccess").click(function () { pageTransfer('@dConfig.GetMallNotifyUrl()') })
             $("#PayFailAndRePay").click(function () { pageTransfer(wxPayUrlTransfel) })
         })
 
@@ -48,9 +47,9 @@
                         $("#PaySuccess").attr('disabled', true)
                         $("#PayFailAndRePay").attr('disabled', true)
                         setTimeout(function () {
-                            pageTransfer('https://www.sky888.cn/vue/#/order/payment/success');
+                            pageTransfer('@dConfig.GetMallNotifyUrl()');
                         },700)
-                        
+
                     }
                 })
 
@@ -68,8 +67,9 @@
             cursor: pointer;
             color: white;
             font-size: 16px;
-            margin-top:5px
+            margin-top: 5px
         }
+
         .OrderInfo {
             width: 100%;
             display: inline-block;
@@ -80,7 +80,7 @@
 </head>
 <body>
     <div id="H5Pay">
-        
+
         <div id="PayResult" align="center" style="font-size:20px;">
 
 
@@ -95,7 +95,7 @@
                 <span class="OrderInfo"><label>应付金额：</label> <span id="totalFee" style="color:orangered;font-weight: bolder;"></span></span>
             </div>
 
-            
+
             <input type="button" id="PaySuccess" class="PayConfirm" value="已完成支付">
             <br />
             <input type="button" id="PayFailAndRePay" class="PayConfirm" style="background-color:red ;" value="支付遇到问题，重新支付" />

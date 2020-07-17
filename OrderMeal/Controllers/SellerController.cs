@@ -44,6 +44,7 @@ namespace OrderMeal.Controllers
         }
         #endregion
 
+        #region 获取商家信息
         /// <summary>
         /// get seller infomation
         /// </summary>
@@ -90,6 +91,9 @@ namespace OrderMeal.Controllers
             List<RatingsSellers> ratings = Studio.RatingsSeller.Get(X => X.sellerId == id && X.DelFlag == 0).ToList();
             return CreateApiResult(ratings);
         }
+        #endregion
+
+        #region 设置获取缓存购物车
         /// <summary>
         /// get cart from redis cache by sellerid and desknumber
         /// </summary>
@@ -136,5 +140,17 @@ namespace OrderMeal.Controllers
             RedisHelper.getRedisServer.StringSet("seller."+ id+"."+ deskNumber, cartList);
             return CreateApiResult("success");
         }
+        #endregion
+
+        #region 订单操作
+        /// <summary>
+        /// create order info
+        /// </summary>
+        /// <returns></returns>
+        public ApiResult CreateOrderInfo()
+        {
+            return CreateApiResult("success");
+        }
+        #endregion
     }
 }
