@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WxPayAPI.lib;
 
 namespace WxPayAPI
 {
@@ -72,6 +73,22 @@ namespace WxPayAPI
             Log.Info(this.GetType().ToString(), "UnifiedOrder success , send data to WeChat : " + data.ToXml());
             page.Response.Write(data.ToXml());
             page.Response.End();
+
+            //将支付信息同步发送给商城
+            DemoConfig dConfig = new DemoConfig();
+            string resFromMall = "";
+            if (!string.IsNullOrEmpty(dConfig.GetMallNotifyUrl()))
+            {
+                Log.Info(this.GetType().ToString(), "开始转发微信支付结果通知给商城..." + "url：" + dConfig.GetMallNotifyUrl() + "，reXML：" + data.ToXml());
+                resFromMall = HttpService.Post(data.ToXml(), dConfig.GetMallNotifyUrl(), false, 6);
+                Log.Info(this.GetType().ToString(), "微信支付结果通知转发给商城完毕...");
+            }
+            else
+            {
+                Log.Info(this.GetType().ToString(), "未设置商城支付回调地址,无有发送商城通知");
+            }
+            Log.Info(this.GetType().ToString(), "Receive data from wxMall : " + resFromMall);
+
         }
 
         private WxPayData UnifiedOrder(string openId,string productId)

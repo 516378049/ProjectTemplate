@@ -15,7 +15,7 @@ import errorPage from '@/components/utility/errorPage/errorPage'
 
 import { loadLocal } from '@/common/js/storage'
 import store from '@/common/js/store'
-import cnst from '@/common/js/Global'
+import { cnst } from '@/common/js/Global'
 import qs from 'query-string'
 Vue.use(Router)
 

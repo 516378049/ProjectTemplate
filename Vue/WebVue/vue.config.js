@@ -80,6 +80,13 @@ module.exports = {
         pathRewrite: {
           '^/Authorize': ''
         }
+      },
+      '/wxPayApiNew': {   //如果有前缀相同的，那么短点的前缀写后面，不然会有限匹配
+        target: 'http://local.vuecli.test/',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/wxPayApiNew': ''
+        }
       }
     }
   }

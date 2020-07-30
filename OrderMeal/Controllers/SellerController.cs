@@ -1,18 +1,24 @@
 ﻿using Framework;
 using Model.EF;
+using Model.EF.EF_ExAttr;
 using Model.orderMeal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using WebAPI.Core.WebAPI;
+using WeChat.Common;
+
+using static WeChat.Common.PredicateBuilderExtension;
 
 namespace OrderMeal.Controllers
 {
-    [EnableCors(origins: "https://www.changchunamy.com/OrderMeal/", headers: "*", methods: "*")]
+    [EnableCors(origins: "https://www.changchunamy.com,http://localhost:8080", headers: "*", methods: "*")]
     public class SellerController : BaseApiController
     {
         #region default fundation
@@ -55,9 +61,9 @@ namespace OrderMeal.Controllers
         {
             sellers seller = Studio.Sellers.Get(X => X.Id == id && X.DelFlag == 0).FirstOrDefault();
             List<supports> supports = Studio.Supports.Get(X => X.sellerId == id && X.DelFlag == 0).ToList();
-            seller.supports = supports;
-
-            return CreateApiResult(seller);
+            sellersEx sellerEx = new sellersEx(seller);
+            sellerEx.supports = supports;
+            return CreateApiResult(sellerEx);
         }
         /// <summary>
         /// get seller menus
@@ -68,17 +74,25 @@ namespace OrderMeal.Controllers
         public ApiResult getGoods(int id)
         {
             List<goods> goods = Studio.Goods.Get(X => X.sellerId == id && X.DelFlag == 0).ToList();
+            List<goodsEx> l_goodsEx = new List<goodsEx>();
             foreach (goods good in goods)
             {
                 List<foods> foods = Studio.Foods.Get(X => X.goodId == good.Id && X.DelFlag == 0).ToList();
-                good.foods = foods;
+                List<foodsEx> l_foodsEx = new List<foodsEx>();
                 foreach (foods food in foods)
                 {
                     List<ratings> ratings = Studio.Ratings.Get(X => X.foodId == food.Id && X.DelFlag == 0).ToList();
-                    food.ratings = ratings;
+                    
+                    foodsEx foodsEx = new foodsEx(food);
+                    foodsEx.ratings = ratings;
+                    l_foodsEx.Add(foodsEx);
                 }
+
+                goodsEx goodsEx = new goodsEx(good);
+                goodsEx.foods = l_foodsEx;
+                l_goodsEx.Add(goodsEx);
             }
-            return CreateApiResult(goods);
+            return CreateApiResult(l_goodsEx);
         }
         /// <summary>
         /// get seller rattings 
@@ -101,9 +115,10 @@ namespace OrderMeal.Controllers
         /// <param name="deskNumber"></param>
         /// <returns></returns>
         [HttpGet]
-        public ApiResult getCartCount(int id, string deskNumber) {
+        public ApiResult getCartCount(int id, string deskNumber)
+        {
             List<CartOrder> cart = RedisHelper.getRedisServer.StringGet<List<CartOrder>>("seller." + id + "." + deskNumber);
-            if(cart==null)
+            if (cart == null)
             {
                 return CreateApiResult("");
             }
@@ -118,18 +133,18 @@ namespace OrderMeal.Controllers
         /// <param name="count"></param>
         /// <returns></returns>
         [HttpGet]
-        public ApiResult setCartCount(int id, string deskNumber,int menuId,int count)
+        public ApiResult setCartCount(int id, string deskNumber, int menuId, int count)
         {
-            CartOrder cart = new CartOrder( id, deskNumber, menuId, count);
+            CartOrder cart = new CartOrder(id, deskNumber, menuId, count);
             List<CartOrder> cartList = RedisHelper.getRedisServer.StringGet<List<CartOrder>>("seller." + id + "." + deskNumber);
-            
-            if (cartList==null)
+
+            if (cartList == null)
             {
                 cartList = new List<CartOrder>();
-                
+
             }
-            CartOrder _cart=cartList.FirstOrDefault(X=>X.menuId==menuId);
-            if(_cart!=null)
+            CartOrder _cart = cartList.FirstOrDefault(X => X.menuId == menuId);
+            if (_cart != null)
             {
                 _cart.count += count;
             }
@@ -137,7 +152,7 @@ namespace OrderMeal.Controllers
             {
                 cartList.Add(cart);
             }
-            RedisHelper.getRedisServer.StringSet("seller."+ id+"."+ deskNumber, cartList);
+            RedisHelper.getRedisServer.StringSet("seller." + id + "." + deskNumber, cartList);
             return CreateApiResult("success");
         }
         #endregion
@@ -147,9 +162,112 @@ namespace OrderMeal.Controllers
         /// create order info
         /// </summary>
         /// <returns></returns>
+        [HttpPost]
         public ApiResult CreateOrderInfo()
         {
+            try
+            {
+                string Params = GetRequestStreamData();
+                string _orderinfo = JsonHelper.ConvertJsonResult(Params, "orderinfo");
+                string _l_OrderDetailsInfo = JsonHelper.ConvertJsonResult(Params, "l_OrderDetailsInfo");
+                //保存订单
+                OrderInfo orderinfo = JsonHelper.ToObject<OrderInfo>(_orderinfo);
+                orderinfo.Status = 1;
+                orderinfo.CreateUserId = UserId;
+                orderinfo.UpdateUserId = UserId;
+                List<OrderDetailsInfo> l_OrderDetailsInfo = JsonHelper.ToObject<List<OrderDetailsInfo>>(_l_OrderDetailsInfo);
+
+                StudioTra.BeginTransaction();
+
+                orderinfo = StudioTra.OrderInfo.Insert(orderinfo);
+                l_OrderDetailsInfo.ForEach(X => {
+                    X.OrderId = orderinfo.Id;
+                    X.CreateUserId = UserId;
+                    X.UpdateUserId = UserId;
+                });
+                StudioTra.OrderDetailsInfo.InsertRange(l_OrderDetailsInfo);
+                StudioTra.CommitTransaction();
+            }
+            catch (Exception e)
+            {
+                StudioTra.Rollback();
+                Log.ILog4_Error.Error("插入订单出错：", e);
+                return CreateApiResult("-1", "插入订单出错：" + e.Message);
+            }
+            finally
+            {
+
+            }
             return CreateApiResult("success");
+        }
+
+        /// <summary>
+        /// Get orderInfolist
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="sellerId"></param>
+        /// <param name="startTime"></param>
+        /// <param name="slipAction">1、向下拉(down)取查询当前时间以前订单，向上(up)拉取订单，查询当前时间以后订单</param>
+        /// <param name="count">记录数</param>
+        /// <returns></returns>
+        [HttpPost]
+        public ApiResult getOrderInfoList(int userId = 0, int sellerId = 0, string startTime = "", string slipAction = "", int count = 0)
+        {
+            string Params = GetRequestStreamData();
+            userId = int.Parse(JsonHelper.ConvertJsonResult(Params, "userId"));
+            sellerId = int.Parse(JsonHelper.ConvertJsonResult(Params, "sellerId"));
+            startTime = JsonHelper.ConvertJsonResult(Params, "startTime");
+            slipAction = JsonHelper.ConvertJsonResult(Params, "slipAction");
+
+            List<OrderInfo> orderinfoList = new List<OrderInfo>();
+            Expression<Func<OrderInfo, bool>> filter = X => X.CreateUserId == userId && X.SellerId == sellerId && X.DelFlag == 0;
+            if (slipAction == "down")
+            {
+                DateTime _startTime = DateTime.Parse(startTime);
+                Expression<Func<OrderInfo, bool>> filter1 = X => X.CreateTime < _startTime;
+                filter = PredicateBuilderExtension.And(filter, filter1);
+            }
+            if (slipAction == "up")
+            {
+                DateTime _startTime = DateTime.Parse(startTime);
+                Expression<Func<OrderInfo, bool>> filter1 = X => X.CreateTime > _startTime;
+                filter = PredicateBuilderExtension.And(filter, filter1);
+            }
+            var _orderinfoList = Studio.OrderInfo.Get(filter,X=>X.OrderBy(Y=>Y.CreateTime),"",-1,count);
+            orderinfoList = _orderinfoList.ToList();
+
+            List<OrderInfoEx> orderinfoExList = new List<OrderInfoEx>();
+
+            orderinfoList.ForEach(X =>
+            {
+                OrderInfoEx oiEx = new OrderInfoEx(X);
+                oiEx.OrderDetailsInfo = Studio.OrderDetailsInfo.Get(Y => Y.OrderId == X.Id && Y.DelFlag == 0).ToList();
+                orderinfoExList.Add(oiEx);
+            });
+
+            return CreateApiResult(orderinfoExList);
+        }
+        /// <summary>
+        /// get OrderInfo List Status 
+        /// </summary>
+        /// <param name="_orderinfoList"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ApiResult getOrderInfoListStatus()
+        {
+            HttpContextBase context = (HttpContextBase)(Request.Properties["MS_HttpContext"]);
+            string Params = context.Request.Params["params"];
+            //Params = JsonHelper.ConvertJsonResult(Params, "params");
+            List<OrderInfo> _orderinfoList = JsonHelper.ToObject<List<OrderInfo>>(Params);
+            Expression<Func<OrderInfo, bool>> filter = X => X.DelFlag == 0;
+            _orderinfoList.ForEach(X => {
+                Expression<Func<OrderInfo, bool>> filter1 = Y => Y.Id == X.Id;
+                filter = PredicateBuilderExtension.Or(filter, filter1);
+            });
+
+            var _studio = Studio.OrderInfo.GetField((X) => new OrderInfo { Id=X.Id, Status=X.Status }, filter);
+            List<OrderInfo> orderinfoList = _studio.ToList();
+            return CreateApiResult(orderinfoList);
         }
         #endregion
     }

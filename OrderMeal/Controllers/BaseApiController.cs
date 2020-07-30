@@ -16,6 +16,7 @@ namespace OrderMeal.Controllers
     {
 
         public UnitOfWork Studio = new UnitOfWork();
+        public UnitOfWork StudioTra = new UnitOfWork(true);
         /// <summary>
         /// 创建ApiResult对象，所有WebApi接口均使用该方法包装返回值
         /// </summary>
@@ -23,11 +24,21 @@ namespace OrderMeal.Controllers
         /// <param name="retMsg"></param>
         /// <param name="message"></param>
         /// <returns></returns>
-        protected string CreateApiResult(string retCode, string retMsg, object message)
+        //protected string CreateApiResult(string retCode, string retMsg, object message)
+        //{
+        //    return JsonConvert.SerializeObject(new CoreWebApi.ApiResult() { RetCode = retCode, RetMsg = retMsg, Message = message });
+        //}
+        /// <summary>
+        /// 创建ApiResult对象，所有WebApi接口均使用该方法包装返回值
+        /// </summary>
+        /// <param name="retCode"></param>
+        /// <param name="retMsg"></param>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        protected ApiResult CreateApiResult(string retCode, string retMsg, object message)
         {
-            return JsonConvert.SerializeObject(new CoreWebApi.ApiResult() { RetCode = retCode, RetMsg = retMsg, Message = message });
+            return new CoreWebApi.ApiResult() { RetCode = retCode, RetMsg = retMsg, Message = message };
         }
-
         protected string CreateApiResult(CoreWebApi.ApiResult result)
         {
             return JsonConvert.SerializeObject(result);
@@ -69,11 +80,23 @@ namespace OrderMeal.Controllers
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
+        protected int UserId
+        {
+            get
+            {
+                return int.Parse(WebFuncHelper.GetHeadValue(Request, WebConst.Header_UserId));
+            }
+        }
+        /// <summary>
+        /// 获取当前请求的APPID
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         protected string AppID
         {
             get
             {
-                return CoreWebApi.WebFuncHelper.GetHeadValue(Request, CoreWebApi.WebConst.Header_AppID);
+                return WebFuncHelper.GetHeadValue(Request, WebConst.Header_AppID);
             }
         }
 
@@ -143,7 +166,21 @@ namespace OrderMeal.Controllers
             }
             return context.Request[key];
         }
-
+        /// <summary>
+        /// 获取POST数据流中的数据键值
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        protected string GetRequestStreamData()
+        {
+            HttpContextBase context = (HttpContextBase)(Request.Properties["MS_HttpContext"]);
+            int len = (context.Request).ContentLength;
+            byte[] bytes = new byte[len];
+            (((System.Web.HttpContextWrapper)context).Request).InputStream.Read(bytes, 0, len);
+            System.Text.UTF8Encoding converter = new System.Text.UTF8Encoding();
+            string inputString = converter.GetString(bytes);
+            return inputString;
+        }
 
         /// <summary>
         /// 获取POST数据流中的数据键值

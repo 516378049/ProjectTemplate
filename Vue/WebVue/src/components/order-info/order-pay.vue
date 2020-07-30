@@ -12,10 +12,10 @@
     <div class="start" style="margin-top:30px"></div>
 
     <div class="OrderInfoPay">
-      <div class="OrderInfoPaySingle">支付剩余时间：20:00</div>
-      <div class="OrderInfoPaySingle"><span style="font-weight:bolder;color:#000000">￥</span><span style="font-size:xx-large;font-weight:bolder;color:#000000">88.88</span></div>
-      <div class="OrderInfoPaySingle">商家：一品香粥</div>
-      <div class="OrderInfoPaySingle">单号：201705270202011001</div>
+      <div class="OrderInfoPaySingle">支付剩余时间：{{this.restPayTime}}</div>
+      <div class="OrderInfoPaySingle"><span style="font-weight:bolder;color:#000000">￥</span><span style="font-size:xx-large;font-weight:bolder;color:#000000">{{orderInfo.OrderAmount}}</span></div>
+      <div class="OrderInfoPaySingle">商家：{{orderInfo.SellerName}}</div>
+      <div class="OrderInfoPaySingle">单号：{{orderInfo.OrderId}}</div>
       <!--<div class="OrderInfoPaySingle"><span style="display:inline-block;width:50%;text-align:right">支付剩余时间：</span>20:00</div>
     <div class="OrderInfoPaySingle"><span style="display:inline-block;width:50%;text-align:right">金额：</span><span style="font-weight:bolder;color:#000000">￥</span><span style="font-size:xx-large;font-weight:bolder;color:#000000">88.88</span></div>
     <div class="OrderInfoPaySingle"><span style="display:inline-block;width:50%;text-align:right">商家：</span>一品香粥</div>
@@ -31,11 +31,11 @@
        
       </div>
 
-      <div style="width:100%">
+      <!--<div style="width:100%">
         <img style="float:left" src="http://img.zcool.cn/community/01db1c5ad0dab9a8012138678d8db9.png@2o.png" height="48" width="48" slot="icon">
         <mt-radio style="width:100%" align="right" title="" v-model="mtRadioSel" :options="Alipay">
         </mt-radio>
-      </div>
+      </div>-->
 
     </div>
     <mt-button style="margin-top:20px" type="danger" size="large" @click="pay">确认支付</mt-button>
@@ -45,6 +45,8 @@
 </template>
 <script>
   import { GetUnifiedOrderResult } from 'api'
+  import moment from 'moment'
+  import { loadLocal } from '@/common/js/storage'
   export default {
     name:'OrderPay', 
     data() {
@@ -62,27 +64,58 @@
             value: 'wxPay1'
           }
         ],
-        OrderInfo: {
-          OrderCreateTime: "",
-          OrderAmount: 0,
-          OrderNum:''
-        }
+        restPayTime: '',
+        IntervalId: '',
+        StartTime: moment()
       }
     },
     props: {
     },
     computed: {
+      orderInfo() {
+        return {
+          OrderCreateTime: this.$route.params.OrderCreateTime,
+          OrderAmount: this.$route.params.OrderAmount,
+          OrderId: this.$route.params.OrderId,
+          SellerName: this.$route.params.SellerName
+        }
+      }
+    },
+    created() {
+    },
+    mounted() {
+      var that=this
+      that.IntervalId=setInterval(() => {
+        that.diffTime()
+      }, 1000)
     },
     methods: {
-      CreateOrder() {
-
+      diffTime() {
+        var that = this
+        let CurrentTime = moment()
+        var _date = moment.duration(CurrentTime - that.StartTime, 'ms')
+        if (this.restPayTime == '00：00') {
+          
+          clearInterval(that.IntervalId);
+          this.$createDialog({
+            type: 'alert',
+            title: '过期提醒',
+            content: '您的订单已过期，请您重新下单，谢谢！',
+            icon: 'cubeic-warn',
+            onConfirm: () => {
+              that.$router.push({ path: "/App" });
+            }
+          }).show()
+        }
+        else {
+          this.restPayTime = this.PrefixInteger((19 - _date._data.minutes), 2) + '：' + this.PrefixInteger((59 - _date._data.seconds), 2)
+        }
       },
       pay: function () {
         var that = this
-        var _date = new Date()
-        var _OrderId = _date.getFullYear() + _date.getMonth().toString() + _date.getDay().toString() + _date.getHours().toString() + _date.getMinutes().toString() + _date.getSeconds().toString()
+        console.log("OrderId: " + that.orderInfo.OrderId)
         GetUnifiedOrderResult({
-          OrderId: _OrderId,          TotalFee: '100',
+          OrderId: that.orderInfo.OrderId,          TotalFee: '2',
           OpenId: that.$store.state.userInfo.openid,
           TradeType:'JSAPI'
         }).then((parms) => {
@@ -93,8 +126,7 @@
             signType: parms.signType, // 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'
             paySign: parms.paySign, // 支付签名
             success: function (res) {
-              // 支付成功后的回调函数
-              this.$router.push('PayResult');
+              that.$router.push('PayResult');
             }
           });
         })

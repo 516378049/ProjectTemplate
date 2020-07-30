@@ -1,17 +1,18 @@
 import vue from 'vue'
 import vuex from 'vuex'
-import { getSeller, getGoods, getRatings, setCartCount, getCartCount } from 'api'
+import { cnst, Fun } from '@/common/js/Global'
+import { getSeller, getGoods, getRatings, setCartCount, getCartCount, getOrderInfoList } from 'api'
 import { loadLocal, saveLocal } from '@/common/js/storage'
-import { Promise } from 'core-js';
+import { from } from 'array-flatten';
 vue.use(vuex)
-
 
 let store = new vuex.Store({
   state: {
     //当前商家菜单，goods.vue初始化时同步，refereshed when sync Cart from server cache 
     goods: [],
     userInfo: null,
-    seller: null
+    OrderInfoList:[]
+    //seller: null
   },
   getters: {
     getUserInfo: state => {
@@ -66,6 +67,42 @@ let store = new vuex.Store({
         saveLocal("goods_" + loadLocal('seller').id, goods)
       })
     },
+    //拉取订单，每次拉取5条，1、向下拉取查询当前时间以前订单，向上拉取订单，查询当前时间以后订单
+    getOrderInfoList(state, obj) {
+
+      getOrderInfoList({
+        userId: state.userInfo.Id,
+        sellerId: loadLocal('seller').id,
+        startTime: obj.startTime,
+        slipAction: obj.slipAction,
+        count:5
+      }).then((items) => {
+        console.log(items)
+        items.forEach((item) => {
+          state.OrderInfoList.push(item)
+        })
+        //getOrderInfoList(state, obj)
+      })
+    },
+    //更新所有显示的订单状态
+    getOrderInfoListStatus(state, obj) {
+      var _OrderInfoList = [];
+      state.OrderInfoList.forEach(item => {
+        _OrderInfoList.push({ Id: item.Id})
+      })
+
+      getOrderInfoListStatus(_OrderInfoList).then(items => {
+        state.OrderInfoList.forEach(item => {
+          items.forEach(_item => {
+            if (item.Id == _item.Id) {
+              item.Status = _item.Status
+              return;
+            }
+          })
+        })
+      })
+    },
+
     //sycn goods from serve, （lunched at app.vue's mouted）
     syncGoods(state) {
       var _seller = loadLocal('seller')
@@ -105,7 +142,7 @@ let store = new vuex.Store({
       commit('syncGoods')
       setInterval(() => {
         commit('syncGoods')
-      }, 10000)
+      }, 1000000)
     },
     a_setCartCount({ commit }, item) {
       setTimeout(() => {

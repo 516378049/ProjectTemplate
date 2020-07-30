@@ -20,8 +20,9 @@
     },
     mounted() {
       var that = this
-      var code = that.$route.query.code
-      //var code = that.$route.params.code
+      var code = that.$route.query.code         //针对路由  { path: '/xxx', query: { id: id } }  注意获取参数用$route 路由跳转用$router 多个r
+      //var code = that.$route.params.code      //针对路由  { name: 'xxx', params: { id: id } }
+      
       //微信传过来的code暂时通过window.location.href来获取
       //var _url = window.location.href
       //var code=_url.substring(_url.indexOf('=') + 1, _url.indexOf('#'))

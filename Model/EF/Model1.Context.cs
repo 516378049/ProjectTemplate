@@ -33,5 +33,7 @@ namespace Model.EF
         public virtual DbSet<supports> supports { get; set; }
         public virtual DbSet<Token> Token { get; set; }
         public virtual DbSet<UserInfo> UserInfo { get; set; }
+        public virtual DbSet<OrderDetailsInfo> OrderDetailsInfo { get; set; }
+        public virtual DbSet<OrderInfo> OrderInfo { get; set; }
     }
 }

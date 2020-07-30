@@ -34,6 +34,12 @@ namespace Framework
         /// </summary>
         public static string JsapiTicket = ConfigurationManager.AppSettings["JsapiTicket"];
         /// <summary>
+        /// 微信订单查询
+        /// </summary>
+        public static string wxOrderQuery = ConfigurationManager.AppSettings["wxOrderQuery"];
+        
+
+        /// <summary>
         /// 是否启用公告
         /// </summary>
         public static bool AnnEnabled

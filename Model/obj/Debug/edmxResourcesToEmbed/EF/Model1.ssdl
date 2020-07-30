@@ -18,6 +18,8 @@
     <Property Name="DelFlag" Type="int" />
     <Property Name="CreateTime" Type="datetime" />
     <Property Name="UpdateTime" Type="datetime" />
+    <Property Name="CreateUserId" Type="int" />
+    <Property Name="UpdateUserId" Type="int" />
   </EntityType>
   <EntityType Name="goods">
     <Key>
@@ -30,6 +32,53 @@
     <Property Name="DelFlag" Type="int" Nullable="false" />
     <Property Name="CreateTime" Type="datetime" Nullable="false" />
     <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+    <Property Name="CreateUserId" Type="int" />
+    <Property Name="UpdateUserId" Type="int" />
+  </EntityType>
+  <EntityType Name="OrderDetailsInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderId" Type="int" Nullable="false" />
+    <Property Name="GoodId" Type="int" Nullable="false" />
+    <Property Name="GoodName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="FoodId" Type="int" Nullable="false" />
+    <Property Name="FoodName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="image" Type="nvarchar" MaxLength="2000" />
+    <Property Name="Count" Type="int" Nullable="false" />
+    <Property Name="AmountTotal" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+    <Property Name="AmountDiscount" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+    <Property Name="AmountReal" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="DelFlag" Type="int" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="UpdateTime" Type="datetime" />
+    <Property Name="CreateUserId" Type="int" />
+    <Property Name="UpdateUserId" Type="int" />
+  </EntityType>
+  <EntityType Name="OrderInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderNum" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="transactionId" Type="varchar" MaxLength="200" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+    <Property Name="SellerId" Type="int" Nullable="false" />
+    <Property Name="SellerName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="avatar" Type="nvarchar" MaxLength="2000" />
+    <Property Name="DeskNumber" Type="int" />
+    <Property Name="PayWay" Type="int" Nullable="false" />
+    <Property Name="BookTime" Type="datetime" Nullable="false" />
+    <Property Name="CusCount" Type="int" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="DelFlag" Type="int" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="UpdateTime" Type="datetime" />
+    <Property Name="CreateUserId" Type="int" />
+    <Property Name="UpdateUserId" Type="int" />
   </EntityType>
   <EntityType Name="ratings">
     <Key>
@@ -45,6 +94,8 @@
     <Property Name="DelFlag" Type="int" />
     <Property Name="CreateTime" Type="datetime" />
     <Property Name="UpdateTime" Type="datetime" />
+    <Property Name="CreateUserId" Type="int" />
+    <Property Name="UpdateUserId" Type="int" />
   </EntityType>
   <EntityType Name="RatingsSellers">
     <Key>
@@ -62,6 +113,8 @@
     <Property Name="DelFlag" Type="int" />
     <Property Name="CreateTime" Type="datetime" />
     <Property Name="UpdateTime" Type="datetime" />
+    <Property Name="CreateName" Type="int" />
+    <Property Name="UpdateName" Type="int" />
   </EntityType>
   <EntityType Name="sellers">
     <Key>
@@ -84,6 +137,8 @@
     <Property Name="DelFlag" Type="int" />
     <Property Name="CreateTime" Type="datetime" />
     <Property Name="UpdateTime" Type="datetime" />
+    <Property Name="CreateName" Type="nvarchar" MaxLength="50" />
+    <Property Name="UpdateName" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="supports">
     <Key>
@@ -96,6 +151,8 @@
     <Property Name="DelFlag" Type="int" />
     <Property Name="CreateTime" Type="datetime" />
     <Property Name="UpdateTime" Type="datetime" />
+    <Property Name="CreateUserId" Type="int" />
+    <Property Name="UpdateUserId" Type="int" />
   </EntityType>
   <EntityType Name="Token">
     <Key>
@@ -108,6 +165,8 @@
     <Property Name="DelFlag" Type="int" Nullable="false" />
     <Property Name="CreateTime" Type="datetime" Nullable="false" />
     <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+    <Property Name="CreateUserId" Type="int" />
+    <Property Name="UpdateUserId" Type="int" />
   </EntityType>
   <EntityType Name="UserInfo">
     <Key>
@@ -127,10 +186,14 @@
     <Property Name="DelFlag" Type="int" Nullable="false" />
     <Property Name="CreateTime" Type="datetime" Nullable="false" />
     <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+    <Property Name="CreateUserId" Type="int" />
+    <Property Name="UpdateUserId" Type="int" />
   </EntityType>
   <EntityContainer Name="OrderMealModelStoreContainer">
     <EntitySet Name="foods" EntityType="Self.foods" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="goods" EntityType="Self.goods" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderDetailsInfo" EntityType="Self.OrderDetailsInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderInfo" EntityType="Self.OrderInfo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ratings" EntityType="Self.ratings" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RatingsSellers" EntityType="Self.RatingsSellers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sellers" EntityType="Self.sellers" Schema="dbo" store:Type="Tables" />

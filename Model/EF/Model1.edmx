@@ -23,6 +23,8 @@
           <Property Name="DelFlag" Type="int" />
           <Property Name="CreateTime" Type="datetime" />
           <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="CreateUserId" Type="int" />
+          <Property Name="UpdateUserId" Type="int" />
         </EntityType>
         <EntityType Name="goods">
           <Key>
@@ -35,6 +37,53 @@
           <Property Name="DelFlag" Type="int" Nullable="false" />
           <Property Name="CreateTime" Type="datetime" Nullable="false" />
           <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreateUserId" Type="int" />
+          <Property Name="UpdateUserId" Type="int" />
+        </EntityType>
+        <EntityType Name="OrderDetailsInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="GoodId" Type="int" Nullable="false" />
+          <Property Name="GoodName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="FoodId" Type="int" Nullable="false" />
+          <Property Name="FoodName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="image" Type="nvarchar" MaxLength="2000" />
+          <Property Name="Count" Type="int" Nullable="false" />
+          <Property Name="AmountTotal" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="AmountDiscount" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="AmountReal" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="DelFlag" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="CreateUserId" Type="int" />
+          <Property Name="UpdateUserId" Type="int" />
+        </EntityType>
+        <EntityType Name="OrderInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderNum" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="transactionId" Type="varchar" MaxLength="200" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="SellerId" Type="int" Nullable="false" />
+          <Property Name="SellerName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="avatar" Type="nvarchar" MaxLength="2000" />
+          <Property Name="DeskNumber" Type="int" />
+          <Property Name="PayWay" Type="int" Nullable="false" />
+          <Property Name="BookTime" Type="datetime" Nullable="false" />
+          <Property Name="CusCount" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="DelFlag" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="CreateUserId" Type="int" />
+          <Property Name="UpdateUserId" Type="int" />
         </EntityType>
         <EntityType Name="ratings">
           <Key>
@@ -50,6 +99,8 @@
           <Property Name="DelFlag" Type="int" />
           <Property Name="CreateTime" Type="datetime" />
           <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="CreateUserId" Type="int" />
+          <Property Name="UpdateUserId" Type="int" />
         </EntityType>
         <EntityType Name="RatingsSellers">
           <Key>
@@ -67,6 +118,8 @@
           <Property Name="DelFlag" Type="int" />
           <Property Name="CreateTime" Type="datetime" />
           <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="CreateName" Type="int" />
+          <Property Name="UpdateName" Type="int" />
         </EntityType>
         <EntityType Name="sellers">
           <Key>
@@ -89,6 +142,8 @@
           <Property Name="DelFlag" Type="int" />
           <Property Name="CreateTime" Type="datetime" />
           <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="CreateName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdateName" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="supports">
           <Key>
@@ -101,6 +156,8 @@
           <Property Name="DelFlag" Type="int" />
           <Property Name="CreateTime" Type="datetime" />
           <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="CreateUserId" Type="int" />
+          <Property Name="UpdateUserId" Type="int" />
         </EntityType>
         <EntityType Name="Token">
           <Key>
@@ -113,6 +170,8 @@
           <Property Name="DelFlag" Type="int" Nullable="false" />
           <Property Name="CreateTime" Type="datetime" Nullable="false" />
           <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreateUserId" Type="int" />
+          <Property Name="UpdateUserId" Type="int" />
         </EntityType>
         <EntityType Name="UserInfo">
           <Key>
@@ -132,10 +191,14 @@
           <Property Name="DelFlag" Type="int" Nullable="false" />
           <Property Name="CreateTime" Type="datetime" Nullable="false" />
           <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreateUserId" Type="int" />
+          <Property Name="UpdateUserId" Type="int" />
         </EntityType>
         <EntityContainer Name="OrderMealModelStoreContainer">
           <EntitySet Name="foods" EntityType="Self.foods" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="goods" EntityType="Self.goods" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderDetailsInfo" EntityType="Self.OrderDetailsInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderInfo" EntityType="Self.OrderInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ratings" EntityType="Self.ratings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RatingsSellers" EntityType="Self.RatingsSellers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sellers" EntityType="Self.sellers" Schema="dbo" store:Type="Tables" />
@@ -165,6 +228,8 @@
           <Property Name="DelFlag" Type="Int32" />
           <Property Name="CreateTime" Type="DateTime" Precision="3" />
           <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserId" Type="Int32" />
+          <Property Name="UpdateUserId" Type="Int32" />
         </EntityType>
         <EntityType Name="goods">
           <Key>
@@ -177,6 +242,8 @@
           <Property Name="DelFlag" Type="Int32" Nullable="false" />
           <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUserId" Type="Int32" />
+          <Property Name="UpdateUserId" Type="Int32" />
         </EntityType>
         <EntityType Name="ratings">
           <Key>
@@ -192,6 +259,8 @@
           <Property Name="DelFlag" Type="Int32" />
           <Property Name="CreateTime" Type="DateTime" Precision="3" />
           <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserId" Type="Int32" />
+          <Property Name="UpdateUserId" Type="Int32" />
         </EntityType>
         <EntityType Name="RatingsSellers">
           <Key>
@@ -243,6 +312,8 @@
           <Property Name="DelFlag" Type="Int32" />
           <Property Name="CreateTime" Type="DateTime" Precision="3" />
           <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserId" Type="Int32" />
+          <Property Name="UpdateUserId" Type="Int32" />
         </EntityType>
         <EntityType Name="Token">
           <Key>
@@ -255,6 +326,8 @@
           <Property Name="DelFlag" Type="Int32" Nullable="false" />
           <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUserId" Type="Int32" />
+          <Property Name="UpdateUserId" Type="Int32" />
         </EntityType>
         <EntityType Name="UserInfo">
           <Key>
@@ -274,6 +347,8 @@
           <Property Name="DelFlag" Type="Int32" Nullable="false" />
           <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUserId" Type="Int32" />
+          <Property Name="UpdateUserId" Type="Int32" />
         </EntityType>
         <EntityContainer Name="OrderMealEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="foods" EntityType="Self.foods" />
@@ -284,7 +359,54 @@
           <EntitySet Name="supports" EntityType="Self.supports" />
           <EntitySet Name="Token" EntityType="Self.Token" />
           <EntitySet Name="UserInfo" EntityType="Self.UserInfo" />
+          <EntitySet Name="OrderDetailsInfo" EntityType="OrderMealModel.OrderDetailsInfo" />
+          <EntitySet Name="OrderInfo" EntityType="OrderMealModel.OrderInfo" />
         </EntityContainer>
+        <EntityType Name="OrderDetailsInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="GoodId" Type="Int32" Nullable="false" />
+          <Property Name="GoodName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FoodId" Type="Int32" Nullable="false" />
+          <Property Name="FoodName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Count" Type="Int32" Nullable="false" />
+          <Property Name="AmountTotal" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+          <Property Name="AmountDiscount" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+          <Property Name="AmountReal" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+          <Property Name="Remark" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DelFlag" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserId" Type="Int32" />
+          <Property Name="UpdateUserId" Type="Int32" />
+          <Property Name="image" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="OrderInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderNum" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="transactionId" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+          <Property Name="SellerId" Type="Int32" Nullable="false" />
+          <Property Name="SellerName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PayWay" Type="Int32" Nullable="false" />
+          <Property Name="BookTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CusCount" Type="Int32" Nullable="false" />
+          <Property Name="Remark" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DelFlag" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="DeskNumber" Type="Int32" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="CreateUserId" Type="Int32" />
+          <Property Name="UpdateUserId" Type="Int32" />
+          <Property Name="avatar" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -294,6 +416,8 @@
           <EntitySetMapping Name="foods">
             <EntityTypeMapping TypeName="OrderMealModel.foods">
               <MappingFragment StoreEntitySet="foods">
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="goodId" ColumnName="goodId" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -314,6 +438,8 @@
           <EntitySetMapping Name="goods">
             <EntityTypeMapping TypeName="OrderMealModel.goods">
               <MappingFragment StoreEntitySet="goods">
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="sellerId" ColumnName="sellerId" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -327,6 +453,8 @@
           <EntitySetMapping Name="ratings">
             <EntityTypeMapping TypeName="OrderMealModel.ratings">
               <MappingFragment StoreEntitySet="ratings">
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="foodId" ColumnName="foodId" />
                 <ScalarProperty Name="username" ColumnName="username" />
@@ -384,6 +512,8 @@
           <EntitySetMapping Name="supports">
             <EntityTypeMapping TypeName="OrderMealModel.supports">
               <MappingFragment StoreEntitySet="supports">
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="sellerId" ColumnName="sellerId" />
                 <ScalarProperty Name="type" ColumnName="type" />
@@ -397,6 +527,8 @@
           <EntitySetMapping Name="Token">
             <EntityTypeMapping TypeName="OrderMealModel.Token">
               <MappingFragment StoreEntitySet="Token">
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="userId" ColumnName="userId" />
                 <ScalarProperty Name="access_token" ColumnName="access_token" />
@@ -410,6 +542,8 @@
           <EntitySetMapping Name="UserInfo">
             <EntityTypeMapping TypeName="OrderMealModel.UserInfo">
               <MappingFragment StoreEntitySet="UserInfo">
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="openid" ColumnName="openid" />
                 <ScalarProperty Name="nickname" ColumnName="nickname" />
@@ -424,6 +558,53 @@
                 <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
                 <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
                 <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetailsInfo">
+            <EntityTypeMapping TypeName="OrderMealModel.OrderDetailsInfo">
+              <MappingFragment StoreEntitySet="OrderDetailsInfo">
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="AmountReal" ColumnName="AmountReal" />
+                <ScalarProperty Name="AmountDiscount" ColumnName="AmountDiscount" />
+                <ScalarProperty Name="AmountTotal" ColumnName="AmountTotal" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="FoodName" ColumnName="FoodName" />
+                <ScalarProperty Name="FoodId" ColumnName="FoodId" />
+                <ScalarProperty Name="GoodName" ColumnName="GoodName" />
+                <ScalarProperty Name="GoodId" ColumnName="GoodId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderInfo">
+            <EntityTypeMapping TypeName="OrderMealModel.OrderInfo">
+              <MappingFragment StoreEntitySet="OrderInfo">
+                <ScalarProperty Name="avatar" ColumnName="avatar" />
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="DeskNumber" ColumnName="DeskNumber" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="CusCount" ColumnName="CusCount" />
+                <ScalarProperty Name="BookTime" ColumnName="BookTime" />
+                <ScalarProperty Name="PayWay" ColumnName="PayWay" />
+                <ScalarProperty Name="SellerName" ColumnName="SellerName" />
+                <ScalarProperty Name="SellerId" ColumnName="SellerId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="transactionId" ColumnName="transactionId" />
+                <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -442,7 +623,7 @@
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
       </DesignerInfoPropertySet>

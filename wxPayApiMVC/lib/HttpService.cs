@@ -23,7 +23,7 @@ namespace WxPayAPI
             return true;
         }
 
-        public static string Post(string xml, string url, bool isUseCert, int timeout)
+        public static string Post(string xml, string url, bool isUseCert, int timeout,string accesstoken=null,string UserId=null)
         {
             System.GC.Collect();//垃圾回收，回收没有正常关闭的http连接
 
@@ -51,7 +51,11 @@ namespace WxPayAPI
                 request.UserAgent = USER_AGENT;
                 request.Method = "POST";
                 request.Timeout = timeout * 1000;
-
+                if (!string.IsNullOrEmpty(accesstoken))
+                {
+                    request.Headers.Add("accesstoken", accesstoken);
+                    request.Headers.Add("Id", UserId);
+                }
                 //设置代理服务器
                 //WebProxy proxy = new WebProxy();                          //定义一个网关对象
                 //proxy.Address = new Uri(WxPayConfig.PROXY_URL);              //网关服务器端口:端口

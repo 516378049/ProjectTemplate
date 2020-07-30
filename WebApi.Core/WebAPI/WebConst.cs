@@ -16,11 +16,14 @@ namespace WebAPI.Core.WebAPI
         public const string Header_RetCode = "WebAPI.RetCode";
         public const string Header_AutoWriteLogFlag = "WebAPI.AutoWriteLogFlag";
 
+        //OrderMeal
+        public const string Header_UserId = "UserId"; 
+
         public const string HttpParam_AppID = "appid";
         public const string HttpParam_Encrypt = "encrypt";
         public const string HttpParam_UserIP = "userip";
 
-        public const string HttpPostData_Key = "RUNDA_WEBAPI_POSTDATA";
+        public const string HttpPostData_Key = "WEBAPI_POSTDATA";
         public const string HttpPostString_Key = "RUNDA_WEBAPI_POSTSTRING";
 
 

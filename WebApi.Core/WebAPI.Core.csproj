@@ -36,6 +36,9 @@
     <Reference Include="FluentData">
       <HintPath>..\..\Libs\FluentData\FluentData.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Libs\EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
@@ -151,6 +154,10 @@
     <ProjectReference Include="..\DataAccess\DataAccess.csproj">
       <Project>{3dce27ee-2a5d-4099-b7b2-fa554a0bf46d}</Project>
       <Name>DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.csproj">
+      <Project>{99C8CC3E-3B3F-4D4A-AE08-696068CF4332}</Project>
+      <Name>Framework</Name>
     </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{0B4A6448-CA31-4F14-AAFD-167E59CA4335}</Project>

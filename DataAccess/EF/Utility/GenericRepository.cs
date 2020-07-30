@@ -278,10 +278,14 @@ namespace DataAccess.EF
                 //给实体集合新增时间和修改时间赋初始值
                 foreach (var item in entities)
                 {
+                    if (typeof(TEntity).GetProperties().Where(w => w.Name == "DelFlag").Count() > 0)
+                        item.GetType().GetProperty("DelFlag").SetValue(item, 0);
                     if (typeof(TEntity).GetProperties().Where(w => w.Name == "CreateTime").Count() > 0)
                         item.GetType().GetProperty("CreateTime").SetValue(item, DateTime.Now);
                     if (typeof(TEntity).GetProperties().Where(w => w.Name == "UpdateTime").Count() > 0)
                         item.GetType().GetProperty("UpdateTime").SetValue(item, DateTime.Now);
+                    if (typeof(TEntity).GetProperties().Where(w => w.Name == "WriteTime").Count() > 0)
+                        item.GetType().GetProperty("WriteTime").SetValue(item, DateTime.Now);
                 }
                 IEnumerable<TEntity> result = dbSet.AddRange(entities);
                 if (saveChanges)

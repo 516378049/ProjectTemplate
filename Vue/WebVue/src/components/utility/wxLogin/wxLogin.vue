@@ -22,7 +22,7 @@
 </template>
 
 <script type="text/javascript">
-  import cnst from '@/common/js/Global'
+  import { cnst } from '@/common/js/Global'
   import { saveLocal, loadLocal } from 'common/js/storage'
   export default {
     

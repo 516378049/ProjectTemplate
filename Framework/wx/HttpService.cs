@@ -151,7 +151,8 @@ namespace WxPayAPI
                 request = (HttpWebRequest)WebRequest.Create(url);
                 request.UserAgent = USER_AGENT;
                 request.Method = "GET";
-                
+
+
                 //获取服务器返回
                 response = (HttpWebResponse)request.GetResponse();
 

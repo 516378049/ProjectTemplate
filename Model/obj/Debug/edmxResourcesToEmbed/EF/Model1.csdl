@@ -18,6 +18,8 @@
     <Property Name="DelFlag" Type="Int32" />
     <Property Name="CreateTime" Type="DateTime" Precision="3" />
     <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+    <Property Name="CreateUserId" Type="Int32" />
+    <Property Name="UpdateUserId" Type="Int32" />
   </EntityType>
   <EntityType Name="goods">
     <Key>
@@ -30,6 +32,8 @@
     <Property Name="DelFlag" Type="Int32" Nullable="false" />
     <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreateUserId" Type="Int32" />
+    <Property Name="UpdateUserId" Type="Int32" />
   </EntityType>
   <EntityType Name="ratings">
     <Key>
@@ -45,6 +49,8 @@
     <Property Name="DelFlag" Type="Int32" />
     <Property Name="CreateTime" Type="DateTime" Precision="3" />
     <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+    <Property Name="CreateUserId" Type="Int32" />
+    <Property Name="UpdateUserId" Type="Int32" />
   </EntityType>
   <EntityType Name="RatingsSellers">
     <Key>
@@ -96,6 +102,8 @@
     <Property Name="DelFlag" Type="Int32" />
     <Property Name="CreateTime" Type="DateTime" Precision="3" />
     <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+    <Property Name="CreateUserId" Type="Int32" />
+    <Property Name="UpdateUserId" Type="Int32" />
   </EntityType>
   <EntityType Name="Token">
     <Key>
@@ -108,6 +116,8 @@
     <Property Name="DelFlag" Type="Int32" Nullable="false" />
     <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreateUserId" Type="Int32" />
+    <Property Name="UpdateUserId" Type="Int32" />
   </EntityType>
   <EntityType Name="UserInfo">
     <Key>
@@ -127,6 +137,8 @@
     <Property Name="DelFlag" Type="Int32" Nullable="false" />
     <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreateUserId" Type="Int32" />
+    <Property Name="UpdateUserId" Type="Int32" />
   </EntityType>
   <EntityContainer Name="OrderMealEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="foods" EntityType="Self.foods" />
@@ -137,5 +149,52 @@
     <EntitySet Name="supports" EntityType="Self.supports" />
     <EntitySet Name="Token" EntityType="Self.Token" />
     <EntitySet Name="UserInfo" EntityType="Self.UserInfo" />
+    <EntitySet Name="OrderDetailsInfo" EntityType="OrderMealModel.OrderDetailsInfo" />
+    <EntitySet Name="OrderInfo" EntityType="OrderMealModel.OrderInfo" />
   </EntityContainer>
+  <EntityType Name="OrderDetailsInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderId" Type="Int32" Nullable="false" />
+    <Property Name="GoodId" Type="Int32" Nullable="false" />
+    <Property Name="GoodName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="FoodId" Type="Int32" Nullable="false" />
+    <Property Name="FoodName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Count" Type="Int32" Nullable="false" />
+    <Property Name="AmountTotal" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+    <Property Name="AmountDiscount" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+    <Property Name="AmountReal" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+    <Property Name="Remark" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="DelFlag" Type="Int32" />
+    <Property Name="CreateTime" Type="DateTime" Precision="3" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+    <Property Name="CreateUserId" Type="Int32" />
+    <Property Name="UpdateUserId" Type="Int32" />
+    <Property Name="image" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="OrderInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderNum" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="transactionId" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Amount" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+    <Property Name="SellerId" Type="Int32" Nullable="false" />
+    <Property Name="SellerName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PayWay" Type="Int32" Nullable="false" />
+    <Property Name="BookTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CusCount" Type="Int32" Nullable="false" />
+    <Property Name="Remark" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="DelFlag" Type="Int32" />
+    <Property Name="CreateTime" Type="DateTime" Precision="3" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+    <Property Name="DeskNumber" Type="Int32" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="CreateUserId" Type="Int32" />
+    <Property Name="UpdateUserId" Type="Int32" />
+    <Property Name="avatar" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

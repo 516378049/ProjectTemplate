@@ -6,7 +6,7 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>D:\GitHub\Project\wechatProject\dotnetWXJsPay\dotnet\cs_sdk_v3.0.9\wxPayApiMVC\bin\Release\Publish</_PublishTargetUrl>
+    <_PublishTargetUrl>D:\GitHub\netTemplateMVC\wxPayApiMVC\bin\Release\Publish</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/Antlr3.Runtime.dll">
@@ -208,10 +208,10 @@
       <publishTime>01/23/2014 13:57:34</publishTime>
     </File>
     <File Include="bin/wxPayApiMVC.dll">
-      <publishTime>05/29/2020 22:03:03</publishTime>
+      <publishTime>07/20/2020 18:48:47</publishTime>
     </File>
     <File Include="bin/wxPayApiMVC.pdb">
-      <publishTime>05/29/2020 22:03:03</publishTime>
+      <publishTime>07/20/2020 18:48:47</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Web.Helpers.resources.dll">
       <publishTime>11/29/2018 13:29:50</publishTime>
@@ -337,19 +337,19 @@
       <publishTime>04/02/2020 01:05:43</publishTime>
     </File>
     <File Include="Views/Home/H5Pay.cshtml">
-      <publishTime>04/24/2020 14:16:54</publishTime>
+      <publishTime>07/16/2020 19:39:54</publishTime>
     </File>
     <File Include="Views/Home/H5PayConfirm.cshtml">
-      <publishTime>04/24/2020 14:17:12</publishTime>
+      <publishTime>07/16/2020 19:39:54</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
       <publishTime>04/16/2020 17:30:05</publishTime>
     </File>
     <File Include="Views/Home/NativePay.cshtml">
-      <publishTime>04/24/2020 14:17:17</publishTime>
+      <publishTime>07/16/2020 19:39:54</publishTime>
     </File>
     <File Include="Views/Home/wxJsPayApi.cshtml">
-      <publishTime>04/24/2020 14:17:00</publishTime>
+      <publishTime>07/16/2020 19:39:54</publishTime>
     </File>
     <File Include="Views/Home/wxPay.cshtml">
       <publishTime>04/08/2020 10:10:30</publishTime>
@@ -367,7 +367,7 @@
       <publishTime>04/02/2020 01:05:43</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>05/29/2020 22:03:03</publishTime>
+      <publishTime>07/20/2020 18:48:48</publishTime>
     </File>
   </ItemGroup>
 </Project>

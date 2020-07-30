@@ -30,72 +30,35 @@ namespace wxPayApiMVC.Controllers
        
         public ActionResult Index()
         {
-            //string testTemp = "20200415916224|1|#wechat_redirect".Split('|')[0];
 
-            ////判断取不存在cacheKey情况
-            ////重复insert cache
-            ////过期时间
-            //object test=CacheHelper.GetCache("testcache");
-            //CacheHelper.SetCache("testcache", "1", TimeSpan.FromSeconds(10));
-            //test=CacheHelper.GetCache("testcache");
-            //CacheHelper.SetCache("testcache", "11", TimeSpan.FromSeconds(60));
-            //test = CacheHelper.GetCache("testcache");
-            //int a = Session.Timeout;
-
-
-            //test = CacheHelper.GetCache("testcache");
-
-            //string result =
-            //            "{\"openid\":\"oDLo50s4l5A8E0F3OYVqSub13Wdw\",\"nickname\":\"长春\",\"sex\":1,\"language\":\"zh_CN\",\"city\":\"永州\",\"province\":\"湖南\",\"country\":\"中国\",\"headimgurl\":\"http:\\/thirdwx.qlogo.cn\\/mmopen\\/vi_32\\/Q0j4TwGTfTJAGathZp2spKBKKadN9pTM87TzIkR7cKeX3EC9W3znYoqkxoZsrAzwXxiaoF83zbYtT9NUca5nhZw\\/132\",\"privilege\":[]}";
-
-
-            ////throw new Exception("Session[\"totalFee\"]==null 服务器session失效，请联系管理员重启服务");
-            //JsonData temp1 = JsonMapper.ToObject(result);
-            //UserInfo userinfo = JsonMapper.ToObject<UserInfo>(result);
-            //string test = Newtonsoft.Json.JsonConvert.SerializeObject(userinfo);
-
-            //Log.UserAuthorizeInfo("GetUserInfo", "oauthrize info : " + JsonMapper.ToJson(userinfo));//记录用户授权后的用户信息
-
-
-
-            //string t = Request.QueryString["t"];
-            //string dataPara = @"
-            //        <xml><return_code><![CDATA[SUCCESS]]></return_code>
-            //        <return_msg><![CDATA[OK]]></return_msg>
-            //        <appid><![CDATA[wxba3211abca2a188c]]></appid>
-            //        <mch_id><![CDATA[1544571151]]></mch_id>
-            //        <nonce_str><![CDATA[d5P57VWpTmwlfwUl]]></nonce_str>
-            //        <sign><![CDATA[44D195C21ACE587C00ECAC78A490EF31B07C0CD1F194FAA3F3402194314A9C0A]]></sign>
-            //        <result_code><![CDATA[SUCCESS]]></result_code>
-            //        <prepay_id><![CDATA[wx02212824175011b91e9d4e171890324800]]></prepay_id>
-            //        <trade_type><![CDATA[JSAPI]]></trade_type>
-            //        </xml>
-            //        ";
-            //WxPayAPI.lib.DemoConfig dConfig = new WxPayAPI.lib.DemoConfig();
-            //HttpService.Post(dataPara.ToString(), dConfig.GetMallNotifyUrl(), false, 20);
-            ////Response.Redirect("/Home/About?"+ dataPara, false);
-            //string openid = "1";
-
-            //string access_token = "11";
-            //object openidandaccess_token = Json(new { openid, access_token }).Data;
-
-
-            //JavaScriptSerializer jss = new JavaScriptSerializer();
-            //string xxx = jss.Serialize(openidandaccess_token);
-            //JsonData jd = JsonMapper.ToObject(xxx);
-            //string openid1 = (string)jd["openid"];
-            //string access_token1 = (string)jd["access_token"];
-
-            //string aaaa = "{ \"getBrandWCPayRequest\":{ \"appId\":\"wxba3211abca2a188c\",\"nonceStr\":\"1927539821\",\"package\":\"prepay_id=wx02033541113552f4b8a35ff81917270600\",\"paySign\":\"c0a52b6d0f423405adb6e2b154fb975abd7e79eafc7317e4a25aa4f7812f8635\",\"signType\":\"MD5\",\"timeStamp\":\"1585769741\"}}";
-            //jd = JsonMapper.ToObject(aaaa);
-            //object aacc = jd["getBrandWCPayRequest"];
-            //openid1 = JsonMapper.ToJson(aacc);
-            //jd = (JsonData)aacc;
-            
-
-            //openid1 = (string)jd["appId"];
             return View();
             
+        }
+
+        public JsonResult testNotify()
+        {
+            string notifyData = @"
+                <xml><appid><![CDATA[wxba3211abca2a188c]]></appid>
+                <attach><![CDATA[null]]></attach>
+                <bank_type><![CDATA[SPDB_CREDIT]]></bank_type>
+                <cash_fee><![CDATA[100]]></cash_fee>
+                <fee_type><![CDATA[CNY]]></fee_type>
+                <is_subscribe><![CDATA[Y]]></is_subscribe>
+                <mch_id><![CDATA[1544571151]]></mch_id>
+                <nonce_str><![CDATA[3659339946]]></nonce_str>
+                <openid><![CDATA[oDLo50s4l5A8E0F3OYVqSub13Wdw]]></openid>
+                <out_trade_no><![CDATA[20206605125]]></out_trade_no>
+                <result_code><![CDATA[SUCCESS]]></result_code>
+                <return_code><![CDATA[SUCCESS]]></return_code>
+                <sign><![CDATA[A0C8948B7F8ABAE297F4189F6147392408606BA06BF071C82E5F06525FC14910]]></sign>
+                <time_end><![CDATA[20200717231607]]></time_end>
+                <total_fee>100</total_fee>
+                <trade_type><![CDATA[JSAPI]]></trade_type>
+                <transaction_id><![CDATA[4200000611202007177386051392]]></transaction_id>
+                </xml>
+                ";
+            string resFromMall = HttpService.Post(notifyData, "https://www.changchunamy.com/OrderMealCustomer/api.wxApi.wxPayNotify", false, 6, "35_VgAIJRoiA9FSHwb0WO6sij50I7ekMpAD_hR-Z2Y7dXk0rQOqy9rZzw-4d3FB7upXmGykgtXEtq4sxle-S-41sw");
+            return Json(new { msg = "success" });
         }
 
         //public ActionResult About()
@@ -439,6 +402,15 @@ namespace wxPayApiMVC.Controllers
         [HttpGet]
         public JsonResult GetUnifiedOrderResultNew(PayParams payParams)
         {
+            if (Request.Headers.GetValues("accesstoken").Length>0)
+            {
+                //保存订单key
+                string accesstoken =Request.Headers.GetValues("accesstoken")[0];
+                string UserId = Request.Headers.GetValues("UserId")[0];
+                CacheHelper.SetCache("accesstoken" + payParams.OrderId, accesstoken, TimeSpan.FromMinutes(20));
+                CacheHelper.SetCache("Id" + payParams.OrderId, UserId, TimeSpan.FromMinutes(20));
+            }
+            
             //payParams.TradeType = ConstDefin.TRADE_TYPE_H5;
             payParams.SpbillCreateIp = Request.UserHostAddress;
             //统一下单

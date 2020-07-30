@@ -28,11 +28,12 @@ namespace WebAPI.Core.WebAPI
             #region 验证token
             UnitOfWork Studio = new UnitOfWork();
             var accesstoken = WebFuncHelper.GetHeadValue(request, "accesstoken");
-            Token seller = Studio.Token.Get(X => X.access_token ==accesstoken  && X.DelFlag == 0).FirstOrDefault();
-            if (seller==null)
+            var UserId = int.Parse(WebFuncHelper.GetHeadValue(request, WebConst.Header_UserId));
+            UserInfo userinfo = Studio.UserInfo.Get(X => X.Id==UserId && X.access_token ==accesstoken  && X.DelFlag == 0).FirstOrDefault();
+            if (userinfo == null)
             {
                 var response = new HttpResponseMessage(HttpStatusCode.OK);
-                response.Content = new StringContent(CreateApiResult("","-1",0, "token不存在").ToJson());
+                response.Content = new StringContent(CreateApiResult("","-1",0, "token验证失败").ToJson());
                 var tsc = new TaskCompletionSource<HttpResponseMessage>();
                 tsc.SetResult(response);
                 return tsc.Task;
@@ -55,7 +56,7 @@ namespace WebAPI.Core.WebAPI
                     }
                     else
                     {
-                        throw new ApplicationException("返回值不符合规则");
+                        throw new ApplicationException("未捕获异常,返回值不符合规则");
                     }
                     return task.Result;
                 }

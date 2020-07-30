@@ -147,6 +147,7 @@
     <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SellerController.cs" />
+    <Compile Include="Controllers\wxApiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -248,6 +249,10 @@
     <ProjectReference Include="..\WebApi.Core\WebAPI.Core.csproj">
       <Project>{bb2c885a-a5d2-4e69-9cb8-68821fd6e612}</Project>
       <Name>WebAPI.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WeChat.Common\WeChat.Common.csproj">
+      <Project>{9800F2E0-7866-4CC2-A357-96FAF913D8AF}</Project>
+      <Name>WeChat.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

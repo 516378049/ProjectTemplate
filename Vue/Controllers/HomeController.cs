@@ -14,6 +14,7 @@ using System.Text;
 using System.Security.Cryptography;
 using WeChat.DataAccess.WeiXin.Public;
 using WeChat.Common;
+using Model.EF.EF_ExAttr;
 
 namespace Vue
 {
@@ -73,7 +74,7 @@ namespace Vue
                         EFinfo.country = user.country;
                         EFinfo.headimgurl = user.headimgurl;
                         EFinfo.nickname = user.nickname;
-                        if (user.privilege.Length > 0)
+                        if (user.privilege != null && user.privilege.Length > 0)
                         {
                             user.privilege.ToList().ForEach(X => { EFinfo.privilege += X; });
                         }
@@ -88,7 +89,7 @@ namespace Vue
                     else
                     {
                         Log.ILog4_Debug.Debug("准备更新授权用户信息......");
-                        if (Request.UserHostAddress != "127.0.0.1") { 
+                        if (Request.UserHostAddress != "127.0.0.1") {
                             EFinfo.access_token = user.accesstoken;//please -----------------------------annotation (in development )
                             Studio.UserInfo.Update(EFinfo);//please ------------------------------------------annotation (in development )
                         }
@@ -96,7 +97,7 @@ namespace Vue
                     }
                     Log.ILog4_Debug.Debug("准备插入授权记录......");
                     EF.Token token = new EF.Token();
-                    token.access_token = user.accesstoken;
+                    token.access_token = EFinfo.access_token;
                     token.expires_in = "7200";//seconds
                     token.userId = EFinfo.Id;
                     Studio.Token.Insert(token);
@@ -113,112 +114,18 @@ namespace Vue
                 Log.ILog4_Error.Error(e.Message,e);
                 return CreateApiResult("", "-1", e.Message);
             }
-
-
         }
 
         /// <summary>
-        /// 微信支付结果回调
+        /// sync database from data.json
         /// </summary>
-        /// <returns></returns>
-        [HttpPost]
-        public JsonResult wxPayNotify()
-        {
-            try
-            {
-                //接收从微信后台POST过来的数据
-                System.IO.Stream s = Request.InputStream;
-                int count = 0;
-                byte[] buffer = new byte[1024];
-                StringBuilder builder = new StringBuilder();
-                while ((count = s.Read(buffer, 0, 1024)) > 0)
-                {
-                    builder.Append(Encoding.UTF8.GetString(buffer, 0, count));
-                }
-                s.Flush();
-                s.Close();
-                s.Dispose();
-
-                SortedDictionary<string, object> m_values = new SortedDictionary<string, object>();
-                m_values = XmlHelper.FromXml(builder.ToString());
-
-                
-
-                //2015-06-29 错误是没有签名
-                if (m_values["return_code"].ToString() != "SUCCESS")
-                {
-                    
-                    return CreateApiResult("success");
-                }
-            }
-            catch (Exception ex)
-            {
-                Log.ILog4_Error.Error("微信支付回调接口错误",ex);
-                return CreateApiResult("Fail");
-            }
-            return CreateApiResult("success");
-        }
-
-
-        #region Sign签名算法,JSAPI
-        [HttpGet]
-        public ActionResult JSInit(string currentURL)
-        {
-            try
-            {
-                Log.ILog4_Debug.Debug("JSInit currentURL：" + currentURL);
-                Log.ILog4_Debug.Debug("JSInit currentURL 转换后：" + currentURL.Split("#".ToArray(), StringSplitOptions.RemoveEmptyEntries)[0]); 
-
-                string jsToken = string.Empty;
-                string AccountID = string.Empty;
-                AccountID = ConfigHelper.AppID;
-                jsToken = RedisHelper.getRedisServer.StringGet(ConfigHelper.JsapiTicket);
-
-                var nonceStr = GetRandomUInt().ToString();
-                var timestamp = DateTime.Now.Ticks.ToString();
-                var source = string.Format("jsapi_ticket={0}&noncestr={1}&timestamp={2}&url={3}", jsToken, nonceStr, timestamp, currentURL.Split("#".ToArray(), StringSplitOptions.RemoveEmptyEntries)[0]);
-                JsInitResponse result = new JsInitResponse()
-                {
-                    appId = AccountID,
-                    nonceStr = nonceStr,
-                    signature = WXBizMsgCrypt.GenarateSignature(source),
-                    timestamp = timestamp
-                };
-                Log.ILog4_Debug.Debug("获取JS签名参数："+JsonHelper.ToJson(result));
-                return CreateApiResult(result);
-            }
-            catch (Exception e)
-            {
-                Log.ILog4_Error.Error("JSInit出错啦",e);
-                throw;
-            }
-
-        }
-        /// <summary>
-        /// 随机字符串
-        /// </summary>
-        /// <returns></returns>
-        public uint GetRandomUInt()
-        {
-            var randomBytes = GenerateRandomBytes(sizeof(uint));
-            return BitConverter.ToUInt32(randomBytes, 0);
-        }
-        private byte[] GenerateRandomBytes(int bytesNumber)
-        {
-            var csp = new RNGCryptoServiceProvider();
-            byte[] buffer = new byte[bytesNumber];
-            csp.GetBytes(buffer);
-            return buffer;
-        }
-        #endregion
-
         public void syscSeller()
         {
             if (Studio.Sellers.Get(X => X.DelFlag == 0).FirstOrDefault() != null)
             {
                 return;
             }
-            #region
+        #region model entity addtional
         //public List<supports> supports { get; set; }
         //public List<foods> foods { get; set; }
         //public List<ratings> ratings { get; set; }
@@ -286,29 +193,32 @@ namespace Vue
         Studio.BeginTransaction();
             try
             {
+                
                 string json = JsonHelper.ReadJsonFile(Server.MapPath("/WebVue/data.json"));
                 string seller = JsonHelper.ConvertJsonResult(json, "seller");
-                EF.sellers ef_seller = JsonHelper.ToObject<EF.sellers>(seller);
-
+                sellersEx ef_sellerEx = JsonHelper.ToObject<sellersEx>(seller);
+                EF.sellers ef_seller = JsonHelper.ToObject<EF.sellers>(seller); ;
                 //同步data.json数据到数据库
                 int serllerId = Studio.Sellers.Insert(ef_seller).Id;
-                ef_seller.supports.ForEach(X => X.sellerId = serllerId);
-                Studio.Supports.Insert(ef_seller.supports);
+                ef_sellerEx.supports.ForEach(X => X.sellerId = serllerId);
+                Studio.Supports.Insert(ef_sellerEx.supports);
 
 
                 string _goods = JsonHelper.ConvertJsonResult(json, "goods");
-                List<EF.goods> ef_goods = JsonHelper.ToObject<List<EF.goods>>(_goods);
+                List<goodsEx> ef_goodsEx = JsonHelper.ToObject<List<goodsEx>>(_goods);
                 ////同步data.json数据到数据库
-                foreach (EF.goods ef_good in ef_goods)
+                foreach (goodsEx ef_goodEx in ef_goodsEx)
                 {
-                    ef_good.sellerId = serllerId;
-                    int goodId = Studio.Goods.Insert(ef_good).Id;
-                    foreach (EF.foods ef_food in ef_good.foods)
+                    ef_goodEx.sellerId = serllerId;
+                    EF.goods goods = JsonHelper.CopyEntity<EF.goods>(ef_goodEx);
+                    int goodId = Studio.Goods.Insert(goods).Id;
+                    foreach (foodsEx ef_foodEx in ef_goodEx.foods)
                     {
-                        ef_food.goodId = goodId;
-                        int foodId = Studio.Foods.Insert(ef_food).Id;
+                        ef_foodEx.goodId = goodId;
+                        EF.foods foods=JsonHelper.CopyEntity<EF.foods>(ef_foodEx);
+                        int foodId = Studio.Foods.Insert(foods).Id;
 
-                        foreach (EF.ratings rat in ef_food.ratings)
+                        foreach (EF.ratings rat in ef_foodEx.ratings)
                         {
                             rat.foodId = foodId;
                             Studio.Ratings.Insert(rat);
@@ -322,7 +232,7 @@ namespace Vue
                 ratings_.ForEach(X => X.sellerId = serllerId);
                 Studio.RatingsSeller.Insert(ratings_);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 Studio.Rollback();
                 return;

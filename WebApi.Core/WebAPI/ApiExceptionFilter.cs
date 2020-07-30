@@ -6,7 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http.Filters;
 using WebAPI.Core.WebAPI;
-using ThinkDev.Logging;
+using Framework;
 
 namespace WebAPI.Core.WebAPI
 {
@@ -15,7 +15,8 @@ namespace WebAPI.Core.WebAPI
         public override void OnException(HttpActionExecutedContext context)
         {
             //ErrorLog
-            LogManager.WebApiLogger.Error(LogConvert.ParseWebEx(context.Exception), "接口发生系统未捕捉异常");
+            //LogManager.WebApiLogger.Error(LogConvert.ParseWebEx(context.Exception), "接口发生系统未捕捉异常");
+            Log.ILog4_Error.Error("接口发生系统未捕捉异常",context.Exception);
             ApiResult result = new ApiResult() { RetCode = WebConst.RetCode_SysError, RetMsg = context.Exception.Message, Message = null };
             context.Exception = null;
             var response = new HttpResponseMessage(HttpStatusCode.OK);

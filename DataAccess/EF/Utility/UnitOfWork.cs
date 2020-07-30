@@ -75,6 +75,9 @@ namespace DataAccess.EF
         private GenericRepository<foods> _foods;
         private GenericRepository<ratings> _ratings;
 
+        private GenericRepository<OrderInfo> _OrderInfo;
+        private GenericRepository<OrderDetailsInfo> _OrderDetailsInfo;
+
         private GenericRepository<RatingsSellers> _ratingsseller;
 
         private GenericRepository<Token> _token;
@@ -137,6 +140,26 @@ namespace DataAccess.EF
                 return _ratings;
             }
         }
+
+        public GenericRepository<OrderInfo> OrderInfo
+        {
+            get
+            {
+                if (_OrderInfo == null)
+                    _OrderInfo = new GenericRepository<OrderInfo>(context);
+                return _OrderInfo;
+            }
+        }
+        public GenericRepository<OrderDetailsInfo> OrderDetailsInfo
+        {
+            get
+            {
+                if (_OrderDetailsInfo == null)
+                    _OrderDetailsInfo = new GenericRepository<OrderDetailsInfo>(context);
+                return _OrderDetailsInfo;
+            }
+        }
+
         public GenericRepository<RatingsSellers> RatingsSeller
         {
             get

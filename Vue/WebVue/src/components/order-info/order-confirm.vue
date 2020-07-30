@@ -73,17 +73,20 @@
 </template>
 
 <script type = "text/javascript">
+  import { CreateOrderInfo } from '@/api'
+  import moment from 'moment'
+  import { loadLocal } from '@/common/js/storage'
   export default {
     name: 'order-confirm',
     data(){
       return {
         OrderTime: {
           OrderTimeTxt: '现在',
-          OrderTimeVal:''
+          OrderTimeVal: ''
         },
         OrderCusCount: {
           OrderCusCountTxt: '1人',
-          OrderCusCountVal: ''
+          OrderCusCountVal: '1'
         },
         OrderRemark: "",
         OrderPayWay: { text:'线上支付',value:1},
@@ -148,7 +151,55 @@
     },
     methods: {
       prePay: function () {
-        this.$router.push('OrderPay');
+        var that = this
+        //订单编号：年月日时分秒+商家ID+桌号
+        var seller = loadLocal('seller')
+        var sellerMod = loadLocal('seller_' + _SellerId)
+        var _OrderId = moment(new Date()).format('YYYYMMDDHHMMSS') + seller.id + seller.deskNumber
+        var _SellerId = seller.id
+        var _SellerName = sellerMod.name
+        var _avatar = sellerMod.avatar
+        var _OrderCreateTime=that.OrderTime.OrderTimeVal == '' ? moment(new Date()).format('YYYY-MM-DD HH:MM:SS') : that.OrderTime.OrderTimeVal
+        //创建订单
+        CreateOrderInfo(
+          {
+            orderinfo: {
+              OrderNum: _OrderId,
+              DeskNumber: seller.deskNumber,
+              Amount: that.TotleMount,
+              SellerId: _SellerId,
+              SellerName: _SellerName,
+              avatar: _avatar,
+              PayWay: that.OrderPayWay.value,
+              BookTime: _OrderCreateTime,
+              CusCount: that.OrderCusCount.OrderCusCountVal,
+              Remark: that.OrderRemark
+            },
+            l_OrderDetailsInfo: that.$store.getters.getSelMenuList.map((X) => {
+              return {
+                GoodId: X.goodId,
+                GoodName: that.$store.state.goods.filter((Y) => Y.Id == X.goodId)[0].name,
+                FoodId: X.Id,
+                FoodName: X.name,
+                image:X.image,
+                Count: X.count,
+                AmountTotal: X.count * X.price,
+                AmountDiscount: 0,
+                AmountReal: X.count * X.price,
+                Remark: ''
+              }
+            })
+          }
+        ).then((X) => {
+          this.$router.push({
+            name: 'OrderPay', params: {
+              OrderId: _OrderId,
+              SellerName: _SellerName,
+              OrderCreateTime: _OrderCreateTime,
+              OrderAmount: that.TotleMount
+            }
+          });
+        })
       },
       openPicker() {
         this.$createTimePicker({
@@ -184,6 +235,7 @@
 
       selectHandle(selectedVal, selectedIndex, selectedText) {
         this.OrderCusCount.OrderCusCountTxt = selectedText.join(', ')
+        this.OrderCusCount.OrderCusCountVal = selectedVal.join(', ')
       },
       cancelHandle() {
       },

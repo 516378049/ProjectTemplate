@@ -35,13 +35,13 @@
           SelectedMenu:'',
           startY: 0,
           scrollbarFade: true,
-          scrollHeight: "100%"
+          //scrollHeight: "100%"
         }
       },
       props: {
       },
       created() {
-        this.scrollHeight = "calc(100% - 150px)"
+        //this.scrollHeight = "calc(100% - 150px)"
       },
       mounted() {
       },
@@ -81,7 +81,7 @@
           
         },
         scrollHeight() {
-          $(".scroll-list-wrap").css({ "height": this.scrollHeight })
+          //$(".scroll-list-wrap").css({ "height": this.scrollHeight })
         }
       },
       methods: {
@@ -91,18 +91,5 @@
   </script>
 
   <style lang="stylus" rel="stylesheet/stylus">
-    .container .OrderlistDiv_Home {
-      box-sizing: border-box;
-    }
-    .container .OrderlistDiv_Home .OrderlistDivSingle .OrderlistDivSingleL {
-      box-sizing: border-box;
-      width: 80px;
-      height: 100%;
-      text-align: center;
-      float: left;
-    }
-    .container .OrderlistDiv_Home .OrderlistDivSingle .OrderlistDivSingleR {
-      width: calc(100% - 80px);
-      float: left;
-    }
+
   </style>

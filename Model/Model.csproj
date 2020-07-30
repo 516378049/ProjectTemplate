@@ -63,6 +63,7 @@
     <Compile Include="Common\UploadResult.cs" />
     <Compile Include="Common\Util.cs" />
     <Compile Include="Common\WebApiRet.cs" />
+    <Compile Include="EF\ExAttr.cs" />
     <Compile Include="EF\foods.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -84,6 +85,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="EF\OrderDetailsInfo.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\OrderInfo.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="EF\ratings.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -102,6 +109,7 @@
     <Compile Include="EF\UserInfo.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="orderMeal\OrderInfoParams.cs" />
     <Compile Include="orderMeal\CartOrder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="sys\SysUserInfo.cs" />
@@ -133,6 +141,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="EF\EF_ExAttr\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WxPayAPI.lib;
+using wxPayApiMVC.lib;
 
 namespace WxPayAPI
 {
@@ -55,6 +57,25 @@ namespace WxPayAPI
                 Log.Info(this.GetType().ToString(), "HttpContext.Current.Response.Write(res.ToXml());");
                 HttpContext.Current.Response.End();
                 Log.Info(this.GetType().ToString(), "HttpContext.Current.Response.End();");
+
+                //将支付信息同步发送给商城
+                DemoConfig dConfig = new DemoConfig();
+                string resFromMall = "";
+                if (!string.IsNullOrEmpty(dConfig.GetMallNotifyUrl()))
+                {
+                    Log.Info(this.GetType().ToString(), "开始转发微信支付结果通知给商城..." + "url：" + dConfig.GetMallNotifyUrl() + "，reXML：" + notifyData.wxResultBuilder.ToString());
+                    string out_trade_no = notifyData.GetValue("out_trade_no").ToString();
+                    string accesstoken=CacheHelper.GetCache("accesstoken" + out_trade_no).ToString();
+                    string UserId = CacheHelper.GetCache("Id" + out_trade_no).ToString(); 
+                    resFromMall = HttpService.Post(notifyData.wxResultBuilder.ToString(), dConfig.GetMallNotifyUrl(), false, 6, accesstoken, UserId);
+                    Log.Info(this.GetType().ToString(), "微信支付结果通知转发给商城完毕...");
+                }
+                else
+                {
+                    Log.Info(this.GetType().ToString(), "未设置商城支付回调地址,无有发送商城通知");
+                }
+                Log.Info(this.GetType().ToString(), "Receive data from wxMall : " + resFromMall);
+
             }
         }
 

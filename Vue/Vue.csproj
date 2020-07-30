@@ -215,6 +215,7 @@
     <Content Include="WebVue\src\api\helpers.js" />
     <Content Include="WebVue\src\api\index.js" />
     <Content Include="WebVue\src\common\fonts\sell-icon.svg" />
+    <Content Include="WebVue\src\common\js\utility.js" />
     <Content Include="WebVue\src\common\js\Global.js" />
     <Content Include="WebVue\src\common\js\store.js" />
     <Content Include="WebVue\src\common\js\storage.js" />

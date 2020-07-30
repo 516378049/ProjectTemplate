@@ -28,6 +28,7 @@ namespace Model.EF
         public Nullable<int> DelFlag { get; set; }
         public Nullable<System.DateTime> CreateTime { get; set; }
         public Nullable<System.DateTime> UpdateTime { get; set; }
-        public List<ratings> ratings { get; set; }
+        public Nullable<int> CreateUserId { get; set; }
+        public Nullable<int> UpdateUserId { get; set; }
     }
 }

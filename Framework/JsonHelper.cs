@@ -85,5 +85,16 @@ namespace Framework
             string JsonStrValue = JsonConvert.SerializeObject(obj, setting);
             return JsonStrValue;
         }
+
+        /// <summary>
+        /// copy实体类
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source"></param>
+        /// <returns></returns>
+        public static T CopyEntity<T>(object source)
+        {
+            return ToObject<T>(ToJson(source));
+        }
     }
 }

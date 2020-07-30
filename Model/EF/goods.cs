@@ -21,7 +21,7 @@ namespace Model.EF
         public int DelFlag { get; set; }
         public System.DateTime CreateTime { get; set; }
         public System.DateTime UpdateTime { get; set; }
-        public List<foods> foods { get; set; }
-       
+        public Nullable<int> CreateUserId { get; set; }
+        public Nullable<int> UpdateUserId { get; set; }
     }
 }
