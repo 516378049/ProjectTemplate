@@ -376,6 +376,7 @@
       <DependentUpon>log4net.config</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="WebVue\src\components\order-info\order-detail.vue" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

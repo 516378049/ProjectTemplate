@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import OrderConfirm from '../components/order-info/order-confirm.vue'
+import OrderDetail from '../components/order-info/order-detail.vue'
 import OrderPay from '../components/order-info/order-pay.vue'
 import PayResult from '../components/order-info/pay-result.vue'
 import Home from '../components/home/home.vue'
@@ -84,6 +85,14 @@ let router = new Router({
         requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
       },
       component: OrderPay
+    },
+    {
+      path: '/OrderDetail',
+      name: 'OrderDetail',
+      meta: {
+        requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
+      },
+      component: OrderDetail
     }
     , {
       path: '/PayResult',

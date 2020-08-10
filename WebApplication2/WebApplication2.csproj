@@ -45,10 +45,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -132,6 +139,24 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202008100755507_Initial.cs" />
+    <Compile Include="Migrations\202008100755507_Initial.Designer.cs">
+      <DependentUpon>202008100755507_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008100804163_测试添加food表字段.cs" />
+    <Compile Include="Migrations\202008100804163_测试添加food表字段.Designer.cs">
+      <DependentUpon>202008100804163_测试添加food表字段.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\EFTableTest.cs" />
+    <Compile Include="Models\foods.cs" />
+    <Compile Include="Models\goods.cs" />
+    <Compile Include="Models\Model1.cs" />
+    <Compile Include="Models\Posts.cs" />
+    <Compile Include="Models\ratings.cs" />
+    <Compile Include="Models\sellers.cs" />
+    <Compile Include="Models\sellerSet.cs" />
+    <Compile Include="Models\supports.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -167,7 +192,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -203,6 +227,14 @@
       <Project>{bb2c885a-a5d2-4e69-9cb8-68821fd6e612}</Project>
       <Name>WebAPI.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202008100755507_Initial.resx">
+      <DependentUpon>202008100755507_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008100804163_测试添加food表字段.resx">
+      <DependentUpon>202008100804163_测试添加food表字段.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

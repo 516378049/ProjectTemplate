@@ -74,6 +74,10 @@ namespace OrderMeal.Controllers
             catch (Exception e)
             {
                 Log.ILog4_Error.Error("JSInit出错啦", e);
+                if(currentURL.IndexOf("localhost:8080")>0)
+                {
+                    return CreateApiResult("fail");
+                }
                 throw;
             }
 

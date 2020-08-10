@@ -5,7 +5,7 @@
     <div style="position:fixed;top:0;left:0;width:100%; height:61.8%; text-align:center;color:azure;background-image:linear-gradient(#26a2ff,aliceblue);z-index:-1">
     </div>
     <mt-header title="订单确认" style="font-size:large;background-color:inherit">
-      <router-link to="/" slot="left">
+      <router-link to="/App" slot="left">
         <mt-button icon="back"></mt-button>
       </router-link>
     </mt-header>
@@ -29,7 +29,7 @@
           <mt-cell class="bolder" title="一品香粥（订单明细）" style="border-bottom:2px outset rgba(0, 43, 247, 0.0618)"></mt-cell>
           <template v-for="item in selMenuList">
             <mt-cell class="orderList" :title=item.name>
-              <span class="orderNum">x {{item.count}}</span> <span class="orderSingleAmount">￥{{item.price}}</span>
+              <span class="orderNum">x {{item.count}}</span> <span class="orderSingleAmount">￥{{item.price * item.count}}</span>
               <img slot="icon" :src="item.image" width="50" height="50">
             </mt-cell>
           </template>
@@ -66,7 +66,7 @@
       <div class="PriceTotel">
         <span>￥{{TotleMount}}</span><span style="font-size:smaller;color:#e0caca;margin-left:15px">| 已优惠￥0</span>
       </div>
-      <mt-button style="float:right" type="primary" @click="prePay">立即支付</mt-button>
+      <mt-button style="float:right" type="primary" @click="prePay">确认订单</mt-button>
     </div>
 
   </div>
@@ -154,12 +154,13 @@
         var that = this
         //订单编号：年月日时分秒+商家ID+桌号
         var seller = loadLocal('seller')
-        var sellerMod = loadLocal('seller_' + _SellerId)
+        var sellerMod = loadLocal('seller_' + seller.id)
         var _OrderId = moment(new Date()).format('YYYYMMDDHHMMSS') + seller.id + seller.deskNumber
         var _SellerId = seller.id
         var _SellerName = sellerMod.name
         var _avatar = sellerMod.avatar
-        var _OrderCreateTime=that.OrderTime.OrderTimeVal == '' ? moment(new Date()).format('YYYY-MM-DD HH:MM:SS') : that.OrderTime.OrderTimeVal
+        var _OrderCreateTime = that.OrderTime.OrderTimeVal == '' ? that.Global.Fun.dateFormat(new Date(),'yyyy-MM-dd HH:mm') : that.OrderTime.OrderTimeVal
+        //moment(new Date()).format('YYYY-MM-DD HH:MM:SS')
         //创建订单
         CreateOrderInfo(
           {

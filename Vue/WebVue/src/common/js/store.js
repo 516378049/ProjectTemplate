@@ -1,9 +1,8 @@
 import vue from 'vue'
 import vuex from 'vuex'
 import { cnst, Fun } from '@/common/js/Global'
-import { getSeller, getGoods, getRatings, setCartCount, getCartCount, getOrderInfoList } from 'api'
+import { getSeller, getGoods, getRatings, setCartCount, getCartCount, getOrderInfoList, getOrderInfoListStatus } from 'api'
 import { loadLocal, saveLocal } from '@/common/js/storage'
-import { from } from 'array-flatten';
 vue.use(vuex)
 
 let store = new vuex.Store({
@@ -28,6 +27,9 @@ let store = new vuex.Store({
         })
       })
       return foods
+    },
+    getOrderInfoList: state => {
+      return JSON.parse(JSON.stringify(state.OrderInfoList));//保证监听getter值前后的变化
     }
   },
   mutations: {
@@ -69,32 +71,51 @@ let store = new vuex.Store({
     },
     //拉取订单，每次拉取5条，1、向下拉取查询当前时间以前订单，向上拉取订单，查询当前时间以后订单
     getOrderInfoList(state, obj) {
-
+      var startTime = Fun.dateFormat(new Date(), 'yyyy-MM-dd HH:mm')
+      if (state.OrderInfoList.length > 0) {
+        if (obj.slipAction == 'down') {
+          startTime = state.OrderInfoList[0].CreateTime
+        }
+        else if (obj.slipAction == 'up') {
+          startTime = state.OrderInfoList[state.OrderInfoList.length - 1].CreateTime
+        }
+        else {
+          return false
+        }
+      }
       getOrderInfoList({
         userId: state.userInfo.Id,
         sellerId: loadLocal('seller').id,
-        startTime: obj.startTime,
+        startTime: startTime,
         slipAction: obj.slipAction,
-        count:5
+        count: 5
       }).then((items) => {
-        console.log(items)
         items.forEach((item) => {
-          state.OrderInfoList.push(item)
+          if (obj.slipAction == 'down') {
+            state.OrderInfoList.unshift(item)
+          }
+          else{
+            state.OrderInfoList.push(item)
+          }
         })
-        //getOrderInfoList(state, obj)
+        state.OrderInfoList = JSON.parse(JSON.stringify(state.OrderInfoList)) //为了让vue 能够在OrderInfo未改变的情况下监听到getter中OrderInfo的变化
+        // refesh order status
+        if (obj.slipAction == 'down') {
+          this.commit('getOrderInfoListStatus')
+        }
       })
     },
     //更新所有显示的订单状态
-    getOrderInfoListStatus(state, obj) {
+    getOrderInfoListStatus(state) {
       var _OrderInfoList = [];
       state.OrderInfoList.forEach(item => {
-        _OrderInfoList.push({ Id: item.Id})
+        _OrderInfoList.push({ OrderNum: item.OrderNum})
       })
-
-      getOrderInfoListStatus(_OrderInfoList).then(items => {
+      if (_OrderInfoList.length>0)
+      getOrderInfoListStatus({ OrderInfoList:_OrderInfoList}).then(items => {
         state.OrderInfoList.forEach(item => {
           items.forEach(_item => {
-            if (item.Id == _item.Id) {
+            if (item.OrderNum == _item.OrderNum) {
               item.Status = _item.Status
               return;
             }
@@ -142,12 +163,15 @@ let store = new vuex.Store({
       commit('syncGoods')
       setInterval(() => {
         commit('syncGoods')
-      }, 1000000)
+      }, 30000)
     },
     a_setCartCount({ commit }, item) {
       setTimeout(() => {
         commit('setCartCount', item)
       }, 1)
+    },
+    a_getOrderInfoList({ commit, state }, obj) {
+      commit('getOrderInfoList', obj)
     }
   }
 })

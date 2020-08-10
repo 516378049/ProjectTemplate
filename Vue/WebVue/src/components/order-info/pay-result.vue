@@ -37,12 +37,13 @@
       },
 
       OrderAdd: function () {
-        this.$createDialog({
-          type: 'alert',
-          title: '健康的秘诀',
-          content: '不能吃太饱哦！',
-          icon: 'cubeic-like'
-        }).show()
+        this.$router.push({ path: "/App" })
+        //this.$createDialog({
+        //  type: 'alert',
+        //  title: '健康的秘诀',
+        //  content: '不能吃太饱哦！',
+        //  icon: 'cubeic-like'
+        //}).show()
       }
     },
     components: {}

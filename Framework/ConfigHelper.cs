@@ -37,8 +37,11 @@ namespace Framework
         /// 微信订单查询
         /// </summary>
         public static string wxOrderQuery = ConfigurationManager.AppSettings["wxOrderQuery"];
+        /// <summary>
+        /// 系统版本
+        /// </summary>
+        public static string sysVersion = ConfigurationManager.AppSettings["sysVersion"];
         
-
         /// <summary>
         /// 是否启用公告
         /// </summary>

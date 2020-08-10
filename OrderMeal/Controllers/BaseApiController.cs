@@ -24,17 +24,6 @@ namespace OrderMeal.Controllers
         /// <param name="retMsg"></param>
         /// <param name="message"></param>
         /// <returns></returns>
-        //protected string CreateApiResult(string retCode, string retMsg, object message)
-        //{
-        //    return JsonConvert.SerializeObject(new CoreWebApi.ApiResult() { RetCode = retCode, RetMsg = retMsg, Message = message });
-        //}
-        /// <summary>
-        /// 创建ApiResult对象，所有WebApi接口均使用该方法包装返回值
-        /// </summary>
-        /// <param name="retCode"></param>
-        /// <param name="retMsg"></param>
-        /// <param name="message"></param>
-        /// <returns></returns>
         protected ApiResult CreateApiResult(string retCode, string retMsg, object message)
         {
             return new CoreWebApi.ApiResult() { RetCode = retCode, RetMsg = retMsg, Message = message };
@@ -50,9 +39,9 @@ namespace OrderMeal.Controllers
         /// <param name="retMsg"></param>
         /// <param name="message"></param>
         /// <returns></returns>
-        protected ApiResult CreateApiResult(object message = null,string retCode = "0", int Total=0, string retMsg = "")
+        protected ApiResult CreateApiResult(object message = null, string retCode = "0", int Total = 0, string retMsg = "")
         {
-            return new ApiResult() { RetCode = retCode,Total= Total, RetMsg = retMsg, Message = message };
+            return new ApiResult() { RetCode = retCode, Total = Total, RetMsg = retMsg, Message = message };
         }
         /// <summary>
         /// 检查ApiResult是否表示正确结果
@@ -240,12 +229,15 @@ namespace OrderMeal.Controllers
         /// <returns></returns>
         protected ApiResult ErrorHandle(Exception ex, string actionInfo = "")
         {
+            if(actionInfo=="")
+            {
+                actionInfo = Request.RequestUri.AbsolutePath;
+            }
             //TODO:加入异常统计
-            Log.ILog4_Error.Error("接口出现错误",ex);
+            Log.ILog4_Error.Error("接口出现错误", ex);
             return new ApiResult()
             {
-                RetCode = "-1",//GetErrCode(WebConst.RetCode_Error),
-                //RetMsg = actionInfo + "接口出现错误",
+                RetCode = "-1",
                 RetMsg = string.Format("{0}接口出现错误 ({1})", actionInfo, ex.Message.ToString()),
                 Message = null
             };

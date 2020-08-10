@@ -3,7 +3,7 @@ import Vue from 'vue'
 import Index from './Index.vue'
 import router from './router'
 import store from './common/js/store'
-import Global from '@/common/js/Global'
+import { cnst, Fun } from '@/common/js/Global'
 
 import './cube-ui'
 import './register'
@@ -15,7 +15,7 @@ import 'mint-ui/lib/style.css'
 import $ from 'jquery'
 window.jquery = window.$ = $
 
-Vue.prototype.Global = Global
+Vue.prototype.Global = { cnst, Fun }
 
 Vue.use(Mint);
 Vue.config.productionTip = false

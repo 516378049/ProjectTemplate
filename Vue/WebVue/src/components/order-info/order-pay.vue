@@ -12,14 +12,10 @@
     <div class="start" style="margin-top:30px"></div>
 
     <div class="OrderInfoPay">
-      <div class="OrderInfoPaySingle">支付剩余时间：{{this.restPayTime}}</div>
+      <div class="OrderInfoPaySingle">{{this.restPayTime}}</div>
       <div class="OrderInfoPaySingle"><span style="font-weight:bolder;color:#000000">￥</span><span style="font-size:xx-large;font-weight:bolder;color:#000000">{{orderInfo.OrderAmount}}</span></div>
       <div class="OrderInfoPaySingle">商家：{{orderInfo.SellerName}}</div>
       <div class="OrderInfoPaySingle">单号：{{orderInfo.OrderId}}</div>
-      <!--<div class="OrderInfoPaySingle"><span style="display:inline-block;width:50%;text-align:right">支付剩余时间：</span>20:00</div>
-    <div class="OrderInfoPaySingle"><span style="display:inline-block;width:50%;text-align:right">金额：</span><span style="font-weight:bolder;color:#000000">￥</span><span style="font-size:xx-large;font-weight:bolder;color:#000000">88.88</span></div>
-    <div class="OrderInfoPaySingle"><span style="display:inline-block;width:50%;text-align:right">商家：</span>一品香粥</div>
-    <div class="OrderInfoPaySingle"><span style="display:inline-block;width:50%;text-align:right">单号：</span>201705270202011001</div>-->
       <div class="clear"></div>
     </div>
     <div class="PayWay">
@@ -66,6 +62,7 @@
         ],
         restPayTime: '',
         IntervalId: '',
+        TimeSetStop: false,
         StartTime: moment()
       }
     },
@@ -85,17 +82,17 @@
     },
     mounted() {
       var that=this
-      that.IntervalId=setInterval(() => {
-        that.diffTime()
-      }, 1000)
+      //that.IntervalId=setInterval(() => {
+      //  that.diffTime()
+      //}, 1000)
+      that.restTimeDiff()
     },
     methods: {
       diffTime() {
         var that = this
-        let CurrentTime = moment()
-        var _date = moment.duration(CurrentTime - that.StartTime, 'ms')
+        let CurrentTime = moment(that.orderInfo.OrderCreateTime)
+        var _date = moment.duration(that.StartTime - CurrentTime, 'ms')
         if (this.restPayTime == '00：00') {
-          
           clearInterval(that.IntervalId);
           this.$createDialog({
             type: 'alert',
@@ -108,9 +105,37 @@
           }).show()
         }
         else {
-          this.restPayTime = this.PrefixInteger((19 - _date._data.minutes), 2) + '：' + this.PrefixInteger((59 - _date._data.seconds), 2)
+          this.restPayTime = this.Global.Fun.PrefixInteger((19 - _date._data.minutes), 2) + '：' + this.Global.Fun.PrefixInteger((59 - _date._data.seconds), 2)
         }
       },
+
+      restTimeDiff() {
+        var that = this
+        if (that.orderInfo.OrderCreateTime && !that.TimeSetStop) {
+          var _date = that.Global.Fun.dateDiff(new Date(), that.orderInfo.OrderCreateTime, 'm')
+          if (_date < 20) {
+            var _dateSeconds = that.Global.Fun.dateDiff(new Date(), that.orderInfo.OrderCreateTime, 's')
+            that.restPayTime = '剩余支付时间：' + that.$options.filters['PrefixInteger'](19 - _date, 2) + '：' + that.$options.filters['PrefixInteger'](59 - (_dateSeconds % 60), 2)
+
+            setTimeout(() => {
+              that.restTimeDiff()
+            }, 1000)
+
+          }
+          else {
+            that.$createDialog({
+              type: 'alert',
+              title: '过期提醒',
+              content: '您的订单已过期，请您重新下单，谢谢~！' + that.orderInfo.OrderCreateTime,
+              icon: 'cubeic-warn',
+              onConfirm: () => {
+                that.$router.push({ path: "/App" });
+              }
+            }).show()
+          }
+        }
+      },
+
       pay: function () {
         var that = this
         console.log("OrderId: " + that.orderInfo.OrderId)
@@ -131,6 +156,10 @@
           });
         })
       }
+    },
+    beforeDestroy() {    //页面关闭时清除定时器
+      this.TimeSetStop == true
+      clearInterval(this.IntervalId);
     }
   }
 </script>

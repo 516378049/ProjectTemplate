@@ -8,7 +8,7 @@
 
     <mt-cell class="bolder" style="background-color:inherit;border-bottom: 1px outset #f00;" title=所有订单></mt-cell>
     <div class="OrderlistDiv_Home scroll-list-wrap">
-      <cube-scroll ref="scroll" :options="options">
+      <cube-scroll ref="scroll" :options="options" @pulling-down="onPullingDown" @pulling-up="onPullingUp">
         <template v-for="item in this.getOrderInfoList">
           <div class="OrderlistDivSingle">
             <div class="OrderlistDivSingleL">
@@ -21,18 +21,23 @@
                 <i class="mintui mintui-icon-test2" style="font-size:large"></i>
                 <span style="float:right;font-size:small">{{item.Status|StatuStr}}</span>
               </div>
+              
               <template v-for="(details,index) in item.OrderDetailsInfo">
-                <div style="margin-top:5px" v-if="'012'.indexOf(index)>=0">
-                  <span style="font-size:small;color:rgba(0,0,0,.5)">{{details.FoodName}}</span>
-                  <span style="float:right;font-size:small">x1</span>
-                </div>
+                <router-link :to="{name:'OrderDetail',params:{orderNum:item.OrderNum}}">
+                  <div style="margin-top:5px" v-if="'012'.indexOf(index)>=0">
+                    <span style="font-size:small;color:rgba(0,0,0,.5)">{{details.FoodName}}</span>
+                    <span style="float:right;font-size:small">x {{details.Count}}</span>
+                  </div>
+                </router-link>
               </template>
+              
               <div style="margin-top:6.18px">
-                <span style="font-size:xx-small;color:rgba(0,0,0,.5)">{{item.OrderDetailsInfo.length>3?'等4件商品':'共'+item.OrderDetailsInfo.length+'件商品'}}</span>
+                <span style="font-size:xx-small;color:rgba(0,0,0,.5)">{{item.OrderDetailsInfo.length>3?'等'+item.OrderDetailsInfo.length+'件商品':'共'+item.OrderDetailsInfo.length+'件商品'}}</span>
                 <span style="float:right;font-size:small">总额： <span style="font-weight:bolder;color:rgba(0,0,0,1);">￥{{item.Amount}}</span></span>
               </div>
-              <div style="margin-top:5px">
-                <mt-button plain style="float:right" type="default" size="small">再来一单</mt-button>
+              <div style="margin-top:5px;width:100%;text-align:right;">
+                <mt-button  style="" type="primary" size="small" @click="roterPush('App');">再来一单</mt-button>
+                <mt-button plain style="margin-left:10px" type="default" size="small" @click="roterPush('OrderDetail',{orderNum:item.OrderNum});"> 订单明细</mt-button>
                 <div class="clear"></div>
               </div>
               <div style="margin-top:15px;text-align:right;font-size:small;color:rgba(0,0,0,.5)">下单时间：{{item.CreateTime|dateFormat('yyyy-MM-dd HH:mm')}}</div>
@@ -41,7 +46,7 @@
             <div class="clear"></div>
           </div>
         </template>
-        <div style="margin-top:15px;margin-bottom:10px; text-align:center;font-size:small;color:rgba(0,0,0,.5)">无有更多的啦！</div>
+        <div style="margin-top:15px;margin-bottom:10px; text-align:center;font-size:small;color:rgba(0,0,0,.5)">{{scrollInfo}}</div>
       </cube-scroll>
     </div>
       <div class="clear"></div>
@@ -53,10 +58,16 @@
     export default {
       data() {
         return {
+          scrollInfo: '',
           selected: "MyOrderList",
           startY: 0,
           scrollbarFade: true,
-          scrollHeight: "100%"
+          scrollHeight: "100%",
+          pullAction: {
+            pullDown: true,
+            pullUp: true,
+            action:''
+          }
         }
       },
       props: {
@@ -65,39 +76,39 @@
         this.scrollHeight =  "calc(100% - 132px)"
       },
       mounted() {
-        console.log(this.$store.state.OrderInfoList.length)
-        if (this.$store.state.OrderInfoList.length==0) {
-          this.OrderInfoList()
+        if (this.getOrderInfoList.length == 0) {
+          this.OrderInfoList('')
+        }
+        else {
+          this.OrderInfoList('down')
         }
       },
       computed: {
         options() {
+          var that=this
           return {
             scrollbar: this.scrollbarFade,
-            startY: this.startY
+            startY: this.startY,
+            pullDownRefresh: that.pullAction.pullDown?{
+              threshold: 60,
+              stop: 40,
+              stopTime:600,
+              txt:"更新成功"
+              
+            } : false,
+            pullUpLoad: that.pullAction.pullUp ? {
+              threshold: 100,
+              visibale: true,
+              txt: { more: '更新成功！' }
+            } : false
           }
         },
         getOrderInfoList() {
-          return this.$store.state.OrderInfoList
+          return this.$store.getters.getOrderInfoList
         }
       },
       filters: {
-        //订单状态：1、待支付、2、商家待接单；3、商家已接单；4、订单完成；5、待评价；6、已评价；7、取消订单；8、申请退款；9、商家同意退款；10、退款成功
-        StatuStr: function (value) {
-          switch (value) {
-            case 1: return '待支付';
-            case 2: return '商家待接单';
-            case 3: return '商家已接单';
-            case 4: return '订单完成';
-            case 5: return '待评价';
-            case 6: return '已评价';
-            case 7: return '已取消';
-            case 8: return '退款中';
-            case 9: return '商家同意退款';
-            case 10: return '退款成功';
-            default: return '未知状态'
-          }
-        }
+
       },
       watch: {
         selected() {
@@ -107,21 +118,41 @@
         },
         scrollHeight() {
           $(".scroll-list-wrap").css({ "height": this.scrollHeight })
+        },
+        getOrderInfoList(newVal, oldVal) {
+          if (this.pullAction.action == 'up' && newVal.length == oldVal.length) {
+            this.pullAction.pullUp = false;
+            this.scrollInfo ='无有更多的啦！'
+          }
+          console.log('OrderInfoList watch');
+          console.log(newVal);
+          console.log(oldVal);
         }
       },
       methods: {
-        OrderInfoList() {
-          var that=this
-          this.$store.commit('getOrderInfoList', {
-            startTime: that.$options.filters['dateFormat'](new Date(),'yyyy-MM-dd HH:mm'),
-            slipAction: 'down'
+         OrderInfoList(slipAction) {
+          this.$store.dispatch('a_getOrderInfoList', {
+            slipAction: slipAction
           })
+           this.$refs.scroll.forceUpdate();
+           this.$refs.scroll.refresh();
+        },
+        onPullingDown() {
+          this.pullAction.action ='down'
+          this.OrderInfoList('down')
+        },
+        onPullingUp() {
+          this.pullAction.action = 'up'
+          this.OrderInfoList('up')
         },
         //订单按时间排序
         OrderListOrderBy(orderList) {
           orderList.sort(function (a, b) {
             return Date.parse(b.CreateTime) - Date.parse(a.CreateTime);//时间降序
           })
+        },
+        roterPush(name, params) {
+          this.$router.push({ name: name, params: params})
         }
       },
       components: {}
@@ -131,6 +162,7 @@
   <style lang="stylus" rel="stylesheet/stylus">
     .container .OrderlistDiv_Home .OrderlistDivSingle {
       box-sizing: border-box;
+      border-radius: 30px 30px;
       color: black;
       margin-top: 5px;
       padding-top: 10px;
@@ -157,5 +189,6 @@
       .container .OrderlistDiv_Home .OrderlistDivSingle .OrderlistDivSingleR {
         width: calc(100% - 80px);
         float: left;
+
       }
   </style>

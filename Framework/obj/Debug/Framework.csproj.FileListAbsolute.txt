@@ -28,6 +28,9 @@ D:\记录文档\github --save\git sourceCode management\version 20200121\netTemp
 D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Framework\obj\Debug\Framework.csproj.CopyComplete
 D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Framework\obj\Debug\Runda.B2B.Framework.dll
 D:\记录文档\github --save\git sourceCode management\version 20200121\netTemplateMVC\Framework\obj\Debug\Runda.B2B.Framework.pdb
+D:\GitHub\netTemplateMVC\Framework\bin\Debug\Framework.dll.config
+D:\GitHub\netTemplateMVC\Framework\bin\Debug\Framework.dll
+D:\GitHub\netTemplateMVC\Framework\bin\Debug\Framework.pdb
 D:\GitHub\netTemplateMVC\Framework\bin\Debug\DocumentFormat.OpenXml.dll
 D:\GitHub\netTemplateMVC\Framework\bin\Debug\LitJson.dll
 D:\GitHub\netTemplateMVC\Framework\bin\Debug\log4net.dll
@@ -45,9 +48,20 @@ D:\GitHub\netTemplateMVC\Framework\bin\Debug\System.Numerics.Vectors.dll
 D:\GitHub\netTemplateMVC\Framework\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
 D:\GitHub\netTemplateMVC\Framework\bin\Debug\System.Threading.Channels.dll
 D:\GitHub\netTemplateMVC\Framework\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\GitHub\netTemplateMVC\Framework\bin\Debug\WeChat.Common.dll
 D:\GitHub\netTemplateMVC\Framework\bin\Debug\EntityFramework.dll
+D:\GitHub\netTemplateMVC\Framework\bin\Debug\Microsoft.WindowsAzure.Storage.dll
+D:\GitHub\netTemplateMVC\Framework\bin\Debug\Microsoft.ServiceBus.dll
+D:\GitHub\netTemplateMVC\Framework\bin\Debug\Microsoft.WindowsAzure.Configuration.dll
+D:\GitHub\netTemplateMVC\Framework\bin\Debug\Microsoft.Data.Services.Client.dll
+D:\GitHub\netTemplateMVC\Framework\bin\Debug\Microsoft.Data.OData.dll
+D:\GitHub\netTemplateMVC\Framework\bin\Debug\Microsoft.Data.Edm.dll
+D:\GitHub\netTemplateMVC\Framework\bin\Debug\Microsoft.Azure.KeyVault.Core.dll
+D:\GitHub\netTemplateMVC\Framework\bin\Debug\System.Spatial.dll
 D:\GitHub\netTemplateMVC\Framework\bin\Debug\Model.pdb
 D:\GitHub\netTemplateMVC\Framework\bin\Debug\Model.dll.config
+D:\GitHub\netTemplateMVC\Framework\bin\Debug\WeChat.Common.pdb
+D:\GitHub\netTemplateMVC\Framework\bin\Debug\WeChat.Common.dll.config
 D:\GitHub\netTemplateMVC\Framework\bin\Debug\DocumentFormat.OpenXml.xml
 D:\GitHub\netTemplateMVC\Framework\bin\Debug\log4net.xml
 D:\GitHub\netTemplateMVC\Framework\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
@@ -63,25 +77,6 @@ D:\GitHub\netTemplateMVC\Framework\bin\Debug\System.Runtime.CompilerServices.Uns
 D:\GitHub\netTemplateMVC\Framework\bin\Debug\System.Threading.Channels.xml
 D:\GitHub\netTemplateMVC\Framework\bin\Debug\System.Threading.Tasks.Extensions.xml
 D:\GitHub\netTemplateMVC\Framework\bin\Debug\EntityFramework.xml
-D:\GitHub\netTemplateMVC\Framework\obj\Debug\Framework.csprojAssemblyReference.cache
-D:\GitHub\netTemplateMVC\Framework\obj\Debug\Framework.csproj.CoreCompileInputs.cache
-D:\GitHub\netTemplateMVC\Framework\obj\Debug\Framework.csproj.CopyComplete
-D:\GitHub\netTemplateMVC\Framework\bin\Debug\Framework.dll.config
-D:\GitHub\netTemplateMVC\Framework\bin\Debug\Framework.dll
-D:\GitHub\netTemplateMVC\Framework\bin\Debug\Framework.pdb
-D:\GitHub\netTemplateMVC\Framework\obj\Debug\Framework.dll
-D:\GitHub\netTemplateMVC\Framework\obj\Debug\Framework.pdb
-D:\GitHub\netTemplateMVC\Framework\bin\Debug\WeChat.Common.dll
-D:\GitHub\netTemplateMVC\Framework\bin\Debug\Microsoft.WindowsAzure.Storage.dll
-D:\GitHub\netTemplateMVC\Framework\bin\Debug\Microsoft.ServiceBus.dll
-D:\GitHub\netTemplateMVC\Framework\bin\Debug\Microsoft.WindowsAzure.Configuration.dll
-D:\GitHub\netTemplateMVC\Framework\bin\Debug\Microsoft.Data.Services.Client.dll
-D:\GitHub\netTemplateMVC\Framework\bin\Debug\Microsoft.Data.OData.dll
-D:\GitHub\netTemplateMVC\Framework\bin\Debug\Microsoft.Data.Edm.dll
-D:\GitHub\netTemplateMVC\Framework\bin\Debug\Microsoft.Azure.KeyVault.Core.dll
-D:\GitHub\netTemplateMVC\Framework\bin\Debug\System.Spatial.dll
-D:\GitHub\netTemplateMVC\Framework\bin\Debug\WeChat.Common.pdb
-D:\GitHub\netTemplateMVC\Framework\bin\Debug\WeChat.Common.dll.config
 D:\GitHub\netTemplateMVC\Framework\bin\Debug\Microsoft.WindowsAzure.Storage.pdb
 D:\GitHub\netTemplateMVC\Framework\bin\Debug\Microsoft.WindowsAzure.Storage.xml
 D:\GitHub\netTemplateMVC\Framework\bin\Debug\Microsoft.ServiceBus.xml
@@ -127,3 +122,8 @@ D:\GitHub\netTemplateMVC\Framework\bin\Debug\ko\System.Spatial.resources.dll
 D:\GitHub\netTemplateMVC\Framework\bin\Debug\ru\System.Spatial.resources.dll
 D:\GitHub\netTemplateMVC\Framework\bin\Debug\zh-Hans\System.Spatial.resources.dll
 D:\GitHub\netTemplateMVC\Framework\bin\Debug\zh-Hant\System.Spatial.resources.dll
+D:\GitHub\netTemplateMVC\Framework\obj\Debug\Framework.csprojAssemblyReference.cache
+D:\GitHub\netTemplateMVC\Framework\obj\Debug\Framework.csproj.CoreCompileInputs.cache
+D:\GitHub\netTemplateMVC\Framework\obj\Debug\Framework.csproj.CopyComplete
+D:\GitHub\netTemplateMVC\Framework\obj\Debug\Framework.dll
+D:\GitHub\netTemplateMVC\Framework\obj\Debug\Framework.pdb

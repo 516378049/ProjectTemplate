@@ -1,0 +1,209 @@
+<template>
+  <div class="container" style="padding-bottom:0">
+    <div style="position:fixed;top:0;left:0;width:100%; height:100%; text-align:center;background-image:linear-gradient(#94c1e4,#ffffff);z-index:-1">
+
+    </div>
+    <mt-header title="订单详情" style="background-color:inherit;font-size:large;color:#000000">
+      <router-link to="" slot="left">
+        <mt-button icon="back" @click.native="$router.back(-1)"></mt-button>
+      </router-link>
+    </mt-header>
+
+    <div class="start" style="margin-top:30px"></div>
+    <div class="scroll-list-wrap" style="height:calc(100% - 70px)">
+      <cube-scroll ref="scroll" :options="options">
+        <div class="PayResultInfo">
+          <div class="PayResultInfoSingle" style="font-size:x-large;color:#296844">{{this.getOrderInfoByOrderNum.Status|StatuStr}}</div>
+          <div class="PayResultInfoSingle" style="color:#49524b">{{restPayTime}}</div>
+          <div class="PayResultInfoSingle"><span style="font-weight:700;color:#000000">桌号：</span><span style="font-size:xx-large;font-weight:bolder;color:#000000">{{this.getOrderInfoByOrderNum.DeskNumber|PrefixInteger(3,)}}</span></div>
+
+          <mt-button v-show="this.showButton.indexOf('cancel')>=0" plain style="margin-top:20px;margin-left:10px;margin-right:10px" type="default" size="small" @click="">取消订单</mt-button>
+          <mt-button v-show="this.showButton.indexOf('orderAgain')>=0" style="margin-top:20px;margin-left:10px;margin-right:10px" type="primary" size="small" @click="roterPush('App')">再来一单</mt-button>
+          <mt-button v-show="this.showButton.indexOf('appraise')>=0" style="margin-top:20px;margin-left:10px;margin-right:10px" type="primary" size="small" @click="">我要评价</mt-button>
+          <mt-button v-show="this.showButton.indexOf('pay')>=0" style="margin-top:20px;margin-left:10px;margin-right:10px" type="primary" size="small" @click="roterPush('OrderPay',
+            {
+              OrderId: getOrderInfoByOrderNum.OrderNum,
+              SellerName: getOrderInfoByOrderNum.SellerName,
+              OrderCreateTime: getOrderInfoByOrderNum.CreateTime,
+              OrderAmount: getOrderInfoByOrderNum.Amount
+            })">立即支付</mt-button>
+          <div class="clear"></div>
+
+        </div>
+        <br />
+        <div class="OrderInfoDetails">
+          <mt-cell class="bolder" :title="this.getOrderInfoByOrderNum.SellerName +'：(订单明细)'" style="border-radius: 30px 30px 0 0;"></mt-cell>
+          <template v-for="item in this.getOrderInfoByOrderNum.OrderDetailsInfo">
+            <mt-cell class="orderList" :title=item.FoodName>
+              <span class="orderNum">x{{item.Count}}</span> <span style="width:15px"></span> <span class="orderSingleAmount">￥{{item.AmountReal}}</span>
+              <img slot="icon" :src="item.image" width="50" height="50">
+            </mt-cell>
+          </template>
+          <mt-cell title="" value="">
+            <span>总金额：<span style="color:red">￥{{this.getOrderInfoByOrderNum.Amount}}</span></span>
+          </mt-cell>
+        </div>
+
+        <div class="OrderInfoOther">
+          <div class="OrderInfoOtherList title">订单其他信息：</div>
+          <div class="OrderInfoOtherList content">店铺名称：{{getOrderInfoByOrderNum.SellerName}}</div>
+          <div class="OrderInfoOtherList content">用餐时间：{{getOrderInfoByOrderNum.BookTime|dateFormat('yyyy-MM-dd HH:mm')}}</div>
+          <div class="OrderInfoOtherList content">用餐人数：{{getOrderInfoByOrderNum.CusCount}}</div>
+          <div class="OrderInfoOtherList content">订单备注：{{getOrderInfoByOrderNum.Remark}}</div>
+          <div class="OrderInfoOtherList content">支付方式：在线支付</div>
+          <div class="OrderInfoOtherList content">下单时间：{{getOrderInfoByOrderNum.CreateTime|dateFormat('yyyy-MM-dd HH:mm')}}</div>
+          <div class="clear"></div>
+        </div>
+      </cube-scroll>
+    </div>
+  </div>
+ 
+</template>
+<script>
+  import moment from 'moment'
+  import { loadLocal } from '@/common/js/storage'
+import { setTimeout } from 'core-js';
+import { fail } from 'assert';
+  export default {
+    name: 'OrderPay',
+    data() {
+      return {
+        restPayTime: '',
+        TimeSetStop:false,
+        IntervalId: ''
+      }
+    },
+    props: {
+    },
+    computed: {
+      options() {
+        return {
+          scrollbar: true,
+          startY: 0
+        }
+      },
+      getOrderInfoByOrderNum() {
+        
+        var _orderNum = this.$route.params.orderNum
+        if (_orderNum) {
+          return this.$store.getters.getOrderInfoList.filter(X => X.OrderNum == _orderNum)[0]
+        }
+        else {
+          return { status: '', CreateTime:new Date()}//防止属性返回没有值报错
+        }
+        
+      },
+      CreateTime() {
+        var _orderNum = this.$route.params.orderNum
+        if (_orderNum)
+          return this.$store.getters.getOrderInfoList.filter(X => X.OrderNum == _orderNum)[0].CreateTime
+      },
+      showButton() {
+        var _date = this.Global.Fun.dateDiff(new Date(), this.CreateTime, 'm')
+        var options = []
+        if (this.getOrderInfoByOrderNum.Status == 1) {
+          options.push('cancel');
+          if (_date < 20) {
+            options.push('pay');
+          }
+          else {
+            options.push('orderAgain');
+          }
+        }
+        else {
+          options.push('appraise');
+          options.push('orderAgain');
+        }
+        return options
+      }
+    },
+    created() {
+      
+      //console.log(this.getOrderInfoByOrderNum)
+    },
+    mounted() {
+      if (!this.$route.params.orderNum) {
+        this.$router.push('App')
+      }
+      else {
+        this.diffTime()
+      }
+      
+    },
+    methods: {
+      roterPush(name, params) {
+        this.$router.push({ name: name, params: params })
+      },
+      diffTime() {
+        var that = this
+        var _date = that.Global.Fun.dateDiff(new Date(), that.CreateTime, 'm')
+        if (that.getOrderInfoByOrderNum.Status == 1) {
+          if (_date >= 20) {
+            that.restPayTime = "订单超时，请重新下单"
+          }
+          else {
+            that.restTimeDiff()
+          }
+        }
+        else {
+          that.restPayTime = "欢迎下次光临!"
+        }
+      },
+      restTimeDiff() {
+        var that = this
+        if (that.CreateTime && !that.TimeSetStop) {
+          var _date = that.Global.Fun.dateDiff(new Date(), that.CreateTime, 'm')
+          if (_date < 20) {
+            var _dateSeconds = that.Global.Fun.dateDiff(new Date(), that.CreateTime, 's')
+            that.restPayTime = '剩余支付时间：' + that.$options.filters['PrefixInteger'](19 - _date, 2) + '：' + that.$options.filters['PrefixInteger'](59 - (_dateSeconds % 60), 2)
+
+            setTimeout(() => {
+              that.restTimeDiff()
+            }, 1000)
+
+          }
+          else {
+            that.$createDialog({
+              type: 'alert',
+              title: '过期提醒',
+              content: '您的订单已过期，请您重新下单，谢谢~！' + that.CreateTime,
+              icon: 'cubeic-warn',
+              onConfirm: () => {
+                that.$router.push({ path: "/App" });
+              }
+            }).show()
+          }
+        }
+      }
+    },
+    beforeDestroy() {    //页面关闭时清除定时器  
+      this.TimeSetStop == true;
+    }
+  }
+</script>
+
+<style lang="stylus" rel="stylesheet/stylus">
+  .OrderInfoDetails {
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom:15px;
+    border-radius: 30px 30px;
+    background-color:#ffffff
+  }
+  .OrderInfoOther {
+    margin-top: 5px;
+    padding: 10px 5px 30px 10px;
+    border-radius: 30px 30px;
+    background-color: #ffffff
+  }
+    .OrderInfoOther .OrderInfoOtherList {
+      margin-top: 10px;
+      color: rgba(0,0,0,.5)
+    }
+      .OrderInfoOther .OrderInfoOtherList.title {
+        font-weight:bolder;
+      }
+      .OrderInfoOther .OrderInfoOtherList.content {
+        font-size: small;
+      }
+</style>

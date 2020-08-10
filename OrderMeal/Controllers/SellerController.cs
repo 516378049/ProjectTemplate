@@ -59,11 +59,18 @@ namespace OrderMeal.Controllers
         [HttpGet]
         public ApiResult getSeller(int id)
         {
-            sellers seller = Studio.Sellers.Get(X => X.Id == id && X.DelFlag == 0).FirstOrDefault();
-            List<supports> supports = Studio.Supports.Get(X => X.sellerId == id && X.DelFlag == 0).ToList();
-            sellersEx sellerEx = new sellersEx(seller);
-            sellerEx.supports = supports;
-            return CreateApiResult(sellerEx);
+            try
+            {
+                sellers seller = Studio.Sellers.Get(X => X.Id == id && X.DelFlag == 0).FirstOrDefault();
+                List<supports> supports = Studio.Supports.Get(X => X.sellerId == id && X.DelFlag == 0).ToList();
+                sellersEx sellerEx = new sellersEx(seller);
+                sellerEx.supports = supports;
+                return CreateApiResult(sellerEx);
+            }
+            catch (Exception ex)
+            {
+                return ErrorHandle(ex);
+            }
         }
         /// <summary>
         /// get seller menus
@@ -73,26 +80,34 @@ namespace OrderMeal.Controllers
         [HttpGet]
         public ApiResult getGoods(int id)
         {
-            List<goods> goods = Studio.Goods.Get(X => X.sellerId == id && X.DelFlag == 0).ToList();
-            List<goodsEx> l_goodsEx = new List<goodsEx>();
-            foreach (goods good in goods)
+            try
             {
-                List<foods> foods = Studio.Foods.Get(X => X.goodId == good.Id && X.DelFlag == 0).ToList();
-                List<foodsEx> l_foodsEx = new List<foodsEx>();
-                foreach (foods food in foods)
+                List<goods> goods = Studio.Goods.Get(X => X.sellerId == id && X.DelFlag == 0).ToList();
+                List<goodsEx> l_goodsEx = new List<goodsEx>();
+                foreach (goods good in goods)
                 {
-                    List<ratings> ratings = Studio.Ratings.Get(X => X.foodId == food.Id && X.DelFlag == 0).ToList();
-                    
-                    foodsEx foodsEx = new foodsEx(food);
-                    foodsEx.ratings = ratings;
-                    l_foodsEx.Add(foodsEx);
-                }
+                    List<foods> foods = Studio.Foods.Get(X => X.goodId == good.Id && X.DelFlag == 0).ToList();
+                    List<foodsEx> l_foodsEx = new List<foodsEx>();
+                    foreach (foods food in foods)
+                    {
+                        List<ratings> ratings = Studio.Ratings.Get(X => X.foodId == food.Id && X.DelFlag == 0).ToList();
 
-                goodsEx goodsEx = new goodsEx(good);
-                goodsEx.foods = l_foodsEx;
-                l_goodsEx.Add(goodsEx);
+                        foodsEx foodsEx = new foodsEx(food);
+                        foodsEx.ratings = ratings;
+                        l_foodsEx.Add(foodsEx);
+                    }
+
+                    goodsEx goodsEx = new goodsEx(good);
+                    goodsEx.foods = l_foodsEx;
+                    l_goodsEx.Add(goodsEx);
+                }
+                return CreateApiResult(l_goodsEx);
             }
-            return CreateApiResult(l_goodsEx);
+            catch (Exception ex)
+            {
+                return ErrorHandle(ex);
+            }
+           
         }
         /// <summary>
         /// get seller rattings 
@@ -102,8 +117,16 @@ namespace OrderMeal.Controllers
         [HttpGet]
         public ApiResult getRatingsSeller(int id)
         {
-            List<RatingsSellers> ratings = Studio.RatingsSeller.Get(X => X.sellerId == id && X.DelFlag == 0).ToList();
-            return CreateApiResult(ratings);
+            try
+            {
+                List<RatingsSellers> ratings = Studio.RatingsSeller.Get(X => X.sellerId == id && X.DelFlag == 0).ToList();
+                return CreateApiResult(ratings);
+            }
+            catch (Exception ex)
+            {
+                return ErrorHandle(ex);
+            }
+           
         }
         #endregion
 
@@ -117,12 +140,20 @@ namespace OrderMeal.Controllers
         [HttpGet]
         public ApiResult getCartCount(int id, string deskNumber)
         {
-            List<CartOrder> cart = RedisHelper.getRedisServer.StringGet<List<CartOrder>>("seller." + id + "." + deskNumber);
-            if (cart == null)
+            try
             {
-                return CreateApiResult("");
+                List<CartOrder> cart = RedisHelper.getRedisServer.StringGet<List<CartOrder>>("seller." + id + "." + deskNumber);
+                if (cart == null)
+                {
+                    return CreateApiResult("");
+                }
+                return CreateApiResult(cart);
             }
-            return CreateApiResult(cart);
+            catch (Exception ex)
+            {
+                return CreateApiResult("-1", ex.Message, "");
+            }
+          
         }
         /// <summary>
         /// set cart from redis cache
@@ -135,25 +166,35 @@ namespace OrderMeal.Controllers
         [HttpGet]
         public ApiResult setCartCount(int id, string deskNumber, int menuId, int count)
         {
-            CartOrder cart = new CartOrder(id, deskNumber, menuId, count);
-            List<CartOrder> cartList = RedisHelper.getRedisServer.StringGet<List<CartOrder>>("seller." + id + "." + deskNumber);
 
-            if (cartList == null)
+            try
             {
-                cartList = new List<CartOrder>();
+                CartOrder cart = new CartOrder(id, deskNumber, menuId, count);
+                List<CartOrder> cartList = RedisHelper.getRedisServer.StringGet<List<CartOrder>>("seller." + id + "." + deskNumber);
 
+                if (cartList == null)
+                {
+                    cartList = new List<CartOrder>();
+
+                }
+                CartOrder _cart = cartList.FirstOrDefault(X => X.menuId == menuId);
+                if (_cart != null)
+                {
+                    _cart.count += count;
+                }
+                else
+                {
+                    cartList.Add(cart);
+                }
+                RedisHelper.getRedisServer.StringSet("seller." + id + "." + deskNumber, cartList);
+                return CreateApiResult("success");
             }
-            CartOrder _cart = cartList.FirstOrDefault(X => X.menuId == menuId);
-            if (_cart != null)
+            catch (Exception ex)
             {
-                _cart.count += count;
+                return ErrorHandle(ex);
             }
-            else
-            {
-                cartList.Add(cart);
-            }
-            RedisHelper.getRedisServer.StringSet("seller." + id + "." + deskNumber, cartList);
-            return CreateApiResult("success");
+
+  
         }
         #endregion
 
@@ -187,6 +228,13 @@ namespace OrderMeal.Controllers
                 });
                 StudioTra.OrderDetailsInfo.InsertRange(l_OrderDetailsInfo);
                 StudioTra.CommitTransaction();
+                //clear the cart
+                string _DeskNumber = orderinfo.DeskNumber.ToString();
+                while(_DeskNumber.Length<3)
+                {
+                    _DeskNumber = "0" + _DeskNumber;
+                }
+                RedisHelper.getRedisServer.KeyDelete("seller." +  +orderinfo.SellerId +"." +_DeskNumber);
             }
             catch (Exception e)
             {
@@ -213,39 +261,56 @@ namespace OrderMeal.Controllers
         [HttpPost]
         public ApiResult getOrderInfoList(int userId = 0, int sellerId = 0, string startTime = "", string slipAction = "", int count = 0)
         {
-            string Params = GetRequestStreamData();
-            userId = int.Parse(JsonHelper.ConvertJsonResult(Params, "userId"));
-            sellerId = int.Parse(JsonHelper.ConvertJsonResult(Params, "sellerId"));
-            startTime = JsonHelper.ConvertJsonResult(Params, "startTime");
-            slipAction = JsonHelper.ConvertJsonResult(Params, "slipAction");
 
-            List<OrderInfo> orderinfoList = new List<OrderInfo>();
-            Expression<Func<OrderInfo, bool>> filter = X => X.CreateUserId == userId && X.SellerId == sellerId && X.DelFlag == 0;
-            if (slipAction == "down")
+            try
             {
-                DateTime _startTime = DateTime.Parse(startTime);
-                Expression<Func<OrderInfo, bool>> filter1 = X => X.CreateTime < _startTime;
-                filter = PredicateBuilderExtension.And(filter, filter1);
+                string Params = GetRequestStreamData();
+                userId = int.Parse(JsonHelper.ConvertJsonResult(Params, "userId"));
+                sellerId = int.Parse(JsonHelper.ConvertJsonResult(Params, "sellerId"));
+                startTime = JsonHelper.ConvertJsonResult(Params, "startTime");
+                slipAction = JsonHelper.ConvertJsonResult(Params, "slipAction");
+                count = int.Parse(JsonHelper.ConvertJsonResult(Params, "count"));
+
+                List<OrderInfo> orderinfoList = new List<OrderInfo>();
+                Expression<Func<OrderInfo, bool>> filter = X => X.CreateUserId == userId && X.SellerId == sellerId && X.DelFlag == 0;
+                if (slipAction == "down")
+                {
+                    DateTime _startTime = DateTime.Parse(startTime).AddSeconds(1);//加上一秒钟，因为数据库中存在毫秒，传入时没有毫秒
+                    Expression<Func<OrderInfo, bool>> filter1 = X => X.CreateTime > _startTime;
+                    filter = PredicateBuilderExtension.And(filter, filter1);
+                }
+                if (slipAction == "up")
+                {
+                    DateTime _startTime = DateTime.Parse(startTime);
+                    Expression<Func<OrderInfo, bool>> filter1 = X => X.CreateTime < _startTime;
+                    filter = PredicateBuilderExtension.And(filter, filter1);
+                }
+                else
+                {
+                    DateTime _startTime = DateTime.MinValue;
+                    Expression<Func<OrderInfo, bool>> filter1 = X => X.CreateTime > _startTime;
+                    filter = PredicateBuilderExtension.And(filter, filter1);
+                }
+                var _orderinfoList = Studio.OrderInfo.Get(filter, X => X.OrderByDescending(Y => Y.CreateTime), "", 1, count);
+                orderinfoList = _orderinfoList.ToList();
+
+                List<OrderInfoEx> orderinfoExList = new List<OrderInfoEx>();
+
+                orderinfoList.ForEach(X =>
+                {
+                    OrderInfoEx oiEx = new OrderInfoEx(X);
+                    oiEx.OrderDetailsInfo = Studio.OrderDetailsInfo.Get(Y => Y.OrderId == X.Id && Y.DelFlag == 0).ToList();
+                    orderinfoExList.Add(oiEx);
+                });
+
+                return CreateApiResult(orderinfoExList);
             }
-            if (slipAction == "up")
+            catch (Exception ex)
             {
-                DateTime _startTime = DateTime.Parse(startTime);
-                Expression<Func<OrderInfo, bool>> filter1 = X => X.CreateTime > _startTime;
-                filter = PredicateBuilderExtension.And(filter, filter1);
+                return CreateApiResult("-1", ex.Message, "");
             }
-            var _orderinfoList = Studio.OrderInfo.Get(filter,X=>X.OrderBy(Y=>Y.CreateTime),"",-1,count);
-            orderinfoList = _orderinfoList.ToList();
 
-            List<OrderInfoEx> orderinfoExList = new List<OrderInfoEx>();
-
-            orderinfoList.ForEach(X =>
-            {
-                OrderInfoEx oiEx = new OrderInfoEx(X);
-                oiEx.OrderDetailsInfo = Studio.OrderDetailsInfo.Get(Y => Y.OrderId == X.Id && Y.DelFlag == 0).ToList();
-                orderinfoExList.Add(oiEx);
-            });
-
-            return CreateApiResult(orderinfoExList);
+         
         }
         /// <summary>
         /// get OrderInfo List Status 
@@ -255,19 +320,28 @@ namespace OrderMeal.Controllers
         [HttpPost]
         public ApiResult getOrderInfoListStatus()
         {
-            HttpContextBase context = (HttpContextBase)(Request.Properties["MS_HttpContext"]);
-            string Params = context.Request.Params["params"];
-            //Params = JsonHelper.ConvertJsonResult(Params, "params");
-            List<OrderInfo> _orderinfoList = JsonHelper.ToObject<List<OrderInfo>>(Params);
-            Expression<Func<OrderInfo, bool>> filter = X => X.DelFlag == 0;
-            _orderinfoList.ForEach(X => {
-                Expression<Func<OrderInfo, bool>> filter1 = Y => Y.Id == X.Id;
-                filter = PredicateBuilderExtension.Or(filter, filter1);
-            });
+            try
+            {
+                string Params = GetRequestStreamData();
+                string OrderInfoList = JsonHelper.ConvertJsonResult(Params, "OrderInfoList");
+                List<OrderInfo> _orderinfoList = JsonHelper.ToObject<List<OrderInfo>>(OrderInfoList);
+                Expression<Func<OrderInfo, bool>> filter = X => 1 == 0;
+                _orderinfoList.ForEach(X => {
+                    Expression<Func<OrderInfo, bool>> filter1 = Y => Y.OrderNum == X.OrderNum;
+                    filter = PredicateBuilderExtension.Or(filter, filter1);
+                });
+                Expression<Func<OrderInfo, bool>> filter2 = (X => X.DelFlag == 0);
+                filter = PredicateBuilderExtension.And(filter, filter2);
+                var _studio = Studio.OrderInfo.Get(filter);
 
-            var _studio = Studio.OrderInfo.GetField((X) => new OrderInfo { Id=X.Id, Status=X.Status }, filter);
-            List<OrderInfo> orderinfoList = _studio.ToList();
-            return CreateApiResult(orderinfoList);
+                _studio = _studio.Select(X=>new OrderInfo() { OrderNum=X.OrderNum,Status=X.Status });
+                List<OrderInfo> orderinfoList = _studio.ToList();
+                return CreateApiResult(orderinfoList);
+            }
+            catch (Exception ex)
+            {
+                return ErrorHandle(ex);
+            }
         }
         #endregion
     }

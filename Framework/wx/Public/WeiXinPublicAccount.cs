@@ -58,19 +58,23 @@ namespace WeChat.DataAccess.WeiXin
         {
             try
             {
-                //access token
-                var returnValue = GetAccessToken(currentAccount.AccountID, currentAccount.Secret);
-                Log.ILog4_Debug.Debug("获取accessToken："+JsonHelper.ToJson(returnValue));
-                this.AccessToken = returnValue.access_token;
-                this.IsAvaiable = true;
-                //jsapi ticket
-                this.jsapi_ticket = GetJsTicket().ticket;
-                Log.ILog4_Debug.Debug("获取jsapi_ticket：" + jsapi_ticket);
-                int.Parse(returnValue.expires_in);
-
-                if (OnTokenRenew != null)
+                string a = Framework.NetHelper.GetWebClientIP();
+                if (NetHelper.GetHostIP() != "127.0.0.1")
                 {
-                    OnTokenRenew(this.AccountID, returnValue.access_token, this.jsapi_ticket);
+                    //access token
+                    var returnValue = GetAccessToken(currentAccount.AccountID, currentAccount.Secret);
+                    Log.ILog4_Debug.Debug("获取accessToken：" + JsonHelper.ToJson(returnValue));
+                    this.AccessToken = returnValue.access_token;
+                    this.IsAvaiable = true;
+                    //jsapi ticket
+                    this.jsapi_ticket = GetJsTicket().ticket;
+                    Log.ILog4_Debug.Debug("获取jsapi_ticket：" + jsapi_ticket);
+                    int.Parse(returnValue.expires_in);
+
+                    if (OnTokenRenew != null)
+                    {
+                        OnTokenRenew(this.AccountID, returnValue.access_token, this.jsapi_ticket);
+                    }
                 }
                 return 1800; //设置30分钟刷新一次
             }
