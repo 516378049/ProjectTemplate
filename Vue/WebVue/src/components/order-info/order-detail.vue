@@ -14,13 +14,13 @@
       <cube-scroll ref="scroll" :options="options">
         <div class="PayResultInfo">
           <div class="PayResultInfoSingle" style="font-size:x-large;color:#296844">{{this.getOrderInfoByOrderNum.Status|StatuStr}}</div>
-          <div class="PayResultInfoSingle" style="color:#49524b">{{restPayTime}}</div>
-          <div class="PayResultInfoSingle"><span style="font-weight:700;color:#000000">桌号：</span><span style="font-size:xx-large;font-weight:bolder;color:#000000">{{this.getOrderInfoByOrderNum.DeskNumber|PrefixInteger(3,)}}</span></div>
+          <div class="PayResultInfoSingle" style="color:rgb(56, 95, 57)">{{restPayTime}}</div>
+          <div class="PayResultInfoSingle"><span style="font-weight:700;color:#000000">桌号：</span><span style="font-size:xx-large;font-weight:bolder;color:#000000">{{this.getOrderInfoByOrderNum.DeskNumber|PrefixInteger(3)}}</span></div>
 
-          <mt-button v-show="this.showButton.indexOf('cancel')>=0" plain style="margin-top:20px;margin-left:10px;margin-right:10px" type="default" size="small" @click="">取消订单</mt-button>
-          <mt-button v-show="this.showButton.indexOf('orderAgain')>=0" style="margin-top:20px;margin-left:10px;margin-right:10px" type="primary" size="small" @click="roterPush('App')">再来一单</mt-button>
+          <mt-button v-show="this.showButton.indexOf('cancel')>=0" plain style="margin-top:20px;margin-left:10px;margin-right:10px" type="default" size="small" @click="OrderCancel()">取消订单</mt-button>
+          <mt-button v-show="this.showButton.indexOf('orderAgain')>=0" style="margin-top:20px;margin-left:10px;margin-right:10px" type="primary" size="small" @click="routerPush('App')">再来一单</mt-button>
           <mt-button v-show="this.showButton.indexOf('appraise')>=0" style="margin-top:20px;margin-left:10px;margin-right:10px" type="primary" size="small" @click="">我要评价</mt-button>
-          <mt-button v-show="this.showButton.indexOf('pay')>=0" style="margin-top:20px;margin-left:10px;margin-right:10px" type="primary" size="small" @click="roterPush('OrderPay',
+          <mt-button v-show="this.showButton.indexOf('pay')>=0" style="margin-top:20px;margin-left:10px;margin-right:10px" type="primary" size="small" @click="routerPush('OrderPay',
             {
               OrderId: getOrderInfoByOrderNum.OrderNum,
               SellerName: getOrderInfoByOrderNum.SellerName,
@@ -60,10 +60,7 @@
  
 </template>
 <script>
-  import moment from 'moment'
-  import { loadLocal } from '@/common/js/storage'
-import { setTimeout } from 'core-js';
-import { fail } from 'assert';
+  import { OrderChangeStatus } from '@/api'
   export default {
     name: 'OrderPay',
     data() {
@@ -118,7 +115,6 @@ import { fail } from 'assert';
       }
     },
     created() {
-      
       //console.log(this.getOrderInfoByOrderNum)
     },
     mounted() {
@@ -131,7 +127,7 @@ import { fail } from 'assert';
       
     },
     methods: {
-      roterPush(name, params) {
+      routerPush(name, params) {
         this.$router.push({ name: name, params: params })
       },
       diffTime() {
@@ -146,7 +142,7 @@ import { fail } from 'assert';
           }
         }
         else {
-          that.restPayTime = "欢迎下次光临!"
+          that.restPayTime = "欢迎下次光临 ！"
         }
       },
       restTimeDiff() {
@@ -174,6 +170,52 @@ import { fail } from 'assert';
             }).show()
           }
         }
+      },
+      OrderCancel() {
+        var that=this
+        var _orderNum = that.$route.params.orderNum
+        if (_orderNum) {
+          
+          that.$createDialog({
+              type: 'confirm',
+              //icon: 'cubeic-alert',
+              title: '取消订单',
+              content: `确认取消订单？`,
+              confirmBtn: {
+                text: '确定',
+                active: true,
+                disabled: false,
+                href: 'javascript:;'
+              },
+              cancelBtn: {
+                text: '取消',
+                active: false,
+                disabled: false,
+                href: 'javascript:;'
+              },
+              onConfirm: () => {
+                OrderChangeStatus({ orderNum: _orderNum, status: 7 }).then(X=>{
+
+                  that.$createToast({
+                    type: 'correct',
+                    txt: '订单已取消',
+                    time: 2000
+                  }).show()
+
+                  //刷新订单
+                  that.$store.dispatch('a_getOrderInfoList', {
+                    slipAction: 'down'
+                  })
+                  that.restPayTime = "欢迎下次光临 ！"
+                })
+              },
+              onCancel: () => {
+
+              }
+            }).show()
+         
+        }
+       
       }
     },
     beforeDestroy() {    //页面关闭时清除定时器  

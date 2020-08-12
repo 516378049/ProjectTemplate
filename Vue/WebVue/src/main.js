@@ -5,7 +5,7 @@ import router from './router'
 import store from './common/js/store'
 import { cnst, Fun } from '@/common/js/Global'
 
-import './cube-ui'
+import './cube-ui.js'
 import './register'
 import Mint from 'mint-ui';
 

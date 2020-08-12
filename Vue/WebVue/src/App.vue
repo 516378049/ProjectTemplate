@@ -21,8 +21,6 @@
   import Tab from 'components/tab/tab'
   import navFloatIcons from '@/components/utility/nav-float-icons/nav-float-icons.vue'
   import 'weui'
-import { map } from 'when';
-import { locale } from 'core-js';
   export default {
     data() {
       return {

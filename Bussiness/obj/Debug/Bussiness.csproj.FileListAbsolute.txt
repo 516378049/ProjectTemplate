@@ -50,7 +50,6 @@ D:\GitHub\netTemplateMVC\Bussiness\bin\Debug\Model.pdb
 D:\GitHub\netTemplateMVC\Bussiness\bin\Debug\Model.dll.config
 D:\GitHub\netTemplateMVC\Bussiness\bin\Debug\DocumentFormat.OpenXml.xml
 D:\GitHub\netTemplateMVC\Bussiness\bin\Debug\Newtonsoft.Json.xml
-D:\GitHub\netTemplateMVC\Bussiness\bin\Debug\log4net.xml
 D:\GitHub\netTemplateMVC\Bussiness\bin\Debug\StackExchange.Redis.xml
 D:\GitHub\netTemplateMVC\Bussiness\bin\Debug\System.Memory.xml
 D:\GitHub\netTemplateMVC\Bussiness\bin\Debug\System.Threading.Channels.xml

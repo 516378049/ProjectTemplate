@@ -94,7 +94,7 @@ namespace Framework
         /// </summary>
         static RedisHelper()
         {
-            ConnectionString = "106.14.217.154:6379";
+            ConnectionString = ConfigHelper.redisServer;
             _connMultiplexer = ConnectionMultiplexer.Connect(ConnectionString);
             DefaultKey = "finchina";
             RegisterEvent();

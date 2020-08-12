@@ -9,6 +9,19 @@
     <mt-cell class="bolder" style="background-color:inherit;border-bottom: 1px outset #f00;" title=所有订单></mt-cell>
     <div class="OrderlistDiv_Home scroll-list-wrap">
       <cube-scroll ref="scroll" :options="options" @pulling-down="onPullingDown" @pulling-up="onPullingUp">
+
+        <!--<template slot="pulldown" slot-scope="props">
+          <div v-if="props.pullDownRefresh" class="cube-pulldown-wrapper"  style="top:0px">
+            <div class="pulldown-content">
+              <span v-if="props.beforePullDown">{{ pullDownTip }}</span>
+              <template v-else>
+                <span v-if="props.isPullingDown">正在更新...</span>
+                <span v-else>更新成功~~</span>
+              </template>
+            </div>
+          </div>
+        </template>-->
+
         <template v-for="item in this.getOrderInfoList">
           <div class="OrderlistDivSingle">
             <div class="OrderlistDivSingleL">
@@ -21,7 +34,7 @@
                 <i class="mintui mintui-icon-test2" style="font-size:large"></i>
                 <span style="float:right;font-size:small">{{item.Status|StatuStr}}</span>
               </div>
-              
+
               <template v-for="(details,index) in item.OrderDetailsInfo">
                 <router-link :to="{name:'OrderDetail',params:{orderNum:item.OrderNum}}">
                   <div style="margin-top:5px" v-if="'012'.indexOf(index)>=0">
@@ -30,13 +43,13 @@
                   </div>
                 </router-link>
               </template>
-              
+
               <div style="margin-top:6.18px">
                 <span style="font-size:xx-small;color:rgba(0,0,0,.5)">{{item.OrderDetailsInfo.length>3?'等'+item.OrderDetailsInfo.length+'件商品':'共'+item.OrderDetailsInfo.length+'件商品'}}</span>
                 <span style="float:right;font-size:small">总额： <span style="font-weight:bolder;color:rgba(0,0,0,1);">￥{{item.Amount}}</span></span>
               </div>
               <div style="margin-top:5px;width:100%;text-align:right;">
-                <mt-button  style="" type="primary" size="small" @click="roterPush('App');">再来一单</mt-button>
+                <mt-button style="" type="primary" size="small" @click="roterPush('App');">再来一单</mt-button>
                 <mt-button plain style="margin-left:10px" type="default" size="small" @click="roterPush('OrderDetail',{orderNum:item.OrderNum});"> 订单明细</mt-button>
                 <div class="clear"></div>
               </div>
@@ -89,17 +102,22 @@
           return {
             scrollbar: this.scrollbarFade,
             startY: this.startY,
-            pullDownRefresh: that.pullAction.pullDown?{
+            pullDownRefresh:  {
               threshold: 60,
               stop: 40,
-              stopTime:600,
-              txt:"更新成功"
-              
-            } : false,
+              stopTime: 1000,
+              txt: "更新成功"
+            },
+            //pullDownRefresh: that.pullAction.pullDown ?{
+            //  threshold: 60,
+            //  stop: 40,
+            //  stopTime:1000,
+            //  txt:"更新成功"
+            //} : false,
             pullUpLoad: that.pullAction.pullUp ? {
               threshold: 100,
               visibale: true,
-              txt: { more: '更新成功！' }
+              txt: { more: '更新成功！', nomore:'更新成功...' }
             } : false
           }
         },
@@ -134,8 +152,15 @@
           this.$store.dispatch('a_getOrderInfoList', {
             slipAction: slipAction
           })
-           this.$refs.scroll.forceUpdate();
-           this.$refs.scroll.refresh();
+           setTimeout(() => {
+             if (this.$refs.scroll) {
+               this.$refs.scroll.forceUpdate();
+               this.$refs.scroll.refresh();
+             }
+
+           }, 1000)
+
+         
         },
         onPullingDown() {
           this.pullAction.action ='down'

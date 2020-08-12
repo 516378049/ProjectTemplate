@@ -41,7 +41,12 @@ namespace Framework
         /// 系统版本
         /// </summary>
         public static string sysVersion = ConfigurationManager.AppSettings["sysVersion"];
-        
+
+        /// <summary>
+        /// 系统版本
+        /// </summary>
+        public static string redisServer = ConfigurationManager.AppSettings["redisServer"];
+
         /// <summary>
         /// 是否启用公告
         /// </summary>

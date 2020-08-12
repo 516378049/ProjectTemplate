@@ -250,6 +250,42 @@ namespace OrderMeal.Controllers
         }
 
         /// <summary>
+        /// 订单取消，status 默认为7取消
+        /// </summary>
+        /// <param name="orderNum">订单编号</param>
+        /// <param name="status">订单状态：1、待支付、2、商家待接单；3、商家已接单；4、订单完成；5、待评价；6、已评价；7、取消订单；8、申请退款；9、商家同意退款；10、退款成功</param>
+        /// <returns></returns>
+        [HttpGet]
+        public ApiResult OrderChangeStatus(string orderNum="",int status=7)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(orderNum))
+                {
+                    return CreateApiResult("-1", "未知的订单编号：");
+                }
+
+                OrderInfo order = Studio.OrderInfo.Get(X=>X.OrderNum== orderNum && X.DelFlag==0).FirstOrDefault();
+                if(order==null)
+                {
+                    return CreateApiResult("-1", "未知的订单编号：");
+                }
+                order.Status = status;
+                Studio.OrderInfo.Update(order);
+            }
+            catch (Exception e)
+            {
+                Log.ILog4_Error.Error("订单取消出错：", e);
+                return CreateApiResult("-1", "订单取消出错：" + e.Message);
+            }
+            finally
+            {
+
+            }
+            return CreateApiResult("success");
+        }
+
+        /// <summary>
         /// Get orderInfolist
         /// </summary>
         /// <param name="userId"></param>

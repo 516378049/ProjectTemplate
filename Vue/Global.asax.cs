@@ -21,7 +21,7 @@ namespace Vue
             GlobalConfiguration.Configure(WebApiConfig.Register);
             log4net.Config.XmlConfigurator.Configure(new System.IO.FileInfo(Server.MapPath("~/log4net.config")));//初始化日志
 
-            if (Framework.ConfigHelper.sysVersion != "local")
+            if (string.IsNullOrEmpty(Framework.ConfigHelper.sysVersion) || Framework.ConfigHelper.sysVersion != "local")
             {
                 wxAccessToken.Init();//auto refresh the accessToken and jsapi_ticket
             }

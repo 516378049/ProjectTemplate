@@ -49,17 +49,6 @@
         </cube-textarea>
         <cube-button :primary="true" @click="hidePopup">填好了</cube-button>
       </cube-popup>
-      <cube-popup type="my-popup" position="bottom" :mask-closable="true" ref="OrderRemark">
-        <cube-textarea v-model="OrderRemark"
-                       placeholder="口味、偏好等要求"
-                       :maxlength="30"
-                       :readonly="false"
-                       :disabled="false"
-                       :autofocus="true"
-                       style="height:100px">
-        </cube-textarea>
-        <cube-button :primary="true" @click="hidePopup">填好了</cube-button>
-      </cube-popup>
 
     </div>
     <div class="bottomCommitOrder">
