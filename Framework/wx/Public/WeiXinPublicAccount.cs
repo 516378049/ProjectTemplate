@@ -76,7 +76,7 @@ namespace WeChat.DataAccess.WeiXin
                         OnTokenRenew(this.AccountID, returnValue.access_token, this.jsapi_ticket);
                     }
                 }
-                return 1800; //设置30分钟刷新一次
+                return 3600; //设置60分钟刷新一次
             }
             catch (Exception ex)
             {

@@ -142,7 +142,7 @@
           }
         }
         else {
-          that.restPayTime = "欢迎下次光临 ！"
+          that.restPayTime = "欢迎光临 ！"
         }
       },
       restTimeDiff() {

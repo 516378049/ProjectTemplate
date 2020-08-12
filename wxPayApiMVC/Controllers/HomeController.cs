@@ -402,15 +402,19 @@ namespace wxPayApiMVC.Controllers
         [HttpGet]
         public JsonResult GetUnifiedOrderResultNew(PayParams payParams)
         {
-            if (Request.Headers.GetValues("accesstoken").Length>0)
+            if (Request.Headers.GetValues("accesstoken") != null && Request.Headers.GetValues("accesstoken").Length>0)
             {
                 //保存订单key
                 string accesstoken =Request.Headers.GetValues("accesstoken")[0];
                 string UserId = Request.Headers.GetValues("UserId")[0];
-                CacheHelper.SetCache("accesstoken" + payParams.OrderId, accesstoken, TimeSpan.FromMinutes(20));
-                CacheHelper.SetCache("Id" + payParams.OrderId, UserId, TimeSpan.FromMinutes(20));
+                CacheHelper.SetCache("accesstoken." + payParams.OrderId, accesstoken, TimeSpan.FromMinutes(20));
+                CacheHelper.SetCache("UserId." + payParams.OrderId, UserId, TimeSpan.FromMinutes(20));
             }
-            
+            else
+            {
+                Log.Error(this.GetType().ToString(), "UnifiedOrder response error!为获取到accesstoken");
+                throw new WxPayException("UnifiedOrder response error!");
+            }
             //payParams.TradeType = ConstDefin.TRADE_TYPE_H5;
             payParams.SpbillCreateIp = Request.UserHostAddress;
             //统一下单

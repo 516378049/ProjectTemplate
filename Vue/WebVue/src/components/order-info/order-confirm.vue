@@ -148,7 +148,7 @@
         var _SellerId = seller.id
         var _SellerName = sellerMod.name
         var _avatar = sellerMod.avatar
-        var _OrderCreateTime = that.OrderTime.OrderTimeVal == '' ? that.Global.Fun.dateFormat(new Date(),'yyyy-MM-dd HH:mm') : that.OrderTime.OrderTimeVal
+        var _BookTime = that.OrderTime.OrderTimeVal == '' ? that.Global.Fun.dateFormat(new Date(),'yyyy-MM-dd HH:mm') : that.OrderTime.OrderTimeVal
         //moment(new Date()).format('YYYY-MM-DD HH:MM:SS')
         //创建订单
         CreateOrderInfo(
@@ -161,7 +161,7 @@
               SellerName: _SellerName,
               avatar: _avatar,
               PayWay: that.OrderPayWay.value,
-              BookTime: _OrderCreateTime,
+              BookTime: _BookTime,
               CusCount: that.OrderCusCount.OrderCusCountVal,
               Remark: that.OrderRemark
             },
@@ -185,7 +185,6 @@
             name: 'OrderPay', params: {
               OrderId: _OrderId,
               SellerName: _SellerName,
-              OrderCreateTime: _OrderCreateTime,
               OrderAmount: that.TotleMount
             }
           });
@@ -213,7 +212,8 @@
       },
       selectHandlePayWay(selectedVal, selectedIndex, selectedText) {
         this.OrderPayWay.text = selectedText.join(', ')
-        this.OrderPayWay.value = selectedVal
+        //this.OrderPayWay.value = selectedVal //mintui选择时
+        this.OrderPayWay.value = selectedVal.join(', ')
       },
       cancelHandlePayWay() {
         //this.$createToast({
@@ -261,7 +261,8 @@
         font-weight: bolder;
         color: #000000;
         box-sizing: border-box;
-        width: 30px;
+        /*width: 30px;*/
+        /*margin-right:10px*/
       }
     .listDiv .OrderInfoList {
       margin-top: 5px;

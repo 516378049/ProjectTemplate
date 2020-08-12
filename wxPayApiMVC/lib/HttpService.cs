@@ -54,7 +54,7 @@ namespace WxPayAPI
                 if (!string.IsNullOrEmpty(accesstoken))
                 {
                     request.Headers.Add("accesstoken", accesstoken);
-                    request.Headers.Add("Id", UserId);
+                    request.Headers.Add("UserId", UserId);
                 }
                 //设置代理服务器
                 //WebProxy proxy = new WebProxy();                          //定义一个网关对象

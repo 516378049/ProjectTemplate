@@ -26,7 +26,12 @@ let Fun = {
     if (val) {
       if (!(val instanceof Date)) {
         val = val.replace(/-/g, "/");
-        day = new Date(val.replace('T', ' '));
+        val=val.replace('T', ' ');
+        while (val.indexOf('.') > -1)//如果有小数点作为毫秒，将小数点换成":" ,防止微信内置浏览器无法转换
+        {
+          val = val.split('.')[0]
+        }
+        day = new Date(val)
       }
       else {
         day = val
@@ -71,7 +76,7 @@ let Fun = {
   StatuStr: function (value) {
     switch (value) {
       case 1: return '待支付';
-      case 2: return '商家待接单';
+      case 2: return '已支付(商家接单中...)';
       case 3: return '商家已接单';
       case 4: return '订单完成';
       case 5: return '待评价';

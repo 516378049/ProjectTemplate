@@ -63,10 +63,10 @@ namespace WxPayAPI
                 string resFromMall = "";
                 if (!string.IsNullOrEmpty(dConfig.GetMallNotifyUrl()))
                 {
-                    Log.Info(this.GetType().ToString(), "开始转发微信支付结果通知给商城..." + "url：" + dConfig.GetMallNotifyUrl() + "，reXML：" + notifyData.wxResultBuilder.ToString());
                     string out_trade_no = notifyData.GetValue("out_trade_no").ToString();
-                    string accesstoken=CacheHelper.GetCache("accesstoken" + out_trade_no).ToString();
-                    string UserId = CacheHelper.GetCache("Id" + out_trade_no).ToString(); 
+                    string accesstoken = CacheHelper.GetCache("accesstoken." + out_trade_no).ToString();
+                    string UserId = CacheHelper.GetCache("UserId." + out_trade_no).ToString();
+                    Log.Info(this.GetType().ToString(), "开始转发微信支付结果通知给商城..." + "url：" + dConfig.GetMallNotifyUrl() + "，reXML：" + notifyData.wxResultBuilder.ToString()+"accesstoken："+ accesstoken+ "UserId："+ UserId);
                     resFromMall = HttpService.Post(notifyData.wxResultBuilder.ToString(), dConfig.GetMallNotifyUrl(), false, 6, accesstoken, UserId);
                     Log.Info(this.GetType().ToString(), "微信支付结果通知转发给商城完毕...");
                 }

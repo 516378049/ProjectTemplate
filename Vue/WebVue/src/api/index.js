@@ -13,7 +13,7 @@ const JSInit = get('OrderMealCustomer/api.wxApi.JSInit')//获取JSAPI接口参�
 
 const wxAuthorize = get('Authorize/Home/wxAuthorize')//登录获取验证信息
 const GetUnifiedOrderResult = get('wxPayApiNew/Home/GetUnifiedOrderResultNew')//获取支付参数
-
+//const GetUnifiedOrderResult = get('wxPayApiMVC/Home/GetUnifiedOrderResultNew')//获取支付参数
 
 
 export {

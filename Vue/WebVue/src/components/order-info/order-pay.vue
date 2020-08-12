@@ -47,7 +47,7 @@
     name:'OrderPay', 
     data() {
       return {
-        mtRadioSel: "",
+        mtRadioSel: "wxPay1",
         Alipay:[
           {
             label: '支付宝支付',
@@ -71,7 +71,7 @@
     computed: {
       orderInfo() {
         return {
-          OrderCreateTime: this.$route.params.OrderCreateTime,
+          OrderCreateTime: this.$route.params.OrderCreateTime || new Date(),
           OrderAmount: this.$route.params.OrderAmount,
           OrderId: this.$route.params.OrderId,
           SellerName: this.$route.params.SellerName
@@ -140,7 +140,7 @@
         var that = this
         console.log("OrderId: " + that.orderInfo.OrderId)
         GetUnifiedOrderResult({
-          OrderId: that.orderInfo.OrderId,          TotalFee: '2',
+          OrderId: that.orderInfo.OrderId,          TotalFee: Math.ceil(Math.random() * 10).toString(),//随机产生1-10分钱
           OpenId: that.$store.state.userInfo.openid,
           TradeType:'JSAPI'
         }).then((parms) => {

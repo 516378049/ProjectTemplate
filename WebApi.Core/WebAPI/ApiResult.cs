@@ -14,7 +14,11 @@ namespace WebAPI.Core.WebAPI
         public int Total { get; set; }
         public string ToJson()
         {
-            return JsonConvert.SerializeObject(this);
+            
+            JsonSerializerSettings setting = new JsonSerializerSettings();
+            // 设置日期序列化的格式
+            setting.DateFormatString = "yyyy-MM-dd HH:mm:ss";
+            return JsonConvert.SerializeObject(this, setting);
         }
     }
 }
