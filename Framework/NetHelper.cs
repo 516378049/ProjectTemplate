@@ -449,7 +449,7 @@ namespace Framework
         /// <param name="encodingStr"></param>
         /// <param name="rename">为0时不重命名</param>
         /// <returns></returns>
-        public static ApiRet UploadFile(string url, string path, string filename, byte[] data, string encodingStr = "", string rename = "")
+        public static T UploadFile<T>(string url, string path, string filename, byte[] data, string encodingStr = "", string rename = "")
         {
             string fileuploadUrl = "";
             if (string.IsNullOrEmpty(url))
@@ -465,15 +465,19 @@ namespace Framework
             if (!string.IsNullOrEmpty(encodingStr))
                 u.SetEncoding(Encoding.GetEncoding(encodingStr));
             string result = u.UploadFile(fileuploadUrl, path, filename, data, rename);
-            ApiRet obj = new ApiRet();
+            //ApiRet obj = new ApiRet();
             if (!string.IsNullOrEmpty(result))
-                obj = JsonHelper.ToObject<ApiRet>(result);
-            return obj;
+            {
+                var obj = JsonHelper.ToObject<T>(result);
+                return obj;
+            }
+            return JsonHelper.ToObject<T>("");
+
         }
 
-        public static ApiRet UploadFile(string path, string filename, byte[] data)
+        public static T UploadFile<T>(string path, string filename, byte[] data)
         {
-            return UploadFile("", path, filename, data);
+            return UploadFile<T>("", path, filename, data);
         }
 
         /// <summary>

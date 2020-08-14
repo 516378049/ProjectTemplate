@@ -123,7 +123,8 @@ const cnst =
   },
   query: {//默认测试商家
     id: '4',
-    deskNumber: '001'
+    deskNumber: '001',
+    rand: Math.random()
   }
 }
 export { cnst, Fun }

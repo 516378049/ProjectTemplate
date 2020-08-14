@@ -1,5 +1,6 @@
 import axios from './axios'
 import router from '@/router'
+
 const urlMap = {
   development: '/',
   production: 'https://www.changchunamy.com/'

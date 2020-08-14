@@ -46,7 +46,7 @@
 
               <div style="margin-top:6.18px">
                 <span style="font-size:xx-small;color:rgba(0,0,0,.5)">{{item.OrderDetailsInfo.length>3?'等'+item.OrderDetailsInfo.length+'件商品':'共'+item.OrderDetailsInfo.length+'件商品'}}</span>
-                <span style="float:right;font-size:small">总额： <span style="font-weight:bolder;color:rgba(0,0,0,1);">￥{{item.Amount}}</span></span>
+                <span style="float:right;font-size:small">总额： <span style="font-weight:bolder;color:rgba(0,0,0,1);">￥{{item.AmountReal}}</span></span>
               </div>
               <div style="margin-top:5px;width:100%;text-align:right;">
                 <mt-button style="" type="primary" size="small" @click="roterPush('App');">再来一单</mt-button>

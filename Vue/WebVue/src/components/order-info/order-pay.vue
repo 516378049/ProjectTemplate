@@ -140,7 +140,7 @@
         var that = this
         console.log("OrderId: " + that.orderInfo.OrderId)
         GetUnifiedOrderResult({
-          OrderId: that.orderInfo.OrderId,          TotalFee: Math.ceil(Math.random() * 10).toString(),//随机产生1-10分钱
+          OrderId: that.orderInfo.OrderId,          TotalFee: that.orderInfo.OrderAmount*100,
           OpenId: that.$store.state.userInfo.openid,
           TradeType:'JSAPI'
         }).then((parms) => {

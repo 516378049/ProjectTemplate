@@ -19,13 +19,13 @@
 
           <mt-button v-show="this.showButton.indexOf('cancel')>=0" plain style="margin-top:20px;margin-left:10px;margin-right:10px" type="default" size="small" @click="OrderCancel()">取消订单</mt-button>
           <mt-button v-show="this.showButton.indexOf('orderAgain')>=0" style="margin-top:20px;margin-left:10px;margin-right:10px" type="primary" size="small" @click="routerPush('App')">再来一单</mt-button>
-          <mt-button v-show="this.showButton.indexOf('appraise')>=0" style="margin-top:20px;margin-left:10px;margin-right:10px" type="primary" size="small" @click="">我要评价</mt-button>
+          <mt-button v-show="this.showButton.indexOf('appraise')>=0" style="margin-top:20px;margin-left:10px;margin-right:10px" type="primary" size="small" @click="cubePop()">我要评价</mt-button>
           <mt-button v-show="this.showButton.indexOf('pay')>=0" style="margin-top:20px;margin-left:10px;margin-right:10px" type="primary" size="small" @click="routerPush('OrderPay',
             {
               OrderId: getOrderInfoByOrderNum.OrderNum,
               SellerName: getOrderInfoByOrderNum.SellerName,
               OrderCreateTime: getOrderInfoByOrderNum.CreateTime,
-              OrderAmount: getOrderInfoByOrderNum.Amount
+              OrderAmount: getOrderInfoByOrderNum.AmountReal
             })">立即支付</mt-button>
           <div class="clear"></div>
 
@@ -40,7 +40,7 @@
             </mt-cell>
           </template>
           <mt-cell title="" value="">
-            <span>总金额：<span style="color:red">￥{{this.getOrderInfoByOrderNum.Amount}}</span></span>
+            <span>总金额：<span style="color:red">￥{{this.getOrderInfoByOrderNum.AmountReal}}</span></span>
           </mt-cell>
         </div>
 
@@ -56,19 +56,73 @@
         </div>
       </cube-scroll>
     </div>
+
+    <cubePop ref="cubePop" popTitle="评价" width="100" height="auto">
+
+      <div>
+        <div style="display: flex;align-items:center">
+          <div style="float:left;margin:auto 0">服务：</div>
+          <div style="float:left;"><cube-rate v-model="Rateing.rateService"></cube-rate></div>
+        </div>
+        <div style="display: flex;">
+          <div style="float:left;margin:auto 0">环境：</div>
+          <div style="float:left;"><cube-rate v-model="Rateing.rateService"></cube-rate></div>
+        </div>
+        <div style="display: flex;">
+          <div style="float:left;margin:auto 0">口味：</div>
+          <div style="float:left;"><cube-rate v-model="Rateing.rateService"></cube-rate></div>
+        </div>
+        <br />
+        <div style="display: flex;">
+          <cube-textarea v-model="Rateing.text" :maxlength=1000 :autoExpand="autoExpand" :autofocus="autofocus" style="width:80vw;" placeholder="请留下您的宝贵意见~~ "></cube-textarea>
+        </div>
+        <br />
+        <div style="display: flex;">
+          <cube-upload action="#"
+                       :auto="false"
+                       :simultaneous-uploads="1"
+                       :max=6
+                       @file-click="fileClick"
+                       @files-added="filesAdded" />
+        </div>
+        <div style="display: flex;">最多6张图片</div>
+        <br />
+        <cube-button primary @click="save">评价</cube-button>
+      </div>
+    </cubePop>
+
+
+    <cube-popup type="my-popup" :mask-closable="true" ref="showImg">
+      <img style="width:270px;height:270px" :src="imgUrl" />
+    </cube-popup>
   </div>
  
 </template>
 <script>
-  import { OrderChangeStatus } from '@/api'
+  import { OrderChangeStatus, uploadFile } from '@/api'
+  import cubePop from '@/components/utility/cubePopup/cubePop.vue'
+
   export default {
     name: 'OrderPay',
     data() {
+ 
       return {
         restPayTime: '',
         TimeSetStop:false,
-        IntervalId: ''
+        IntervalId: '',
+
+        imgUrl: "",
+        fileList: [],
+        autofocus: false,
+        autoExpand: false,
+        Rateing: {
+          rateService: 5,
+          rateComfortLevel: 5,
+          rateTaste: 5,
+          text:''
+        }
       }
+      
     },
     props: {
     },
@@ -112,6 +166,10 @@
           options.push('orderAgain');
         }
         return options
+      },
+      FileList: {
+        get: function () { return this.fileList },
+        set: function (value) { this.fileList.push(value) }
       }
     },
     created() {
@@ -216,10 +274,67 @@
          
         }
        
+      },
+      cubePop(option) {
+        this.$refs.cubePop.showPopup()
+      },
+      filesAdded(files) {
+        const that =this
+
+        let formDataAdd = new FormData();
+
+        for (let k in files) {
+          const file = files[k]
+          formDataAdd.append(file.name, file);
+        }
+
+        uploadFile(formDataAdd).then((items) => {   //这里formDataAdd不能改成{formDataAdd}，否则后台接收不到文件
+          console.log(items)
+          items.forEach((item) => {
+            if (that.FileList.indexOf(item) == -1)
+            { that.FileList = item }
+            console.log(item)
+          })
+          
+        })
+       
+      },
+      fileClick(files) {
+        const that = this
+        let imgUrl=[]
+        let currentImageIndex = 0
+        let index=0
+        that.FileList.forEach((item) => {
+          
+          if (item.Name.toString().trim() === files.name.toString().trim()) {
+            currentImageIndex = index
+          }
+          imgUrl.push(item.Path)
+          index++
+        })
+        //that.imgUrl = imgUrl
+        //this.$refs.showImg.show()
+
+        //if (!that.imagePreview) {
+          that.imagePreview = that.$createImagePreview({
+            imgs: imgUrl.map(X => { return X}),
+            initialIndex: currentImageIndex
+          })
+          that.imagePreview.show()
+        //}
+        
+        console.log(currentImageIndex)
+        console.log(imgUrl)
+      },
+      save() {
+        alert("评价成功")
       }
     },
     beforeDestroy() {    //页面关闭时清除定时器  
       this.TimeSetStop == true;
+    },
+    components: {
+      cubePop
     }
   }
 </script>

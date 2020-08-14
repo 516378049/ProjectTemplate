@@ -14,7 +14,7 @@
       <mt-field style="border: 1px solid #b6b6b6;width:calc(100% - 102px);float:left" label="手机验证：" placeholder="请输手机验证码" value="1111" v-model="login.password"></mt-field>
       <mt-button style="height:50px;width:100px" type="default" plain>发送验证</mt-button>
     </span>
-    <mt-button style="margin-top:20px" type="danger" size="large" @click="m_login">登 录</mt-button>
+    <mt-button style="margin-top:20px" type="danger" size="large" @click="m_login">{{this.btnLoginInfo}}</mt-button>
     <div class="PayWay">
 
     </div>
@@ -36,18 +36,29 @@
           id: "",
           deskNumber:""
         }
+        
       }
     },
     computed: {
+      btnLoginInfo() {
+        let ua = navigator.userAgent.toLowerCase()
+        if (ua.match(/MicroMessenger/i) == "micromessenger") {
+          return '微信自动授权登录......'
+        }
+        else {
+          '登 录'
+        }
+      }
     },
     mounted() {
       var that = this
+
       that.seller.id = that.$route.query.id
       that.seller.deskNumber = that.$route.query.deskNumber
       if (!that.seller.id && !that.seller.deskNumber) {
         this.$createDialog({
           title: '错误信息',
-          content: `位置商家和桌号，您可扫描餐厅二维码打开`,
+          content: `未知的商家和桌号，您可扫描餐厅二维码打开`,
         }).show()
         return
       }
@@ -59,6 +70,7 @@
         var goto_Auth2 = cnst.url.authorizeUrl;
         location.href = goto_Auth2;
       }
+
     },
 
     methods: {

@@ -48,6 +48,12 @@ namespace Framework
         public static string redisServer = ConfigurationManager.AppSettings["redisServer"];
 
         /// <summary>
+        /// 系统版本
+        /// </summary>
+        public static string webHost = ConfigurationManager.AppSettings["webHost"];
+        
+
+        /// <summary>
         /// 是否启用公告
         /// </summary>
         public static bool AnnEnabled

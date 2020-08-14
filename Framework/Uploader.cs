@@ -65,7 +65,7 @@ namespace Framework
                     uploadFile.InputStream.Read(bytesRead, 0, bytesRead.Length);
                     uploadFile.InputStream.Close();
                     filename = reName();
-                    ApiRet uploadResult = NetHelper.UploadFile(ConfigHelper.UploadFileUrl, ConfigHelper.UploadMoudleName, filename, bytesRead, "utf-8");
+                    ApiRet uploadResult = NetHelper.UploadFile<ApiRet>(ConfigHelper.UploadFileUrl, ConfigHelper.UploadMoudleName, filename, bytesRead, "utf-8");
                     if (uploadResult.RetCode == "0")
                     {
                         URL = uploadResult.Message.ToString();

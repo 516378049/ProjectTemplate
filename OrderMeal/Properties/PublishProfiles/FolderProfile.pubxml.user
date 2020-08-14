@@ -19,13 +19,13 @@
       <publishTime>09/25/2019 16:02:02</publishTime>
     </File>
     <File Include="bin/DataAccess.dll">
-      <publishTime>08/11/2020 11:08:08</publishTime>
+      <publishTime>08/15/2020 01:10:22</publishTime>
     </File>
     <File Include="bin/DataAccess.dll.config">
       <publishTime>06/29/2020 14:19:39</publishTime>
     </File>
     <File Include="bin/DataAccess.pdb">
-      <publishTime>08/11/2020 11:08:08</publishTime>
+      <publishTime>08/15/2020 01:10:22</publishTime>
     </File>
     <File Include="bin/de/Microsoft.Data.Edm.resources.dll">
       <publishTime>11/20/2015 16:32:22</publishTime>
@@ -79,13 +79,13 @@
       <publishTime>11/20/2015 16:35:32</publishTime>
     </File>
     <File Include="bin/Framework.dll">
-      <publishTime>08/11/2020 11:08:07</publishTime>
+      <publishTime>08/15/2020 01:10:22</publishTime>
     </File>
     <File Include="bin/Framework.dll.config">
       <publishTime>06/29/2020 14:19:39</publishTime>
     </File>
     <File Include="bin/Framework.pdb">
-      <publishTime>08/11/2020 11:08:07</publishTime>
+      <publishTime>08/15/2020 01:10:22</publishTime>
     </File>
     <File Include="bin/Gma.QrCodeNet.Encoding.dll">
       <publishTime>09/25/2019 16:02:02</publishTime>
@@ -193,13 +193,13 @@
       <publishTime>12/21/2016 19:56:52</publishTime>
     </File>
     <File Include="bin/Model.dll">
-      <publishTime>08/11/2020 11:08:04</publishTime>
+      <publishTime>08/14/2020 10:42:42</publishTime>
     </File>
     <File Include="bin/Model.dll.config">
       <publishTime>07/03/2020 19:51:06</publishTime>
     </File>
     <File Include="bin/Model.pdb">
-      <publishTime>08/11/2020 11:08:04</publishTime>
+      <publishTime>08/14/2020 10:42:42</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>11/09/2019 00:56:44</publishTime>
@@ -217,10 +217,10 @@
       <publishTime>09/25/2019 16:02:06</publishTime>
     </File>
     <File Include="bin/OrderMeal.dll">
-      <publishTime>08/11/2020 13:43:40</publishTime>
+      <publishTime>08/15/2020 01:10:22</publishTime>
     </File>
     <File Include="bin/OrderMeal.pdb">
-      <publishTime>08/11/2020 13:43:40</publishTime>
+      <publishTime>08/15/2020 01:10:22</publishTime>
     </File>
     <File Include="bin/Org.Mentalis.Security.dll">
       <publishTime>09/25/2019 16:02:08</publishTime>
@@ -487,7 +487,7 @@
       <publishTime>10/09/2019 18:40:15</publishTime>
     </File>
     <File Include="bin/Web.config">
-      <publishTime>08/12/2020 17:41:45</publishTime>
+      <publishTime>08/15/2020 01:15:57</publishTime>
     </File>
     <File Include="bin/Web.Debug.config">
       <publishTime>06/28/2020 19:32:55</publishTime>
@@ -496,13 +496,13 @@
       <publishTime>06/28/2020 19:32:55</publishTime>
     </File>
     <File Include="bin/WebAPI.Core.dll">
-      <publishTime>08/11/2020 11:40:39</publishTime>
+      <publishTime>08/15/2020 01:10:22</publishTime>
     </File>
     <File Include="bin/WebAPI.Core.dll.config">
       <publishTime>07/20/2020 14:46:54</publishTime>
     </File>
     <File Include="bin/WebAPI.Core.pdb">
-      <publishTime>08/11/2020 11:40:39</publishTime>
+      <publishTime>08/15/2020 01:10:22</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>01/23/2014 13:57:34</publishTime>
@@ -679,7 +679,7 @@
       <publishTime>06/28/2020 19:32:55</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>08/12/2020 17:41:45</publishTime>
+      <publishTime>08/15/2020 01:15:57</publishTime>
     </File>
   </ItemGroup>
 </Project>

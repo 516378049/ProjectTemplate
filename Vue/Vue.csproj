@@ -377,6 +377,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="WebVue\src\components\order-info\order-detail.vue" />
+    <Content Include="WebVue\src\components\utility\cubePopup\cubePop.vue" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

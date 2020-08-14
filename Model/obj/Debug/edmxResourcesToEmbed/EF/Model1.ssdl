@@ -65,6 +65,8 @@
     <Property Name="OrderNum" Type="varchar" MaxLength="200" Nullable="false" />
     <Property Name="transactionId" Type="varchar" MaxLength="200" />
     <Property Name="Amount" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+    <Property Name="AmountDiscount" Type="decimal" Precision="18" Scale="6" />
+    <Property Name="AmountReal" Type="decimal" Precision="18" Scale="6" />
     <Property Name="SellerId" Type="int" Nullable="false" />
     <Property Name="SellerName" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="avatar" Type="nvarchar" MaxLength="2000" />
@@ -107,6 +109,9 @@
     <Property Name="rateTime" Type="nvarchar" MaxLength="100" />
     <Property Name="deliveryTime" Type="nvarchar" MaxLength="100" />
     <Property Name="score" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="rateTaste" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="rateService" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="rateComfortLevel" Type="decimal" Precision="18" Scale="2" />
     <Property Name="rateType" Type="int" />
     <Property Name="text" Type="nvarchar" MaxLength="1000" />
     <Property Name="avatar" Type="nvarchar" MaxLength="1000" />

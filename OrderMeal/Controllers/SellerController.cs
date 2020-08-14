@@ -107,7 +107,7 @@ namespace OrderMeal.Controllers
             {
                 return ErrorHandle(ex);
             }
-           
+
         }
         /// <summary>
         /// get seller rattings 
@@ -126,7 +126,7 @@ namespace OrderMeal.Controllers
             {
                 return ErrorHandle(ex);
             }
-           
+
         }
         #endregion
 
@@ -153,7 +153,7 @@ namespace OrderMeal.Controllers
             {
                 return CreateApiResult("-1", ex.Message, "");
             }
-          
+
         }
         /// <summary>
         /// set cart from redis cache
@@ -194,7 +194,7 @@ namespace OrderMeal.Controllers
                 return ErrorHandle(ex);
             }
 
-  
+
         }
         #endregion
 
@@ -230,11 +230,11 @@ namespace OrderMeal.Controllers
                 StudioTra.CommitTransaction();
                 //clear the cart
                 string _DeskNumber = orderinfo.DeskNumber.ToString();
-                while(_DeskNumber.Length<3)
+                while (_DeskNumber.Length < 3)
                 {
                     _DeskNumber = "0" + _DeskNumber;
                 }
-                RedisHelper.getRedisServer.KeyDelete("seller." +  +orderinfo.SellerId +"." +_DeskNumber);
+                RedisHelper.getRedisServer.KeyDelete("seller." + +orderinfo.SellerId + "." + _DeskNumber);
             }
             catch (Exception e)
             {
@@ -256,7 +256,7 @@ namespace OrderMeal.Controllers
         /// <param name="status">订单状态：1、待支付、2、商家待接单；3、商家已接单；4、订单完成；5、待评价；6、已评价；7、取消订单；8、申请退款；9、商家同意退款；10、退款成功</param>
         /// <returns></returns>
         [HttpGet]
-        public ApiResult OrderChangeStatus(string orderNum="",int status=7)
+        public ApiResult OrderChangeStatus(string orderNum = "", int status = 7)
         {
             try
             {
@@ -265,8 +265,8 @@ namespace OrderMeal.Controllers
                     return CreateApiResult("-1", "未知的订单编号：");
                 }
 
-                OrderInfo order = Studio.OrderInfo.Get(X=>X.OrderNum== orderNum && X.DelFlag==0).FirstOrDefault();
-                if(order==null)
+                OrderInfo order = Studio.OrderInfo.Get(X => X.OrderNum == orderNum && X.DelFlag == 0).FirstOrDefault();
+                if (order == null)
                 {
                     return CreateApiResult("-1", "未知的订单编号：");
                 }
@@ -297,7 +297,6 @@ namespace OrderMeal.Controllers
         [HttpPost]
         public ApiResult getOrderInfoList(int userId = 0, int sellerId = 0, string startTime = "", string slipAction = "", int count = 0)
         {
-
             try
             {
                 string Params = GetRequestStreamData();
@@ -345,8 +344,6 @@ namespace OrderMeal.Controllers
             {
                 return CreateApiResult("-1", ex.Message, "");
             }
-
-         
         }
         /// <summary>
         /// get OrderInfo List Status 
@@ -370,7 +367,7 @@ namespace OrderMeal.Controllers
                 filter = PredicateBuilderExtension.And(filter, filter2);
                 var _studio = Studio.OrderInfo.Get(filter);
 
-                _studio = _studio.Select(X=>new OrderInfo() { OrderNum=X.OrderNum,Status=X.Status });
+                _studio = _studio.Select(X => new OrderInfo() { OrderNum = X.OrderNum, Status = X.Status });
                 List<OrderInfo> orderinfoList = _studio.ToList();
                 return CreateApiResult(orderinfoList);
             }
@@ -380,5 +377,41 @@ namespace OrderMeal.Controllers
             }
         }
         #endregion
+
+        #region 上传图片
+        [HttpPost]
+        public ApiResult uploadFile()
+        {
+            try
+            {
+                HttpContextBase context = (HttpContextBase)(Request.Properties["MS_HttpContext"]);
+                HttpFileCollectionBase files = context.Request.Files;
+
+                List<FileList> fileLists = new List<FileList>();
+                for (int i = 0; i < files.Count; i++)
+                {
+                    HttpPostedFileBase file = files[i];
+                    byte[] bytes = new byte[file.ContentLength];
+                    file.InputStream.Read(bytes, 0, bytes.Length);
+                    string msg = "";
+                    string rePath = HttpUploadFile.LocalUploadFile(bytes, "/Content/image", file.FileName, ref msg);
+                    fileLists.Add(new FileList { Name = file.FileName , Path= rePath });
+                }
+
+                return CreateApiResult(fileLists);
+            }
+            catch (Exception ex)
+            {
+
+                return ErrorHandle(ex);
+            }
+
+
+        }
+        #endregion
+    }
+    class FileList{
+        public string Name { set; get; }
+        public string Path { set; get; }
     }
 }

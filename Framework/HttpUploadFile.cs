@@ -9,6 +9,8 @@ namespace Framework
 {
     public class HttpUploadFile
     {
+        #region 远程服务器上传
+
         private Encoding encoding = System.Text.Encoding.GetEncoding("gb2312");
 
         public void SetEncoding(Encoding encoding)
@@ -24,7 +26,7 @@ namespace Framework
         /// <param name="fileName">文件名</param>
         /// <param name="filedata">文件的字符船</param>
         /// <returns></returns>
-        public string UploadFile(string serviceUrl, string moduleName, string fileName, byte[] filedata,string rename)
+        public string UploadFile(string serviceUrl, string moduleName, string fileName, byte[] filedata, string rename)
         {
             using (MemoryStream allStream = new MemoryStream())
             {
@@ -222,5 +224,82 @@ namespace Framework
                 r.Close();
             }
         }
+        #endregion
+
+
+        #region 本地服务器上传
+        /// <summary>
+        /// 文件
+        /// </summary>
+        /// <param name="fs">二进制流</param>
+        /// <param name="vitualPath">路径</param>
+        /// <param name="fileName">文件名</param>
+        /// <param name="msg">错误信息</param>
+        /// <returns>返回完整路径</returns>
+        public static string LocalUploadFile(byte[] fs, string vitualPath, string fileName, ref string msg)
+        {
+            string retPath = ConfigHelper.webHost;
+            if(vitualPath.StartsWith("/"))
+            {
+                retPath = retPath + vitualPath.Substring(1);
+            }
+
+            string filepath="";
+
+
+            string AppDomainUrl = System.Web.HttpContext.Current.Server.MapPath("~/");
+
+            if(vitualPath.StartsWith("/"))
+            {
+                vitualPath = AppDomainUrl + vitualPath.Substring(1);
+            }
+
+
+            if (!vitualPath.EndsWith("\\"))
+            {
+                vitualPath += "\\";
+            }
+            
+            string folder1= DateTime.Now.ToString("yyyy-MM-dd") ;
+            vitualPath = vitualPath + folder1 + "\\";
+
+
+            if (!retPath.EndsWith("/"))
+            {
+                retPath += "/";
+            }
+            retPath = retPath + folder1 + "/";
+
+
+            if (!Directory.Exists(vitualPath))
+            {
+                Directory.CreateDirectory(vitualPath);
+            }
+
+            string file1= DateTime.Now.Hour + "-" + DateTime.Now.Minute + "-" + DateTime.Now.Second + "-" + DateTime.Now.Millisecond + "-" + fileName;
+            filepath = vitualPath + file1;
+            retPath = retPath + file1;
+
+            try
+            {
+                ///定义并实例化一个内存流，以存放提交上来的字节数组。   
+                System.IO.MemoryStream m = new System.IO.MemoryStream(fs);
+                System.IO.FileStream f = new System.IO.FileStream(filepath, System.IO.FileMode.Create);
+                ///把内内存里的数据写入物理文件   
+                m.WriteTo(f);
+                m.Close();
+                f.Close();
+                f = null;
+                m = null;
+                msg = "";
+                return retPath;
+            }
+            catch (Exception ex)
+            {
+                msg = ex.Message;
+                return "";
+            }
+        }
+        #endregion
     }
 }

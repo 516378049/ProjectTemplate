@@ -68,6 +68,9 @@
     <Property Name="DelFlag" Type="Int32" />
     <Property Name="CreateTime" Type="DateTime" Precision="3" />
     <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+    <Property Name="rateTaste" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="rateService" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="rateComfortLevel" Type="Decimal" Precision="18" Scale="2" />
   </EntityType>
   <EntityType Name="sellers">
     <Key>
@@ -196,5 +199,7 @@
     <Property Name="CreateUserId" Type="Int32" />
     <Property Name="UpdateUserId" Type="Int32" />
     <Property Name="avatar" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="AmountDiscount" Type="Decimal" Precision="18" Scale="6" />
+    <Property Name="AmountReal" Type="Decimal" Precision="18" Scale="6" />
   </EntityType>
 </Schema>

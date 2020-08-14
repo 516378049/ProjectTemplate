@@ -59,6 +59,9 @@
     <EntitySetMapping Name="RatingsSellers">
       <EntityTypeMapping TypeName="OrderMealModel.RatingsSellers">
         <MappingFragment StoreEntitySet="RatingsSellers">
+          <ScalarProperty Name="rateComfortLevel" ColumnName="rateComfortLevel" />
+          <ScalarProperty Name="rateService" ColumnName="rateService" />
+          <ScalarProperty Name="rateTaste" ColumnName="rateTaste" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="sellerId" ColumnName="sellerId" />
           <ScalarProperty Name="username" ColumnName="username" />
@@ -175,6 +178,8 @@
     <EntitySetMapping Name="OrderInfo">
       <EntityTypeMapping TypeName="OrderMealModel.OrderInfo">
         <MappingFragment StoreEntitySet="OrderInfo">
+          <ScalarProperty Name="AmountReal" ColumnName="AmountReal" />
+          <ScalarProperty Name="AmountDiscount" ColumnName="AmountDiscount" />
           <ScalarProperty Name="avatar" ColumnName="avatar" />
           <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
           <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />

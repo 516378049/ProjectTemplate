@@ -70,6 +70,8 @@
           <Property Name="OrderNum" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="transactionId" Type="varchar" MaxLength="200" />
           <Property Name="Amount" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="AmountDiscount" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="AmountReal" Type="decimal" Precision="18" Scale="6" />
           <Property Name="SellerId" Type="int" Nullable="false" />
           <Property Name="SellerName" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="avatar" Type="nvarchar" MaxLength="2000" />
@@ -112,6 +114,9 @@
           <Property Name="rateTime" Type="nvarchar" MaxLength="100" />
           <Property Name="deliveryTime" Type="nvarchar" MaxLength="100" />
           <Property Name="score" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="rateTaste" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="rateService" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="rateComfortLevel" Type="decimal" Precision="18" Scale="2" />
           <Property Name="rateType" Type="int" />
           <Property Name="text" Type="nvarchar" MaxLength="1000" />
           <Property Name="avatar" Type="nvarchar" MaxLength="1000" />
@@ -278,6 +283,9 @@
           <Property Name="DelFlag" Type="Int32" />
           <Property Name="CreateTime" Type="DateTime" Precision="3" />
           <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="rateTaste" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="rateService" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="rateComfortLevel" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="sellers">
           <Key>
@@ -406,6 +414,8 @@
           <Property Name="CreateUserId" Type="Int32" />
           <Property Name="UpdateUserId" Type="Int32" />
           <Property Name="avatar" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="AmountDiscount" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="AmountReal" Type="Decimal" Precision="18" Scale="6" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -471,6 +481,9 @@
           <EntitySetMapping Name="RatingsSellers">
             <EntityTypeMapping TypeName="OrderMealModel.RatingsSellers">
               <MappingFragment StoreEntitySet="RatingsSellers">
+                <ScalarProperty Name="rateComfortLevel" ColumnName="rateComfortLevel" />
+                <ScalarProperty Name="rateService" ColumnName="rateService" />
+                <ScalarProperty Name="rateTaste" ColumnName="rateTaste" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="sellerId" ColumnName="sellerId" />
                 <ScalarProperty Name="username" ColumnName="username" />
@@ -587,6 +600,8 @@
           <EntitySetMapping Name="OrderInfo">
             <EntityTypeMapping TypeName="OrderMealModel.OrderInfo">
               <MappingFragment StoreEntitySet="OrderInfo">
+                <ScalarProperty Name="AmountReal" ColumnName="AmountReal" />
+                <ScalarProperty Name="AmountDiscount" ColumnName="AmountDiscount" />
                 <ScalarProperty Name="avatar" ColumnName="avatar" />
                 <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
                 <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />

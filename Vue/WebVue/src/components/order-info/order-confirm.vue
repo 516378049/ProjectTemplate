@@ -26,13 +26,21 @@
         </div>
 
         <div class="listDiv">
-          <mt-cell class="bolder" title="一品香粥（订单明细）" style="border-bottom:2px outset rgba(0, 43, 247, 0.0618)"></mt-cell>
+          <mt-cell class="bolder" :title="getSeller.name+'（订单明细）'" style="border-bottom:2px outset rgba(0, 43, 247, 0.0618)"></mt-cell>
           <template v-for="item in selMenuList">
             <mt-cell class="orderList" :title=item.name>
               <span class="orderNum">x {{item.count}}</span> <span class="orderSingleAmount">￥{{item.price * item.count}}</span>
               <img slot="icon" :src="item.image" width="50" height="50">
             </mt-cell>
           </template>
+
+          <mt-cell class="" is-link >
+            <span class="orderNum">新用户随机优惠：</span> <span style="color:orangered">-￥{{AmountDiscount}}</span>
+          </mt-cell>
+          <mt-cell class=""  >
+            <span class="orderNum">合计：</span> <span style="color:#141f06;font-weight:bold">￥{{AmountReal}}</span><span style="color:#141f06;font-size:x-small;margin-left:5px">元</span>
+          </mt-cell>
+
           <div style="margin-top:15px;text-align:center;font-size:small;color:rgba(0,0,0,.5)">无有更多的啦！</div>
         </div>
       </cube-scroll>
@@ -53,7 +61,9 @@
     </div>
     <div class="bottomCommitOrder">
       <div class="PriceTotel">
-        <span>￥{{TotleMount}}</span><span style="font-size:smaller;color:#e0caca;margin-left:15px">| 已优惠￥0</span>
+        <span>￥{{AmountReal}}</span>
+        <span style="font-size:x-small">元</span>
+        <span style="font-size:smaller;color:#e0caca;margin-left:15px">| 已优惠￥{{AmountDiscount}}</span>
       </div>
       <mt-button style="float:right" type="primary" @click="prePay">确认订单</mt-button>
     </div>
@@ -65,10 +75,13 @@
   import { CreateOrderInfo } from '@/api'
   import moment from 'moment'
   import { loadLocal } from '@/common/js/storage'
+import { fail } from 'assert';
+
   export default {
     name: 'order-confirm',
     data(){
       return {
+        isdoing: false,
         OrderTime: {
           OrderTimeTxt: '现在',
           OrderTimeVal: ''
@@ -103,10 +116,37 @@
         return this.$store.getters.getSelMenuList
       },
       TotleMount() {
-        return this.$store.getters.getSelMenuList.map((item) => { return item.price * item.count }).reduce((sum, number) => {
+        let _TotleMount= this.$store.getters.getSelMenuList.map((item) => { return item.price * item.count }).reduce((sum, number) => {
           return sum + number;
         }, 0)
+        return _TotleMount.toString()
       },
+      AmountDiscount() {
+        let discountAmount = this.TotleMount - this.RandAmount
+        return discountAmount.toString()
+      },
+      AmountReal() {
+        let relmount = this.RandAmount
+        return relmount.toString()
+      },
+
+      getSeller() {
+        let seller = loadLocal('seller')
+        return loadLocal('seller_' + seller.id)
+      },
+
+      //随机产生1-10分钱
+      RandAmount() {
+        let discountAmount = 0.0
+        while (discountAmount == 0) {
+          discountAmount = Math.random() / 10
+          discountAmount = this.ParseNumber(discountAmount, 2)
+        }
+        console.log(discountAmount)
+        return discountAmount
+      },
+
+
       customCount() {
         var _data = []
         for (var i = 1; i <= 50; i++) {
@@ -139,16 +179,37 @@
       }
     },
     methods: {
+      ParseNumber: function (num, numFixed) {
+        let numStr = num.toString()
+        let index = numStr.indexOf('.')
+        return  Number(numStr.slice(0, index + numFixed+1))
+      },
       prePay: function () {
-        var that = this
+        let that = this
+
+        if (that.isdoing) {
+          return false
+        }
+        else {
+          that.isdoing = true;
+        }
+        let toast = this.$createToast({
+          time: 0,
+          txt: '正在创建订单......'
+        })
+        toast.show()
+
         //订单编号：年月日时分秒+商家ID+桌号
-        var seller = loadLocal('seller')
-        var sellerMod = loadLocal('seller_' + seller.id)
-        var _OrderId = moment(new Date()).format('YYYYMMDDHHMMSS') + seller.id + seller.deskNumber
-        var _SellerId = seller.id
-        var _SellerName = sellerMod.name
-        var _avatar = sellerMod.avatar
-        var _BookTime = that.OrderTime.OrderTimeVal == '' ? that.Global.Fun.dateFormat(new Date(),'yyyy-MM-dd HH:mm') : that.OrderTime.OrderTimeVal
+        let seller = loadLocal('seller')
+        let sellerMod = loadLocal('seller_' + seller.id)
+        let _OrderId = moment(new Date()).format('YYYYMMDDHHMMSS') + seller.id + seller.deskNumber
+        let _Amount = that.TotleMount
+        let _AmountReal = that.AmountReal
+        let _AmountDiscount = that.AmountDiscount
+        let _SellerId = seller.id
+        let _SellerName = sellerMod.name
+        let _avatar = sellerMod.avatar
+        let _BookTime = that.OrderTime.OrderTimeVal == '' ? that.Global.Fun.dateFormat(new Date(), 'yyyy-MM-dd HH:mm') : that.OrderTime.OrderTimeVal
         //moment(new Date()).format('YYYY-MM-DD HH:MM:SS')
         //创建订单
         CreateOrderInfo(
@@ -156,7 +217,9 @@
             orderinfo: {
               OrderNum: _OrderId,
               DeskNumber: seller.deskNumber,
-              Amount: that.TotleMount,
+              Amount: _Amount,
+              AmountDiscount: _AmountDiscount,
+              AmountReal: _AmountReal,
               SellerId: _SellerId,
               SellerName: _SellerName,
               avatar: _avatar,
@@ -171,7 +234,7 @@
                 GoodName: that.$store.state.goods.filter((Y) => Y.Id == X.goodId)[0].name,
                 FoodId: X.Id,
                 FoodName: X.name,
-                image:X.image,
+                image: X.image,
                 Count: X.count,
                 AmountTotal: X.count * X.price,
                 AmountDiscount: 0,
@@ -185,9 +248,14 @@
             name: 'OrderPay', params: {
               OrderId: _OrderId,
               SellerName: _SellerName,
-              OrderAmount: that.TotleMount
+              OrderAmount: _AmountReal
             }
           });
+          that.isdoing == false
+          toast.hide()
+        }).catch((X) => {
+          that.isdoing == false
+          toast.hide()
         })
       },
       openPicker() {

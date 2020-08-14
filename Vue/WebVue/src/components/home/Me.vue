@@ -38,7 +38,7 @@
       <svg style="width:28px;height:28px" class="icon svg-icon" aria-hidden="true">
         <use xlink:href="#mintui-shezhi"></use>
       </svg>
-      <mt-cell style="width:100%;background-color:inherit;border-bottom:1px solid rgba(232, 229, 229, 0.92);" title="会员中心" is-link value="" @click.native='showPopup("会员中心")'>
+      <mt-cell style="width:100%;background-color:inherit;border-bottom:1px solid rgba(232, 229, 229, 0.92);" title="会员信息" is-link value="" @click.native='showPopup("会员信息")'>
       </mt-cell>
     </div>
 
@@ -51,6 +51,7 @@
           <mt-button icon="back" slot="left" @click="hidePopup"></mt-button>
           <mt-button icon="mintui mintui-quxiao" slot="right" @click="hidePopup"></mt-button>
         </mt-header>
+
         <div v-if="SelectedItem=='优惠中心'">
           <cube-tab-bar style="background-color:aliceblue" v-model="selectedLabel" show-slider>
             <cube-tab v-for="(item, index) in tabs" :label="item.label" :key="item.label">
@@ -64,7 +65,8 @@
             </cube-tab-panel>
           </cube-tab-panels>
         </div>
-        <div class="HomeMePopup" v-if="SelectedItem=='会员中心'">
+
+        <div class="HomeMePopup" v-if="SelectedItem=='会员信息'">
           <cube-form :model="model"
                      :schema="schema"
                      :options="options"
@@ -88,10 +90,6 @@
         </div>
       </div>
     </cube-popup>
-
-
-
-
 
   </div>
   
@@ -158,7 +156,7 @@
                     trigger: 'blur'
                   },
                   {
-                    type: 'checkbox-group',
+                    type: 'radio-group',
                     modelKey: 'sex',
                     label: '性别',
                     props: {
@@ -218,7 +216,7 @@
       mounted() {
         var userinfo = this.$store.getters.getUserInfo
         this.model.nickname = userinfo.nickname
-        this.model.sex = userinfo.sex==1?["男"]:["女"]
+        this.model.sex = userinfo.sex==1?'男':'女'
         this.model.province = userinfo.province
         this.model.city = userinfo.city
         this.model.telnumber = userinfo.telnumber

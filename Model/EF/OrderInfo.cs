@@ -32,5 +32,7 @@ namespace Model.EF
         public Nullable<int> CreateUserId { get; set; }
         public Nullable<int> UpdateUserId { get; set; }
         public string avatar { get; set; }
+        public Nullable<decimal> AmountDiscount { get; set; }
+        public Nullable<decimal> AmountReal { get; set; }
     }
 }
