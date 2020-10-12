@@ -55,6 +55,7 @@
           <Property Name="AmountTotal" Type="decimal" Precision="18" Scale="6" Nullable="false" />
           <Property Name="AmountDiscount" Type="decimal" Precision="18" Scale="6" Nullable="false" />
           <Property Name="AmountReal" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="Status" Type="int" />
           <Property Name="Remark" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="DelFlag" Type="int" />
           <Property Name="CreateTime" Type="datetime" />
@@ -391,6 +392,7 @@
           <Property Name="CreateUserId" Type="Int32" />
           <Property Name="UpdateUserId" Type="Int32" />
           <Property Name="image" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
         </EntityType>
         <EntityType Name="OrderInfo">
           <Key>
@@ -577,6 +579,7 @@
           <EntitySetMapping Name="OrderDetailsInfo">
             <EntityTypeMapping TypeName="OrderMealModel.OrderDetailsInfo">
               <MappingFragment StoreEntitySet="OrderDetailsInfo">
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
                 <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />

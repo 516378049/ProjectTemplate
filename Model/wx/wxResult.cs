@@ -50,6 +50,7 @@ namespace WxPayAPI.wxRsult
         public string city { set; get; }
         public string country { set; get; }
         public string headimgurl { set; get; }
+        
         /// <summary>
         /// 用户特权信息，json 数组，如微信沃卡用户为（chinaunicom）
         /// </summary>
@@ -59,6 +60,11 @@ namespace WxPayAPI.wxRsult
         /// </summary>
         public string unionid { set; get; }
         public string accesstoken { set; get; }
+
+        //小程序
+        public string avatarUrl { set; get; }
+        public int gender { set; get; }
+
         #endregion user authorize info
     }
     public class AuthorizeInfo : ModelBase

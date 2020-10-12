@@ -15,6 +15,7 @@ using System.Security.Cryptography;
 using WeChat.DataAccess.WeiXin.Public;
 using WeChat.Common;
 using Model.EF.EF_ExAttr;
+using WxPayAPI.wxRsult;
 
 namespace Vue
 {
@@ -112,6 +113,66 @@ namespace Vue
             catch (Exception e)
             {
                 Log.ILog4_Error.Error(e.Message,e);
+                return CreateApiResult("", "-1", e.Message);
+            }
+        }
+
+        /// <summary>
+        /// 微信小程序授权登录
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public JsonResult wxMiniAuthorize(string code, string userInfo)
+        {
+            wxRsult.UserInfo user = JsonHelper.ToObject<wxRsult.UserInfo>(userInfo);
+            AuthCode2Session auth = WxUtility.GetObj.authCode2Session(code);
+
+            EF.UserInfo EFinfo = Studio.UserInfo.Get(X => X.openid == auth.openid).FirstOrDefault();
+            EFinfo= EFinfo == null ? new EF.UserInfo() : EFinfo;
+
+            EFinfo.city = user.city;
+            EFinfo.country = user.country;
+            EFinfo.nickname = user.nickname;
+            EFinfo.province = user.province;
+
+            EFinfo.headimgurl = user.avatarUrl;
+            EFinfo.sex = user.gender;
+            EFinfo.openid = auth.openid;
+            EFinfo.unionid = auth.unionid;
+            EFinfo.access_token = auth.session_key;
+            if (EFinfo.Id<=0)
+            {
+                Studio.UserInfo.Insert(EFinfo);
+            }
+            else
+            {
+                Studio.UserInfo.Update(EFinfo);
+            }
+
+            Log.ILog4_Debug.Debug("准备插入授权记录......");
+            EF.Token token = new EF.Token();
+            token.access_token = EFinfo.access_token;
+            token.expires_in = "7200";//seconds
+            token.userId = EFinfo.Id;
+            Studio.Token.Insert(token);
+            Log.ILog4_Debug.Debug("插入授权记录：" + JsonHelper.ToJson(token));
+
+            //Response.Headers.Add("Access-Control-Allow-Origin", "*");
+            try
+            {
+                if (!string.IsNullOrEmpty("code"))
+                {
+                    return CreateApiResult(EFinfo);
+                }
+                else
+                {
+                    return CreateApiResult("", "-1", "code不能为空");
+                }
+            }
+            catch (Exception e)
+            {
+                Log.ILog4_Error.Error(e.Message, e);
                 return CreateApiResult("", "-1", e.Message);
             }
         }

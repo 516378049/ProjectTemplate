@@ -101,6 +101,7 @@
 <script>
   import { OrderChangeStatus, uploadFile } from '@/api'
   import cubePop from '@/components/utility/cubePopup/cubePop.vue'
+import { setTimeout } from 'timers';
 
   export default {
     name: 'OrderPay',
@@ -288,24 +289,34 @@
           formDataAdd.append(file.name, file);
         }
 
+        let toast = this.$createToast({
+          time: 0,
+          txt: '图片上传中......'
+        })
+        toast.show()
+
         uploadFile(formDataAdd).then((items) => {   //这里formDataAdd不能改成{formDataAdd}，否则后台接收不到文件
-          console.log(items)
+          toast.hide()
+          //console.log(items)
           items.forEach((item) => {
-            if (that.FileList.indexOf(item) == -1)
-            { that.FileList = item }
+            if (that.fileList.indexOf(item) == -1)
+            { that.fileList.push(item) }
             console.log(item)
           })
-          
         })
-       
       },
       fileClick(files) {
         const that = this
+        console.log(that.fileList)
+        let toast = this.$createToast({
+          time: 0,
+          txt: '图片加载中......'
+        })
+        toast.show()
         let imgUrl=[]
         let currentImageIndex = 0
         let index=0
-        that.FileList.forEach((item) => {
-          
+        that.fileList.forEach((item) => {
           if (item.Name.toString().trim() === files.name.toString().trim()) {
             currentImageIndex = index
           }
@@ -315,13 +326,19 @@
         //that.imgUrl = imgUrl
         //this.$refs.showImg.show()
 
-        //if (!that.imagePreview) {
+
+        setTimeout(function () {
           that.imagePreview = that.$createImagePreview({
-            imgs: imgUrl.map(X => { return X}),
-            initialIndex: currentImageIndex
+            imgs: imgUrl.filter((currentValue, indedx) => { return indedx == currentImageIndex }),
+            initialIndex: 0
+            //imgs: imgUrl.map(X => { return X }),
+            //initialIndex: currentImageIndex
           })
           that.imagePreview.show()
-        //}
+          toast.hide()
+        }, 100)
+
+       
         
         console.log(currentImageIndex)
         console.log(imgUrl)

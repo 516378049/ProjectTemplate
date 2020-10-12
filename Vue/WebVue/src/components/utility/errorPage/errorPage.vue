@@ -15,7 +15,7 @@
         重新登录
       </router-link>
     </div>
-    <div class="scroll-list-wrap" style="height:100%;margin-top:10px">
+    <div class="scroll-list-wrap" style="height:calc(100% - 150px);margin-top:10px">
       <cube-scroll ref="scroll" :options="options">
         <div class="errorMessage" v-html="errorContent">
 

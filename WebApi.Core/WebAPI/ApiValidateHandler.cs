@@ -10,13 +10,14 @@ using System.Net;
 using WebAPI.Core;
 using System.ServiceModel.Channels;
 
-using ThinkDev.Logging;
+//using ThinkDev.Logging;
 using WebAPI.Core.Models;
 using WebAPI.Core.Business.App;
 using ServiceStack.Common.Web;
 using System.Collections.Specialized;
 using DataAccess.EF;
 using Model.EF;
+using Framework;
 
 namespace WebAPI.Core.WebAPI
 {
@@ -26,38 +27,60 @@ namespace WebAPI.Core.WebAPI
             HttpRequestMessage request, CancellationToken cancellationToken)
         {
             #region 验证token
-            UnitOfWork Studio = new UnitOfWork();
-            var accesstoken = WebFuncHelper.GetHeadValue(request, "accesstoken");
-            var UserId = int.Parse(WebFuncHelper.GetHeadValue(request, WebConst.Header_UserId));
-            UserInfo userinfo = Studio.UserInfo.Get(X => X.Id==UserId && X.access_token ==accesstoken  && X.DelFlag == 0).FirstOrDefault();
-            if (userinfo == null)
+            try
             {
-                var response = new HttpResponseMessage(HttpStatusCode.OK);
-                response.Content = new StringContent(CreateApiResult("","-1",0, "token验证失败").ToJson());
-                var tsc = new TaskCompletionSource<HttpResponseMessage>();
-                tsc.SetResult(response);
-                return tsc.Task;
+                UnitOfWork Studio = new UnitOfWork();
+                var accesstoken = WebFuncHelper.GetHeadValue(request, "accesstoken");
+                var UserId = int.Parse(WebFuncHelper.GetHeadValue(request, WebConst.Header_UserId));
+                UserInfo userinfo = Studio.UserInfo.Get(X => X.Id == UserId && X.access_token == accesstoken && X.DelFlag == 0).FirstOrDefault();
+                if (userinfo == null)
+                {
+                    var response = new HttpResponseMessage(HttpStatusCode.OK);
+                    response.Content = new StringContent(CreateApiResult("", "-1", 0, "token验证失败").ToJson());
+                    var tsc = new TaskCompletionSource<HttpResponseMessage>();
+                    tsc.SetResult(response);
+                    return tsc.Task;
+                }
             }
+            catch (Exception e)
+            {
+                Log.ILog4_Error.Error("接口出现错误：apiRequest," + e.GetType() + "," + e.Message + e);
+            }
+
             #endregion
             return base.SendAsync(request, cancellationToken)
             .ContinueWith(
                 (task) =>
                 {
-                    var content = task.Result.Content as System.Net.Http.ObjectContent;
-                    var apiResult = content.Value as ApiResult;
-
-                    if (apiResult != null)
+                    try
                     {
-                        if (content.ObjectType == typeof(System.Web.Http.HttpError))
+                        var content = task.Result.Content as System.Net.Http.ObjectContent;
+                        var apiResult = content.Value as ApiResult;
+
+                        if (apiResult != null)
                         {
-                            task.Result.StatusCode = HttpStatusCode.OK;
-                            task.Result.Content = new StringContent(apiResult.ToJson());
+                            if (content.ObjectType == typeof(System.Web.Http.HttpError))
+                            {
+                                task.Result.StatusCode = HttpStatusCode.OK;
+                                task.Result.Content = new StringContent(apiResult.ToJson());
+                            }
+                        }
+                        else
+                        {
+                            throw new ApplicationException("未捕获异常,返回值不符合规则");
                         }
                     }
-                    else
+                    catch (Exception e)
                     {
-                        throw new ApplicationException("未捕获异常,返回值不符合规则");
+                        if(e.GetType().ToString()== "System.AggregateException")
+                        {
+                            Log.ILog4_Error.Error("已捕获接口错误：System.AggregateException");
+                            task.Result.Content = new StringContent(CreateApiResult("","-1",0,"捕获接口异常："+e.Message).ToJson());
+                            
+                        }
+                        Log.ILog4_Error.Error("接口出现错误apiResponse,"+ e.GetType()+ "," +e.Message, e);
                     }
+
                     return task.Result;
                 }
             );
@@ -225,7 +248,7 @@ namespace WebAPI.Core.WebAPI
                 result.RetMsg = "接口验证发生异常";
                 result.Message = null;
                 //ErrorLog
-                LogManager.WebApiLogger.Error(LogConvert.ParseWebEx(ex), "接口验证发生异常");
+                LogManager.WebApiLogger.Error(ThinkDev.Logging.LogConvert.ParseWebEx(ex), "接口验证发生异常");
             }
 
             if (result.RetCode != "0")

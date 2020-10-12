@@ -28,7 +28,9 @@
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
     "vue-cli-plugin-cube-ui": "^0.1.2",
-    "vue-template-compiler": "^2.6.6"
+    "vue-template-compiler": "^2.6.6",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
   },
   "transformModules": {
     "cube-ui": {

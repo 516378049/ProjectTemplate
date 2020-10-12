@@ -283,6 +283,8 @@
     <Content Include="WebVue\src\components\v-header\brand%403x.png" />
     <Content Include="WebVue\src\components\v-header\bulletin%402x.png" />
     <Content Include="WebVue\src\components\v-header\bulletin%403x.png" />
+    <Content Include="WebVue\src\content\image\default_header.png" />
+    <Content Include="WebVue\src\content\image\hx_bg%401x.png" />
     <Content Include="WebVue\src\cube-ui.js" />
     <Content Include="WebVue\src\main.js" />
     <Content Include="WebVue\src\register.js" />
@@ -378,9 +380,11 @@
     </Content>
     <Content Include="WebVue\src\components\order-info\order-detail.vue" />
     <Content Include="WebVue\src\components\utility\cubePopup\cubePop.vue" />
+    <Content Include="WebVue\src\common\stylus\globalStyl.styl" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\img\bgColor\" />
     <Folder Include="Models\" />
     <Folder Include="Views\api\" />
     <Folder Include="Views\Base\" />

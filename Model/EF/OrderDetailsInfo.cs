@@ -31,5 +31,6 @@ namespace Model.EF
         public Nullable<int> CreateUserId { get; set; }
         public Nullable<int> UpdateUserId { get; set; }
         public string image { get; set; }
+        public Nullable<int> Status { get; set; }
     }
 }

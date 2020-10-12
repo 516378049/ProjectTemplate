@@ -155,6 +155,7 @@
     <EntitySetMapping Name="OrderDetailsInfo">
       <EntityTypeMapping TypeName="OrderMealModel.OrderDetailsInfo">
         <MappingFragment StoreEntitySet="OrderDetailsInfo">
+          <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="image" ColumnName="image" />
           <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
           <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />

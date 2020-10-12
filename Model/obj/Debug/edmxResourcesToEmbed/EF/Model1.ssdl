@@ -50,6 +50,7 @@
     <Property Name="AmountTotal" Type="decimal" Precision="18" Scale="6" Nullable="false" />
     <Property Name="AmountDiscount" Type="decimal" Precision="18" Scale="6" Nullable="false" />
     <Property Name="AmountReal" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+    <Property Name="Status" Type="int" />
     <Property Name="Remark" Type="nvarchar" MaxLength="200" Nullable="false" />
     <Property Name="DelFlag" Type="int" />
     <Property Name="CreateTime" Type="datetime" />

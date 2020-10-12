@@ -50,6 +50,7 @@ namespace OrderMeal.Controllers
         {
             try
             {
+
                 Log.ILog4_Debug.Debug("JSInit currentURL：" + currentURL);
                 Log.ILog4_Debug.Debug("JSInit currentURL 转换后：" + currentURL.Split("#".ToArray(), StringSplitOptions.RemoveEmptyEntries)[0]);
 

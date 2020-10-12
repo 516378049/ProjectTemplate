@@ -39,4 +39,6 @@ Vue.use(Cube)
 //Vue.use(Toolbar)
 //Vue.use(Tip)
 
+export { Cube }
+
 

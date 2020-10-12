@@ -4,6 +4,8 @@ import axios from 'ts-axios-new'
 import store from '@/common/js/store'
 import router from '@/router'
 
+
+//axios.defaults.timeout = 30 * 1000; // 30s
 // 请求拦截（配置发送请求的信息）
 axios.interceptors.request.use(
   configs => {
@@ -46,7 +48,7 @@ axios.interceptors.response.use(
     return response;//正常情况下，不返回response也会进入axios请求的then方法中，但是结果没有http请求信息，加了这句会进如axios的then方法，并且传入http的请求信息
   }, err => {
     //alert("interceptors.response.use 出错啦,请管理员处理")
-    return Promise.reject({ RetCode: "-1", RetMsg: err, errLocation: 'axios.interceptors.response.use.err' });//add  this phrase will catched by axios.catch
+    return Promise.reject({ RetCode: "-3", RetMsg: err, errLocation: 'axios.interceptors.response.use.err' });//add  this phrase will catched by axios.catch
   });
 
 export default axios

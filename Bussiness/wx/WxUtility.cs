@@ -89,5 +89,33 @@ namespace Bussiness.wx
                 throw new WxPayException(ex.ToString());
             }
         }
+
+        /// <summary>
+        /// 获取小程序openId
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public AuthCode2Session authCode2Session(string code)
+        {
+            try
+            {
+                #region 获取小程序授权信息
+                WxPayData data = new WxPayData();
+                data.SetValue("appid", WxPayConfig.GetConfig().GetAppIDmini());
+                data.SetValue("secret", WxPayConfig.GetConfig().GetAppSecretmini());
+                data.SetValue("code", code);
+                data.SetValue("grant_type", "authorization_code");
+                string url = "https://api.weixin.qq.com/sns/oauth2/access_token?" + data.ToUrl();
+                AuthCode2Session auth = wxPageApi.authCode2Session(data.GetValue("appid").ToString(), data.GetValue("secret").ToString(), data.GetValue("code").ToString(), data.GetValue("grant_type").ToString());
+                #endregion
+
+                return auth;
+            }
+            catch (Exception ex)
+            {
+                Log.Error(this.GetType().ToString(), ex.ToString());
+                throw new WxPayException(ex.ToString());
+            }
+        }
     }
 }

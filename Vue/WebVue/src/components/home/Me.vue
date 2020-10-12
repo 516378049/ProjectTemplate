@@ -2,8 +2,7 @@
   <div class="container">
 
 
-    <div style="position:fixed;top:0;left:0;width:100%; height:210px; text-align:center;background-image:linear-gradient(rgb(30, 140, 228),#f6fbff);z-index:-1;-webkit-box-shadow: rgba(221, 210, 224, 0.1) 0px 0px 15px;
-    box-shadow: rgba(221, 210, 224, 0.1) 0px 0px 15px">
+    <div class="meHeader" :style="{backgroundImage:`url(${headerBgUrl})`}">
     </div>
     <mt-header title="个人中心" style="background-color:inherit;font-size:large;">
       <mt-button style="color:#ff9494" icon="mintui mintui-Setting" slot="right"></mt-button>
@@ -95,9 +94,12 @@
   
 </template>
   <script>
+    import ingHeader from '@/content/image/hx_bg@1x.png'
     export default {
       data() {
         return {
+          headerBgUrl: ingHeader,
+
           //优惠券属性
           selectedItem: "",
 
@@ -292,6 +294,17 @@
   </script>
 
   <style lang="stylus" rel="stylesheet/stylus">
+    .container .meHeader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 210px;
+      text-align: center;
+      z-index: -1;
+      -webkit-box-shadow: rgba(221, 210, 224, 0.1) 0px 0px 15px;
+      box-shadow: rgba(221, 210, 224, 0.1) 0px 0px 15px
+    }
     .container .HomeMeItem {
       display: flex;
       align-items: center;

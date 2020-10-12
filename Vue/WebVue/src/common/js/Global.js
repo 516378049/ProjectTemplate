@@ -125,6 +125,9 @@ const cnst =
     id: '4',
     deskNumber: '001',
     rand: Math.random()
+  },
+  sycnCart: {
+    times:10000 //30秒执行一次同步购物车计划,常亮不能写成算术表达式，否则无法获取
   }
 }
 export { cnst, Fun }

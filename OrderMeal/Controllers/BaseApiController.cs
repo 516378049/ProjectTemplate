@@ -26,6 +26,10 @@ namespace OrderMeal.Controllers
         /// <returns></returns>
         protected ApiResult CreateApiResult(string retCode, string retMsg, object message)
         {
+            if (int.Parse(retCode) < 0)
+            {
+                Log.ILog4_Error.Error("接口出现错误：" + retMsg);
+            }
             return new CoreWebApi.ApiResult() { RetCode = retCode, RetMsg = retMsg, Message = message };
         }
         protected string CreateApiResult(CoreWebApi.ApiResult result)
@@ -41,6 +45,11 @@ namespace OrderMeal.Controllers
         /// <returns></returns>
         protected ApiResult CreateApiResult(object message = null, string retCode = "0", int Total = 0, string retMsg = "")
         {
+            if(int.Parse(retCode)<0)
+            {
+                Log.ILog4_Error.Error("接口出现错误" + retMsg);
+            }
+            
             return new ApiResult() { RetCode = retCode, Total = Total, RetMsg = retMsg, Message = message };
         }
         /// <summary>

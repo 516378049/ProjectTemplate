@@ -163,7 +163,7 @@ let store = new vuex.Store({
       commit('syncGoods')
       setInterval(() => {
         commit('syncGoods')
-      }, 30000)
+      }, cnst.sycnCart.times)
     },
     a_setCartCount({ commit }, item) {
       setTimeout(() => {

@@ -138,12 +138,20 @@
 
       pay: function () {
         var that = this
+
+        let toast = this.$createToast({
+          time: 0,
+          txt: '请求支付参数......'
+        })
+        toast.show()
+
         console.log("OrderId: " + that.orderInfo.OrderId)
         GetUnifiedOrderResult({
           OrderId: that.orderInfo.OrderId,          TotalFee: that.orderInfo.OrderAmount*100,
           OpenId: that.$store.state.userInfo.openid,
           TradeType:'JSAPI'
         }).then((parms) => {
+          toast.hide()
           wx.chooseWXPay({
             timestamp: parms.timeStamp, // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
             nonceStr: parms. nonceStr, // 支付签名随机串，不长于 32 位
