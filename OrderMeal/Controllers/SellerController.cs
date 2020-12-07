@@ -151,7 +151,7 @@ namespace OrderMeal.Controllers
             }
             catch (Exception ex)
             {
-                return CreateApiResult("-1", ex.Message, "");
+                return CreateApiExpResult(ex.Message);
             }
 
         }
@@ -240,7 +240,7 @@ namespace OrderMeal.Controllers
             {
                 StudioTra.Rollback();
                 Log.ILog4_Error.Error("插入订单出错：", e);
-                return CreateApiResult("-1", "插入订单出错：" + e.Message);
+                return CreateApiExpResult("插入订单出错：" + e.Message);
             }
             finally
             {
@@ -262,13 +262,13 @@ namespace OrderMeal.Controllers
             {
                 if (string.IsNullOrWhiteSpace(orderNum))
                 {
-                    return CreateApiResult("-1", "未知的订单编号：");
+                    return CreateApiExpResult( "未知的订单编号：");
                 }
 
                 OrderInfo order = Studio.OrderInfo.Get(X => X.OrderNum == orderNum && X.DelFlag == 0).FirstOrDefault();
                 if (order == null)
                 {
-                    return CreateApiResult("-1", "未知的订单编号：");
+                    return CreateApiExpResult("未知的订单编号：");
                 }
                 order.Status = status;
                 Studio.OrderInfo.Update(order);
@@ -276,7 +276,46 @@ namespace OrderMeal.Controllers
             catch (Exception e)
             {
                 Log.ILog4_Error.Error("订单取消出错：", e);
-                return CreateApiResult("-1", "订单取消出错：" + e.Message);
+                return CreateApiExpResult("订单取消出错：" + e.Message);
+            }
+            finally
+            {
+
+            }
+            return CreateApiResult("success");
+        }
+
+        /// <summary>
+        /// 改变订单行状态
+        /// </summary>
+        /// <param name="orderNum">订单编号</param>
+        /// <param name="status">订单状态：1、待支付、2、商家待接单；3、商家已接单；4、订单完成；5、待评价；6、已评价；7、取消订单；8、申请退款；9、商家同意退款；10、退款成功</param>
+        /// <returns></returns>
+        [HttpGet]
+        public ApiResult OrderDetailsChangeStatus(string data="" ,int status=0, int OrderId =0,int Id=0)
+        {
+
+            try
+            {
+                ChangeStatusParams Params = JsonHelper.ToObject<ChangeStatusParams>(data);
+                if (Params.Id<=0)
+                {
+                    return CreateApiExpResult("未知的订单编号：");
+                }
+
+                OrderDetailsInfo order = Studio.OrderDetailsInfo.Get(X => X.Id == Params.Id && X.OrderId == Params.OrderId && X.DelFlag == 0).FirstOrDefault();
+                if (order == null)
+                {
+                    return CreateApiExpResult( "未知的订单编号：");
+                }
+                order.Status = Params.status;
+                Studio.OrderDetailsInfo.Update(order);
+
+            }
+            catch (Exception e)
+            {
+                Log.ILog4_Error.Error("订单明细状态修改出错：", e);
+                return CreateApiExpResult("订单明细状态修改出错：" + e.Message);
             }
             finally
             {
@@ -295,19 +334,42 @@ namespace OrderMeal.Controllers
         /// <param name="count">记录数</param>
         /// <returns></returns>
         [HttpPost]
-        public ApiResult getOrderInfoList(int userId = 0, int sellerId = 0, string startTime = "", string slipAction = "", int count = 0)
+        public ApiResult getOrderInfoList(QueryOrderInfoParams Params)
         {
+            //int userId = 0, int sellerId = 0, string startTime = "", string slipAction = "", int count = 0,int status = -1, string orderId = ""
+            int userId = Params.userId;
+            int sellerId = Params.sellerId;
+            string startTime = Params.startTime;
+            string slipAction = Params.slipAction;
+            int count = Params.count;
+            int status = Params.status;
+            string OrderNum = Params.OrderNum;
             try
             {
-                string Params = GetRequestStreamData();
-                userId = int.Parse(JsonHelper.ConvertJsonResult(Params, "userId"));
-                sellerId = int.Parse(JsonHelper.ConvertJsonResult(Params, "sellerId"));
-                startTime = JsonHelper.ConvertJsonResult(Params, "startTime");
-                slipAction = JsonHelper.ConvertJsonResult(Params, "slipAction");
-                count = int.Parse(JsonHelper.ConvertJsonResult(Params, "count"));
+                //string Params = GetRequestStreamData();
+                //userId = int.Parse(JsonHelper.ConvertJsonResult(Params, "userId"));
+                //sellerId = int.Parse(JsonHelper.ConvertJsonResult(Params, "sellerId"));
+                //startTime = JsonHelper.ConvertJsonResult(Params, "startTime");
+                //slipAction = JsonHelper.ConvertJsonResult(Params, "slipAction");
+                //count = int.Parse(JsonHelper.ConvertJsonResult(Params, "count"));
+                //status = int.Parse(JsonHelper.ConvertJsonResult(Params, "status"));
+                //orderId = (JsonHelper.ConvertJsonResult(Params, "orderId"));
 
                 List<OrderInfo> orderinfoList = new List<OrderInfo>();
-                Expression<Func<OrderInfo, bool>> filter = X => X.CreateUserId == userId && X.SellerId == sellerId && X.DelFlag == 0;
+                Expression<Func<OrderInfo, bool>> filter = X => X.SellerId == sellerId && X.DelFlag == 0;
+
+                if (!string.IsNullOrEmpty(OrderNum))
+                {
+                    Expression<Func<OrderInfo, bool>> filter1 = X => X.OrderNum == OrderNum;
+                    filter = PredicateBuilderExtension.And(filter, filter1);
+                }
+
+                if (userId > 0)
+                {
+                    Expression<Func<OrderInfo, bool>> filter1 = X => X.CreateUserId == userId;
+                    filter = PredicateBuilderExtension.And(filter, filter1);
+                }
+
                 if (slipAction == "down")
                 {
                     DateTime _startTime = DateTime.Parse(startTime).AddSeconds(1);//加上一秒钟，因为数据库中存在毫秒，传入时没有毫秒
@@ -326,6 +388,13 @@ namespace OrderMeal.Controllers
                     Expression<Func<OrderInfo, bool>> filter1 = X => X.CreateTime > _startTime;
                     filter = PredicateBuilderExtension.And(filter, filter1);
                 }
+
+                if (status>0)
+                {
+                    Expression<Func<OrderInfo, bool>> filter1 = X => X.Status == status;
+                    filter = PredicateBuilderExtension.And(filter, filter1);
+                }
+
                 var _orderinfoList = Studio.OrderInfo.Get(filter, X => X.OrderByDescending(Y => Y.CreateTime), "", 1, count);
                 orderinfoList = _orderinfoList.ToList();
 
@@ -342,7 +411,7 @@ namespace OrderMeal.Controllers
             }
             catch (Exception ex)
             {
-                return CreateApiResult("-1", ex.Message, "");
+                return CreateApiExpResult( ex.Message);
             }
         }
         /// <summary>

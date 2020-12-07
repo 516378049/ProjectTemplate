@@ -53,6 +53,20 @@ namespace OrderMeal.Controllers
             return new ApiResult() { RetCode = retCode, Total = Total, RetMsg = retMsg, Message = message };
         }
         /// <summary>
+        /// 创建ApiResult对象，异常返回
+        /// </summary>
+        /// <param name="retCode"></param>
+        /// <param name="retMsg"></param>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        protected ApiResult CreateApiExpResult(string retMsg = "")
+        {
+
+            Log.ILog4_Error.Error("接口出现错误" + retMsg);
+
+            return new ApiResult() { RetCode = "-1", Total = 0, RetMsg = retMsg, Message = "" };
+        }
+        /// <summary>
         /// 检查ApiResult是否表示正确结果
         /// </summary>
         /// <param name="result"></param>

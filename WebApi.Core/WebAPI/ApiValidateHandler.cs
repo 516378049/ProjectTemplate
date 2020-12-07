@@ -30,6 +30,7 @@ namespace WebAPI.Core.WebAPI
             try
             {
                 UnitOfWork Studio = new UnitOfWork();
+                WebFuncHelper.WriteHeadValue(request, "Accept", "application/json");//设置请求头
                 var accesstoken = WebFuncHelper.GetHeadValue(request, "accesstoken");
                 var UserId = int.Parse(WebFuncHelper.GetHeadValue(request, WebConst.Header_UserId));
                 UserInfo userinfo = Studio.UserInfo.Get(X => X.Id == UserId && X.access_token == accesstoken && X.DelFlag == 0).FirstOrDefault();

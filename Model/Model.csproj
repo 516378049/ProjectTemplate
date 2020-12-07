@@ -109,6 +109,7 @@
     <Compile Include="EF\UserInfo.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="orderMeal\QueryParams.cs" />
     <Compile Include="orderMeal\OrderInfoParams.cs" />
     <Compile Include="orderMeal\CartOrder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
