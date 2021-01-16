@@ -18,6 +18,7 @@
           <div class="PayResultInfoSingle"><span style="font-weight:700;color:#000000">桌号：</span><span style="font-size:xx-large;font-weight:bolder;color:#000000">{{this.getOrderInfoByOrderNum.DeskNumber|PrefixInteger(3)}}</span></div>
 
           <mt-button v-show="this.showButton.indexOf('cancel')>=0" plain style="margin-top:20px;margin-left:10px;margin-right:10px" type="default" size="small" @click="OrderCancel()">取消订单</mt-button>
+          <mt-button v-show="this.showButton.indexOf('refound')>=0" plain style="margin-top:20px;margin-left:10px;margin-right:10px" type="default" size="small" @click="OrderRefound()">申请退款</mt-button>
           <mt-button v-show="this.showButton.indexOf('orderAgain')>=0" style="margin-top:20px;margin-left:10px;margin-right:10px" type="primary" size="small" @click="routerPush('App')">再来一单</mt-button>
           <mt-button v-show="this.showButton.indexOf('appraise')>=0" style="margin-top:20px;margin-left:10px;margin-right:10px" type="primary" size="small" @click="cubePop()">我要评价</mt-button>
           <mt-button v-show="this.showButton.indexOf('pay')>=0" style="margin-top:20px;margin-left:10px;margin-right:10px" type="primary" size="small" @click="routerPush('OrderPay',
@@ -153,6 +154,7 @@ import { setTimeout } from 'timers';
       showButton() {
         var _date = this.Global.Fun.dateDiff(new Date(), this.CreateTime, 'm')
         var options = []
+        //订单待支付状态，可以取消，继续支付
         if (this.getOrderInfoByOrderNum.Status == 1) {
           options.push('cancel');
           if (_date < 20) {
@@ -161,6 +163,10 @@ import { setTimeout } from 'timers';
           else {
             options.push('orderAgain');
           }
+        }
+        //订单已支付，等待商家接单状态，可以申请退款
+        else if (this.getOrderInfoByOrderNum.Status == 2) {
+          options.push('refound');
         }
         else {
           options.push('appraise');
@@ -206,28 +212,45 @@ import { setTimeout } from 'timers';
       },
       restTimeDiff() {
         var that = this
+        var timeOutSnd = 20 * 60  //20分钟
         if (that.CreateTime && !that.TimeSetStop) {
-          var _date = that.Global.Fun.dateDiff(new Date(), that.CreateTime, 'm')
-          if (_date < 20) {
-            var _dateSeconds = that.Global.Fun.dateDiff(new Date(), that.CreateTime, 's')
-            that.restPayTime = '剩余支付时间：' + that.$options.filters['PrefixInteger'](19 - _date, 2) + '：' + that.$options.filters['PrefixInteger'](59 - (_dateSeconds % 60), 2)
-
+          //var _date = that.Global.Fun.dateDiff(new Date(), that.CreateTime, 'm')
+          //if (_date < 20) {
+          var _dateSeconds = that.Global.Fun.dateDiff(new Date(), that.CreateTime, 's')
+          let restSnd = timeOutSnd - _dateSeconds //剩下秒数
+          //that.restPayTime = '剩余支付时间：' + that.$options.filters['PrefixInteger'](19 - _date, 2) + '：' + that.$options.filters['PrefixInteger'](59 - (_dateSeconds % 60), 2)
+          let re = that.CountDown(restSnd)
+          if (re != '') {
+            that.restPayTime = '剩余支付时间：' + re
             setTimeout(() => {
               that.restTimeDiff()
             }, 1000)
-
           }
           else {
             that.$createDialog({
               type: 'alert',
               title: '过期提醒',
-              content: '您的订单已过期，请您重新下单，谢谢~！' + that.CreateTime,
+              content: '您的订单已过期，请您重新下单，谢谢~！',
               icon: 'cubeic-warn',
               onConfirm: () => {
                 that.$router.push({ path: "/App" });
               }
             }).show()
           }
+        }
+        else {
+        }
+        // }
+      },
+      //倒计时
+      CountDown(maxtime) {
+        if (maxtime >= 0) {
+          let minutes = Math.floor(maxtime / 60);
+          let seconds = Math.floor(maxtime % 60);
+          let msg =  minutes + "分" + seconds + "秒";
+          return msg 
+        } else {
+          return ''
         }
       },
       OrderCancel() {
@@ -275,6 +298,52 @@ import { setTimeout } from 'timers';
          
         }
        
+      },
+      OrderRefound() {
+        var that = this
+        var _orderNum = that.$route.params.orderNum
+        if (_orderNum) {
+
+          that.$createDialog({
+            type: 'confirm',
+            //icon: 'cubeic-alert',
+            title: '申请退款',
+            content: `确认申请退款？`,
+            confirmBtn: {
+              text: '确定',
+              active: true,
+              disabled: false,
+              href: 'javascript:;'
+            },
+            cancelBtn: {
+              text: '取消',
+              active: false,
+              disabled: false,
+              href: 'javascript:;'
+            },
+            onConfirm: () => {
+              OrderChangeStatus({ orderNum: _orderNum, status: 8 }).then(X => {
+
+                that.$createToast({
+                  type: 'correct',
+                  txt: '已申请退款',
+                  time: 2000
+                }).show()
+
+                //刷新订单
+                that.$store.dispatch('a_getOrderInfoList', {
+                  slipAction: 'down'
+                })
+                that.restPayTime = "已申请退款，等待商家处理 ！"
+              })
+            },
+            onCancel: () => {
+
+            }
+          }).show()
+
+        }
+
       },
       cubePop(option) {
         this.$refs.cubePop.showPopup()

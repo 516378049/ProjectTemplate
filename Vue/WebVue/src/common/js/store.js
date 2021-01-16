@@ -71,7 +71,11 @@ let store = new vuex.Store({
     },
     //拉取订单，每次拉取5条，1、向下拉取查询当前时间以前订单，向上拉取订单，查询当前时间以后订单
     getOrderInfoList(state, obj) {
-      var startTime = Fun.dateFormat(new Date(), 'yyyy-MM-dd HH:mm')
+      var startTime = Fun.dateFormat(new Date(), 'yyyy-MM-dd HH:mm:ss')
+      let timeEquals = false;
+      if (obj.timeEquals) {//是否查询闭区间
+        timeEquals = obj.timeEquals
+      }
       if (state.OrderInfoList.length > 0) {
         if (obj.slipAction == 'down') {
           startTime = state.OrderInfoList[0].CreateTime
@@ -87,6 +91,7 @@ let store = new vuex.Store({
         userId: state.userInfo.Id,
         sellerId: loadLocal('seller').id,
         startTime: startTime,
+        timeEquals: timeEquals,
         slipAction: obj.slipAction,
         count: 5
       }).then((items) => {

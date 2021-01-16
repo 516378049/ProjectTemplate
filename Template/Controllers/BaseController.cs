@@ -144,7 +144,7 @@ namespace Template.Controllers
                             filename = file.FileName;
                         }
 
-                        ApiRet uploadResult = NetHelper.UploadFile(ConfigHelper.UploadUrlNew, moudleName, filename, bytesRead, encoding, rename);
+                        ApiRet uploadResult = NetHelper.UploadFile<ApiRet>(ConfigHelper.UploadUrlNew, moudleName, filename, bytesRead, encoding, rename);
 
                         if (uploadResult.RetCode != "0")
                         {
@@ -177,7 +177,7 @@ namespace Template.Controllers
 
                 string filename = Guid.NewGuid() + ".jpg";
                 byte[] fileBytes = Convert.FromBase64String(imgBase64);
-                ApiRet uploadResult = NetHelper.UploadFile(ConfigHelper.UploadFileUrl, ConfigHelper.UploadMoudleName, filename, fileBytes);
+                ApiRet uploadResult = NetHelper.UploadFile<ApiRet>(ConfigHelper.UploadFileUrl, ConfigHelper.UploadMoudleName, filename, fileBytes);
                 if (uploadResult.RetCode == "0")
                 {
                     return new ResultInfo<string>(false, "上传成功", "0", uploadResult.Message.ToString());

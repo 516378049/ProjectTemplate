@@ -239,7 +239,7 @@
       <Name>DataAccess</Name>
     </ProjectReference>
     <ProjectReference Include="..\Framework\Framework.csproj">
-      <Project>{99C8CC3E-3B3F-4D4A-AE08-696068CF4332}</Project>
+      <Project>{99c8cc3e-3b3f-4d4a-ae08-696068cf4332}</Project>
       <Name>Framework</Name>
     </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">

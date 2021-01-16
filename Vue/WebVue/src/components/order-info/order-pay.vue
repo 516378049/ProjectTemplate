@@ -13,9 +13,12 @@
 
     <div class="OrderInfoPay">
       <div class="OrderInfoPaySingle">{{this.restPayTime}}</div>
-      <div class="OrderInfoPaySingle"><span style="font-weight:bolder;color:#000000">￥</span><span style="font-size:xx-large;font-weight:bolder;color:#000000">{{orderInfo.OrderAmount}}</span></div>
+      <div class="OrderInfoPaySingle"><span style="font-weight:bolder;color:#000000">￥</span><span style="font-size:xx-large;font-weight:bolder;color:rgb(189, 78, 78)">{{orderInfo.OrderAmount}}</span></div>
+
       <div class="OrderInfoPaySingle">商家：{{orderInfo.SellerName}}</div>
+      <div class="OrderInfoPaySingle">下单时间：{{this.orderInfo.OrderCreateTime|dateFormat('yyyy-MM-dd HH:mm')}}</div>
       <div class="OrderInfoPaySingle">单号：{{orderInfo.OrderId}}</div>
+
       <div class="clear"></div>
     </div>
     <div class="PayWay">
@@ -88,6 +91,7 @@
       that.restTimeDiff()
     },
     methods: {
+      //弃用
       diffTime() {
         var that = this
         let CurrentTime = moment(that.orderInfo.OrderCreateTime)
@@ -110,23 +114,27 @@
       },
 
       restTimeDiff() {
+        var timeOutSnd = 20 * 60  //20分钟
         var that = this
         if (that.orderInfo.OrderCreateTime && !that.TimeSetStop) {
-          var _date = that.Global.Fun.dateDiff(new Date(), that.orderInfo.OrderCreateTime, 'm')
-          if (_date < 20) {
-            var _dateSeconds = that.Global.Fun.dateDiff(new Date(), that.orderInfo.OrderCreateTime, 's')
-            that.restPayTime = '剩余支付时间：' + that.$options.filters['PrefixInteger'](19 - _date, 2) + '：' + that.$options.filters['PrefixInteger'](59 - (_dateSeconds % 60), 2)
+          //var _date = that.Global.Fun.dateDiff(new Date(), that.orderInfo.OrderCreateTime, 'm')
+          //if (_date < 20) {
 
+          var _dateSeconds = that.Global.Fun.dateDiff(new Date(), that.orderInfo.OrderCreateTime, 's')
+          let restSnd = timeOutSnd - _dateSeconds //剩下秒数
+          //that.restPayTime = '剩余支付时间：' + that.$options.filters['PrefixInteger'](19 - _date, 2) + '：' + that.$options.filters['PrefixInteger'](59 - (_dateSeconds % 60), 2)
+          let re = that.CountDown(restSnd)
+          if (re != '') {
+            that.restPayTime = '剩余支付时间：' + re
             setTimeout(() => {
               that.restTimeDiff()
             }, 1000)
-
           }
           else {
             that.$createDialog({
               type: 'alert',
               title: '过期提醒',
-              content: '您的订单已过期，请您重新下单，谢谢~！' + that.orderInfo.OrderCreateTime,
+              content: '您的订单已过期，请您重新下单，谢谢~！',
               icon: 'cubeic-warn',
               onConfirm: () => {
                 that.$router.push({ path: "/App" });
@@ -135,7 +143,17 @@
           }
         }
       },
-
+      //倒计时
+      CountDown(maxtime) {
+        if (maxtime >= 0) {
+          let minutes = Math.floor(maxtime / 60);
+          let seconds = Math.floor(maxtime % 60);
+          let msg = minutes + "分" + seconds + "秒";
+          return msg
+        } else {
+          return ''
+        }
+      },
       pay: function () {
         var that = this
 

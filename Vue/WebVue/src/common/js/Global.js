@@ -52,9 +52,30 @@ let Fun = {
    
     return fmt;
   },
+  //转化为时间类型
+  toDate: function(val) {
+    var newDateTime
+    if (val) {
+      if (!(val instanceof Date)) {
+        val = val.replace(/-/g, "/");
+        val = val.replace('T', ' ');
+        while (val.indexOf('.') > -1)//如果有小数点作为毫秒，将小数点换成":" ,防止微信内置浏览器无法转换
+        {
+          val = val.split('.')[0]
+        }
+        newDateTime = new Date(val)
+      }
+      else {
+        newDateTime = val
+      }
+    }
+    return newDateTime
+  },
   dateDiff: function (begintime, endtime, unit) {
+    begintime = this.toDate(begintime)
+    endtime = this.toDate(endtime)
     unit = unit.toUpperCase()
-    var _diff = parseInt(new Date(begintime) - new Date(endtime))
+    var _diff = Math.floor(new Date(begintime) - new Date(endtime))
     if (unit == 'S') {
       _diff= _diff / 1000 
     }
@@ -70,7 +91,7 @@ let Fun = {
     else {
       _diff =  _diff
     }
-    return parseInt(_diff)
+    return Math.floor(_diff)
   },
   //订单状态：1、待支付、2、商家待接单；3、商家已接单；4、订单完成；5、待评价；6、已评价；7、取消订单；8、申请退款；9、商家同意退款；10、退款成功
   StatuStr: function (value) {

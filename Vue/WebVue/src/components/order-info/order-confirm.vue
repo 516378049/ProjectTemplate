@@ -34,14 +34,18 @@
             </mt-cell>
           </template>
 
-          <mt-cell class="" is-link >
-            <span class="orderNum">新用户随机优惠：</span> <span style="color:orangered">-￥{{AmountDiscount}}</span>
+          <mt-cell v-if="this.isUseDiscount==1"  @click.native='UseDiscount(0)' class="" is-link>
+            <span  class="orderNum">用户随机优惠：</span> <span style="color:orangered">-￥{{AmountDiscount}}</span>
           </mt-cell>
-          <mt-cell class=""  >
+          <mt-cell v-if="this.isUseDiscount==0" @click.native='UseDiscount(1)'  class="" is-link>
+            <span class="orderNum">不使用优惠券：</span> <span style="color:orangered">-￥{{AmountDiscount}}</span>
+          </mt-cell>
+
+          <mt-cell class="">
             <span class="orderNum">合计：</span> <span style="color:#141f06;font-weight:bold">￥{{AmountReal}}</span><span style="color:#141f06;font-size:x-small;margin-left:5px">元</span>
           </mt-cell>
 
-          <div style="margin-top:15px;text-align:center;font-size:small;color:rgba(0,0,0,.5)">无有更多的啦！</div>
+          <!--<div style="margin-top:15px;text-align:center;font-size:small;color:rgba(0,0,0,.5)">无有更多的啦！</div>-->
         </div>
       </cube-scroll>
     </div>
@@ -75,7 +79,7 @@
   import { CreateOrderInfo } from '@/api'
   import moment from 'moment'
   import { loadLocal } from '@/common/js/storage'
-import { fail } from 'assert';
+
 
   export default {
     name: 'order-confirm',
@@ -94,7 +98,8 @@ import { fail } from 'assert';
         OrderPayWay: { text:'线上支付',value:1},
         startY: -5,
         scrollbarFade: true,
-        scrollHeight:0
+        scrollHeight: 0,
+        isUseDiscount:1
       }
     },
     
@@ -102,7 +107,7 @@ import { fail } from 'assert';
       this.scrollHeight = "calc(100% - 100px)"
     },
     mounted() {
-      
+    
     },
 
     computed: {
@@ -129,12 +134,6 @@ import { fail } from 'assert';
         let relmount = this.RandAmount
         return relmount.toString()
       },
-
-      getSeller() {
-        let seller = loadLocal('seller')
-        return loadLocal('seller_' + seller.id)
-      },
-
       //随机产生1-10分钱
       RandAmount() {
         let discountAmount = 0.0
@@ -143,10 +142,18 @@ import { fail } from 'assert';
           discountAmount = this.ParseNumber(discountAmount, 2)
         }
         console.log(discountAmount)
-        return discountAmount
+        if (this.isUseDiscount == 0) { //不使用优惠券
+          return this.TotleMount
+        }
+        else {
+          return discountAmount
+        }
+
       },
-
-
+      getSeller() {
+        let seller = loadLocal('seller')
+        return loadLocal('seller_' + seller.id)
+      },
       customCount() {
         var _data = []
         for (var i = 1; i <= 50; i++) {
@@ -179,6 +186,10 @@ import { fail } from 'assert';
       }
     },
     methods: {
+      //使用优惠券
+      UseDiscount: function (val) {
+        this.isUseDiscount = val;
+      },
       ParseNumber: function (num, numFixed) {
         let numStr = num.toString()
         let index = numStr.indexOf('.')

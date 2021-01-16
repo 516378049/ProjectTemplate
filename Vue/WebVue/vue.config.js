@@ -100,6 +100,8 @@ module.exports = {
     config.plugin('context')
       .use(webpack.ContextReplacementPlugin, [/moment[/\\]locale$/, /zh-cn/])
   },
-  publicPath:'/OrderMeal/' //set publicPath then webpack will find out the static file of auto generic, like js 、css... 
+  publicPath:'/OrderMeal/' ,//set publicPath then webpack will find out the static file of auto generic, like js 、css... 
   //baseUrl: ''
+  lintOnSave:false  //取消eslintrc错误提示
+
 }

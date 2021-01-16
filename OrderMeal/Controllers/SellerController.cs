@@ -18,7 +18,7 @@ using static WeChat.Common.PredicateBuilderExtension;
 
 namespace OrderMeal.Controllers
 {
-    [EnableCors(origins: "https://www.changchunamy.com,http://localhost:8080", headers: "*", methods: "*")]
+    //[EnableCors(origins: "https://www.changchunamy.com,http://localhost:8080", headers: "*", methods: "*")]
     public class SellerController : BaseApiController
     {
         #region default fundation
@@ -223,6 +223,7 @@ namespace OrderMeal.Controllers
                 orderinfo = StudioTra.OrderInfo.Insert(orderinfo);
                 l_OrderDetailsInfo.ForEach(X => {
                     X.OrderId = orderinfo.Id;
+                    X.Status = 0;
                     X.CreateUserId = UserId;
                     X.UpdateUserId = UserId;
                 });
@@ -292,34 +293,92 @@ namespace OrderMeal.Controllers
         /// <param name="status">订单状态：1、待支付、2、商家待接单；3、商家已接单；4、订单完成；5、待评价；6、已评价；7、取消订单；8、申请退款；9、商家同意退款；10、退款成功</param>
         /// <returns></returns>
         [HttpGet]
-        public ApiResult OrderDetailsChangeStatus(string data="" ,int status=0, int OrderId =0,int Id=0)
+        public ApiResult OrderDetailsChangeStatus(string data = "", int status = 0, int OrderId = 0, int Id = 0)
         {
 
             try
             {
                 ChangeStatusParams Params = JsonHelper.ToObject<ChangeStatusParams>(data);
-                if (Params.Id<=0)
+
+                List<OrderDetailsInfo> order = new List<OrderDetailsInfo>();
+                OrderInfo orderInfo = new OrderInfo();
+                orderInfo = Studio.OrderInfo.GetById(OrderId);
+                if (Params.Id > 0)
+                {
+                    order = Studio.OrderDetailsInfo.Get(X => X.Id == Params.Id && X.OrderId == Params.OrderId && X.DelFlag == 0).ToList();
+                }
+                else
+                {
+                    order = Studio.OrderDetailsInfo.Get(X => X.OrderId == Params.OrderId && X.DelFlag == 0).ToList();
+                }
+
+                if (order == null)
                 {
                     return CreateApiExpResult("未知的订单编号：");
                 }
 
-                OrderDetailsInfo order = Studio.OrderDetailsInfo.Get(X => X.Id == Params.Id && X.OrderId == Params.OrderId && X.DelFlag == 0).FirstOrDefault();
-                if (order == null)
+                StudioTra.BeginTransaction();
+                for (int i = 0; i < order.Count; i++)
                 {
-                    return CreateApiExpResult( "未知的订单编号：");
-                }
-                order.Status = Params.status;
-                Studio.OrderDetailsInfo.Update(order);
+                    if (orderInfo.Status == 3)//已接单状态更新订单明细情况
+                    {
+                        if ((order[i].Status ==null || order[i].Status==0) && status == 1) //待制作->制作完成
+                        {
+                            order[i].Status = Params.status;
+                            StudioTra.OrderDetailsInfo.Update(order[i]);
+                        }
 
+                        if (order[i].Status == 1 && status == 0) //制作完成->待制作
+                        {
+                            order[i].Status = Params.status;
+                            StudioTra.OrderDetailsInfo.Update(order[i]);
+                        }
+
+                        if (order[i].Status == 1 && status == 2) //待配送->配送完成
+                        {
+                            order[i].Status = Params.status;
+                            StudioTra.OrderDetailsInfo.Update(order[i]);
+                        }
+
+                        if (order[i].Status == 2 && status == 1) //配送完成->待配送
+                        {
+                            order[i].Status = Params.status;
+                            StudioTra.OrderDetailsInfo.Update(order[i]);
+                        }
+                    }
+                }
+
+                //更新主订单状态（如果所有订单明细配送完成）
+                if (status == 2)//配送完成请求
+                {
+                    int count = 0;
+
+                    var orderList = StudioTra.OrderDetailsInfo.Get(X => X.OrderId == Params.OrderId && X.DelFlag == 0).ToList();
+                    orderList.ForEach(X =>
+                    {
+                        if (X.Status == 1 || X.Status == 0 || X.Status==null) //是否存在状态为待配送和待制作的订单明细，如果不存在则须更新主订单状态
+                        {
+                            count++;
+                        }
+                    });
+                    if (count == 0) //如果不存在则须更新主订单状态
+                    {
+                        var OI = StudioTra.OrderInfo.Get(X => X.Id == OrderId).FirstOrDefault();
+                        OI.Status = 4; //整笔订单制作完成
+                        StudioTra.OrderInfo.Update(OI);
+                    }
+
+                }
+                StudioTra.CommitTransaction();
             }
             catch (Exception e)
             {
+                StudioTra.Rollback();
                 Log.ILog4_Error.Error("订单明细状态修改出错：", e);
                 return CreateApiExpResult("订单明细状态修改出错：" + e.Message);
             }
             finally
             {
-
             }
             return CreateApiResult("success");
         }
@@ -339,11 +398,24 @@ namespace OrderMeal.Controllers
             //int userId = 0, int sellerId = 0, string startTime = "", string slipAction = "", int count = 0,int status = -1, string orderId = ""
             int userId = Params.userId;
             int sellerId = Params.sellerId;
-            string startTime = Params.startTime;
+            DateTime startTime = Params.startTime;
+            string sortCreateTime= Params.sortCreateTime;
+            bool timeEquals= Params.timeEquals;
             string slipAction = Params.slipAction;
             int count = Params.count;
             int status = Params.status;
             string OrderNum = Params.OrderNum;
+            int DetailStatus =-1;
+
+            
+
+            if (!string.IsNullOrEmpty(Params.DetailStatus))
+            {
+                if (!int.TryParse(Params.DetailStatus, out DetailStatus))
+                {
+                    return CreateApiExpResult("订单明细状态值必须为整形数字");
+                }
+            }
             try
             {
                 //string Params = GetRequestStreamData();
@@ -372,14 +444,31 @@ namespace OrderMeal.Controllers
 
                 if (slipAction == "down")
                 {
-                    DateTime _startTime = DateTime.Parse(startTime).AddSeconds(1);//加上一秒钟，因为数据库中存在毫秒，传入时没有毫秒
-                    Expression<Func<OrderInfo, bool>> filter1 = X => X.CreateTime > _startTime;
+                    if (timeEquals)
+                    {
+                        startTime = startTime.AddMilliseconds(-1);  //查询闭区间需要减去一毫秒
+                    }
+                    else
+                    {
+                        startTime = startTime.AddMilliseconds(1);  //
+                    }
+                    DateTime _startTime = startTime;//DateTime.Parse(startTime);
+                    Expression<Func<OrderInfo, bool>> filter1 = X => X.CreateTime  >= _startTime;
                     filter = PredicateBuilderExtension.And(filter, filter1);
                 }
-                if (slipAction == "up")
+                else if (slipAction == "up")
                 {
-                    DateTime _startTime = DateTime.Parse(startTime);
-                    Expression<Func<OrderInfo, bool>> filter1 = X => X.CreateTime < _startTime;
+                    if (timeEquals)
+                    {
+                        startTime = startTime.AddMilliseconds(1);  //查询闭区间需要加上一毫秒
+                    }
+                    else
+                    {
+                        startTime = startTime.AddMilliseconds(-1);  //
+                    }
+
+                    DateTime _startTime = startTime;// DateTime.Parse(startTime);
+                    Expression<Func<OrderInfo, bool>> filter1 = X => X.CreateTime <= _startTime;
                     filter = PredicateBuilderExtension.And(filter, filter1);
                 }
                 else
@@ -395,16 +484,45 @@ namespace OrderMeal.Controllers
                     filter = PredicateBuilderExtension.And(filter, filter1);
                 }
 
-                var _orderinfoList = Studio.OrderInfo.Get(filter, X => X.OrderByDescending(Y => Y.CreateTime), "", 1, count);
+               
+
+                Expression<Func<OrderInfo, bool>> InitFilter = null;
+
+
+                Func<IQueryable<OrderInfo>, IOrderedQueryable<OrderInfo>> sort = null;
+                if (!string.IsNullOrEmpty(sortCreateTime) && sortCreateTime.ToUpper()=="ASC")
+                {
+                    sort = X => X.OrderBy(Y => Y.CreateTime);
+                }
+                else
+                {
+                    sort = X => X.OrderByDescending(Y => Y.CreateTime);
+                }
+               
+
+                var _orderinfoList= Studio.OrderInfo.Get(InitFilter, sort, "", 1, count);
+                _orderinfoList = Studio.OrderInfo.Get(filter, sort, "", 1, count);
                 orderinfoList = _orderinfoList.ToList();
 
-                List<OrderInfoEx> orderinfoExList = new List<OrderInfoEx>();
+                List<OrderInfoEx> orderinfoExList = new List<OrderInfoEx>(); 
 
                 orderinfoList.ForEach(X =>
                 {
                     OrderInfoEx oiEx = new OrderInfoEx(X);
-                    oiEx.OrderDetailsInfo = Studio.OrderDetailsInfo.Get(Y => Y.OrderId == X.Id && Y.DelFlag == 0).ToList();
-                    orderinfoExList.Add(oiEx);
+                    if (DetailStatus > -1)
+                    {
+                        var detailList= Studio.OrderDetailsInfo.Get(Y => Y.OrderId == X.Id && (Y.Status == DetailStatus || Y.Status == null) && Y.DelFlag == 0).ToList();
+                        if (detailList!=null && detailList.Count>0)
+                        {
+                            oiEx.OrderDetailsInfo = detailList;
+                            orderinfoExList.Add(oiEx);
+                        }
+                    }
+                    else
+                    {
+                        oiEx.OrderDetailsInfo = Studio.OrderDetailsInfo.Get(Y => Y.OrderId == X.Id && Y.DelFlag == 0).ToList();
+                        orderinfoExList.Add(oiEx);
+                    }
                 });
 
                 return CreateApiResult(orderinfoExList);

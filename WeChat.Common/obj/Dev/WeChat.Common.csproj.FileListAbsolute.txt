@@ -123,8 +123,8 @@ D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\ko\System.Spatial.resources.dll
 D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\ru\System.Spatial.resources.dll
 D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\zh-Hans\System.Spatial.resources.dll
 D:\GitHub\netTemplateMVC\WeChat.Common\bin\Dev\zh-Hant\System.Spatial.resources.dll
-D:\GitHub\netTemplateMVC\WeChat.Common\obj\Dev\WeChat.Common.csprojAssemblyReference.cache
 D:\GitHub\netTemplateMVC\WeChat.Common\obj\Dev\WeChat.Common.csproj.CoreCompileInputs.cache
 D:\GitHub\netTemplateMVC\WeChat.Common\obj\Dev\WeChat.Common.csproj.CopyComplete
 D:\GitHub\netTemplateMVC\WeChat.Common\obj\Dev\WeChat.Common.dll
 D:\GitHub\netTemplateMVC\WeChat.Common\obj\Dev\WeChat.Common.pdb
+D:\GitHub\netTemplateMVC\WeChat.Common\obj\Dev\WeChat.Common.csprojAssemblyReference.cache

@@ -18,6 +18,10 @@ namespace Model.EF
         public OrderMealEntities()
             : base("name=OrderMealEntities")
         {
+            // Get the ObjectContext related to this DbContext             
+            var objectContext = ((System.Data.Entity.Infrastructure.IObjectContextAdapter)this).ObjectContext;
+            // Sets the command timeout for all the commands             
+            objectContext.CommandTimeout =2 * 60;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
