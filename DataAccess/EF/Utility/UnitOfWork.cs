@@ -81,6 +81,7 @@ namespace DataAccess.EF
         private GenericRepository<RatingsSellers> _ratingsseller;
 
         private GenericRepository<Token> _token;
+        private GenericRepository<Token_seller> _Token_seller;
         #endregion
         #endregion
 
@@ -178,6 +179,17 @@ namespace DataAccess.EF
                 return _token;
             }
         }
+        public GenericRepository<Token_seller> Token_seller
+        {
+            get
+            {
+                if (_Token_seller == null)
+                    _Token_seller = new GenericRepository<Token_seller>(context);
+                return _Token_seller;
+            }
+        }
+        
+
         #endregion
         #endregion
 

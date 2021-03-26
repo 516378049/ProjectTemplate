@@ -14,6 +14,12 @@ namespace Model.EF
     
     public partial class sellers
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public sellers()
+        {
+            this.UserInfo_seller = new HashSet<UserInfo_seller>();
+        }
+    
         public int Id { get; set; }
         public string name { get; set; }
         public string description { get; set; }
@@ -31,5 +37,8 @@ namespace Model.EF
         public Nullable<int> DelFlag { get; set; }
         public Nullable<System.DateTime> CreateTime { get; set; }
         public Nullable<System.DateTime> UpdateTime { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserInfo_seller> UserInfo_seller { get; set; }
     }
 }

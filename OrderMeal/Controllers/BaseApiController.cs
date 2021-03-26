@@ -14,7 +14,7 @@ namespace OrderMeal.Controllers
 {
     public class BaseApiController : ApiController
     {
-
+        public Model.EF.OrderMealEntities entityEF = new Model.EF.OrderMealEntities();
         public UnitOfWork Studio = new UnitOfWork();
         public UnitOfWork StudioTra = new UnitOfWork(true);
         /// <summary>
@@ -43,13 +43,29 @@ namespace OrderMeal.Controllers
         /// <param name="retMsg"></param>
         /// <param name="message"></param>
         /// <returns></returns>
-        protected ApiResult CreateApiResult(object message = null, string retCode = "0", int Total = 0, string retMsg = "")
+        //protected ApiResult CreateApiResult(object message = null, string retCode = "0", int Total = 0, string retMsg = "")
+        //{
+        //    if(int.Parse(retCode)<0)
+        //    {
+        //        Log.ILog4_Error.Error("接口出现错误" + retMsg);
+        //    }
+            
+        //    return new ApiResult() { RetCode = retCode, Total = Total, RetMsg = retMsg, Message = message };
+        //}
+        /// <summary>
+        /// 创建ApiResult对象，所有WebApi接口均使用该方法包装返回值
+        /// </summary>
+        /// <param name="retCode"></param>
+        /// <param name="retMsg"></param>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        protected ApiResult CreateApiResult(object message = null, int Total=0, string retCode = "0", string retMsg = "")
         {
-            if(int.Parse(retCode)<0)
+            if (int.Parse(retCode) < 0)
             {
                 Log.ILog4_Error.Error("接口出现错误" + retMsg);
             }
-            
+
             return new ApiResult() { RetCode = retCode, Total = Total, RetMsg = retMsg, Message = message };
         }
         /// <summary>

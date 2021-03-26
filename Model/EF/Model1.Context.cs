@@ -18,10 +18,6 @@ namespace Model.EF
         public OrderMealEntities()
             : base("name=OrderMealEntities")
         {
-            // Get the ObjectContext related to this DbContext             
-            var objectContext = ((System.Data.Entity.Infrastructure.IObjectContextAdapter)this).ObjectContext;
-            // Sets the command timeout for all the commands             
-            objectContext.CommandTimeout =2 * 60;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -31,13 +27,15 @@ namespace Model.EF
     
         public virtual DbSet<foods> foods { get; set; }
         public virtual DbSet<goods> goods { get; set; }
+        public virtual DbSet<OrderDetailsInfo> OrderDetailsInfo { get; set; }
+        public virtual DbSet<OrderInfo> OrderInfo { get; set; }
         public virtual DbSet<ratings> ratings { get; set; }
         public virtual DbSet<RatingsSellers> RatingsSellers { get; set; }
         public virtual DbSet<sellers> sellers { get; set; }
         public virtual DbSet<supports> supports { get; set; }
         public virtual DbSet<Token> Token { get; set; }
+        public virtual DbSet<Token_seller> Token_seller { get; set; }
         public virtual DbSet<UserInfo> UserInfo { get; set; }
-        public virtual DbSet<OrderDetailsInfo> OrderDetailsInfo { get; set; }
-        public virtual DbSet<OrderInfo> OrderInfo { get; set; }
+        public virtual DbSet<UserInfo_seller> UserInfo_seller { get; set; }
     }
 }

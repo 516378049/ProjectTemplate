@@ -1,11 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="OrderMealModelStoreContainer" CdmEntityContainer="OrderMealEntities">
+  <EntityContainerMapping StorageEntityContainer="OrderMealModelStoreContainer" CdmEntityContainer="OrderMealEntities1">
     <EntitySetMapping Name="foods">
       <EntityTypeMapping TypeName="OrderMealModel.foods">
         <MappingFragment StoreEntitySet="foods">
-          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
-          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="goodId" ColumnName="goodId" />
           <ScalarProperty Name="name" ColumnName="name" />
@@ -20,14 +18,14 @@
           <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
           <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
           <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="goods">
       <EntityTypeMapping TypeName="OrderMealModel.goods">
         <MappingFragment StoreEntitySet="goods">
-          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
-          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="sellerId" ColumnName="sellerId" />
           <ScalarProperty Name="name" ColumnName="name" />
@@ -35,14 +33,64 @@
           <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
           <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
           <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderDetailsInfo">
+      <EntityTypeMapping TypeName="OrderMealModel.OrderDetailsInfo">
+        <MappingFragment StoreEntitySet="OrderDetailsInfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="GoodId" ColumnName="GoodId" />
+          <ScalarProperty Name="GoodName" ColumnName="GoodName" />
+          <ScalarProperty Name="FoodId" ColumnName="FoodId" />
+          <ScalarProperty Name="FoodName" ColumnName="FoodName" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="AmountTotal" ColumnName="AmountTotal" />
+          <ScalarProperty Name="AmountDiscount" ColumnName="AmountDiscount" />
+          <ScalarProperty Name="AmountReal" ColumnName="AmountReal" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderInfo">
+      <EntityTypeMapping TypeName="OrderMealModel.OrderInfo">
+        <MappingFragment StoreEntitySet="OrderInfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
+          <ScalarProperty Name="transactionId" ColumnName="transactionId" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="SellerId" ColumnName="SellerId" />
+          <ScalarProperty Name="SellerName" ColumnName="SellerName" />
+          <ScalarProperty Name="PayWay" ColumnName="PayWay" />
+          <ScalarProperty Name="BookTime" ColumnName="BookTime" />
+          <ScalarProperty Name="CusCount" ColumnName="CusCount" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="DeskNumber" ColumnName="DeskNumber" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="avatar" ColumnName="avatar" />
+          <ScalarProperty Name="AmountDiscount" ColumnName="AmountDiscount" />
+          <ScalarProperty Name="AmountReal" ColumnName="AmountReal" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ratings">
       <EntityTypeMapping TypeName="OrderMealModel.ratings">
         <MappingFragment StoreEntitySet="ratings">
-          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
-          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="foodId" ColumnName="foodId" />
           <ScalarProperty Name="username" ColumnName="username" />
@@ -53,15 +101,14 @@
           <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
           <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
           <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="RatingsSellers">
       <EntityTypeMapping TypeName="OrderMealModel.RatingsSellers">
         <MappingFragment StoreEntitySet="RatingsSellers">
-          <ScalarProperty Name="rateComfortLevel" ColumnName="rateComfortLevel" />
-          <ScalarProperty Name="rateService" ColumnName="rateService" />
-          <ScalarProperty Name="rateTaste" ColumnName="rateTaste" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="sellerId" ColumnName="sellerId" />
           <ScalarProperty Name="username" ColumnName="username" />
@@ -74,6 +121,9 @@
           <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
           <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
           <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="rateTaste" ColumnName="rateTaste" />
+          <ScalarProperty Name="rateService" ColumnName="rateService" />
+          <ScalarProperty Name="rateComfortLevel" ColumnName="rateComfortLevel" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -103,8 +153,6 @@
     <EntitySetMapping Name="supports">
       <EntityTypeMapping TypeName="OrderMealModel.supports">
         <MappingFragment StoreEntitySet="supports">
-          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
-          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="sellerId" ColumnName="sellerId" />
           <ScalarProperty Name="type" ColumnName="type" />
@@ -112,14 +160,14 @@
           <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
           <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
           <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Token">
       <EntityTypeMapping TypeName="OrderMealModel.Token">
         <MappingFragment StoreEntitySet="Token">
-          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
-          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="userId" ColumnName="userId" />
           <ScalarProperty Name="access_token" ColumnName="access_token" />
@@ -127,14 +175,29 @@
           <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
           <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
           <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Token_seller">
+      <EntityTypeMapping TypeName="OrderMealModel.Token_seller">
+        <MappingFragment StoreEntitySet="Token_seller">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="access_token" ColumnName="access_token" />
+          <ScalarProperty Name="expires_in" ColumnName="expires_in" />
+          <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="UserInfo">
       <EntityTypeMapping TypeName="OrderMealModel.UserInfo">
         <MappingFragment StoreEntitySet="UserInfo">
-          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
-          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="openid" ColumnName="openid" />
           <ScalarProperty Name="nickname" ColumnName="nickname" />
@@ -149,56 +212,28 @@
           <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
           <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
           <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="OrderDetailsInfo">
-      <EntityTypeMapping TypeName="OrderMealModel.OrderDetailsInfo">
-        <MappingFragment StoreEntitySet="OrderDetailsInfo">
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="image" ColumnName="image" />
-          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
-          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
-          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
-          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-          <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
-          <ScalarProperty Name="Remark" ColumnName="Remark" />
-          <ScalarProperty Name="AmountReal" ColumnName="AmountReal" />
-          <ScalarProperty Name="AmountDiscount" ColumnName="AmountDiscount" />
-          <ScalarProperty Name="AmountTotal" ColumnName="AmountTotal" />
-          <ScalarProperty Name="Count" ColumnName="Count" />
-          <ScalarProperty Name="FoodName" ColumnName="FoodName" />
-          <ScalarProperty Name="FoodId" ColumnName="FoodId" />
-          <ScalarProperty Name="GoodName" ColumnName="GoodName" />
-          <ScalarProperty Name="GoodId" ColumnName="GoodId" />
-          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+    <EntitySetMapping Name="UserInfo_seller">
+      <EntityTypeMapping TypeName="OrderMealModel.UserInfo_seller">
+        <MappingFragment StoreEntitySet="UserInfo_seller">
           <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="OrderInfo">
-      <EntityTypeMapping TypeName="OrderMealModel.OrderInfo">
-        <MappingFragment StoreEntitySet="OrderInfo">
-          <ScalarProperty Name="AmountReal" ColumnName="AmountReal" />
-          <ScalarProperty Name="AmountDiscount" ColumnName="AmountDiscount" />
-          <ScalarProperty Name="avatar" ColumnName="avatar" />
-          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
-          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="DeskNumber" ColumnName="DeskNumber" />
-          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
-          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="icon" ColumnName="icon" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="nick_name" ColumnName="nick_name" />
+          <ScalarProperty Name="note" ColumnName="note" />
+          <ScalarProperty Name="login_time" ColumnName="login_time" />
           <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
-          <ScalarProperty Name="Remark" ColumnName="Remark" />
-          <ScalarProperty Name="CusCount" ColumnName="CusCount" />
-          <ScalarProperty Name="BookTime" ColumnName="BookTime" />
-          <ScalarProperty Name="PayWay" ColumnName="PayWay" />
-          <ScalarProperty Name="SellerName" ColumnName="SellerName" />
-          <ScalarProperty Name="SellerId" ColumnName="SellerId" />
-          <ScalarProperty Name="Amount" ColumnName="Amount" />
-          <ScalarProperty Name="transactionId" ColumnName="transactionId" />
-          <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="sellers_Id" ColumnName="sellers_Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

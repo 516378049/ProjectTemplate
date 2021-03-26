@@ -18,7 +18,7 @@ using static WeChat.Common.PredicateBuilderExtension;
 
 namespace OrderMeal.Controllers
 {
-    //[EnableCors(origins: "https://www.changchunamy.com,http://localhost:8080", headers: "*", methods: "*")]
+    [EnableCors(origins: "https://www.changchunamy.com,http://localhost:8080", headers: "*", methods: "*")]
     public class SellerController : BaseApiController
     {
         #region default fundation
@@ -592,8 +592,6 @@ namespace OrderMeal.Controllers
 
                 return ErrorHandle(ex);
             }
-
-
         }
         #endregion
     }

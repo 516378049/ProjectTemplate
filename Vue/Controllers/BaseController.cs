@@ -12,6 +12,7 @@ namespace Vue
     public class BaseController : Controller
     {
         public UnitOfWork Studio = new UnitOfWork(true);
+        public Model.EF.OrderMealEntities entity = new Model.EF.OrderMealEntities();
         public T GetObj<T>() {
             return SingleObj<T>.getObj;
         }

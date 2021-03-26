@@ -71,7 +71,7 @@
       <HintPath>..\..\Libs\ThinkDev\ThinkDev.Data.dll</HintPath>
     </Reference>
     <Reference Include="ThinkDev.FrameWork">
-      <HintPath>..\Template\bin\ThinkDev.FrameWork.dll</HintPath>
+      <HintPath>..\WebApi.Core\bin\Debug\ThinkDev.FrameWork.dll</HintPath>
     </Reference>
     <Reference Include="ThinkDev.Logging">
       <HintPath>..\..\Libs\ThinkDev\ThinkDev.Logging.dll</HintPath>

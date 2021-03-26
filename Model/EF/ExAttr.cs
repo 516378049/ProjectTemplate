@@ -42,7 +42,6 @@ namespace Model.EF.EF_ExAttr
         public List<ratings> ratings { get; set; }
     }
     
-   
     public class OrderInfoEx : OrderInfo
     {
         public OrderInfoEx()
@@ -55,6 +54,20 @@ namespace Model.EF.EF_ExAttr
         public List<OrderDetailsInfo> OrderDetailsInfo { get; set; }
     }
 
+    public class UserInfo_sellerEx : UserInfo_seller
+    {
+        public UserInfo_sellerEx()
+        {
+        }
+        public UserInfo_sellerEx(UserInfo_seller sellers)
+        {
+            ExAttr.SynchronizationProperties(sellers, this);
+        }
+        public string access_token { get; set; }
+        public string seller_avatar { get; set; }
+        public string seller_name { get; set; }
+    }
+
     public class ExAttr
     {
         public static void SynchronizationProperties(object src, object des)
@@ -63,6 +76,10 @@ namespace Model.EF.EF_ExAttr
             object val;
             foreach (var item in srcType.GetProperties())
             {
+                //导航属性不可复制
+                if (item .Name== "UserInfo_seller" || item.Name == "sellers") {
+                    continue;
+                }
                 val = item.GetValue(src);
                 item.SetValue(des, val);
 

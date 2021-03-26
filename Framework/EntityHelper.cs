@@ -87,9 +87,75 @@ namespace Framework
             return propertyInfo;
         }
 
-        public static T EntityCopy<T,T1> (T1 source)
+        /// <summary>
+        /// EntityCopy
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="T1"></typeparam>
+        /// <param name="source"></param>
+        /// <returns></returns>
+        public static T EntityCopy<T, T1>(T1 source)
         {
             return JsonHelper.ToObject<T>(JsonHelper.ToJson(source));
+        }
+
+        /// <summary>
+        /// 键值对集合转化为类
+        /// </summary>
+        /// <typeparam name="TEntity"></typeparam>
+        /// <typeparam name="TKeyVal"></typeparam>
+        /// <param name="TKV"></param>
+        /// <returns></returns>
+        public static TEntity EntityCopyFromDic<TEntity, TKeyVal>(TKeyVal TKV, TEntity T = null) where TKeyVal : IEnumerable<KeyValuePair<string, object>> where TEntity : class, new()
+        {
+            if(T==null)
+            {
+                T = new TEntity();
+            }
+            foreach (KeyValuePair<string, object> KValue in TKV)
+            {
+                Type targetType = typeof(TEntity);
+
+                PropertyInfo[] props = targetType.GetProperties();
+                PropertyInfo propertyInfo = SetPropertyInfo(KValue.Key, props, targetType);
+
+                if (propertyInfo != null && KValue.Value != DBNull.Value)
+                {
+                    TableColumnNameAttribute tba = (TableColumnNameAttribute)propertyInfo.GetCustomAttribute(typeof(TableColumnNameAttribute));
+
+                    if (tba != null && tba.ColType == ColumnType.Date)
+                    {
+                        propertyInfo.SetValue(T, Convert.ToDateTime(KValue.Value).ToString("MM/dd/yyyy"), null);
+                    }
+                    else
+                    {
+                        if (propertyInfo.PropertyType.FullName.Contains("Int32"))
+                        {
+                            int _value = int.Parse(string.IsNullOrWhiteSpace(KValue.Value.ToString())?"0": KValue.Value.ToString());
+                            propertyInfo.SetValue(T, _value, null);
+                        }
+                        else if (propertyInfo.PropertyType.FullName.Contains("DateTime"))
+                        {
+                            DateTime dt;
+                            if (!string.IsNullOrWhiteSpace(KValue.Value.ToString()))
+                            {
+                                dt = Convert.ToDateTime(KValue.Value);
+                                propertyInfo.SetValue(T, dt, null);
+                            }
+                        }
+                        else
+                        {
+                            propertyInfo.SetValue(T, KValue.Value, null);
+                        }
+                    }
+                    //if (KValue.Key == item.Name)
+                    //{
+                    //    item.SetValue(T, KValue.Value);
+                    //    break;
+                    //}
+                }
+            }
+            return T;
         }
     }
 

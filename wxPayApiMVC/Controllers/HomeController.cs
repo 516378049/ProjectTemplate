@@ -433,7 +433,9 @@ namespace wxPayApiMVC.Controllers
             {
                 data.SetValue("openid", payParams.OpenId);
             }
-
+            if (payParams.TotalFee<=0) {
+                return CreateApiResult("", "-1", "请求支付金额必须为>0的整数");
+            }
             WxPayData result = WxPayApi.UnifiedOrder(data);
             if (!result.IsSet("appid") || !result.IsSet("prepay_id") || result.GetValue("prepay_id").ToString() == "")
             {

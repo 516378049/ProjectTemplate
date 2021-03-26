@@ -16,6 +16,7 @@ using WeChat.DataAccess.WeiXin.Public;
 using WeChat.Common;
 using Model.EF.EF_ExAttr;
 using WxPayAPI.wxRsult;
+using JR.NewTenancy.DataAccess.Common;
 
 namespace Vue
 {
@@ -47,16 +48,25 @@ namespace Vue
         [HttpGet]
         public JsonResult wxAuthorize(string code)
         {
-            Log.ILog4_Debug.Debug("用户访问地址：" +Request.RawUrl+ "\nIP："+ Request.UserHostAddress);
+            Log.ILog4_Debug.Debug("用户访问地址：" + Request.RawUrl + "\nIP：" + Request.UserHostAddress);
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
+
+            syscSeller();//更新模型后，数据库数据会清空，需要重新初始化数据库的中的数据
+
             try
             {
-                syscSeller();
                 if (!string.IsNullOrEmpty("code"))
                 {
                     wxRsult.UserInfo user = new wxRsult.UserInfo();//please ------------annotation (in production )
-                    if (Request.UserHostAddress=="127.0.0.1")
+                    if (Request.UserHostAddress == "127.0.0.1")
                     {
+                        user.country = "中国";
+                        user.province = "湖南";
+                        user.city = "永州";
+                        user.headimgurl = "http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJAGathZp2spKBKKadN9pTM87TzIkR7cKeX3EC9W3znYoqkxoZsrAzwx0Zd4pSx3cqE8VkAKq4Tkw/132";
+                        user.nickname = "长春";
+                        user.sex = 1;
+                        user.accesstoken = "41_JkwouxmtigL94iEBo4gQ2QGH29I1ARoKgvWv1T_SwfljcrJGLIe5KxwaIWRDk3_edWeKC4CmxHL5uw97lQtttMQJp8VJ_Zqm6gTYYdR07uE";
                         user.openid = "oDLo50s4l5A8E0F3OYVqSub13Wdw"; // ------------------------annotation (in production )
                     }
                     else
@@ -66,10 +76,10 @@ namespace Vue
                     Log.ILog4_Debug.Debug("授权用户信息：" + JsonHelper.ToJson(user));
                     //保存用户信息
                     EF.UserInfo EFinfo = Studio.UserInfo.Get(X => X.openid == user.openid).FirstOrDefault();
-                    
+
                     if (EFinfo == null)
                     {
-                        Log.ILog4_Debug.Debug("准备新增授权用户信息......"); 
+                        Log.ILog4_Debug.Debug("准备新增授权用户信息......");
                         EFinfo = new EF.UserInfo();
                         EFinfo.city = user.city;
                         EFinfo.country = user.country;
@@ -90,7 +100,8 @@ namespace Vue
                     else
                     {
                         Log.ILog4_Debug.Debug("准备更新授权用户信息......");
-                        if (Request.UserHostAddress != "127.0.0.1") {
+                        if (Request.UserHostAddress != "127.0.0.1")
+                        {
                             EFinfo.access_token = user.accesstoken;//please -----------------------------annotation (in development )
                             Studio.UserInfo.Update(EFinfo);//please ------------------------------------------annotation (in development )
                         }
@@ -112,7 +123,7 @@ namespace Vue
             }
             catch (Exception e)
             {
-                Log.ILog4_Error.Error(e.Message,e);
+                Log.ILog4_Error.Error(e.Message, e);
                 return CreateApiResult("", "-1", e.Message);
             }
         }
@@ -125,44 +136,45 @@ namespace Vue
         [HttpGet]
         public JsonResult wxMiniAuthorize(string code, string userInfo)
         {
-            wxRsult.UserInfo user = JsonHelper.ToObject<wxRsult.UserInfo>(userInfo);
-            AuthCode2Session auth = WxUtility.GetObj.authCode2Session(code);
-
-            EF.UserInfo EFinfo = Studio.UserInfo.Get(X => X.openid == auth.openid).FirstOrDefault();
-            EFinfo= EFinfo == null ? new EF.UserInfo() : EFinfo;
-
-            EFinfo.city = user.city;
-            EFinfo.country = user.country;
-            EFinfo.nickname = user.nickname;
-            EFinfo.province = user.province;
-
-            EFinfo.headimgurl = user.avatarUrl;
-            EFinfo.sex = user.gender;
-            EFinfo.openid = auth.openid;
-            EFinfo.unionid = auth.unionid;
-            EFinfo.access_token = auth.session_key;
-            if (EFinfo.Id<=0)
-            {
-                Studio.UserInfo.Insert(EFinfo);
-            }
-            else
-            {
-                Studio.UserInfo.Update(EFinfo);
-            }
-
-            Log.ILog4_Debug.Debug("准备插入授权记录......");
-            EF.Token token = new EF.Token();
-            token.access_token = EFinfo.access_token;
-            token.expires_in = "7200";//seconds
-            token.userId = EFinfo.Id;
-            Studio.Token.Insert(token);
-            Log.ILog4_Debug.Debug("插入授权记录：" + JsonHelper.ToJson(token));
-
             //Response.Headers.Add("Access-Control-Allow-Origin", "*");
             try
             {
-                if (!string.IsNullOrEmpty("code"))
+                if (!string.IsNullOrEmpty(code))
                 {
+
+                    wxRsult.UserInfo user = JsonHelper.ToObject<wxRsult.UserInfo>(userInfo);
+                    AuthCode2Session auth = WxUtility.GetObj.authCode2Session(code);
+
+                    EF.UserInfo EFinfo = Studio.UserInfo.Get(X => X.openid == auth.openid).FirstOrDefault();
+                    EFinfo = EFinfo == null ? new EF.UserInfo() : EFinfo;
+
+                    EFinfo.city = user.city;
+                    EFinfo.country = user.country;
+                    EFinfo.nickname = user.nickname;
+                    EFinfo.province = user.province;
+
+                    EFinfo.headimgurl = user.avatarUrl;
+                    EFinfo.sex = user.gender;
+                    EFinfo.openid = auth.openid;
+                    EFinfo.unionid = auth.unionid;
+                    EFinfo.access_token = auth.session_key;
+                    if (EFinfo.Id <= 0)
+                    {
+                        Studio.UserInfo.Insert(EFinfo);
+                    }
+                    else
+                    {
+                        Studio.UserInfo.Update(EFinfo);
+                    }
+
+                    Log.ILog4_Debug.Debug("准备插入授权记录......");
+                    EF.Token token = new EF.Token();
+                    token.access_token = EFinfo.access_token;
+                    token.expires_in = "7200";//seconds
+                    token.userId = EFinfo.Id;
+                    Studio.Token.Insert(token);
+                    Log.ILog4_Debug.Debug("插入授权记录：" + JsonHelper.ToJson(token));
+
                     return CreateApiResult(EFinfo);
                 }
                 else
@@ -175,8 +187,60 @@ namespace Vue
                 Log.ILog4_Error.Error(e.Message, e);
                 return CreateApiResult("", "-1", e.Message);
             }
+
+            
+
+            
         }
 
+
+        /// <summary>
+        /// 商家管理员登录
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public JsonResult webAuthorize(string username, string password)
+        {
+            try
+            {
+                //Response.Headers.Add("Access-Control-Allow-Origin", "*");
+                if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+                {
+                    return CreateApiResult("", "-1", "用户名和密码不能为空");
+                }
+
+               
+
+                EF.UserInfo_seller EFinfo = entity.UserInfo_seller.Where(X => X.username == username && X.password == password && X.DelFlag == 0).FirstOrDefault();
+
+                Utility util = new Utility();
+                Dictionary<string, object> dic = new Dictionary<string, object>();
+                EFinfo= util.getList<UserInfo_sellerEx>("getUserInfo", dic).ObjectValue.FirstOrDefault();
+
+                if (EFinfo == null)
+                {
+                    return CreateApiResult("", "-1", "用户名或密码错误");
+                }
+                
+                Log.ILog4_Debug.Debug("准备插入授权记录......");
+                EF.Token_seller token = new EF.Token_seller();
+                token.access_token = Guid.NewGuid().ToString();
+                token.expires_in = "7200";//seconds
+                token.userId = EFinfo.Id;
+                Studio.Token_seller.Insert(token);
+                Log.ILog4_Debug.Debug("插入授权记录：" + JsonHelper.ToJson(token));
+
+                UserInfo_sellerEx userinfo = new UserInfo_sellerEx(EFinfo);
+                userinfo.access_token = token.access_token;
+                return CreateApiResult(userinfo);
+            }
+            catch (Exception e)
+            {
+                Log.ILog4_Error.Error(e.Message, e);
+                return CreateApiResult("", "-1", e.Message);
+            }
+        }
         /// <summary>
         /// sync database from data.json
         /// </summary>
@@ -186,75 +250,75 @@ namespace Vue
             {
                 return;
             }
-        #region model entity addtional
-        //public List<supports> supports { get; set; }
-        //public List<foods> foods { get; set; }
-        //public List<ratings> ratings { get; set; }
-        #endregion
-        #region empty database
-        //delete foods;
-        //delete goods;
-        //delete ratings;
-        //delete RatingsSellers;
-        //delete sellers;
-        //delete supports;
-        //delete Token;
-        //delete UserInfo;
-        #endregion
-        #region abandon, will use new fundation to instead it 
+            #region model entity addtional
+            //public List<supports> supports { get; set; }
+            //public List<foods> foods { get; set; }
+            //public List<ratings> ratings { get; set; }
+            #endregion
+            #region empty database
+            //delete foods;
+            //delete goods;
+            //delete ratings;
+            //delete RatingsSellers;
+            //delete sellers;
+            //delete supports;
+            //delete Token;
+            //delete UserInfo;
+            #endregion
+            #region abandon, will use new fundation to instead it 
 
-        //string json = JsonHelper.ReadJsonFile(Server.MapPath("/WebVue/data.json"));
-        //string seller = JsonHelper.ConvertJsonResult(json, "seller");
-        //seller seller_ = JsonHelper.ToObject<seller>(seller);
+            //string json = JsonHelper.ReadJsonFile(Server.MapPath("/WebVue/data.json"));
+            //string seller = JsonHelper.ConvertJsonResult(json, "seller");
+            //seller seller_ = JsonHelper.ToObject<seller>(seller);
 
-        ////同步data.json数据到数据库
-        //EF.sellers ef_seller = EntityHelper.EntityCopy<EF.sellers, seller>(seller_);
-        //int serllerId = Studio.Sellers.Insert(ef_seller).Id;
-        //foreach (supports sps in seller_.supports)
-        //{
-        //    EF.supports ef_supports = EntityHelper.EntityCopy<EF.supports, supports>(sps);
-        //    ef_supports.sellerId = serllerId;
-        //    Studio.Supports.Insert(ef_supports);
-        //}
+            ////同步data.json数据到数据库
+            //EF.sellers ef_seller = EntityHelper.EntityCopy<EF.sellers, seller>(seller_);
+            //int serllerId = Studio.Sellers.Insert(ef_seller).Id;
+            //foreach (supports sps in seller_.supports)
+            //{
+            //    EF.supports ef_supports = EntityHelper.EntityCopy<EF.supports, supports>(sps);
+            //    ef_supports.sellerId = serllerId;
+            //    Studio.Supports.Insert(ef_supports);
+            //}
 
 
-        //string _goods = JsonHelper.ConvertJsonResult(json, "goods");
-        //List<goods> goods = JsonHelper.ToObject<List<goods>>(_goods);
-        //////同步data.json数据到数据库
-        //foreach (goods gds in goods)
-        //{
-        //    EF.goods ef_goods = EntityHelper.EntityCopy<EF.goods, goods>(gds);
-        //    ef_goods.sellerId = serllerId;
-        //    int goodId = Studio.Goods.Insert(ef_goods).Id;
+            //string _goods = JsonHelper.ConvertJsonResult(json, "goods");
+            //List<goods> goods = JsonHelper.ToObject<List<goods>>(_goods);
+            //////同步data.json数据到数据库
+            //foreach (goods gds in goods)
+            //{
+            //    EF.goods ef_goods = EntityHelper.EntityCopy<EF.goods, goods>(gds);
+            //    ef_goods.sellerId = serllerId;
+            //    int goodId = Studio.Goods.Insert(ef_goods).Id;
 
-        //    foreach (foods fds in gds.foods)
-        //    {
-        //        EF.foods ef_foods = EntityHelper.EntityCopy<EF.foods, foods>(fds);
-        //        ef_foods.goodId = goodId;
-        //        int foodId = Studio.Foods.Insert(ef_foods).Id;
+            //    foreach (foods fds in gds.foods)
+            //    {
+            //        EF.foods ef_foods = EntityHelper.EntityCopy<EF.foods, foods>(fds);
+            //        ef_foods.goodId = goodId;
+            //        int foodId = Studio.Foods.Insert(ef_foods).Id;
 
-        //        foreach (ratings rat in fds.ratings)
-        //        {
-        //            EF.ratings ef_ratings = EntityHelper.EntityCopy<EF.ratings, ratings>(rat);
-        //            ef_ratings.foodId = foodId;
-        //            Studio.Ratings.Insert(ef_ratings);
-        //        }
-        //    }
-        //}
+            //        foreach (ratings rat in fds.ratings)
+            //        {
+            //            EF.ratings ef_ratings = EntityHelper.EntityCopy<EF.ratings, ratings>(rat);
+            //            ef_ratings.foodId = foodId;
+            //            Studio.Ratings.Insert(ef_ratings);
+            //        }
+            //    }
+            //}
 
-        ////sysnc ratingsSeller
-        //string ratings = JsonHelper.ConvertJsonResult(json, "ratings");
-        //List<EF.RatingsSeller> ratings_ = JsonHelper.ToObject<List<EF.RatingsSeller>>(ratings);
-        //Studio.RatingsSeller.Insert(ratings_);
+            ////sysnc ratingsSeller
+            //string ratings = JsonHelper.ConvertJsonResult(json, "ratings");
+            //List<EF.RatingsSeller> ratings_ = JsonHelper.ToObject<List<EF.RatingsSeller>>(ratings);
+            //Studio.RatingsSeller.Insert(ratings_);
 
-        #endregion
+            #endregion
 
-        #region sync database from data.json
+            #region sync database from data.json
 
-        Studio.BeginTransaction();
+            Studio.BeginTransaction();
             try
             {
-                
+
                 string json = JsonHelper.ReadJsonFile(Server.MapPath("/WebVue/data.json"));
                 string seller = JsonHelper.ConvertJsonResult(json, "seller");
                 sellersEx ef_sellerEx = JsonHelper.ToObject<sellersEx>(seller);
@@ -276,7 +340,7 @@ namespace Vue
                     foreach (foodsEx ef_foodEx in ef_goodEx.foods)
                     {
                         ef_foodEx.goodId = goodId;
-                        EF.foods foods=JsonHelper.CopyEntity<EF.foods>(ef_foodEx);
+                        EF.foods foods = JsonHelper.CopyEntity<EF.foods>(ef_foodEx);
                         int foodId = Studio.Foods.Insert(foods).Id;
 
                         foreach (EF.ratings rat in ef_foodEx.ratings)

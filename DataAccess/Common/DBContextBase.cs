@@ -31,7 +31,7 @@ namespace JR.NewTenancy.DataAccess
 {
     public class DBContextBase : DBContext
     {
-       Logger logger = LoggerFactory.GetLogger("StorageLogger");
+       //Logger logger = LoggerFactory.GetLogger("StorageLogger");
 
         static DBContextBase()
         {

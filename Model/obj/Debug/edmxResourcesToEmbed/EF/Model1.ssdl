@@ -45,18 +45,18 @@
     <Property Name="GoodName" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="FoodId" Type="int" Nullable="false" />
     <Property Name="FoodName" Type="nvarchar" MaxLength="100" Nullable="false" />
-    <Property Name="image" Type="nvarchar" MaxLength="2000" />
     <Property Name="Count" Type="int" Nullable="false" />
     <Property Name="AmountTotal" Type="decimal" Precision="18" Scale="6" Nullable="false" />
     <Property Name="AmountDiscount" Type="decimal" Precision="18" Scale="6" Nullable="false" />
     <Property Name="AmountReal" Type="decimal" Precision="18" Scale="6" Nullable="false" />
-    <Property Name="Status" Type="int" />
     <Property Name="Remark" Type="nvarchar" MaxLength="200" Nullable="false" />
     <Property Name="DelFlag" Type="int" />
     <Property Name="CreateTime" Type="datetime" />
     <Property Name="UpdateTime" Type="datetime" />
     <Property Name="CreateUserId" Type="int" />
     <Property Name="UpdateUserId" Type="int" />
+    <Property Name="image" Type="nvarchar" MaxLength="2000" />
+    <Property Name="Status" Type="int" />
   </EntityType>
   <EntityType Name="OrderInfo">
     <Key>
@@ -66,22 +66,22 @@
     <Property Name="OrderNum" Type="varchar" MaxLength="200" Nullable="false" />
     <Property Name="transactionId" Type="varchar" MaxLength="200" />
     <Property Name="Amount" Type="decimal" Precision="18" Scale="6" Nullable="false" />
-    <Property Name="AmountDiscount" Type="decimal" Precision="18" Scale="6" />
-    <Property Name="AmountReal" Type="decimal" Precision="18" Scale="6" />
     <Property Name="SellerId" Type="int" Nullable="false" />
     <Property Name="SellerName" Type="nvarchar" MaxLength="100" Nullable="false" />
-    <Property Name="avatar" Type="nvarchar" MaxLength="2000" />
-    <Property Name="DeskNumber" Type="int" />
     <Property Name="PayWay" Type="int" Nullable="false" />
     <Property Name="BookTime" Type="datetime" Nullable="false" />
     <Property Name="CusCount" Type="int" Nullable="false" />
-    <Property Name="Status" Type="int" Nullable="false" />
     <Property Name="Remark" Type="nvarchar" MaxLength="200" Nullable="false" />
     <Property Name="DelFlag" Type="int" />
     <Property Name="CreateTime" Type="datetime" />
     <Property Name="UpdateTime" Type="datetime" />
+    <Property Name="DeskNumber" Type="int" />
+    <Property Name="Status" Type="int" Nullable="false" />
     <Property Name="CreateUserId" Type="int" />
     <Property Name="UpdateUserId" Type="int" />
+    <Property Name="avatar" Type="nvarchar" MaxLength="2000" />
+    <Property Name="AmountDiscount" Type="decimal" Precision="18" Scale="6" />
+    <Property Name="AmountReal" Type="decimal" Precision="18" Scale="6" />
   </EntityType>
   <EntityType Name="ratings">
     <Key>
@@ -110,17 +110,15 @@
     <Property Name="rateTime" Type="nvarchar" MaxLength="100" />
     <Property Name="deliveryTime" Type="nvarchar" MaxLength="100" />
     <Property Name="score" Type="decimal" Precision="18" Scale="2" />
-    <Property Name="rateTaste" Type="decimal" Precision="18" Scale="2" />
-    <Property Name="rateService" Type="decimal" Precision="18" Scale="2" />
-    <Property Name="rateComfortLevel" Type="decimal" Precision="18" Scale="2" />
     <Property Name="rateType" Type="int" />
     <Property Name="text" Type="nvarchar" MaxLength="1000" />
     <Property Name="avatar" Type="nvarchar" MaxLength="1000" />
     <Property Name="DelFlag" Type="int" />
     <Property Name="CreateTime" Type="datetime" />
     <Property Name="UpdateTime" Type="datetime" />
-    <Property Name="CreateName" Type="int" />
-    <Property Name="UpdateName" Type="int" />
+    <Property Name="rateTaste" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="rateService" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="rateComfortLevel" Type="decimal" Precision="18" Scale="2" />
   </EntityType>
   <EntityType Name="sellers">
     <Key>
@@ -143,8 +141,6 @@
     <Property Name="DelFlag" Type="int" />
     <Property Name="CreateTime" Type="datetime" />
     <Property Name="UpdateTime" Type="datetime" />
-    <Property Name="CreateName" Type="nvarchar" MaxLength="50" />
-    <Property Name="UpdateName" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="supports">
     <Key>
@@ -161,6 +157,20 @@
     <Property Name="UpdateUserId" Type="int" />
   </EntityType>
   <EntityType Name="Token">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userId" Type="int" />
+    <Property Name="access_token" Type="nvarchar" MaxLength="200" />
+    <Property Name="expires_in" Type="nvarchar" MaxLength="50" />
+    <Property Name="DelFlag" Type="int" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+    <Property Name="CreateUserId" Type="int" />
+    <Property Name="UpdateUserId" Type="int" />
+  </EntityType>
+  <EntityType Name="Token_seller">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
@@ -195,6 +205,39 @@
     <Property Name="CreateUserId" Type="int" />
     <Property Name="UpdateUserId" Type="int" />
   </EntityType>
+  <EntityType Name="UserInfo_seller">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="64" />
+    <Property Name="password" Type="varchar" MaxLength="200" />
+    <Property Name="icon" Type="varchar" MaxLength="500" />
+    <Property Name="email" Type="varchar" MaxLength="100" />
+    <Property Name="nick_name" Type="varchar" MaxLength="200" />
+    <Property Name="note" Type="varchar" MaxLength="500" />
+    <Property Name="login_time" Type="datetime" />
+    <Property Name="DelFlag" Type="int" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+    <Property Name="CreateUserId" Type="int" />
+    <Property Name="UpdateUserId" Type="int" />
+    <Property Name="sellers_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_dbo_UserInfo_seller_dbo_sellers_Id">
+    <End Role="sellers" Type="Self.sellers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UserInfo_seller" Type="Self.UserInfo_seller" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sellers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserInfo_seller">
+        <PropertyRef Name="sellers_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="OrderMealModelStoreContainer">
     <EntitySet Name="foods" EntityType="Self.foods" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="goods" EntityType="Self.goods" Schema="dbo" store:Type="Tables" />
@@ -205,6 +248,12 @@
     <EntitySet Name="sellers" EntityType="Self.sellers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="supports" EntityType="Self.supports" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Token" EntityType="Self.Token" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Token_seller" EntityType="Self.Token_seller" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserInfo_seller" EntityType="Self.UserInfo_seller" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_dbo_UserInfo_seller_dbo_sellers_Id" Association="Self.FK_dbo_UserInfo_seller_dbo_sellers_Id">
+      <End Role="sellers" EntitySet="sellers" />
+      <End Role="UserInfo_seller" EntitySet="UserInfo_seller" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

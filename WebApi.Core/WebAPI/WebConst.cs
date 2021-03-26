@@ -17,7 +17,8 @@ namespace WebAPI.Core.WebAPI
         public const string Header_AutoWriteLogFlag = "WebAPI.AutoWriteLogFlag";
 
         //OrderMeal
-        public const string Header_UserId = "UserId"; 
+        public const string Header_UserId = "UserId";
+        public const string Header_App = "App";
 
         public const string HttpParam_AppID = "appid";
         public const string HttpParam_Encrypt = "encrypt";

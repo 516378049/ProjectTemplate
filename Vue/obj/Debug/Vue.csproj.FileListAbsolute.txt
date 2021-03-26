@@ -239,8 +239,6 @@ D:\GitHub\netTemplateMVC\Vue\bin\System.Net.Http.Formatting.dll
 D:\GitHub\netTemplateMVC\Vue\bin\System.Web.Http.dll
 D:\GitHub\netTemplateMVC\Vue\bin\System.Web.Http.WebHost.dll
 D:\GitHub\netTemplateMVC\Vue\bin\FluentData.dll
-D:\GitHub\netTemplateMVC\Vue\bin\ThinkDev.FrameWork.dll
-D:\GitHub\netTemplateMVC\Vue\bin\ThinkDev.Data.dll
 D:\GitHub\netTemplateMVC\Vue\bin\Microsoft.Practices.EnterpriseLibrary.Data.dll
 D:\GitHub\netTemplateMVC\Vue\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll
 D:\GitHub\netTemplateMVC\Vue\bin\EntityFramework.xml

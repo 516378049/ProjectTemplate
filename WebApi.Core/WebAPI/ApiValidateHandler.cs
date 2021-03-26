@@ -31,21 +31,47 @@ namespace WebAPI.Core.WebAPI
             {
                 UnitOfWork Studio = new UnitOfWork();
                 WebFuncHelper.WriteHeadValue(request, "Accept", "application/json");//设置请求头
-                var accesstoken = WebFuncHelper.GetHeadValue(request, "accesstoken");
-                var UserId = int.Parse(WebFuncHelper.GetHeadValue(request, WebConst.Header_UserId));
-                UserInfo userinfo = Studio.UserInfo.Get(X => X.Id == UserId && X.access_token == accesstoken && X.DelFlag == 0).FirstOrDefault();
-                if (userinfo == null)
+                string accesstoken = WebFuncHelper.GetHeadValue(request, "accesstoken");
+                string strUserId = WebFuncHelper.GetHeadValue(request, WebConst.Header_UserId);
+                int UserId = int.Parse(strUserId == string.Empty ? "-1" : strUserId);
+                string App = WebFuncHelper.GetHeadValue(request, WebConst.Header_App);
+
+                if (App.ToUpper() == "WEB")//商家网站登录
                 {
-                    var response = new HttpResponseMessage(HttpStatusCode.OK);
-                    response.Content = new StringContent(CreateApiResult("", "-1", 0, "token验证失败").ToJson());
-                    var tsc = new TaskCompletionSource<HttpResponseMessage>();
-                    tsc.SetResult(response);
-                    return tsc.Task;
+
+                    Token_seller userinfo = Studio.Token_seller.Get((X => X.userId == UserId && X.DelFlag == 0), Y => Y.OrderByDescending(Z => Z.CreateTime)).FirstOrDefault();
+                    if (userinfo == null || userinfo.access_token != accesstoken)
+                    {
+                        var response = new HttpResponseMessage(HttpStatusCode.OK);
+                        response.Content = new StringContent(CreateApiResult("", "401", 0, "token验证失败").ToJson());
+                        var tsc = new TaskCompletionSource<HttpResponseMessage>();
+                        tsc.SetResult(response);
+                        return tsc.Task;
+                    }
                 }
+                else
+                {
+                    UserInfo userinfo = Studio.UserInfo.Get(X => X.Id == UserId && X.access_token == accesstoken && X.DelFlag == 0).FirstOrDefault();
+                    if (userinfo == null)
+                    {
+                        var response = new HttpResponseMessage(HttpStatusCode.OK);
+                        response.Content = new StringContent(CreateApiResult("", "401", 0, "token验证失败").ToJson());
+                        var tsc = new TaskCompletionSource<HttpResponseMessage>();
+                        tsc.SetResult(response);
+                        return tsc.Task;
+                    }
+                }
+
             }
             catch (Exception e)
             {
-                Log.ILog4_Error.Error("接口出现错误：apiRequest," + e.GetType() + "," + e.Message + e);
+                Log.ILog4_Error.Error("接口统一验证出现异常错误：," + e.GetType() + "," + e.Message + e);
+                var response = new HttpResponseMessage();
+                response.StatusCode = HttpStatusCode.OK;
+                response.Content=new StringContent(new ApiResult() { RetCode = WebConst.RetCode_SysError, RetMsg = "网络异常：接口统一验证出现异常错误", Message = null }.ToJson());
+                var tsc = new TaskCompletionSource<HttpResponseMessage>();
+                tsc.SetResult(response);
+                return tsc.Task;
             }
 
             #endregion
@@ -53,11 +79,10 @@ namespace WebAPI.Core.WebAPI
             .ContinueWith(
                 (task) =>
                 {
-                    try
+                    var content = task.Result.Content as System.Net.Http.ObjectContent;
+                    if (content != null)
                     {
-                        var content = task.Result.Content as System.Net.Http.ObjectContent;
                         var apiResult = content.Value as ApiResult;
-
                         if (apiResult != null)
                         {
                             if (content.ObjectType == typeof(System.Web.Http.HttpError))
@@ -68,20 +93,9 @@ namespace WebAPI.Core.WebAPI
                         }
                         else
                         {
-                            throw new ApplicationException("未捕获异常,返回值不符合规则");
+                            Log.ILog4_Error.Error("接口返回值不符合规则，请查看统一接口异常处理日志！");
                         }
                     }
-                    catch (Exception e)
-                    {
-                        if(e.GetType().ToString()== "System.AggregateException")
-                        {
-                            Log.ILog4_Error.Error("已捕获接口错误：System.AggregateException");
-                            task.Result.Content = new StringContent(CreateApiResult("","-1",0,"捕获接口异常："+e.Message).ToJson());
-                            
-                        }
-                        Log.ILog4_Error.Error("接口出现错误apiResponse,"+ e.GetType()+ "," +e.Message, e);
-                    }
-
                     return task.Result;
                 }
             );
@@ -375,7 +389,7 @@ namespace WebAPI.Core.WebAPI
         {
             return new ApiResult() { RetCode = retCode, Total = Total, RetMsg = retMsg, Message = message };
         }
-        
+
     }
     public class KValue
     {
